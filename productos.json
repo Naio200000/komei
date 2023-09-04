@@ -1,0 +1,84 @@
+{
+	"productos":[{
+					"id": "1",
+					"nombre":"Clase Semanal",
+					"descrip":"Disfruta de una clase por semana en los días que prefieras",
+					"descrip_larga":"Te invitamos a participar una clase semanal para el uso de la <span lang='ja'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.",
+					"precio":"4000",
+					"imagen":["./img/productos/clases-01.jpg","./img/productos/clases-02.jpg","./img/productos/clases-03.jpg"],
+					"altImagen":["Banner de clases de Iaido","Imagen de un sensei sentado en frente a sus alumnos","Segundo Banner de clases de Iaido"],
+					"categoria":"Clases"
+					},{
+					"id": "2",
+					"nombre":"2 Clases Semanales",
+					"descrip":"Disfruta de dos clase por semana en los días que prefieras",
+					"descrip_larga":"Te invitamos a participar dos clase semanal para el uso de la <span lang='ja'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.",
+					"precio":"5000",
+					"imagen":["./img/productos/clases-01.jpg","./img/productos/clases-02.jpg","./img/productos/clases-03.jpg"],
+					"altImagen":["Banner de clases de Iaido","Imagen de un sensei sentado en frente a sus alumnos","Segundo Banner de clases de Iaido"],
+					"categoria":"Clases"
+					},{
+					"id": "3",
+					"nombre":"3 Clases Semanales",
+					"descrip":"Disfruta de tres clase por semana en los días que prefieras",
+					"descrip_larga":"Te invitamos a participar una clase semanal para el uso de la <span lang='ja'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.",
+					"precio":"6000",
+					"imagen":["./img/productos/clases-01.jpg","./img/productos/clases-02.jpg","./img/productos/clases-03.jpg"],
+					"altImagen":["Banner de clases de Iaido","Imagen de un sensei sentado en frente a sus alumnos","Segundo Banner de clases de Iaido"],
+					"categoria":"Clases"
+					},{
+					"id": "4",
+					"nombre":"Iaidogi",
+					"descrip":"Keikogi para entrenamiento, 100% Tetron",
+					"descrip_larga":"Elaborado en tetron: 65% poliéster +35% rayon, esta chaqueta está especialmente diseñada para la práctica de iaido. No achica, no pierde color y es fácil de mantener.",
+					"precio":"2500",
+					"imagen":["./img/productos/keikogi-01.jpg","./img/productos/keikogi-02.jpg","./img/productos/keikogi-03.jpg"],
+					"altImagen":["Chaqueta azul de entrenamiento","Chaqueta azul de entrenamiento","Planilla de tamaños de las chaquetas"],
+					"categoria":"Ropa"
+					},{
+					"id": "5",
+					"nombre":"Obi",
+					"descrip":"Cituron de entrenamiento, 100% Algodón",
+					"descrip_larga":"Elaborado en gabardina de 8 oz, posee una dimensión de 9 cm de ancho y 4 metros de largo.",
+					"precio":"1500",
+					"imagen":["./img/productos/obi-01.jpg","./img/productos/obi-02.jpg","./img/productos/obi-03.jpg"],
+					"altImagen":["Cinturon de entrenamiento","Cinturon de entrenamiento","Cinturon de entrenamiento"],
+					"categoria":"Ropa"
+					},{
+					"id": "6",
+					"nombre":"Hakama",
+					"descrip":"Hakama para entrenamiento, 100% Tetron",
+					"descrip_larga":"Excelentes hakamas de tetrón para el entrenamiento de <span lang='ja'>iaido, kendo, aikido</span> y demas artes marciales. Tela antiarrugas con una composición de 65% poliester y 35% de rayón que asegura la permanencia de las tablas sin mayor esfuerzo de planchado. Elaboradas a mano y cosidas individualmente.",
+					"precio":"3500",
+					"imagen":["./img/productos//hakama-01.jpg","./img/productos/hakama-02.jpg","./img/productos//hakama-03.jpg"],
+					"altImagen":["Persona usando Hakama de entrenamiento","Hakama de entrenamiento","Planilla de tamanños de las Hakamas"],
+					"categoria":"Ropa"
+					},{
+					"id": "7",
+					"nombre":"Shinken",
+					"descrip":"Katana de entenamiento con filo, Hecha en acero 1095",
+					"descrip_larga":"Una katanas hechas de manera tradicional es <span lang='ja'>nihonto</span> (literalmente 'espada japonesa'). forjada a partir de acero <span lang='ja'>tamahagane</span>.",
+					"precio":"20000",
+					"imagen":["./img/productos/katana-01.jpg","./img/productos/katana-02.jpg","./img/productos/katana-03.jpg"],
+					"altImagen":["Banner mostrando partes de un Shinken","Shinken sobre un fondo blanco","Shinken sobre un fondo Negro"],
+					"categoria":"Equipos"
+					},{
+					"id": "8",
+					"nombre":"Iaito",
+					"descrip":"Katana de entenamiento sin filo, hecha dealeacion de Aluminio",
+					"descrip_larga":"Una katanas hechas de manera moderna es <span lang='ja'>mugito</span> (literalmente 'espada de exhhibición). forjada a partir de una aleación de aluminio.",
+					"precio":"18000",
+					"imagen":["./img/productos/iaito-01.jpg","./img/productos/iaito-02.jpg","./img/productos/iaito-03.jpg"],
+					"altImagen":["4 Iaitos de diversos colores","Iaito sobre un fondo oscuro","TIaito sobre un fondo blanco"],
+					"categoria":"Equipos"
+					},{
+					"id": "9",
+					"nombre":"Bokuto",
+					"descrip":"Katana de madera para entrenamiento, con saya de plastico",
+					"descrip_larga":"Una katanas hechas de madera es <span lang='ja'>bokuto</span> (literalmente 'espada de madera). tallada en diversas maderas para mejorar su relación con el peso",
+					"precio":"10000",
+					"imagen":["./img/productos/bokuto-01.jpg","./img/productos/bokuto-02.jpg","./img/productos/bokuto-03.jpg"],
+					"altImagen":["Bokkuto con Saya","3 Bokkutos con Sayas","Bokkuto con Saya"],
+					"categoria":"Equipos"
+					}
+]}

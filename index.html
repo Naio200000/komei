@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Komei Juku</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="estilos/style.css">
+</head>
+<body>
+  <header class="header">
+    <nav class="navbar navbar-expand-md fixed-top container-fluid x-auto ">
+      <div class="nav container align-items-center">
+        <a class="navbar-brand " href="#"><img src="./img/logo/komei_Juku.png" alt="Logo de la escuela"></a>
+        <h1 class="titulo text-uppercase text-center">Komei Juku</h1>
+        <button class="navbar-toggler ms-auto m-2" type="button" data-bs-toggle="collapse" data-bs-target="#ContenidoSoporteBarranNav" aria-controls="ContenidoSoporteBarranNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="order-md-last minicarrito d-none d-lg-flex justify-content-lg-evenly align-items-lg-center">
+          <div class=" text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+              <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+            </svg>
+            <span class="minicarrito-precio">0</span>
+          </div>
+          <div class="text-center"> 
+            <button type="button" class="btn btn-komei position-relative px-3" data-bs-toggle="modal" data-bs-target="#carritoModal">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg>
+              <span class="minicarrito-cantidad position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                0</span>
+            </button>
+          </div>
+        </div>
+        <div class="collapse navbar-collapse ms-5" id="ContenidoSoporteBarranNav">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active text-center text-sm-end" aria-current="page" href="#nosotros">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-center text-sm-end" aria-current="page" href="#tienda">Productos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active text-center text-sm-end" aria-current="page" href="#dojos">Dojos</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="hero">
+      <div id="CarrpuselHero" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="10000">
+            <img src="./img/hero/komei-juku-hero-2.jpg" class="d-block w-100" alt="Grupo de estdiantes de Iaido">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="./img/hero/komei-juku-hero-3.jpg" class="d-block w-100" alt="Banner de promocion para clases">
+          </div>
+          <div class="carousel-item">
+            <img src="./img/hero/komei-juku-hero-4.jpg" class="d-block w-100" alt="Primer plano de persona a punto de desenvainar una katana">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#CarrpuselHero" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#CarrpuselHero" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Proxima</span>
+        </button>
+      </div>
+    </div>
+    <nav class="fixed-bottom navbar d-block d-lg-none">
+      <div class="minicarrito row align-items-center my-3">
+        <div class="col">
+          <div class="text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+              <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+            </svg>
+            <span class="minicarrito-precio">0</span>
+          </div>
+        </div>
+        <div class="col">
+          <div class="text-center">
+            <button type="button" class="btn btn-komei position-relative px-3"  data-bs-toggle="modal" data-bs-target="#carritoModal">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+              </svg>
+              <span class="minicarrito-cantidad position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                0</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <section class="nosotros container-fluid container-md pb-3 " id="nosotros">
+      <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center mt-2 mb-5 mx-auto px-2">Conoce la facinante historia de nuestro estilo</h2>
+      <div class="row mt-2 mb-5">
+        <div class="col-12 col-lg-6">
+          <p class="pe-md-3 fs-5 w-75 mx-auto">La historia del Samurai se extiende por más de 1000 años y <strong>forma una parte esencial de Japón.</strong>  A lo largo de ese tiempo surgieron muchos estilos sobre el manejo de las armas que un Samurai debe usar.</p>
+          <p class="pe-md-3 fs-5 w-75 mx-auto">El <span lang="ja">Iaido/Iaijutsu</span> es el arte de desenvainar y cortar a la vez, nace del <span lang="ja">kenjutsu</span> que es el combate con sable Japonés (<span lang="ja">Katana</span>). <strong> Estas artes a lo largo de la historia han crecido y generado innumerables estilos a lo largo del tiempo,</strong> de los cuales pocos quedan hoy.</p>
+        </div>
+        <div class="col-12 col-lg-6">
+          <img class="img-fluid d-none d-lg-block" src="./img/historia/historia-1.jpg" alt="Primer plano de persona a punto de desenvainar una katana">
+        </div>
+      </div>
+      <article class="bt-5 mb-3 mx-md-2 mx-lg-3">
+        <div class="row">
+          <div class="col-12 col-md-6 d-md-flex align-items-md-center text-center">
+            <img src="./img/historia/historia-2.jpg" alt="grupo de samurais" class="img-fluid pb-4" >
+          </div>
+          <div class="col-12 col-md-6 align-self-center justify-content-md-ceneter">
+            <div class="">
+              <h3 class="h3 mb-4"><span lang="ja">Muso Jikiden Eishin Ryu</span></h3>
+              <p class="mb-4">Es un <span lang="ja">koryû</span> (escuela antigua) de <span lang="ja">Iaido/Iaijutsu</span> fundada entre el 1558-1590 por <strong> Hayashizaki Jinsuke no Shigenobu.</strong>
+                Fue la primera escuela en especializarse en el arte del <span lang="ja"><em>iaijutsu</em></span></p>
+              <p class="mb-4"><span lang="ja">Muso Jikiden  Eishin Ryu</span> se traduce como <strong> “la transmisión directa y sin igual del estilo Eishin”.</strong> Durante los más de 450 años de la escuela se ha transmitido de <span lang="ja">Soke a Sok</span>e (director a director) por ya 21 generaciones. Aunque en 2 oportunidades hubo divergentes.</p>
+              <p class="mb-4">En la 11º generación Oguro Motoemon Kiyokatsu no deja un heredero, por lo cual se forman 3 ramas en la enseñanza, seguida por sus 3 mejores alumnos. Nuestra escuela siguió la rama <span lang="ja">Taimura Ha</span>, que luego en la generación 16º nuevamente sufre una nueva división. Oe Masamishi forma la rama <span lang="ja">Yamauchi Ha</span> y toma la escuela en un camino más tradicional.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="my-3 mx-md-2 mx-lg-3">
+        <div class="row">
+          <div class="col-12 col-md-6 d-md-flex align-items-md-center text-center order-md-1">
+            <img src="./img/historia/historia-3.jpg" alt="Hombre con una Katana frente a un templo Japones" class="img-fluid pb-4 ">
+          </div>
+          <div class="col-12 col-md-6 align-self-center justify-content-md-ceneter">
+            <div class="">
+              <h3 class="h3 mb-4">Sekiguchi Sensei</h3>
+              <p class="mb-4">Es hoy el 21º Soke de <span lang="ja">Muso Jikiden  Eishin Ryu Yamauchi Ha</span>. Durante toda su vida ha estudiado varias artes marciales, durante sus estudios secundarios conoce la escuela y decide dedicarle todo su tiempo al estudio del Iai. </p>
+              <p class="mb-4">Ya dedicandose a tiempo completo al estudio y enseñanza del estilo, <strong> funda la escuela <span lang="ja">Komei Juku</span> (estilo de Komei)</strong> que implementa el estilo de <span lang="ja">Muso Jikiden Eishin Ryu</span> junto con todo lo que ha aprendido durante una <em>vida de entrenamiento en variedades de artes marciales.</em></p>
+              <p class="mb-4">Desde que se convierte en Soke del estilo su misión ha sido espandinr el la práctica del estilo a todo el mundo. Viajando a más de 50 países armando nuevas escuelas y visitando regularmente. En 2003 llega a Argentina por primera vez.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+      <article class="my-3 mx-md-2 mx-lg-3">
+        <div class="row">
+          <div class="col-12 col-md-6 d-md-flex align-items-md-center text-center">
+            <img src="./img/historia/historia-4.jpg" alt="Essential Nutrients" class="img-fluid pb-4">
+          </div>
+          <div class="col-12 col-md-6 align-self-center justify-content-md-ceneter">
+            <div class="">
+              <h3 class="h mb-4">Komei Juku Argentina</h3>
+              <p class="mb-4"> Allá por el año 2003, en una<strong> exhibición en el Jardin Japones en CABA</strong>, Sekiguchi Sensei presenta por primera vez su estilo en Argentina. </p>
+              <p class="mb-4">Entre los asistentes se encontraba nuestro<strong> Sensei Carlos Loffreda</strong>, fundador del Instituto <span lang="ja">Chikara</span> (Potencia) de artes marciales, quien queda fascinado con lo presentado, y decide invitarlo al año siguiente para el primer Seminario de Muso Jikiden Eishin Ryu.</p>
+              <p class="mb-4">Hasta el día de hoy Sekiguchi Sensei es invitado todos los años para seguir difundiendo su estilo, lo cual hace que en<strong> 2010 se organice el encuentro internacional de Komei Juku en Argentina.</strong> Carlos Loffreda Sensei es nombrado <span lang="ja">Shibucho</span> de Argentina (Encargado de Argentina). En 2013 Ruben Dario Vega Sensei toma las riendas de la escuela quien sigue difundiendo las enseñanzas de Loffreda Sensei y Sekiguchi Sensei</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+    <section class="tienda container-fluid container-md pb-3" id="tienda">
+      <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">Tienda</h2>
+      <p class="fs-5 w-75 mx-auto">En nuestra tienda encontrarás todo lo <em>necesario para tu entrenamiento</em>. Podrás encontrar paquetes de clases, toda la ropa necesaria (<span lang="ja">keikogi, Obi, Hakamas</span>) de diversos tamaños y calidad, y también podrás encontrar los equipos necesarios (<span lang="ja">Katana, Bokken</span>)</p>
+      <div class="productos pb-3">
+        <div class="categoria py-1 pe-2">
+          <form action="#" class="d-flex justify-content-between">
+            <div class="px-2">
+              <label for="ordenar-producto" class="form-label ">Ordenar</label>
+              <select name="ordenar-producto" id="ordenar-producto">
+                <option value="relevancia">Más Relevantes</option>
+                <option value="mayor">Mayor Precio</option>
+                <option value="menor">Menor Precio</option>
+
+              </select>
+            </div>
+            <div class="">
+              <label for="categoria-producto" class="form-label ">Filtrar por Categoría</label>
+              <select name="categoria-producto" id="categoria-producto">
+                <option value="Todas">Todas</option>
+                <option value="Clases">Clases</option>
+                <option value="Ropa">Ropa</option>
+                <option value="Equipos">Equipos</option>
+              </select>
+            </div>
+          </form>
+        </div>
+        <article class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 my-2 container mx-auto" id="productos">
+        </article>
+      </div>
+    </section>
+    <section class="dojos container-fluid container-md pb-3" id="dojos">
+      <article class="dojos-textos">
+        <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">Dojos</h2>
+        <p class="fs-5 w-75 mx-auto">Con casi<strong> 20 años de difusión en Argentina</strong> se han formado varios dojos con sus respectivos <span lang="ja">Sensei</span>, quienes se han formado para ello.</p>
+      </article>
+      <article class="accordion" id="accordionDojo">
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              <span class="titulo-dojos">Chikara Dojo | CABA</span>
+            </button>
+          </h3>
+          <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionDojo">
+            <div class="accordion-body">
+              <div>
+                <div class="d-flex flex-column flex-sm-row justify-content-evenly align-items-center align-items-lg-start mb-4">
+                  <img class="my-1 imagen-perfil" src="./img/dojos/dario-perfil.jpg" alt="Un señor muy buen moso">
+                  <ul class="my-1">
+                    <li>Dario Vega Sensei</li>
+                    <li>Av. de los Constituyentes 4584</li>
+                    <li>Villa Pueyrredon, C.A.B.A</li>
+                    <li class="d-lg-none"><a href="https://goo.gl/maps/sUz7FBoD9P7KrkUX8" target="_blank" rel="noopener noreferrer">Abrir mapa</a></li>
+                  </ul>
+                  <div class="mapa d-none d-lg-block my-1">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d6569.762355877051!2d-58.492461!3d-34.581873!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb64489cbdaa3%3A0x60f7931205d64a96!2sAv.%20de%20los%20Constituyentes%204584%2C%20C1431EXX%20CABA!5e0!3m2!1sen!2sar!4v1669069391984!5m2!1sen!2sar" width="400" height="300"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  </div>
+                </div>
+                <p><strong>Chikara Dojo.</strong> Siendo el primer Dojo de la escuela en Argentina funciona como cabecera de la institución. <strong>Fundado por Sensei Loffreda allá por los 70s</strong>, después de pasar por varios estilos, se centra en la difusión del estilo <span lang="ja">Muso Jikiden Eishin Ryu</span> en el año 2003. Hoy a la cabeza del dojo y de la escuela se encuentra Sensei Vega.</p>
+              </div>
+            </div>
+            <div class="dojo-acordion text-end me-5 mb-3">
+              <button type="button" class="btn btn-komei" data-bs-toggle="modal" data-bs-target="#modalContactoDojos" data-bs-whatever="@chikaradojo">Contacto</button>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+              <span class="titulo-dojos">Danketsushin Dojo | CABA</span>
+            </button>
+          </h3>
+          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionDojo">
+            <div class="accordion-body">
+              <div>
+                <div class="d-flex flex-column flex-sm-row justify-content-evenly align-items-center align-items-lg-start mb-4">
+                  <img class="my-1 imagen-perfil" src="./img/dojos/javier-perfil.jpg" alt="Un señor muy buen moso">
+                  <ul class="my-1">
+                    <li>Javier Alberdi Sensei</li>
+                    <li>Mendoza 1430</li>
+                    <li>Belgrano, C.A.B.A</li>
+                    <li class="d-lg-none"><a href="https://goo.gl/maps/D8pSKuUYBBeqHqgj8" target="_blank" rel="noopener noreferrer">Abrir mapa</a></li>
+                  </ul>
+                  <div class="mapa d-none d-lg-block my-1">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3285.9291309213486!2d-58.449949882556155!3d-34.55534970000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb433163e9aff%3A0xd2bd0e10140ce76a!2sMendoza%201430%2C%20C1428DKF%20CABA!5e0!3m2!1sen!2sar!4v1669071116110!5m2!1sen!2sar" width="400" height="300"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  </div>
+                </div>
+                <p><strong>Danketsushin Dojo.</strong> Alberdi Sensei es uno de los alumnos más antiguos del estilo en Argentina. <em> Quien ha viajado a los seminuarios internacionales en Japon varias veces.</em> El dojo arranca en el año 2013.</p>
+              </div>
+            </div>
+            <div class="dojo-acordion text-end me-5 mb-3">
+              <button type="button" class="btn btn btn-komei" data-bs-toggle="modal" data-bs-target="#modalContactoDojos" data-bs-whatever="@mitsukodojo">Contacto</button>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+              <span class="titulo-dojos">Suishin Shobu Kan Dojo | Talar de Pacheco</span>
+            </button>
+          </h3>
+          <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionDojo">
+            <div class="accordion-body">
+              <div>
+                <div class="d-flex flex-column flex-sm-row justify-content-evenly align-items-center align-items-lg-start mb-4">
+                  <img class="my-1 imagen-perfil" src="./img/dojos/jorge-perfil.jpg" alt="Un señor muy buen moso">
+                  <ul class="my-1">
+                    <li>Jorge Ruiz Sensei</li>
+                    <li>Espejo N°1179</li>
+                    <li>General Pacheco, Buenos Aires</li>
+                    <li class="d-lg-none"><a href="https://goo.gl/maps/kdkU392ZNiRfzR1U9" target="_blank" rel="noopener noreferrer">Abrir mapa</a></li>
+                  </ul>
+                  <div class="mapa d-none d-lg-block my-1">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3289.7068572734674!2d-58.65201488391322!3d-34.45958848049705!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bca37c2424988b%3A0x9dd719249ef35f68!2sGral.%20Espejo%201179%2C%20B1617FDM%20Gral.%20Pacheco%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1sen!2sar!4v1669071258868!5m2!1sen!2sar" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  </div>
+                </div>
+                <p><strong>Suishin Shobu Kan Dojo.</strong> Ruiz Sensei es un pilar de la comunidad en Pacheco, siendo maestro de Taekwondo desde <strong> hace más de 30 años.</strong> Comienza a practicar <span lang="ja">Iaido</span> en el 2009, empieza a enseñar el estilo en el 2016.</p>
+              </div>
+            </div>
+            <div class="dojo-acordion text-end me-5 mb-3">
+              <button type="button" class="btn btn btn-komei" data-bs-toggle="modal" data-bs-target="#modalContactoDojos" data-bs-whatever="@danketsushindojo">Contacto</button>
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h3 class="accordion-header" id="headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+              <span class="titulo-dojos">El Templo Dojo | Berazategui</span>
+            </button>
+          </h3>
+          <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionDojo">
+            <div class="accordion-body">
+              <div>
+                <div class="d-flex flex-column flex-sm-row justify-content-evenly align-items-center align-items-lg-start mb-4">
+                  <img class="my-1 imagen-perfil" src="./img/dojos/horacio-perfil.jpg" alt="Un señor muy buen moso">
+                  <ul class="my-1">
+                    <li>Horacio Machado Sensei</li>
+                    <li>Calle 6 esquina 153</li>
+                    <li>Berazategui, Buenos Aires</li>
+                    <li class="d-lg-none"><a href="https://g.page/Eltemplodojo?share" target="_blank" rel="noopener noreferrer">Abrir mapa</a></li>
+                  </ul>
+                  <div class="mapa d-none d-lg-block my-1">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1378.30044111504!2d-58.21163914660584!3d-34.751317243748744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a32f6bf99652fd%3A0x15203202d23d9506!2sEl%20Templo%20Dojo!5e0!3m2!1sen!2sar!4v1669071643357!5m2!1sen!2sar" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  </div>
+                </div>
+                <p><strong>El Tempo  Dojo.</strong> Machado Sensei es <span lang="ja">Kyouchi</span> (8º Dan) de <span lang="ja">Karate</span>. Cuenta con un excelente grupo de alumnos. A parte de <span lang="ja">Karate</span> ha estudiado distintos estilos de <span lang="ja">Iaido</span> y <span lang="ja">Iaijutsu</span> a lo largo de su vida. Se suma a la escuela en el 2017 y desde ese momento ha forma parte esencial de la misma</p>
+              </div>
+            </div>
+            <div class="dojo-acordion text-end me-5 mb-3">
+              <button type="button" class="btn btn btn-komei" data-bs-toggle="modal" data-bs-target="#modalContactoDojos" data-bs-whatever="@eltemplodojo">Contacto</button>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+  <footer class="container-fluid mb-lg-0 footer">
+    <div class="container-md">
+      <div class="row align-items-center">
+        <div class="col col-lg-4 p-1">
+          <img class="imagen-perfil footer-perfil" src="./img/misc/perfil.jpg" alt="Un señor muy buen moso">
+        </div>
+        <div class="col">
+          <div class="row">
+            <div class="col-12 col-lg-5">
+              <ul class="datos">
+                  <li>Nicolas,Alsinet</li>
+                  <li>38 Años</li>
+                  <li>nicolas.alsinet@davinci.edu.ar</li>
+              </ul>
+            </div>
+            <div class="col-12 col-lg-7">
+              <ul class="row social">
+                <li class="col"><a href="https://www.instagram.com/nicolas.alsinet/" target="_blank"><img src="./img/logo/SVG/Instagram_logo_2016.svg" alt="Logo de Instagram"></a></li>
+                <li class="col"><a href="https://www.linkedin.com/in/nicolas-alsinet-99a067226/" target="_blank"><img src="./img/logo/SVG/LinkedIn_icon.svg" alt="Logo de linkedin"></a></li>
+                <li class="col"><a href="https://github.com/Naio200000" target="_blank"><img src="./img/logo/SVG/github_icon.svg" alt="Logo de Github"></a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+<script type="module" src="js/index.js"></script>
+</body>
+<div>
+  <div class="modal fade" id="ProductoModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="tituloProducto" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content modalCustom">
+        <div class="modal-header">
+          <p class="modal-title h3 mx-auto" id="tituloProducto"></p>
+        </div>
+        <div class="modal-body row">
+          <div id="carouselProductoImagen" class="carousel slide col-12  col-lg-7" data-bs-ride="true">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#carouselProductoImagen" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#carouselProductoImagen" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#carouselProductoImagen" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner" id="carrusel-producto">
+              <div class="carousel-item active">
+              </div>
+              <div class="carousel-item">
+              </div>
+              <div class="carousel-item">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselProductoImagen" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselProductoImagen" data-bs-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="visually-hidden">Proximo</span>
+            </button>
+          </div>
+          <div class="col-12 col-lg-5 d-flex flex flex-column">
+            <span class="mx-2 align-self-end text-secondary" id="categoriaProducto"></span>
+            <div class="fs-5 mt-3 order-md-1">
+              <div class="text-end p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                  <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                </svg>
+                <span id="precioProducto"></span>
+                <span class="text-info fs-6">6 x $</span>
+                <span id="precioCuotas" class="text-info fs-6"></span>
+                <p>Hasta 6 cuotas sin interes con todas las tarjetas</p>
+                <img src="./img/misc/tarjetas.jfif" class="w-50" alt="logos de tarjetas">
+              </div>
+              <div class="mt-5 text-end">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-truck" viewBox="0 0 16 16">
+                  <path d="M0 3.5A1.5 1.5 0 0 1 1.5 2h9A1.5 1.5 0 0 1 12 3.5V5h1.02a1.5 1.5 0 0 1 1.17.563l1.481 1.85a1.5 1.5 0 0 1 .329.938V10.5a1.5 1.5 0 0 1-1.5 1.5H14a2 2 0 1 1-4 0H5a2 2 0 1 1-3.998-.085A1.5 1.5 0 0 1 0 10.5v-7zm1.294 7.456A1.999 1.999 0 0 1 4.732 11h5.536a2.01 2.01 0 0 1 .732-.732V3.5a.5.5 0 0 0-.5-.5h-9a.5.5 0 0 0-.5.5v7a.5.5 0 0 0 .294.456zM12 10a2 2 0 0 1 1.732 1h.768a.5.5 0 0 0 .5-.5V8.35a.5.5 0 0 0-.11-.312l-1.48-1.85A.5.5 0 0 0 13.02 6H12v4zm-9 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm9 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/>
+                </svg>
+                <span>Envios gratis a todo el país</span>
+              </div>
+            </div>
+            <p id="descripProducto" class="my-3"></p>
+          </div>
+        </div>
+        <div class="modal-footer" id="botonProducto">
+          <button id="cambiarIDBoton" class="btn btn-komei" data-bs-dismiss="modal"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="modalContactoDojos" tabindex="-1" aria-labelledby="modalContactoDojosLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+      <div class="modal-content modalCustom">
+        <div class="modal-header">
+          <p class="modal-title fs-5" id="modalContactoDojosLabel">Mensaje Nuevo</p>
+        </div>
+        <div class="container-fluid ">
+          <form action="#">
+            <div class="row align-items-start">
+              <div class="col col-lg-6">
+                <div class="my-4">
+                  <p class="text-center">Envíanos un mensaje con cualquier consulta que tengas.</p>
+                  <p class="text-center">También contanos tus experiencias en las artes marciales.</p>
+                  <img class="d-none d-lg-block img-fluid mx-auto mt-3 rounded-3" src="./img/misc/imagen-contactos.jpg" alt="Persona escribiendo en Japones">
+                </div>
+              </div>
+              <div class="col col-lg-6 modal-body">
+                <div class="row">
+                  <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Receptor</label>
+                    <input type="text" class="form-control" id="recipient-name" disabled>
+                  </div>
+                  <div class="mb-3 col-12 col-sm-6">
+                    <label for="nombre" class="col-form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre">
+                  </div>
+                  <div class="mb-3 col-12 col-sm-6">
+                    <label for="apellido" class="col-form-label">Apellido</label>
+                    <input type="text" class="form-control" id="apellido">
+                  </div>
+                  <div class="mb-3 col-12 col-sm-6">
+                    <label for="email" class="col-form-label">E-mail</label>
+                    <input type="text" class="form-control" id="emaile">
+                  </div>
+                  <div class="mb-3 col-12 col-sm-6">
+                    <label for="telefono" class="col-form-label">Telefono</label>
+                    <input type="text" class="form-control" id="telefono">
+                  </div>
+                  <div class="mb-3">
+                    <label for="message-text" class="col-form-label">Message:</label>
+                    <textarea class="form-control" id="message-text"></textarea>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-12 text-center">
+                    <input type="submit" value="Enviar mensaje" data-bs-dismiss="modal" class="btn btn-komei">
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="carritoModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content modalCustom">
+        <div class="modal-header">
+          <p class="modal-title fs-5" id="carritoModalLabel">Tu Carrito</p>
+        </div>
+        <div class="modal-body">
+          <div class="mx-auto container-md" id="modal-producto-carrito">
+            <div class="d-flex flex-column flex-lg-row align-items-center align-items-lg-start gap-2 carritoproductos">
+                <div id="contenedorProductosCarrito" class="contenedorProductosCarrito">
+                </div>
+                <div id="resumen" class="fs-5 mt-1 order-md-1 w-100 d-flex flex-column flex-grow-1 gap-3">
+                    <form class="descuento" method="get">
+                        <label for="cupon-descuento" class="form-label">Código de descuento</label>
+                        <div class="mb-3 d-flex gap-1">
+                            <input type="text" class="form-control" id="cupon-descuento" placeholder="Código">
+                            <input type="button" value="Aplicar" id="descuento" class="btn btn-komei">
+                        </div>
+                    </form>
+                    <div class="recibo d-flex flex-column gap-3" id="recibo">
+                        <div class="reciboTotal d-flex justify-content-between fw-bold" id="reciboTotal">
+                            <span>Total</span>
+                            <span>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                                    <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                                </svg>
+                                <span id="carritoPrecioProducto"></span>
+                            </span>
+                        </div>
+                        <div class="cuotas mt-3" id="cuotas">
+                            <img src="./img/misc/tarjetas.jfif" class="img-fluid" alt="logos de tarjetas" style="max-width:250px ;">
+                            <p>6 Cuotas sin Interes</p>
+                            <div class="cuotasCaldulo d-flex justify-content-between" id="cuotasCalculo">
+                                <span class="text-info fs-6">6 Cuotas de</span>
+                                <span class="text-info">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+                                        <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+                                    </svg>
+                                    <span id="carritoPrecioTotalCuota"></span>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="text-center mt-3 mb-1">
+                          <button type="button" class="btn btn-secondary me-3" id="vaciarCarrito">Vaciar</button>
+                          <button type="button" class="btn btn-komei fw-bold" data-bs-dismiss="modal">PAGAR</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</html>
+
+
