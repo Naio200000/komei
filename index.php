@@ -1,8 +1,12 @@
-<?php 
+<?php
 
-$views = isset($_GET['view']) ? $_GET['view'] : 'home';
+    require_once "includes/productos.php";
+    $validos = ["home", "nosotros", "tienda", "dojos"];
+    $viewSelected = isset($_GET['view']) ? $_GET['view'] : 'home';
+    $CategorySelected = isset($_GET['category']) ? $_GET['category'] : 'clases';
 
-
+    $views = (!in_array($viewSelected, $validos)) ? "404" : $viewSelected;
+    
 ?>
 
 <!DOCTYPE html>
@@ -47,8 +51,13 @@ $views = isset($_GET['view']) ? $_GET['view'] : 'home';
                         <li class="nav-item">
                             <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=nosotros">Nosotros</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=tienda">Productos</a>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="index.php?view=tienda" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.php?view=tienda&category=clases">Clases</a></li>
+                                <li><a class="dropdown-item" href="index.php?view=tienda&category=ropa">Ropa</a></li>
+                                <li><a class="dropdown-item" href="index.php?view=tienda&category=equipos">Equipos</a></li>
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=dojos">Dojos</a>
