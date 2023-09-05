@@ -1,3 +1,10 @@
+<?php 
+
+$views = isset($_GET['view']) ? $_GET['view'] : 'home';
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -35,16 +42,16 @@
                 <div class="collapse navbar-collapse ms-5" id="ContenidoSoporteBarranNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active text-center text-sm-end" aria-current="page" href="#home">Home</a>
+                            <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=home">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-center text-sm-end" aria-current="page" href="#nosotros">Nosotros</a>
+                            <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=nosotros">Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-center text-sm-end" aria-current="page" href="#tienda">Productos</a>
+                            <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=tienda">Productos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-center text-sm-end" aria-current="page" href="#dojos">Dojos</a>
+                            <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=dojos">Dojos</a>
                         </li>
                     </ul>
                 </div>
@@ -75,7 +82,7 @@
     </header>
     <main>
         <section>
-
+            <?PHP require_once "views/$views.php";?>
         </section>
     </main>
     <footer class="container-fluid mb-lg-0 footer">
