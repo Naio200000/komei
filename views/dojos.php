@@ -58,7 +58,7 @@
                     </div>
                 </div>
                 <div class="dojo-acordion text-end me-5 mb-3">
-                    <button type="button" class="btn btn btn-komei" data-bs-toggle="modal" data-bs-target="#modalContactoDojos" data-bs-whatever="@mitsukodojo">Contacto</button>
+                    <button type="button" class="btn btn btn-komei" data-bs-toggle="modal" data-bs-target="#modalContactoDojos" data-bs-whatever="@danketsushindojo">Contacto</button>
                 </div>
             </div>
         </div>
@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <div class="dojo-acordion text-end me-5 mb-3">
-                    <button type="button" class="btn btn btn-komei" data-bs-toggle="modal" data-bs-target="#modalContactoDojos" data-bs-whatever="@danketsushindojo">Contacto</button>
+                    <button type="button" class="btn btn btn-komei" data-bs-toggle="modal" data-bs-target="#modalContactoDojos" data-bs-whatever="@suishinshobukandojo">Contacto</button>
                 </div>
             </div>
         </div>

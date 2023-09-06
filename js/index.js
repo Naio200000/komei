@@ -357,12 +357,12 @@ function cargarProductos(data) {
  * Toma el nodo donde se van mostrar todas las tarjetas de productos y agrega las cards de cada producto
  * @param {Array de productos} array 
  */
-function mostrarProductos (array) {
-    htmlProductos.innerHTML = '';
-    for (let i = 0; i < array.length; i++) {
-        htmlProductos.appendChild(array[i].card);
-    }
-}
+// function mostrarProductos (array) {
+//     htmlProductos.innerHTML = '';
+//     for (let i = 0; i < array.length; i++) {
+//         htmlProductos.appendChild(array[i].card);
+//     }
+// }
 /**
  * Ejecuta los metodos del carrito para agregar los valores de cantidad y precio
  */
@@ -440,19 +440,19 @@ btnVaciarCarrito.addEventListener('click', () => {
 /**
  * Agrega el event listener 'change' en el selector de categoria y de ser necesario ejecuta la funcion filtrar y los muestra
  */
-selectorCategoria.addEventListener('change', () => {
-    productos = [];
-    cargarProductos(misProductos);
-    if (selectorCategoria.value == 'Todas') {
-        mostrarProductos (productos);
-    } else {
-        mostrarProductos (filtrarProductos(selectorCategoria.value));
-    }
-})
+// selectorCategoria.addEventListener('change', () => {
+//     productos = [];
+//     cargarProductos(misProductos);
+//     if (selectorCategoria.value == 'Todas') {
+//         mostrarProductos (productos);
+//     } else {
+//         mostrarProductos (filtrarProductos(selectorCategoria.value));
+//     }
+// })
 
-selectorOrdenar.addEventListener('change', () => {
-    mostrarProductos (ordenarProductos());
-})
+// selectorOrdenar.addEventListener('change', () => {
+//     mostrarProductos (ordenarProductos());
+// })
 
 descuento.addEventListener('click', () => {
     let valor;
@@ -481,7 +481,7 @@ descuento.addEventListener('click', () => {
 /**
  * Se ejecutan las primeras funciones de carga al iniciar la pagina
  */
-mostrarProductos (productos);
+// mostrarProductos (productos);
 btn_carrito();
 if (localStorage.length > 0) {
     carrito.agregarstorage(traerlocal());
