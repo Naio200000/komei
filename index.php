@@ -90,9 +90,7 @@
         </nav>
     </header>
     <main>
-        <section>
-            <?PHP require_once "views/$views.php";?>
-        </section>
+        <?PHP require_once "views/$views.php";?>
     </main>
     <footer class="container-fluid mb-lg-0 footer">
         <div class="container-md">
