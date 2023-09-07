@@ -36,7 +36,6 @@ header {
     min-width: 200px;
 }
 .hero {
-
     margin: auto;
     padding-top: 72px;
 }
@@ -52,6 +51,10 @@ main {
 }
 .nosotros {
     background-color: var(--second-bg-color);
+    padding-top: 100px;
+}
+.error {
+    background-color: #fff;
     padding-top: 100px;
 }
 .tienda {

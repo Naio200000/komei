@@ -1,20 +1,27 @@
 <?php
 
     require_once "includes/productos.php";
+    require_once "datos/linksValidos.php";
     $validos = ["home", "nosotros", "tienda", "dojos"];
     $viewSelected = isset($_GET['view']) ? $_GET['view'] : 'home';
     $CategorySelected = isset($_GET['category']) ? $_GET['category'] : 'clases';
 
     $views = (!in_array($viewSelected, $validos)) ? "404" : $viewSelected;
+    if (!array_key_exists($viewSelected, $linksValidos)) {
+        $views = "404";
+        $title = "Error 404 - Pagina no encontrada.";
+    } else {
+        $views = $viewSelected;
+        $title = $linksValidos[$viewSelected]['title'];
+    }
     
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Komei Juku</title>
+    <title>Komei Juku :: <?= $title?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="estilos/style.css">
 </head>
