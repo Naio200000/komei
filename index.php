@@ -2,11 +2,8 @@
 
     require_once "includes/productos.php";
     require_once "datos/linksValidos.php";
-    $validos = ["home", "nosotros", "tienda", "dojos"];
+ 
     $viewSelected = isset($_GET['view']) ? $_GET['view'] : 'home';
-    $CategorySelected = isset($_GET['category']) ? $_GET['category'] : 'clases';
-
-    $views = (!in_array($viewSelected, $validos)) ? "404" : $viewSelected;
     if (!array_key_exists($viewSelected, $linksValidos)) {
         $views = "404";
         $title = "Error 404 - Pagina no encontrada.";
@@ -14,6 +11,7 @@
         $views = $viewSelected;
         $title = $linksValidos[$viewSelected]['title'];
     }
+    $CategorySelected = isset($_GET['category']) ? $_GET['category'] : 'clases';
     
 ?>
 <!DOCTYPE html>
@@ -127,10 +125,10 @@
         </div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-    <script type="module" src="js/index.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 <div>
-    <div class="modal fade" id="ProductoModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="tituloProducto" aria-hidden="true">
+    <!-- <div class="modal fade" id="ProductoModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="tituloProducto" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content modalCustom">
                 <div class="modal-header">
@@ -188,7 +186,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <div class="modal fade" id="modalContactoDojos" tabindex="-1" aria-labelledby="modalContactoDojosLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content modalCustom">
@@ -244,7 +242,7 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" id="carritoModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="carritoModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content modalCustom">
                 <div class="modal-header">
@@ -297,6 +295,6 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
 </html>

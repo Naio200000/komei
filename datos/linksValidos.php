@@ -3,7 +3,7 @@
 $linksValidos = [
     "nosotros" => [
         "link" => "Nosotros",
-        "title" => "Bienvenidos"
+        "title" => "Quienes Somos?"
     ],
     "productos" => [
         "link" => "Productos",
@@ -14,8 +14,12 @@ $linksValidos = [
         "link" => "Dojos",
         "title" => "¿Quienes Somos?"
     ],
-    "articulo" => [
-        "link" => "Articulo",
+    "tienda" => [
+        "link" => "Productos",
         "title" => "¿Quienes Somos?"
+    ],
+    "home" => [
+        "link" => "Home",
+        "title" => "Bienvenidos"
     ]
 ];
