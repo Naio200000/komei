@@ -24,4 +24,18 @@ function catalogoCategoria (string $categoria) :array {
 
 }
 
+function productoID (int $IDproducto):array {
+
+	$item = [];
+	$productos = catalogoCompleto();
+	foreach ($productos as $i) {
+		if ($i['id'] == $IDproducto) {
+			$item = $i;
+			break;
+		}
+	}
+
+	return $item;
+}
+
 ?>

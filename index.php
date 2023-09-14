@@ -1,7 +1,7 @@
 <?php
     require_once "includes/productos.php";
     require_once "datos/linksValidos.php";
- 
+    include_once './libraries/funciones.php';
     $viewSelected = $_GET['view'] ?? 'home';
     if (!array_key_exists($viewSelected, $linksValidos)) {
         $views = "404";
@@ -157,7 +157,7 @@
                                 </div>
                                 <div class="mb-3 col-12 col-sm-6">
                                     <label for="email" class="col-form-label">E-mail</label>
-                                    <input type="text" class="form-control" id="emaile">
+                                    <input type="text" class="form-control" id="email">
                                 </div>
                                 <div class="mb-3 col-12 col-sm-6">
                                     <label for="telefono" class="col-form-label">Telefono</label>

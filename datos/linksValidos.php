@@ -21,5 +21,9 @@ $linksValidos = [
     "home" => [
         "link" => "Home",
         "title" => "Bienvenidos"
+    ],
+    "item" => [
+        "link" => "Item",
+        "title" => "Producto seleccionado"
     ]
 ];
