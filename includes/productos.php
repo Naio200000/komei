@@ -11,6 +11,11 @@ function catalogoCompleto () :array {
 	return $productos;
 }
 
+/**
+ * Devuelve un array con todos los items que coinsidan con el dato de la categoria ingresada
+ * @param string Categoria que quiero buscar dentro de todos los productos
+ * @return array Devuelve array con todos los elementos coinsidientes o un array vacio.
+ */
 function catalogoCategoria (string $categoria) :array {
 
 	$resultado = [];
@@ -21,21 +26,22 @@ function catalogoCategoria (string $categoria) :array {
 		}
 	}
 	return $resultado;
-
 }
 
-function productoID (int $IDproducto):array {
-
-	$item = [];
+/**
+ * Devuelve el producto dependiendo en un ID especifico
+ * @param int ID del producto que desea buscar
+ * @return mixed devuelde el array con los datos del producto considiente con la ID o null
+ */
+function productoID (int $IDproducto):mixed {
 	$productos = catalogoCompleto();
 	foreach ($productos as $i) {
 		if ($i['id'] == $IDproducto) {
-			$item = $i;
-			break;
+			return $i;
 		}
 	}
 
-	return $item;
+	return null;
 }
 
 ?>
