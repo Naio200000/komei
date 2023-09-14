@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Roboto:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Roboto:ital,wght@0,400;0,700;0,900;1,400&family=Spectral:wght@400;700&display=swap');
 :root {
     --main-font-color: rgb(14, 26, 32);
     --second-font-color: rgb(197, 212, 219);
@@ -71,10 +71,17 @@ main {
     min-height: 500px;
 }
 .titulocard {
+    font-family: 'Spectral', serif;
+    color: grey;
     font-weight: bold;
 }
 .titulocard:hover {
     text-shadow: 3px 3px 5px rgba(152, 152, 152, 0.424);
+}
+.preciocard{
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: rgb(180, 16, 16);
 }
 .dojos {
     background-color: var(--second-bg-color);

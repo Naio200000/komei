@@ -1,9 +1,4 @@
-import misProductos from '../productos.json' assert {type: 'json'};
-// 'use strict';
 
-/*
- *  Alsinet Nicolas
- */
 /*Declaracion de Constantes */
 const d = document
 const exampleModal = d.getElementById('modalContactoDojos');

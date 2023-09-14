@@ -3,7 +3,7 @@
     require_once "includes/productos.php";
     require_once "datos/linksValidos.php";
  
-    $viewSelected = isset($_GET['view']) ? $_GET['view'] : 'home';
+    $viewSelected = $_GET['view'] ?? 'home';
     if (!array_key_exists($viewSelected, $linksValidos)) {
         $views = "404";
         $title = "Error 404 - Pagina no encontrada.";
@@ -11,7 +11,6 @@
         $views = $viewSelected;
         $title = $linksValidos[$viewSelected]['title'];
     }
-    $CategorySelected = isset($_GET['category']) ? $_GET['category'] : 'clases';
     
 ?>
 <!DOCTYPE html>
