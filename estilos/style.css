@@ -125,7 +125,11 @@ main {
 
 .btn-komei {
     background-color: var(--main-bg-color);
+    
+}
+.btn-komei a {
     color: var(--main-font-color);
+    text-decoration: none;
 }
 .btn-komei:hover {
     background-color: rgb(151, 169, 178);
