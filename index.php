@@ -1,7 +1,5 @@
 <?php
-    require_once "includes/productos.php";
     require_once "datos/linksValidos.php";
-    include_once './libraries/funciones.php';
     $viewSelected = $_GET['view'] ?? 'home';
     if (!array_key_exists($viewSelected, $linksValidos)) {
         $views = "404";
@@ -9,7 +7,9 @@
     } else {
         $views = $viewSelected;
         $title = $linksValidos[$viewSelected]['title'];
-    }   
+    }
+    require_once "classes/Producto.php";
+    $OBJProducto = New Producto ();
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -1,13 +1,13 @@
 <?php 
     $ID = $_GET['itemID'] ?? False;
-    $item = productoID($ID);
+    $item = $OBJProducto->productoID($ID);
 ?>
 
 <section class="item container-fluid container-md pb-3">
     <?PHP
     if (!empty($item)) {?>
-        <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center fw-bold my-2 mx-auto px-2"><?= $item['nombre']?></h2>
-        <p class="fs-5 w-75 mx-auto fw-bold text-center"><?= $item['descrip']?></p>
+        <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center fw-bold my-2 mx-auto px-2"><?= $item->getNombre()?></h2>
+        <p class="fs-5 w-75 mx-auto fw-bold text-center"><?= $item->getDescripCorta()?></p>
         <div class="card">
             <div class="row">
                 <div class="col-lg-6 d-flex flex-column">
@@ -20,7 +20,7 @@
                         <div class="carousel-inner p-3" id="carrusel-producto">
                             <?php for ($i=0; $i < 3 ; $i++) { ?>
                                 <div class="carousel-item <?php if ($i == 0 ) echo 'active'; ?>">
-                                    <img class="card-img-top" src="<?= $item['imagen'][$i]?>" alt="<?= $item['altImagen'][$i]?>">
+                                    <img class="card-img-top" src="<?= $item->getImagen()[$i]?>" alt="<?= $item->getAltImagen()[$i]?>">
                                 </div>
                             <?php }?>
                         </div>
@@ -33,18 +33,18 @@
                             <span class="visually-hidden">Proximo</span>
                         </button>
                     </div>
-                    <span class="text-uppercase p-2 text-lg-start text-end"><?= $item['categoria']?></span>
+                    <span class="text-uppercase p-2 text-lg-start text-end"><?= $item->getCategoria()?></span>
                 </div>
                 <div class="col-lg-6 d-flex flex-column p-3">
                     <div class="card-body flex-grow-0">
-                        <h3 class="card-title fs-2"><?= $item['nombre']?></h3>
-                        <p class="card-text fs-5"><?= $item['descrip_larga']?></p>
+                        <h3 class="card-title fs-2"><?= $item->getNombre()?></h3>
+                        <p class="card-text fs-5"><?= $item->getDescripLarga()?></p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item fs-5"><span class="fw-bold">Material:</span><?= $item['material']?></li>
+                        <li class="list-group-item fs-5"><span class="fw-bold">Material:</span><?= $item->getMaterial()?></li>
                     </ul>
                     <div class="card-body flex-grow-0 mt-auto" id="botonProducto">
-                        <p class="fs-3 mb-3 fw-bold text-center preciocard"><?= formatearNumero($item['precio'])?></p>
+                        <p class="fs-3 mb-3 fw-bold text-center preciocard"><?= $item->formatearPrecio()?></p>
                         <button id="" class="btn btn-komei w-100 fs-3 text-uppercase fw-bold">Comprar</button>
                     </div>
                 </div>
