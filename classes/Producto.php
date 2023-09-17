@@ -64,20 +64,6 @@ class Producto {
     }
 
     /**
-    * Obtiene la primer imagen
-    */ 
-    public function get1Imagen(){
-        return $this->imagen[0];
-    }
-
-    /**
-    * Obtiene el valor del alt de la primera imagen
-    */ 
-    public function get1AltImagen(){
-        return $this->altImagen[0];
-    }
-
-    /**
     * Obtiene  el array de imagenes
     */ 
     public function getImagen(){
@@ -176,9 +162,9 @@ class Producto {
      * Formatea los datos de etc en un array asociativo para ser mostrados
      * @return array array con los datos de etc con key y valor
      */
-    public function formatearEtc() :array {
+    public function formatearSTNOBJ(string $dato) :array {
 
-        $etc = json_decode(json_encode($this->etc),true);
+        $etc = json_decode(json_encode($this->$dato),true);
         $datosEtc = [];
         foreach ($etc as $k => $v) {
             if($k == 'semanal') {

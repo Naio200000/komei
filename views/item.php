@@ -18,11 +18,13 @@
                             <button type="button" data-bs-target="#carouselProductoImagen" data-bs-slide-to="2" aria-label="Slide 3"></button>
                         </div>
                         <div class="carousel-inner p-5" id="carrusel-producto">
-                            <?php for ($i=0; $i < 3 ; $i++) { ?>
+                            <?php 
+                                $i = 0;
+                                foreach ($item->formatearSTNOBJ('imagen') as $k => $v) { ?>
                                 <div class="carousel-item <?php if ($i == 0 ) echo 'active'; ?>">
-                                    <img class="card-img-top" src="<?= $item->getImagen()[$i]?>" alt="<?= $item->getAltImagen()[$i]?>">
+                                    <img class="card-img-top" src="<?= $k ?>" alt="<?= $v ?>">
                                 </div>
-                            <?php }?>
+                            <?php $i++; }?>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselProductoImagen" data-bs-slide="prev">
                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -41,7 +43,7 @@
                         <p class="card-text fs-5"><?= $item->getDescripLarga()?></p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <?php foreach ($item->formatearEtc() as $k => $v) { ?>
+                        <?php foreach ($item->formatearSTNOBJ('etc') as $k => $v) { ?>
                             <li class='list-group-item fs-5'>
                                 <span class='fw-bold'> <?= "$k : </span> $v </li>"?>
                             <?php } ?>

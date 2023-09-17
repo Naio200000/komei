@@ -127,8 +127,7 @@
 		"etc":{"color":"Negro","material":"Lana"},
 		"tiempo":"H",
 		"precio":15000,
-		"imagen":["./img/productos/montsuki-01.jpg","./img/productos/montsuki-02.jpg","./img/productos/keikogi-03.jpg"],
-		"altImagen":["Persona usando un <span lang='ja'>Montsuki</span> negro para galas","<span lang='ja'>Montuski</span> negro","Planilla de tamaños de las chaquetas"],
+		"imagen":{"./img/productos/montsuki-01.jpg":"Persona usando un <span lang='ja'>Montsuki</span> negro para galas","./img/productos/montsuki-02.jpg":"<span lang='ja'>Montuski</span> negro","./img/productos/keikogi-03.jpg":"Planilla de tamaños de las chaquetas"},
 		"categoria":"ropa"
 	},
 	{
