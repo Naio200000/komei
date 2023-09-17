@@ -126,6 +126,28 @@ class Producto {
     }
 
     /**
+     * Devuelve array de objetos Producto dependiendo del tipo de material
+     * @param string $cate categoria por la cual filtrar todo los productos
+     * @param string $etc el key dentro de los datos de  etc
+     * @param ?string $filtrar el tipo de material que queremos filtrar
+     * @return array $catalogoMaterial catalogo filtrado por material
+     */
+    public function filtrarCatalogo(string $cate, string $etc, string $filtrar = ''): array {
+            $catalogofiltrar = [];
+            $completo = $this->catalogoCategoria($cate);
+            foreach($completo as $m) {
+
+                if ($m->etc->$etc == $filtrar){
+                    $catalogofiltrar[] = $m;
+                }
+            }
+            echo "<pre>";
+            print_r($catalogofiltrar);
+            echo "<pre>";
+            return $catalogofiltrar;
+    }
+
+    /**
     * Decuelve un producto dependiendo de su ID;
     * @param int $id : ID unico de cada producto.
     * @return Producto Un array con el producto encontrado o null si no encuentra nada. 
@@ -156,15 +178,15 @@ class Producto {
      */
     public function formatearSTNOBJ(string $dato) :array {
 
-        $etc = json_decode(json_encode($this->$dato),true);
-        $datosEtc = [];
-        foreach ($etc as $k => $v) {
+        $formatear = json_decode(json_encode($this->$dato),true);
+        $datosAFormatear = [];
+        foreach ($formatear as $k => $v) {
             if($k == 'semanal') {
-                $datosEtc['Clases'] = $v . "  por semana.";
+                $datosAFormatear['Clases'] = $v . "  por semana.";
             } else {
-                $datosEtc[$k] = $v;
+                $datosAFormatear[$k] = $v;
             }
         }
-        return $datosEtc;
+        return $datosAFormatear;
     }
 }

@@ -18,7 +18,8 @@
                             <button type="button" data-bs-target="#carouselProductoImagen" data-bs-slide-to="2" aria-label="Slide 3"></button>
                         </div>
                         <div class="carousel-inner p-5" id="carrusel-producto">
-                            <?php 
+                            <?php
+
                                 $i = 0;
                                 foreach ($item->formatearSTNOBJ('imagen') as $k => $v) { ?>
                                 <div class="carousel-item <?php if ($i == 0 ) echo 'active'; ?>">
