@@ -7,8 +7,7 @@
 		"etc":{"semanal":"1","personas":"Grupal"},
 		"tiempo":"H",
 		"precio":7000,
-		"imagen":["./img/productos/clases-01.jpg","./img/productos/clases-02.jpg","./img/productos/clases-03.jpg"],
-		"altImagen":["Banner de clases de Iaido","Imagen de un sensei sentado en frente a sus alumnos","Segundo Banner de clases de Iaido"],
+		"imagen":{"./img/productos/clases-01.jpg":"Banner de clases de Iaido","./img/productos/clases-02.jpg":"Imagen de un sensei sentado en frente a sus alumnos","./img/productos/clases-03.jpg":"Segundo Banner de clases de Iaido"},
 		"categoria":"clases"
 	},
 	{
@@ -19,8 +18,7 @@
 		"etc":{"semanal":"2","personas":"Grupal"},
 		"tiempo":"H",
 		"precio": 8000,
-		"imagen":["./img/productos/clases-01.jpg","./img/productos/clases-02.jpg","./img/productos/clases-03.jpg"],
-		"altImagen":["Banner de clases de Iaido","Imagen de un sensei sentado en frente a sus alumnos","Segundo Banner de clases de Iaido"],
+		"imagen":{"./img/productos/clases-01.jpg":"Banner de clases de Iaido","./img/productos/clases-02.jpg":"Imagen de un sensei sentado en frente a sus alumnos","./img/productos/clases-03.jpg":"Segundo Banner de clases de Iaido"},
 		"categoria":"clases"
 	},
 	{
@@ -31,8 +29,7 @@
 		"etc":{"semanal":"3","personas":"Grupal"},
 		"tiempo":"H",
 		"precio": 9000,
-		"imagen":["./img/productos/clases-01.jpg","./img/productos/clases-02.jpg","./img/productos/clases-03.jpg"],
-		"altImagen":["Banner de clases de Iaido","Imagen de un sensei sentado en frente a sus alumnos","Segundo Banner de clases de Iaido"],
+		"imagen":{"./img/productos/clases-01.jpg":"Banner de clases de Iaido","./img/productos/clases-02.jpg":"Imagen de un sensei sentado en frente a sus alumnos","./img/productos/clases-03.jpg":"Segundo Banner de clases de Iaido"},
 		"categoria":"clases"
 	},
 	{
@@ -43,8 +40,7 @@
 		"etc":{"color":"Azul","material":"Tetron"},
 		"tiempo":"H",
 		"precio": 5000,
-		"imagen":["./img/productos/keikogi-01.jpg","./img/productos/keikogi-02.jpg","./img/productos/keikogi-03.jpg"],
-		"altImagen":["Chaqueta azul de entrenamiento","Chaqueta azul de entrenamiento","Planilla de tamaños de las chaquetas"],
+		"imagen":{"./img/productos/keikogi-01.jpg":"Chaqueta azul de entrenamiento","./img/productos/keikogi-02.jpg":"Chaqueta azul de entrenamiento","./img/productos/keikogi-03.jpg":"Planilla de tamaños de las chaquetas"},
 		"categoria":"ropa"
 	},
 	{
@@ -55,8 +51,7 @@
 		"etc":{"color":"Blanco","material":"Algodón"},
 		"tiempo":"H",
 		"precio": 3000,
-		"imagen":["./img/productos/obi-01.jpg","./img/productos/obi-02.jpg","./img/productos/obi-03.jpg"],
-		"altImagen":["Cinturon de entrenamiento","Cinturon de entrenamiento","Cinturon de entrenamiento"],
+		"imagen":{"./img/productos/obi-01.jpg":"Cinturon de entrenamiento","./img/productos/obi-02.jpg":"Cinturon de entrenamiento","./img/productos/obi-03.jpg:":"Cinturon de entrenamiento"},
 		"categoria":"ropa"
 	},
 	{
@@ -67,8 +62,7 @@
 		"etc":{"color":"Negro","material":"Tetron"},
 		"tiempo":"H",
 		"precio":6000,
-		"imagen":["./img/productos//hakama-01.jpg","./img/productos/hakama-02.jpg","./img/productos//hakama-03.jpg"],
-		"altImagen":["Persona usando Hakama de entrenamiento","Hakama de entrenamiento","Planilla de tamanños de las Hakamas"],
+		"imagen":{"./img/productos//hakama-01.jpg":"Persona usando Hakama de entrenamiento","./img/productos/hakama-02.jpg":"Hakama de entrenamiento","./img/productos//hakama-03.jpg":"Planilla de tamanños de las Hakamas"},
 		"categoria":"ropa"
 	},
 	{
@@ -79,8 +73,7 @@
 		"etc":{"color":"Negro","material":"Acero 1095"},
 		"tiempo":"H",
 		"precio":60000,
-		"imagen":["./img/productos/katana-01.jpg","./img/productos/katana-02.jpg","./img/productos/katana-03.jpg"],
-		"altImagen":["Banner mostrando partes de un Shinken","Shinken sobre un fondo blanco","Shinken sobre un fondo Negro"],
+		"imagen":{"./img/productos/katana-01.jpg":"Banner mostrando partes de un Shinken","./img/productos/katana-02.jpg":"Shinken sobre un fondo blanco","./img/productos/katana-03.jpg":"Shinken sobre un fondo Negro"},
 		"categoria":"equipos"
 	},
 	{
@@ -91,8 +84,7 @@
 		"etc":{"color":"Negro","material":"Aluminio"},
 		"tiempo":"H",
 		"precio":45000,
-		"imagen":["./img/productos/iaito-01.jpg","./img/productos/iaito-02.jpg","./img/productos/iaito-03.jpg"],
-		"altImagen":["4 Iaitos de diversos colores","Iaito sobre un fondo oscuro","TIaito sobre un fondo blanco"],
+		"imagen":{"./img/productos/iaito-01.jpg":"4 Iaitos de diversos colores","./img/productos/iaito-02.jpg":"Iaito sobre un fondo oscuro","./img/productos/iaito-03.jpg":"TIaito sobre un fondo blanco"},
 		"categoria":"equipos"
 	},
 	{
@@ -103,8 +95,7 @@
 		"etc":{"material":"Incienso"},
 		"tiempo":"H",
 		"precio":20000,
-		"imagen":["./img/productos/bokuto-01.jpg","./img/productos/bokuto-02.jpg","./img/productos/bokuto-03.jpg"],
-		"altImagen":["Bokkuto con Saya","3 Bokkutos con Sayas","Bokkuto con Saya"],
+		"imagen":{"./img/productos/bokuto-01.jpg":"Bokkuto con Saya","./img/productos/bokuto-02.jpg":"3 Bokkutos con Sayas","./img/productos/bokuto-03.jpg":"Bokkuto con Saya"},
 		"categoria":"equipos"
 	},
 	{
@@ -115,8 +106,7 @@
 		"etc":{"color":"Rayada","material":"Lana"},
 		"tiempo":"H",
 		"precio":10000,
-		"imagen":["./img/productos/hakama-gala-01.jpg","./img/productos/hakama-gala-02.jpg","./img/productos/hakama-03.jpg"],
-		"altImagen":["Persona usando Hakama de entrenamiento","Hakama de Gala","Planilla de tamanños de las Hakamas"],
+		"imagen":{"./img/productos/hakama-gala-01.jpg":"Persona usando Hakama de entrenamiento","./img/productos/hakama-gala-02.jpg":"Hakama de Gala","./img/productos/hakama-03.jpg":"Planilla de tamanños de las Hakamas"},
 		"categoria":"ropa"
 	},
 	{
@@ -138,8 +128,7 @@
 		"etc":{"color":"Blanco","material":"Igusa y Algodón"},
 		"tiempo":"H",
 		"precio":8000,
-		"imagen":["./img/productos/setta-01.jpg","./img/productos/setta-02.jpg","./img/productos/setta-03.jpg"],
-		"altImagen":["Persona usando un <span lang='ja'>Setta</span>","<span lang='ja'>Setta</span> de Igusa","<span lang='ja'>Setta</span> con tiras blancas"],
+		"imagen":{"./img/productos/setta-01.jpg":"Persona usando un <span lang='ja'>Setta</span>","./img/productos/setta-02.jpg":"<span lang='ja'>Setta</span> de Igusa","./img/productos/setta-03.jpg":"<span lang='ja'>Setta</span> con tiras blancas"},
 		"categoria":"ropa"
 	},
 	{
@@ -150,8 +139,7 @@
 		"etc":{"color":"Negro","material":"Acero 1060"},
 		"tiempo":"H",
 		"precio":50000,
-		"imagen":["./img/productos/katana-02.jpg","./img/productos/katana-01.jpg","./img/productos/katana-03.jpg"],
-		"altImagen":["Shinken sobre un fondo blanco","Banner mostrando partes de un Shinken","Shinken sobre un fondo Negro"],
+		"imagen":{"./img/productos/katana-02.jpg":"Shinken sobre un fondo blanco","./img/productos/katana-01.jpg":"Banner mostrando partes de un Shinken","./img/productos/katana-03.jpg:":"Shinken sobre un fondo Negro"},
 		"categoria":"equipos"
 	},
 	{
@@ -162,8 +150,7 @@
 		"etc":{"semanal":"1","personas":"Grupal"},
 		"tiempo":"H",
 		"precio": 12000,
-		"imagen":["./img/productos/clases-01.jpg","./img/productos/clases-02.jpg","./img/productos/clases-03.jpg"],
-		"altImagen":["Banner de clases de Iaido","Imagen de un sensei sentado en frente a sus alumnos","Segundo Banner de clases de Iaido"],
+		"imagen":{"./img/productos/clases-01.jpg":"Banner de clases de Iaido","./img/productos/clases-02.jpg":"Imagen de un sensei sentado en frente a sus alumnos","./img/productos/clases-03.jpg":"Segundo Banner de clases de Iaido"},
 		"categoria":"clases"
 	},
 	{
@@ -174,8 +161,7 @@
 		"etc":{"color":"Negro","material":"Tetron"},
 		"tiempo":"H",
 		"precio": 5000,
-		"imagen":["./img/productos/keikogi-01.jpg","./img/productos/keikogi-02.jpg","./img/productos/keikogi-03.jpg"],
-		"altImagen":["Chaqueta azul de entrenamiento","Chaqueta azul de entrenamiento","Planilla de tamaños de las chaquetas"],
+		"imagen":{"./img/productos/keikogi-01.jpg":"Chaqueta azul de entrenamiento","./img/productos/keikogi-02.jpg":"Chaqueta azul de entrenamiento","./img/productos/keikogi-03.jpg":"Planilla de tamaños de las chaquetas"},
 		"categoria":"ropa"
 	}
 ]
