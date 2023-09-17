@@ -7,9 +7,8 @@ class Producto {
     private $nombre;
     private $descripCorta;
     private $descripLarga;
-    private $personas;
-    private $material;
-    private $color;
+    private $etc;
+    private $tiempo;
     private $precio;
     private $imagen;
     private $altImagen;
@@ -44,24 +43,17 @@ class Producto {
     }
 
     /**
-    * Obtiene el valor de material
+    * Obtiene el array de etc
     */ 
-    public function getPersonas(){
-        return $this->personas;
+    public function getEtc(){
+        return $this->etc;
     }
    
     /**
-    * Obtiene el valor de material
+    * Obtiene el valor de tiempo
     */ 
-    public function getMaterial(){
-        return $this->material;
-    }
-
-    /**
-    * Obtiene el valor de material
-    */ 
-    public function getColor(){
-        return $this->color;
+    public function getTiempo(){
+        return $this->tiempo;
     }
     
     /**
@@ -123,9 +115,8 @@ class Producto {
             $newObject->nombre = $object->nombre;
             $newObject->descripCorta = $object->descrip;
             $newObject->descripLarga = $object->descrip_larga;
-            $newObject->personas = $object->personas;
-            $newObject->material = $object->material;
-            $newObject->color = $object->color;
+            $newObject->etc = $object->etc;
+            $newObject->tiempo = $object->tiempo;
             $newObject->precio = $object->precio;
             $newObject->imagen = $object->imagen;
             $newObject->altImagen = $object->altImagen;
@@ -179,5 +170,23 @@ class Producto {
     */
     public function formatearPrecio() :string {
         return number_format($this->precio, 2,",",".");
+    }
+
+    /**
+     * Formatea los datos de etc en un array asociativo para ser mostrados
+     * @return array array con los datos de etc con key y valor
+     */
+    public function formatearEtc() :array {
+
+        $etc = json_decode(json_encode($this->etc),true);
+        $datosEtc = [];
+        foreach ($etc as $k => $v) {
+            if($k == 'semanal') {
+                $datosEtc['Clases'] = $v . "  por semana.";
+            } else {
+                $datosEtc[$k] = $v;
+            }
+        }
+        return $datosEtc;
     }
 }

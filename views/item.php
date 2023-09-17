@@ -17,7 +17,7 @@
                             <button type="button" data-bs-target="#carouselProductoImagen" data-bs-slide-to="1" aria-label="Slide 2"></button>
                             <button type="button" data-bs-target="#carouselProductoImagen" data-bs-slide-to="2" aria-label="Slide 3"></button>
                         </div>
-                        <div class="carousel-inner p-3" id="carrusel-producto">
+                        <div class="carousel-inner p-5" id="carrusel-producto">
                             <?php for ($i=0; $i < 3 ; $i++) { ?>
                                 <div class="carousel-item <?php if ($i == 0 ) echo 'active'; ?>">
                                     <img class="card-img-top" src="<?= $item->getImagen()[$i]?>" alt="<?= $item->getAltImagen()[$i]?>">
@@ -41,7 +41,11 @@
                         <p class="card-text fs-5"><?= $item->getDescripLarga()?></p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item fs-5"><span class="fw-bold">Material:</span><?= $item->getMaterial()?></li>
+                        <?php foreach ($item->formatearEtc() as $k => $v) { ?>
+                            <li class='list-group-item fs-5'>
+                                <span class='fw-bold'> <?= "$k : </span> $v </li>"?>
+                            <?php } ?>
+
                     </ul>
                     <div class="card-body flex-grow-0 mt-auto" id="botonProducto">
                         <p class="fs-3 mb-3 fw-bold text-center preciocard"><?= $item->formatearPrecio()?></p>
@@ -54,4 +58,4 @@
             <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center fw-bold my-2 mx-auto px-2">No pudimos encontrar el producto que buscabas.</h2>
             <p class="fs-5 w-75 mx-auto fw-bold text-center fs-5">Para volver a la home hás click <a class="fs-3" href="index.php?view=home">aquí.</a></p>
         <?PHP }?>
-</section>
+</section>z
