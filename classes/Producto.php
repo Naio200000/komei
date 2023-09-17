@@ -11,7 +11,6 @@ class Producto {
     private $tiempo;
     private $precio;
     private $imagen;
-    private $altImagen;
     private $categoria;
 
     /**
@@ -70,12 +69,6 @@ class Producto {
         return $this->imagen;
     }
 
-    /**
-    * Obtiene el array de altImgen
-    */ 
-    public function getAltImagen(){
-        return $this->altImagen;
-    }
 
     /**
     * Obtiene el valor de categoria
@@ -105,7 +98,6 @@ class Producto {
             $newObject->tiempo = $object->tiempo;
             $newObject->precio = $object->precio;
             $newObject->imagen = $object->imagen;
-            $newObject->altImagen = $object->altImagen;
             $newObject->categoria = $object->categoria;
 
             $productosOBJ[] = $newObject;

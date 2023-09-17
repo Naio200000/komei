@@ -16,7 +16,11 @@
                         foreach ($category as $producto) {?>         
                         <div class="col">
                             <div class="card tarjetas-producto">
-                                <img src="<?= $producto->get1Imagen()?>" alt="<?= $producto->get1AltImagen()?>" class="card-img-top">
+                                <?php
+                                    $imagenCard = $producto->formatearSTNOBJ('imagen');
+                                    foreach (array_splice($imagenCard,0,1) as $k => $v) { ?>
+                                        <img src="<?= $k ?>" alt="<?= $v ?>" class="card-img-top">
+                                        <?php } ?>
                                 <span class="mx-2 ms-auto capital"><?= $producto->getCategoria()?></span>
                                 <div class="card-body">
                                     <h3 class="card-title" type="button" id="<?= $producto->getId()?>boton_mostrar"><a href="index.php?view=item&itemID=<?= $producto->getId()?>" class="fs-2 titulocard"><?= $producto->getNombre()?></a></h3>
