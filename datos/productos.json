@@ -51,7 +51,7 @@
 		"etc":{"color":"Blanco","material":"Algodón"},
 		"tiempo":"H",
 		"precio": 3000,
-		"imagen":{"./img/productos/obi-01.jpg":"Cinturon de entrenamiento","./img/productos/obi-02.jpg":"Cinturon de entrenamiento","./img/productos/obi-03.jpg:":"Cinturon de entrenamiento"},
+		"imagen":{"./img/productos/obi-01.jpg":"Cinturon de entrenamiento","./img/productos/obi-02.jpg":"Cinturon de entrenamiento","./img/productos/obi-03.jpg":"Cinturon de entrenamiento"},
 		"categoria":"ropa"
 	},
 	{
