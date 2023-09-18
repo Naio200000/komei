@@ -16,7 +16,7 @@ $linksValidos = [
     ],
     "tienda" => [
         "link" => "Productos",
-        "title" => "¿Quienes Somos?"
+        "title" => "Nuestro catalogo de Productos"
     ],
     "home" => [
         "link" => "Home",

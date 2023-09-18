@@ -19,7 +19,6 @@
                         </div>
                         <div class="carousel-inner p-5" id="carrusel-producto">
                             <?php
-
                                 $i = 0;
                                 foreach ($item->formatearSTNOBJ('imagen') as $k => $v) { ?>
                                 <div class="carousel-item <?php if ($i == 0 ) echo 'active'; ?>">

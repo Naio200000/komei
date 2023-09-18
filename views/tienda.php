@@ -1,30 +1,74 @@
 <?php 
-    $CategorySelected = $_GET['category'] ?? false;
-    $category = $OBJProducto->catalogoCategoria($CategorySelected);
+    $category = isset($_GET['category']) ? $OBJProducto->catalogoCategoria($_GET['category']) : $OBJProducto->catalogoCompleto();
 ?>
 <section class="tienda container-fluid container-md pb-3" id="tienda">
     <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">Tienda</h2>
     <p class="fs-5 w-75 mx-auto">En nuestra tienda encontrarás todo lo <em>necesario para tu entrenamiento</em>. Podrás encontrar paquetes de clases, toda la ropa necesaria (<span lang="ja">keikogi, Obi, Hakamas</span>) de diversos tamaños y calidad, y también podrás encontrar los equipos necesarios (<span lang="ja">Katana, Bokken</span>)</p>
-    <?php $OBJProducto->filtrarCatalogo('ropa', 'material',  'Tetron'); ?>
     <div class="productos pb-3">
-        <div class="categoria py-1 pe-2">
-            <h3 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2"><?= $CategorySelected ?></h3>
-        </div> 
+        <article class="accordion accordion-flush px-4" id="accordionFlushExample">
+            <div class="accordion-item">
+                <p class="accordion-header" id="flush-headingOne">
+                    <span class="accordion-button collapsed fs-3 titulocard" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">Filtros</span>
+                </p>
+                <div id="flush-collapseOne" class="accordion-collapse collapse formularioLogica" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                        <form action="index.php" method="GET">
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 my-2 container mx-auto">
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <!-- Faata hacer que funcione vue y terminar el form -->
+                                        <select class="form-control" id="category" required>
+                                            <option value="" selected disabled>Seleccione</option>
+                                            <option value="clases">Clases</option>
+                                            <option value="ropa">Ropa</option>
+                                            <option value="equipo">Equipos</option>
+                                        </select>
+                                        <label for="category" class="form-label">{{funciona}}</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <select class="form-control" id="etc">
+                                            <option value="" selected disabled>Seleccione</option>
+                                            <option value="semanal">Veces por semana</option>
+                                            <option value="personas">Cantidad de personas</option>
+                                            <option value="color">Colores</option>
+                                            <option value="material">Materiales</option>
+                                        </select>
+                                        <label for="etc" class="form-label">Datos a filtrar</label>
+                                    </div>
+                                <div class="col">
+                                    <div class="form-floating mb-3">
+                                        <select class="form-control" id="dato">
+                                            <option value="" selected disabled>Seleccione</option>
+                                            <option value="semanal"></option>
+                                            <option value="personas">Cantidad de personas</option>
+                                            <option value="color">Colores</option>
+                                            <option value="material">Materiales</option>
+                                        </select>
+                                        <label for="dato" class="form-label">Vales a filtrar</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" value="dale">
+                        </form>
+                    </div>
+                </div>
+        </article>
         <article id="productos">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 my-2 container mx-auto">
                 <?PHP
-                    if (!empty($category)) {
-                        foreach ($category as $producto) {?>         
+                    foreach ($category as $producto) {?>         
                         <div class="col">
                             <div class="card tarjetas-producto">
                                 <?php
                                     $imagenCard = $producto->formatearSTNOBJ('imagen');
                                     foreach (array_splice($imagenCard,0,1) as $k => $v) { ?>
                                         <img src="<?= $k ?>" alt="<?= $v ?>" class="card-img-top">
-                                        <?php } ?>
+                                <?php } ?>
                                 <span class="mx-2 ms-auto capital"><?= $producto->getCategoria()?></span>
                                 <div class="card-body">
-                                    <h3 class="card-title" type="button" id="<?= $producto->getId()?>boton_mostrar"><a href="index.php?view=item&itemID=<?= $producto->getId()?>" class="fs-2 titulocard"><?= $producto->getNombre()?></a></h3>
+                                    <h3 class="card-title fs-2 titulocard" type="button" id="<?= $producto->getId()?>boton_mostrar"><a href="index.php?view=item&itemID=<?= $producto->getId()?>" class="fs-2 titulocard"><?= $producto->getNombre()?></a></h3>
                                     <p class="card-text"><?= $producto->getDescripCorta()?></p>
                                     <div class="row px2">
                                         <span class="col preciocard"><?=  $producto->formatearPrecio()?></span>
@@ -38,12 +82,9 @@
                                 </div>
                             </div>
                         </div>
-                <?PHP }} else {?>
+                <?PHP } ?>
             </div>
-                <div class="row">
-                    <h3 class="col-12 fw-bold text-center h2">No pudimos encontrar la Categoria que estas buscando</h3>
-                </div>
-            <?PHP }?>
         </article>
     </div>
+    <script src="scripts/app.js"></script>
 </section>
