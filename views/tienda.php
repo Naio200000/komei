@@ -1,5 +1,9 @@
 <?php 
     $category = isset($_GET['category']) ? $OBJProducto->catalogoCategoria($_GET['category']) : $OBJProducto->catalogoCompleto();
+    $get = isset($_GET['etc']) ? $get = $_GET : false;
+    if ($get) {
+        $category = $OBJProducto-> filtrarCatalogo($get['category'], $get['etc'], $get['dato']);
+    }
 ?>
 <section class="tienda container-fluid container-md pb-3" id="tienda">
     <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">Tienda</h2>
@@ -10,44 +14,31 @@
                 <p class="accordion-header" id="flush-headingOne">
                     <span class="accordion-button collapsed fs-3 titulocard" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">Filtros</span>
                 </p>
-                <div id="flush-collapseOne" class="accordion-collapse collapse formularioLogica" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
-                        <form action="index.php" method="GET">
+                        <form action="index.php?" method="GET">
                             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 my-2 container mx-auto">
+                                <input type="hidden" name="view" value="tienda">
                                 <div class="col">
-                                    <div class="form-floating mb-3">
-                                        <!-- Faata hacer que funcione vue y terminar el form -->
-                                        <select class="form-control" id="category" required>
-                                            <option value="" selected disabled>Seleccione</option>
-                                            <option value="clases">Clases</option>
-                                            <option value="ropa">Ropa</option>
-                                            <option value="equipo">Equipos</option>
-                                        </select>
-                                        <label for="category" class="form-label">{{funciona}}</label>
-                                    </div>
+                                    <select class="form-select" name="category" aria-label="Default select example" value="clases">
+                                        <option value="clases">Clases</option>
+                                        <option value="ropa">Ropa</option>
+                                        <option value="equipos">Equipos</option>
+                                    </select>
                                 </div>
                                 <div class="col">
-                                    <div class="form-floating mb-3">
-                                        <select class="form-control" id="etc">
-                                            <option value="" selected disabled>Seleccione</option>
-                                            <option value="semanal">Veces por semana</option>
-                                            <option value="personas">Cantidad de personas</option>
-                                            <option value="color">Colores</option>
-                                            <option value="material">Materiales</option>
-                                        </select>
-                                        <label for="etc" class="form-label">Datos a filtrar</label>
-                                    </div>
+                                    <select class="form-select" name="etc" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        <option value="color">Color</option>
+                                        <option value="material">Material</option>
+                                    </select>
+                                </div>
                                 <div class="col">
-                                    <div class="form-floating mb-3">
-                                        <select class="form-control" id="dato">
-                                            <option value="" selected disabled>Seleccione</option>
-                                            <option value="semanal"></option>
-                                            <option value="personas">Cantidad de personas</option>
-                                            <option value="color">Colores</option>
-                                            <option value="material">Materiales</option>
-                                        </select>
-                                        <label for="dato" class="form-label">Vales a filtrar</label>
-                                    </div>
+                                    <select class="form-select" name="dato" aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        <option value="Azul">Azul</option>
+                                        <option value="Negro">Negro</option>
+                                    </select>
                                 </div>
                             </div>
                             <input type="submit" value="dale">
