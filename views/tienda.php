@@ -28,14 +28,12 @@
                                 </div>
                                 <div class="col">
                                     <select class="form-select" name="etc" aria-label="Default select example">
-                                        <option selected>Open this select menu</option>
                                         <option value="color">Color</option>
                                         <option value="material">Material</option>
                                     </select>
                                 </div>
                                 <div class="col">
                                     <select class="form-select" name="dato" aria-label="Default select example">
-                                        <option selected>Open this select menu</option>
                                         <option value="Azul">Azul</option>
                                         <option value="Negro">Negro</option>
                                     </select>
