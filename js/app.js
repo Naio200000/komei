@@ -1,21 +1,52 @@
 var app = new Vue({
     el: ".formularioLogica",
-	data: {
-        funciona: 'si',
-        category: '',
+    data:{
+        dataSelected: "", 
         clases:{
             semanal: "Clases por semana", 
-            personal: "En grupo o solo?"
-        },
-        ropa:{
-            tipo: "Tipo de ropa",
-            color: "Color de ropa",
-            material: "Telad de la ropa"
+            personas: "En grupo o solo?"
         },
         equipos:{
-            tipo: "Tipo del equipo",
-            color: "Color del equipo",
-            material: "Telad del equipo"
-        }
+            color:"Que color de equipo",
+            material:"Que material de equipo",
+        },
+        ropa:{
+            color:"Color de la Ropa",
+            material:"Material de la Ropa"
+        },
+        datosClases:{
+            semanal:{
+                1: "1 Clase",
+                2: "2 Clase",
+                3: "3 Clase"
+            },
+            personas: {
+                Grupal: "Clases grupales",
+                Personal: "Clases personales"
+            },
+        },
+        datosRopa:{
+            color:{
+                Azul:"Azul",
+                Negro:"Negro"
+            },
+            material:{
+                Tetron:"Tetron",
+                Algodon: "Algodon"
+            },
+        },
+        datosEquipos:{
+            color:{
+                Azul:"Azul",
+                Negro:"Negro"
+            },
+            material:{
+                acero1060:"Acero 1060",
+                acero1095:"Acero 1095",
+                Aluminio: "Aluminio",
+                Incienso: "Incienso"
+            }
+        },
     }
+
 });

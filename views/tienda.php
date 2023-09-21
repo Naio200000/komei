@@ -1,5 +1,6 @@
 <?php 
     $category = isset($_GET['category']) ? $OBJProducto->catalogoCategoria($_GET['category']) : $OBJProducto->catalogoCompleto();
+    $CategorySelected = $_GET['category'] ?? false;
     $get = isset($_GET['etc']) ? $get = $_GET : false;
     if ($get) {
         $category = $OBJProducto-> filtrarCatalogo($get['category'], $get['etc'], $get['dato']);
@@ -8,7 +9,7 @@
 <section class="tienda container-fluid container-md pb-3" id="tienda">
     <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">Tienda</h2>
     <p class="fs-5 w-75 mx-auto">En nuestra tienda encontrarás todo lo <em>necesario para tu entrenamiento</em>. Podrás encontrar paquetes de clases, toda la ropa necesaria (<span lang="ja">keikogi, Obi, Hakamas</span>) de diversos tamaños y calidad, y también podrás encontrar los equipos necesarios (<span lang="ja">Katana, Bokken</span>)</p>
-    <div class="productos pb-3">
+    <div class="productos pb-3 formularioLogica">
         <article class="accordion accordion-flush px-4" id="accordionFlushExample">
             <div class="accordion-item">
                 <p class="accordion-header" id="flush-headingOne">
@@ -17,25 +18,19 @@
                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                         <form action="index.php?" method="GET">
-                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 my-2 container mx-auto">
+                            <div class="row row-cols-1 row-cols-md-2 g-4 my-2 container mx-auto">
                                 <input type="hidden" name="view" value="tienda">
+                                <input type="hidden" name="category" value="<?= $CategorySelected ?>">
                                 <div class="col">
-                                    <select class="form-select" name="category" aria-label="Default select example" value="clases">
-                                        <option value="clases">Clases</option>
-                                        <option value="ropa">Ropa</option>
-                                        <option value="equipos">Equipos</option>
-                                    </select>
-                                </div>
-                                <div class="col">
-                                    <select class="form-select" name="etc" aria-label="Default select example">
-                                        <option value="color">Color</option>
-                                        <option value="material">Material</option>
+                                    <select class="form-select" name="etc" v-model="dataSelected" aria-label="Default select example">
+                                        <option v-for="(item, key) of <?= $CategorySelected ?>" :value="key">{{item}}</option>
                                     </select>
                                 </div>
                                 <div class="col">
                                     <select class="form-select" name="dato" aria-label="Default select example">
-                                        <option value="Azul">Azul</option>
-                                        <option value="Negro">Negro</option>
+                                    <option v-if="<?= $CategorySelected ?> == clases" v-for="(item, key) of datosClases[dataSelected]" :value="key" class="1">{{item}}</option>
+                                    <option v-if="<?= $CategorySelected ?> == ropa" v-for="(item, key) of datosRopa[dataSelected]" :value="key" class="2">{{item}}</option>
+                                    <option v-if="<?= $CategorySelected ?> == equipos" v-for="(item, key) of datosEquipos[dataSelected]" :value="key" class="3">{{item}}</option>
                                     </select>
                                 </div>
                             </div>
@@ -44,6 +39,10 @@
                     </div>
                 </div>
         </article>
+        <div class="categoria pt-2 pe-2">
+            <h3 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2"><?PHP $CategorySelected = $CategorySelected ? $CategorySelected: 'nustro catalogo completo';
+            echo  $CategorySelected; ?></h3>
+        </div> 
         <article id="productos">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 my-2 container mx-auto">
                 <?PHP
@@ -57,7 +56,7 @@
                                 <?php } ?>
                                 <span class="mx-2 ms-auto capital"><?= $producto->getCategoria()?></span>
                                 <div class="card-body">
-                                    <h3 class="card-title fs-2 titulocard" type="button" id="<?= $producto->getId()?>boton_mostrar"><a href="index.php?view=item&itemID=<?= $producto->getId()?>" class="fs-2 titulocard"><?= $producto->getNombre()?></a></h3>
+                                    <h4 class="card-title fs-2 titulocard" type="button" id="<?= $producto->getId()?>boton_mostrar"><a href="index.php?view=item&itemID=<?= $producto->getId()?>" class="fs-2 titulocard"><?= $producto->getNombre()?></a></h4>
                                     <p class="card-text"><?= $producto->getDescripCorta()?></p>
                                     <div class="row px2">
                                         <span class="col preciocard"><?=  $producto->formatearPrecio()?></span>
@@ -75,5 +74,5 @@
             </div>
         </article>
     </div>
-    <script src="scripts/app.js"></script>
+    <script src="js/app.js"></script>
 </section>
