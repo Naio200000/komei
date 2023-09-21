@@ -32,7 +32,8 @@ var app = new Vue({
             },
             material:{
                 Tetron:"Tetron",
-                Algodon: "Algodon"
+                Algodon: "Algodon",
+                Lana: "Lana"
             },
         },
         datosEquipos:{

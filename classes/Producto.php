@@ -138,8 +138,9 @@ class Producto {
             foreach($completo as $m) {
                 if ($m->etc->$etc == '') {
                     return $completo;
-                } elseif ($m->etc->$etc == $filtrar){
-                    $catalogofiltrar[] = $m;
+                } elseif (isset($m->etc->$etc)){
+                    if (($m->etc->$etc == $filtrar))
+                        $catalogofiltrar[] = $m;
                 }
             }
             // echo "<pre>";

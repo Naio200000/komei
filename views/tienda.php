@@ -1,9 +1,10 @@
 <?php 
     $category = isset($_GET['category']) ? $OBJProducto->catalogoCategoria($_GET['category']) : $OBJProducto->catalogoCompleto();
     $CategorySelected = $_GET['category'] ?? false;
-    $get = isset($_GET['etc']) ? $get = $_GET : false;
-    if ($get) {
-        $category = $OBJProducto-> filtrarCatalogo($get['category'], $get['etc'], $get['dato']);
+    $filtrar = isset($_GET['etc']) ? $filtrar = $_GET : false;
+    print_r($filtrar);
+    if ($filtrar) {
+        $category = $OBJProducto-> filtrarCatalogo($filtrar['category'], $filtrar['etc'], $filtrar['dato']);
     }
 ?>
 <section class="tienda container-fluid container-md pb-3" id="tienda">
@@ -76,3 +77,8 @@
     </div>
     <script src="js/app.js"></script>
 </section>
+
+<!-- // http://localhost/komei/index.php?view=tienda&category=equipos&etc=color&dato=Azul
+        http://localhost/komei/index.php?view=tienda&category=equipos
+// Warning: foreach() argument must be of type array|object, null given in D:\Estudios\xampp\htdocs\komei\classes\Producto.php on line 90
+// Warning: foreach() argument must be of type array|object, null given in D:\Estudios\xampp\htdocs\komei\classes\Producto.php on line 90 -->
