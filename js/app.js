@@ -21,19 +21,19 @@ var app = new Vue({
                 3: "3 Clase"
             },
             personas: {
-                Grupal: "Clases grupales",
-                Personal: "Clases personales"
+                grupal: "Clases grupales",
+                personal: "Clases personales"
             },
         },
         datosRopa:{
             color:{
-                Azul:"Azul",
-                Negro:"Negro"
+                azul:"Azul",
+                negro:"Negro"
             },
             material:{
-                Tetron:"Tetron",
-                Algodon: "Algodon",
-                Lana: "Lana"
+                tetron:"Tetron",
+                tlgodon: "Algodon",
+                lana: "Lana"
             },
         },
         datosEquipos:{
@@ -44,8 +44,8 @@ var app = new Vue({
             material:{
                 acero1060:"Acero 1060",
                 acero1095:"Acero 1095",
-                Aluminio: "Aluminio",
-                Incienso: "Incienso"
+                aluminio: "Aluminio",
+                incienso: "Incienso"
             }
         },
     }

@@ -22,17 +22,21 @@
                             <div class="row row-cols-1 row-cols-md-2 g-4 my-2 container mx-auto">
                                 <input type="hidden" name="view" value="tienda">
                                 <input type="hidden" name="category" value="<?= $CategorySelected ?>">
-                                <div class="col">
+                                <div class="col form-floating">
                                     <select class="form-select" name="etc" v-model="dataSelected" aria-label="Default select example">
                                         <option v-for="(item, key) of <?= $CategorySelected ?>" :value="key">{{item}}</option>
                                     </select>
+                                    <label for="etc">Filtrart por:</label>
                                 </div>
-                                <div class="col">
+                                <div class="col form-floating">
                                     <select class="form-select" name="dato" aria-label="Default select example">
-                                    <option v-if="<?= $CategorySelected ?> == clases" v-for="(item, key) of datosClases[dataSelected]" :value="key" class="1">{{item}}</option>
-                                    <option v-if="<?= $CategorySelected ?> == ropa" v-for="(item, key) of datosRopa[dataSelected]" :value="key" class="2">{{item}}</option>
-                                    <option v-if="<?= $CategorySelected ?> == equipos" v-for="(item, key) of datosEquipos[dataSelected]" :value="key" class="3">{{item}}</option>
+                                        <template v-if="<?= $CategorySelected ?> == clases" v-for="(item, key) of datosClases[dataSelected]">
+                                            <option :value="key" class="1">{{item}}</option>
+                                        </template>
+                                        <option v-if="<?= $CategorySelected ?> == ropa" v-for="(item, key) of datosRopa[dataSelected]" :value="key" class="2">{{item}}</option>
+                                        <option v-if="<?= $CategorySelected ?> == equipos" v-for="(item, key) of datosEquipos[dataSelected]" :value="key" class="3">{{item}}</option>
                                     </select>
+                                    <label for="dato">Datos</label>
                                 </div>
                             </div>
                             <input type="submit" value="dale">
