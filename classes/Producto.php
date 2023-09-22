@@ -127,12 +127,12 @@ class Producto {
 
     /**
      * Devuelve array de objetos Producto dependiendo del tipo de material
-     * @param string $cate categoria por la cual filtrar todo los productos
-     * @param string $etc el key dentro de los datos de  etc
+     * @param mixed $cate categoria por la cual filtrar todo los productos
+     * @param mixed $etc el key dentro de los datos de  etc
      * @param ?string $filtrar el tipo de material que queremos filtrar
      * @return array $catalogoMaterial catalogo filtrado por material
      */
-    public function filtrarCatalogo(string $cate, string $etc = '', string $filtrar = ''): array {
+    public function filtrarCatalogo(string $cate, mixed $etc = null, mixed $filtrar = null): array {
             $catalogofiltrar = [];
             $completo = $this->catalogoCategoria($cate);
             foreach($completo as $m) {

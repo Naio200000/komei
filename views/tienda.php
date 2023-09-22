@@ -1,10 +1,11 @@
 <?php 
     $category = isset($_GET['category']) ? $OBJProducto->catalogoCategoria($_GET['category']) : $OBJProducto->catalogoCompleto();
     $CategorySelected = $_GET['category'] ?? false;
-    $filtrar = isset($_GET['etc']) ? $filtrar = $_GET : false;
+    $filtrar = $_POST ?? false;
+
     print_r($filtrar);
     if ($filtrar) {
-        $category = $OBJProducto-> filtrarCatalogo($filtrar['category'], $filtrar['etc'], $filtrar['dato']);
+        $category = $OBJProducto-> filtrarCatalogo($CategorySelected, $filtrar['etc'], $filtrar['dato']);
     }
 ?>
 <section class="tienda container-fluid container-md pb-3" id="tienda">
@@ -18,10 +19,10 @@
                 </p>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
-                        <form action="index.php?" method="GET">
+                        <form action="index.php?view=tienda&category=<?= $CategorySelected ?>" method="POST">
                             <div class="row row-cols-1 row-cols-md-2 g-4 my-2 container mx-auto">
-                                <input type="hidden" name="view" value="tienda">
-                                <input type="hidden" name="category" value="<?= $CategorySelected ?>">
+                                <!-- <input type="hidden" name="view" value="tienda">
+                                <input type="hidden" name="category" value=""> -->
                                 <div class="col form-floating">
                                     <select class="form-select" name="etc" v-model="dataSelected" aria-label="Default select example">
                                         <option v-for="(item, key) of <?= $CategorySelected ?>" :value="key">{{item}}</option>
@@ -81,8 +82,3 @@
     </div>
     <script src="js/app.js"></script>
 </section>
-
-<!-- // http://localhost/komei/index.php?view=tienda&category=equipos&etc=color&dato=Azul
-        http://localhost/komei/index.php?view=tienda&category=equipos
-// Warning: foreach() argument must be of type array|object, null given in D:\Estudios\xampp\htdocs\komei\classes\Producto.php on line 90
-// Warning: foreach() argument must be of type array|object, null given in D:\Estudios\xampp\htdocs\komei\classes\Producto.php on line 90 -->
