@@ -38,8 +38,8 @@ var app = new Vue({
         },
         datosEquipos:{
             color:{
-                Azul:"Azul",
-                Negro:"Negro"
+                azul:"Azul",
+                negro:"Negro"
             },
             material:{
                 acero1060:"Acero 1060",

@@ -46,7 +46,7 @@
                 </div>
         </article>
         <div class="categoria pt-2 pe-2">
-            <h3 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2"><?PHP $CategorySelected = $CategorySelected ? $CategorySelected: 'nustro catalogo completo';
+            <h3 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2"><?PHP $CategorySelected = $CategorySelected ? $CategorySelected: 'Nustro catalogo completo';
             echo  $CategorySelected; ?></h3>
         </div> 
         <article id="productos">
