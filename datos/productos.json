@@ -163,5 +163,60 @@
 		"precio": 5000,
 		"imagen":{"./img/productos/keikogi-01.jpg":"Chaqueta azul de entrenamiento","./img/productos/keikogi-02.jpg":"Chaqueta azul de entrenamiento","./img/productos/keikogi-03.jpg":"Planilla de tamaños de las chaquetas"},
 		"categoria":"ropa"
+	},
+	{
+		"id": 16,
+		"nombre":"Clase",
+		"descrip":"Disfruta clase personal una vez por semana en los días que prefieras",
+		"descrip_larga":"Te invitamos a participar de 1 clase personales por semana para aprender el uso de la <span lang='ja'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.",
+		"etc":{"semanal":"1","personas":"personal"},
+		"tiempo":"H",
+		"precio":9000,
+		"imagen":{"./img/productos/clases-01.jpg":"Banner de clases de Iaido","./img/productos/clases-02.jpg":"Imagen de un sensei sentado en frente a sus alumnos","./img/productos/clases-03.jpg":"Segundo Banner de clases de Iaido"},
+		"categoria":"clases"
+	},
+	{
+		"id": 17,
+		"nombre":"Clase",
+		"descrip":"Disfruta de 2 clases personales por semana en los días que prefieras",
+		"descrip_larga":"Te invitamos a participar de 3 clases personales por semana para aprender el uso de la <span lang='ja'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.",
+		"etc":{"semanal":"2","personas":"personal"},
+		"tiempo":"H",
+		"precio":11000,
+		"imagen":{"./img/productos/clases-01.jpg":"Banner de clases de Iaido","./img/productos/clases-02.jpg":"Imagen de un sensei sentado en frente a sus alumnos","./img/productos/clases-03.jpg":"Segundo Banner de clases de Iaido"},
+		"categoria":"clases"
+	},
+	{
+		"id": 18,
+		"nombre":"Clase",
+		"descrip":"Disfruta de 3 clase personales por semana en los días que prefieras",
+		"descrip_larga":"Te invitamos a participar de 3 clases personales por semana para aprender el uso de la <span lang='ja'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.",
+		"etc":{"semanal":"3","personas":"personal"},
+		"tiempo":"H",
+		"precio":13000,
+		"imagen":{"./img/productos/clases-01.jpg":"Banner de clases de Iaido","./img/productos/clases-02.jpg":"Imagen de un sensei sentado en frente a sus alumnos","./img/productos/clases-03.jpg":"Segundo Banner de clases de Iaido"},
+		"categoria":"clases"
+	},
+	{
+		"id": 19,
+		"nombre":"Seminario",
+		"descrip":"Disfruta de 2 clase en nuestro seminario anual con Sekiguchi Sensei",
+		"descrip_larga":"Te invitamos a participar de 2 clases de nuestro seminario de 3 dias con Sekiguchi Sensei, que nos visita una vez al año. Recivimos a Sensei con una gran seminario.",
+		"etc":{"semanal":"2","personas":"grupal"},
+		"tiempo":"H",
+		"precio": 12000,
+		"imagen":{"./img/productos/clases-01.jpg":"Banner de clases de Iaido","./img/productos/clases-02.jpg":"Imagen de un sensei sentado en frente a sus alumnos","./img/productos/clases-03.jpg":"Segundo Banner de clases de Iaido"},
+		"categoria":"clases"
+	},
+	{
+		"id": 20,
+		"nombre":"Seminario",
+		"descrip":"Disfruta de 3 clases en nuestro seminario anual con Sekiguchi Sensei",
+		"descrip_larga":"Te invitamos a participar de nuestro seminario completo de 3 dias con Sekiguchi Sensei, que nos visita una vez al año. Recivimos a Sensei con una gran seminario.",
+		"etc":{"semanal":"3","personas":"grupal"},
+		"tiempo":"H",
+		"precio": 12000,
+		"imagen":{"./img/productos/clases-01.jpg":"Banner de clases de Iaido","./img/productos/clases-02.jpg":"Imagen de un sensei sentado en frente a sus alumnos","./img/productos/clases-03.jpg":"Segundo Banner de clases de Iaido"},
+		"categoria":"clases"
 	}
 ]

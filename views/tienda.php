@@ -1,10 +1,10 @@
 <?php 
     $category = isset($_GET['category']) ? $OBJProducto->catalogoCategoria($_GET['category']) : $OBJProducto->catalogoCompleto();
-    $CategorySelected = $_GET['category'] ?? false;
+    $CategorySelected = $_GET['category'] ?? "";
     $filtrar = $_POST ?? false;
 
-    print_r($filtrar);
     if ($filtrar) {
+        
         $category = $OBJProducto-> filtrarCatalogo($CategorySelected, $filtrar['etc'], $filtrar['dato']);
     }
 ?>
@@ -19,10 +19,8 @@
                 </p>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
-                        <form action="index.php?view=tienda&category=<?= $CategorySelected ?>" method="POST">
+                        <!-- <form action="index.php?view=tienda&category=<?= $CategorySelected ?>" method="POST">
                             <div class="row row-cols-1 row-cols-md-2 g-4 my-2 container mx-auto">
-                                <!-- <input type="hidden" name="view" value="tienda">
-                                <input type="hidden" name="category" value=""> -->
                                 <div class="col form-floating">
                                     <select class="form-select" name="etc" v-model="dataSelected" aria-label="Default select example">
                                         <option v-for="(item, key) of <?= $CategorySelected ?>" :value="key">{{item}}</option>
@@ -41,13 +39,16 @@
                                 </div>
                             </div>
                             <input type="submit" value="dale">
-                        </form>
+                        </form> -->
                     </div>
                 </div>
         </article>
         <div class="categoria pt-2 pe-2">
-            <h3 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2"><?PHP $CategorySelected = $CategorySelected ? $CategorySelected: 'Nustro catalogo completo';
-            echo  $CategorySelected; ?></h3>
+            <h3 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">
+                <?php 
+                    $titulo = (!$CategorySelected == '') ? $CategorySelected : 'Nuestro Catalogo Completo';
+                    echo $titulo;
+                    ?></h3>
         </div> 
         <article id="productos">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 my-2 container mx-auto">
