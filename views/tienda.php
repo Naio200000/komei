@@ -5,7 +5,7 @@
 
     if ($filtrar) {
         
-        $category = $OBJProducto-> filtrarCatalogo($CategorySelected, $filtrar['etc'], $filtrar['dato']);
+        $category = $OBJProducto-> filtrarCatalogo($filtrar['category'], $filtrar['etc'], $filtrar['dato']);
     }
 ?>
 <section class="tienda container-fluid container-md pb-3" id="tienda">
@@ -19,27 +19,37 @@
                 </p>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
-                        <!-- <form action="index.php?view=tienda&category=<?= $CategorySelected ?>" method="POST">
-                            <div class="row row-cols-1 row-cols-md-2 g-4 my-2 container mx-auto">
+                        <form action="index.php?view=tienda" method="post">
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 my-2 container mx-auto">
+                                <div class="col form-floating">
+                                    <select required class="form-select" name="category" id="category" v-model="cateSelected" aria-label="Default select example">
+                                        <option v-for="(item, key) of category" :value="key">{{key | mayuscula}}</option>
+                                    </select>
+                                    <label for="category">Filtrart por Categoria:</label>
+                                </div>
                                 <div class="col form-floating">
                                     <select class="form-select" name="etc" v-model="dataSelected" aria-label="Default select example">
-                                        <option v-for="(item, key) of <?= $CategorySelected ?>" :value="key">{{item}}</option>
+                                        <option v-for="(item, key) of category[cateSelected]" :value="key">{{item}}</option>
                                     </select>
                                     <label for="etc">Filtrart por:</label>
                                 </div>
                                 <div class="col form-floating">
                                     <select class="form-select" name="dato" aria-label="Default select example">
-                                        <template v-if="<?= $CategorySelected ?> == clases" v-for="(item, key) of datosClases[dataSelected]">
-                                            <option :value="key" class="1">{{item}}</option>
+                                        <template >
+                                            <option v-if="cateSelected == 'clases'" v-for="(item, key) of datosClases[dataSelected]" :value="key">{{item}}</option>
                                         </template>
-                                        <option v-if="<?= $CategorySelected ?> == ropa" v-for="(item, key) of datosRopa[dataSelected]" :value="key" class="2">{{item}}</option>
-                                        <option v-if="<?= $CategorySelected ?> == equipos" v-for="(item, key) of datosEquipos[dataSelected]" :value="key" class="3">{{item}}</option>
+                                        <template v-if="cateSelected == 'ropa'" v-for="(item, key) of datosRopa[dataSelected]">
+                                            <option :value="key">{{item}}</option>
+                                        </template>
+                                        <template v-if="cateSelected == 'equipos'" v-for="(item, key) of datosEquipos[dataSelected]">
+                                            <option :value="key">{{item}}</option>
+                                        </template>
                                     </select>
                                     <label for="dato">Datos</label>
                                 </div>
                             </div>
                             <input type="submit" value="dale">
-                        </form> -->
+                        </form>
                     </div>
                 </div>
         </article>
