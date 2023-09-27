@@ -82,7 +82,7 @@ class Producto {
     * @param string $categoria : Es un string de la categoría que estamos buescando.
     * @return array Un array de todos nuestros productos de la categoria seleccionada.
     */
-    public function catalogoCompleto() :array {
+    private function catalogoCompleto() :array {
         
         $productosOBJ = [];
         $productosJSON = file_get_contents('datos/productos.json');
@@ -112,7 +112,7 @@ class Producto {
     * @param string $categoria : Es un string de la categoría que estamos buescando.
     * @return array Un array de todos nuestros productos de la categoria seleccionada.
     */
-    public function catalogoCategoria(string $categoria): array {
+    private function catalogoCategoria(string $categoria): array {
 
         $catalogoCategoria = [];
         $completo = $this->catalogoCompleto();
