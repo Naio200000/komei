@@ -196,7 +196,9 @@ class Producto {
         }
         return $datosAFormatear;
     }
-
+    /**
+     * Funcion que compara valores. Se usa en conjunto con usort() para ordenar los valores
+     */
     function comparar($a, $b) {
         return $a->categoria <=> $b->categoria;
      }
