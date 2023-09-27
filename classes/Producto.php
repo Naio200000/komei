@@ -103,6 +103,7 @@ class Producto {
             $productosOBJ[] = $newObject;
 
         }
+        usort($productosOBJ, array($this, 'comparar'));
         return $productosOBJ;
     }
 
@@ -195,4 +196,9 @@ class Producto {
         }
         return $datosAFormatear;
     }
+
+    function comparar($a, $b) {
+        return $a->categoria <=> $b->categoria;
+     }
+
 }

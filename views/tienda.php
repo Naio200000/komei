@@ -1,7 +1,7 @@
 <?php 
     $filtrar = empty($_POST) ? false : $_POST;
     if (empty($_POST)){
-        $category = $_GET['category'] ? $OBJProducto->filtrarCatalogo($_GET['category']) : $OBJProducto->filtrarCatalogo();
+        $category = isset($_GET['category']) ? $OBJProducto->filtrarCatalogo($_GET['category']) : $OBJProducto->filtrarCatalogo();
         $CategorySelected = $_GET['category'] ?? "";
     } else {
         $cateTienda = $_POST['category'] ?? null;
