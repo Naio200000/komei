@@ -40,7 +40,7 @@ var app = new Vue({
             },
             material:{
                 tetron:"Tetron",
-                tlgodon: "Algodon",
+                algodon: "Algodon",
                 lana: "Lana"
             },
         },

@@ -45,7 +45,7 @@
                     <ul class="list-group list-group-flush">
                         <?php foreach ($item->formatearSTNOBJ('etc') as $k => $v) { ?>
                             <li class='list-group-item fs-5'>
-                                <span class='fw-bold'> <?= "$k : </span> $v </li>"?>
+                                <span class='fw-bold text-capitalize'> <?= "$k : </span> $v </li>"?>
                             <?php } ?>
 
                     </ul>
