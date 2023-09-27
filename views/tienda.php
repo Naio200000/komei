@@ -23,21 +23,22 @@
                 </p>
                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
+                        <p class="fs-5 w-75 mx-auto">Filtra nuestros productos por lo que estes buscando.</p>
                         <form action="index.php?view=tienda" method="post">
                             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 my-2 container mx-auto">
                                 <div class="col form-floating">
-                                    <select required class="form-select" name="category" id="category" v-model="cateSelected" aria-label="Default select example">
+                                    <select class="form-select" name="category" id="category" v-model="cateSelected" aria-label="Default select example">
                                         <option v-for="(item, key) of category" :value="key">{{key | mayuscula}}</option>
                                     </select>
                                     <label for="category">Filtrart por Categoria:</label>
                                 </div>
-                                <div class="col form-floating">
+                                <div v-if="!cateSelected == ''" class="col form-floating">
                                     <select class="form-select" name="etc" v-model="dataSelected" aria-label="Default select example">
                                         <option v-for="(item, key) of category[cateSelected]" :value="key">{{item}}</option>
                                     </select>
                                     <label for="etc">Filtrart por:</label>
                                 </div>
-                                <div class="col form-floating">
+                                <div v-if="!dataSelected == ''" class="col form-floating">
                                     <select class="form-select" name="dato" aria-label="Default select example">
                                         <template >
                                             <option v-if="cateSelected == 'clases'" v-for="(item, key) of datosClases[dataSelected]" :value="key">{{item}}</option>
@@ -52,7 +53,9 @@
                                     <label for="dato">Datos</label>
                                 </div>
                             </div>
-                            <input type="submit" value="dale">
+                            <div class=" text-end me-5 mb-3">
+                                <input class="btn btn-komei text-uppercase" type="submit" value="aplicar">
+                            </div>
                         </form>
                     </div>
                 </div>
