@@ -1,12 +1,16 @@
 <?php 
-    $category = isset($_GET['category']) ? $OBJProducto->catalogoCategoria($_GET['category']) : $OBJProducto->catalogoCompleto();
-    $CategorySelected = $_GET['category'] ?? "";
-    $filtrar = $_POST ?? false;
-
-    if ($filtrar) {
-        
-        $category = $OBJProducto-> filtrarCatalogo($filtrar['category'], $filtrar['etc'], $filtrar['dato']);
+    $filtrar = empty($_POST) ? false : $_POST;
+    if (empty($_POST)){
+        $category = $_GET['category'] ? $OBJProducto->filtrarCatalogo($_GET['category']) : $OBJProducto->filtrarCatalogo();
+        $CategorySelected = $_GET['category'] ?? "";
+    } else {
+        $cateTienda = $_POST['category'] ?? null;
+        $etcTienda = $_POST['etc'] ?? null;
+        $datoTienda = $_POST['dato'] ?? null;
+        $category = $OBJProducto->filtrarCatalogo($cateTienda, $etcTienda, $datoTienda);
+        $CategorySelected = $_POST['category'] ?? "";
     }
+
 ?>
 <section class="tienda container-fluid container-md pb-3" id="tienda">
     <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">Tienda</h2>

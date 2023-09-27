@@ -132,20 +132,24 @@ class Producto {
      * @param ?string $filtrar el tipo de material que queremos filtrar
      * @return array $catalogoMaterial catalogo filtrado por material
      */
-    public function filtrarCatalogo(string $cate, mixed $etc = null, mixed $filtrar = null): array {
+    public function filtrarCatalogo(mixed $cate = null, mixed $etc = null, mixed $filtrar = null): array {
             $catalogofiltrar = [];
-            $completo = $this->catalogoCategoria($cate);
-            foreach($completo as $m) {
-                if ($m->etc->$etc == '') {
-                    return $completo;
-                } elseif (isset($m->etc->$etc)){
-                    if (($m->etc->$etc == $filtrar))
-                        $catalogofiltrar[] = $m;
+            if ($cate) {
+                $completo = $this->catalogoCategoria($cate);
+                foreach($completo as $m) {
+                    if (isset($m->etc->$etc)) {
+                        if ($m->etc->$etc == $filtrar) {
+                            $catalogofiltrar[] = $m;
+                        }
+                    }
                 }
+            } else {
+                return $this->catalogoCompleto();
             }
-            // echo "<pre>";
-            // print_r($catalogofiltrar);
-            // echo "<pre>";
+            if (!$etc) {
+                return $completo;
+            }
+            
             return $catalogofiltrar;
     }
 
