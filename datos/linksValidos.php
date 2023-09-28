@@ -11,8 +11,8 @@ $linksValidos = [
         "categorias" => ["clases", "equipos", "ropa"]     
     ],
     "dojos" => [
-        "link" => "Dojos",
-        "title" => "¿Quienes Somos?"
+        "link" => "Contactos",
+        "title" => "Contactate con nuestros Dojos"
     ],
     "tienda" => [
         "link" => "Productos",
