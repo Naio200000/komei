@@ -1,14 +1,17 @@
 <?php
 
 $linksValidos = [
+    "home" => [
+        "link" => "Home",
+        "title" => "Bienvenidos"
+    ],
     "nosotros" => [
         "link" => "Nosotros",
         "title" => "Quienes Somos?"
     ],
     "productos" => [
         "link" => "Productos",
-        "title" => "Nuestro catálogo",
-        "categorias" => ["clases", "equipos", "ropa"]     
+        "title" => "Nuestro catálogo", 
     ],
     "dojos" => [
         "link" => "Contactos",
@@ -17,10 +20,6 @@ $linksValidos = [
     "tienda" => [
         "link" => "Productos",
         "title" => "Nuestro catalogo de Productos"
-    ],
-    "home" => [
-        "link" => "Home",
-        "title" => "Bienvenidos"
     ],
     "item" => [
         "link" => "Item",
