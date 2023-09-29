@@ -1,7 +1,20 @@
+<?php 
+
+
+?>
 <section class="dojos container-fluid container-md pb-3" id="dojos">
     <article class="dojos-textos">
         <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">Dojos</h2>
         <p class="fs-5 w-75 mx-auto">Con casi<strong> 20 años de difusión en Argentina</strong> se han formado varios dojos con sus respectivos <span lang="ja">Sensei</span>, quienes se han formado para ello.</p>
+        <p class="fs-5 w-75 mx-auto">Comunicate directamente con los senseis y agota todas tus dudas</p>
+    </article>
+    <article class="">
+        <?php 
+        ?>
+        <p class="fs-5 w-75">Hola Juan Perez.</p>
+        <p class="fs-5 w-75">Recibimos tu mensaje: "mensaje".</p>
+        <p class="fs-5 w-75">Sensei Dario Veja se contactara con vos al mail <span>mail@mail.com</span></p>
+        <p class="fs-5 w-75">Muchas gracias por tu mensaje</p>
     </article>
     <article class="accordion" id="accordionDojo">
         <div class="accordion-item">
@@ -109,7 +122,7 @@
                                 <li class="d-lg-none"><a href="https://g.page/Eltemplodojo?share" target="_blank" rel="noopener noreferrer">Abrir mapa</a></li>
                             </ul>
                             <div class="mapa d-none d-lg-block my-1">
-                                <irame src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1378.30044111504!2d-58.21163914660584!3d-34.751317243748744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a32f6bf99652fd%3A0x15203202d23d9506!2sEl%20Templo%20Dojo!5e0!3m2!1sen!2sar!4v1669071643357!5m2!1sen!2sar" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3278.1760617077325!2d-58.210828799999994!3d-34.7511575!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95a32f6bf99652fd%3A0x15203202d23d9506!2sEl%20Templo%20Dojo!5e0!3m2!1ses!2sar!4v1695934170835!5m2!1ses!2sar" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
                         </div>
                         <p><strong>El Tempo  Dojo.</strong> Machado Sensei es <span lang="ja">Kyouchi</span> (8º Dan) de <span lang="ja">Karate</span>. Cuenta con un excelente grupo de alumnos. A parte de <span lang="ja">Karate</span> ha estudiado distintos estilos de <span lang="ja">Iaido</span> y <span lang="ja">Iaijutsu</span> a lo largo de su vida. Se suma a la escuela en el 2017 y desde ese momento ha forma parte esencial de la misma</p>
@@ -122,3 +135,62 @@
         </div>
     </article>
 </section>
+<div class="modal fade contactoModal" id="modalContactoDojos" tabindex="-1" aria-labelledby="modalContactoDojosLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content modalCustom">
+            <div class="modal-header">
+                <p class="modal-title fs-5" id="modalContactoDojosLabel">Mensaje Nuevo</p>
+            </div>
+            <div class="container-fluid ">
+                <form action="index.php?view=dojos" method="POST">
+                    <div class="row align-items-start">
+                        <div class="col col-lg-6">
+                            <div class="my-4">
+                                <p class="text-center">Envíanos un mensaje con cualquier consulta que tengas.</p>
+                                <p class="text-center">También contanos tus experiencias en las artes marciales.</p>
+                                <img class="d-none d-lg-block img-fluid mx-auto mt-3 rounded-3" src="./img/misc/imagen-contactos.jpg" alt="Persona escribiendo en Japones">
+                            </div>
+                        </div>
+                        <div class="col col-lg-6 modal-body">
+                            <div class="row">
+                                <div class="mb-3 form-floating">
+                                    <input type="text" class="form-control" id="recipient-name" disabled placeholder="a" name="recipient-name">
+                                    <label for="recipient-name" class="col-form-label ms-2">Receptor:</label>
+                                </div>
+                                <div class="mb-3 col-12 col-sm-6 form-floating">
+                                    <input type="text" class="form-control" id="nombre" placeholder="a" name="nombre">
+                                    <label for="nombre" class="col-form-label ms-2">Nombre<span class="red">*</span></label>
+                                </div>
+                                <div class="mb-3 col-12 col-sm-6 form-floating">
+                                    <input type="text" class="form-control" id="apellido" placeholder="a" name="apellido">
+                                    <label for="apellido" class="col-form-label ms-2">Apellido<span class="red">*</span></label>
+                                </div>
+                                <div class="mb-3 col-12 col-sm-6 form-floating">
+                                    <input type="text" class="form-control" id="email" placeholder="a" name="email">
+                                    <label for="email" class="col-form-label ms-2">E-mail<span class="red">*</span></label>
+                                </div>
+                                <div class="mb-3 col-12 col-sm-6 form-floating">
+                                    <input type="text" class="form-control" id="telefono" placeholder="a" name="telefono">
+                                    <label for="telefono" class="col-form-label ms-2">Telefono</label>
+                                </div>
+                                <div class="mb-3 form-floating">
+                                    <textarea class="form-control" id="message-text" placeholder="a" name="mensaje" rows="6" style="height:100%;"></textarea>
+                                    <label for="message-text" class="col-form-label ms-2">Mensaje:<span class="red">*</span></label>
+                                </div>
+                                <div class="form-check form-switch mb-3 ms-3">
+                                    <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                                    <label class="form-check-label" for="newsletter">Deseas recibir promociones y noticias</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <input type="submit" value="Enviar mensaje" data-bs-dismiss="modal" class="btn btn-komei">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

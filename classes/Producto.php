@@ -128,9 +128,9 @@ class Producto {
 
     /**
      * Devuelve array de objetos Producto dependiendo del tipo de material
-     * @param mixed $cate categoria por la cual filtrar todo los productos
-     * @param mixed $etc el key dentro de los datos de  etc
-     * @param ?string $filtrar el tipo de material que queremos filtrar
+     * @param ?mixed $cate categoria por la cual filtrar todo los productos
+     * @param ?mixed $etc el key dentro de los datos de  etc
+     * @param ?mixed $filtrar el tipo de material que queremos filtrar
      * @return array $catalogoMaterial catalogo filtrado por material
      */
     public function filtrarCatalogo(mixed $cate = null, mixed $etc = null, mixed $filtrar = null): array {

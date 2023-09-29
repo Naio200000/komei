@@ -180,6 +180,12 @@ main {
 .puntero:hover {
     cursor: pointer;
 }
+.contactoModal{
+    color: var(--main-font-color);
+}
+.red{
+    color: rgb(180, 16, 16);
+}
 @media (min-width: 576px) {
     .contenedor {
         grid-template-areas:    "imagen texto   texto   texto   cerrar"

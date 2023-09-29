@@ -64,7 +64,7 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=dojos">Dojos</a>
+                            <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=dojos">Contactos</a>
                         </li>
                     </ul>
                 </div>
@@ -127,61 +127,6 @@
     <script type="module" src="js/main.js"></script>
 </body>
 <div>
-    <div class="modal fade" id="modalContactoDojos" tabindex="-1" aria-labelledby="modalContactoDojosLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content modalCustom">
-                <div class="modal-header">
-                    <p class="modal-title fs-5" id="modalContactoDojosLabel">Mensaje Nuevo</p>
-                </div>
-                <div class="container-fluid ">
-                    <form action="#">
-                        <div class="row align-items-start">
-                            <div class="col col-lg-6">
-                                <div class="my-4">
-                                    <p class="text-center">Envíanos un mensaje con cualquier consulta que tengas.</p>
-                                    <p class="text-center">También contanos tus experiencias en las artes marciales.</p>
-                                    <img class="d-none d-lg-block img-fluid mx-auto mt-3 rounded-3" src="./img/misc/imagen-contactos.jpg" alt="Persona escribiendo en Japones">
-                                </div>
-                            </div>
-                            <div class="col col-lg-6 modal-body">
-                                <div class="row">
-                                    <div class="mb-3">
-                                        <label for="recipient-name" class="col-form-label">Receptor</label>
-                                        <input type="text" class="form-control" id="recipient-name" disabled>
-                                    </div>
-                                <div class="mb-3 col-12 col-sm-6">
-                                    <label for="nombre" class="col-form-label">Nombre</label>
-                                    <input type="text" class="form-control" id="nombre">
-                                </div>
-                                <div class="mb-3 col-12 col-sm-6">
-                                    <label for="apellido" class="col-form-label">Apellido</label>
-                                    <input type="text" class="form-control" id="apellido">
-                                </div>
-                                <div class="mb-3 col-12 col-sm-6">
-                                    <label for="email" class="col-form-label">E-mail</label>
-                                    <input type="text" class="form-control" id="email">
-                                </div>
-                                <div class="mb-3 col-12 col-sm-6">
-                                    <label for="telefono" class="col-form-label">Telefono</label>
-                                    <input type="text" class="form-control" id="telefono">
-                                </div>
-                                    <div class="mb-3">
-                                        <label for="message-text" class="col-form-label">Message:</label>
-                                        <textarea class="form-control" id="message-text"></textarea>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-12 text-center">
-                                        <input type="submit" value="Enviar mensaje" data-bs-dismiss="modal" class="btn btn-komei">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
     <!-- <div class="modal fade" id="carritoModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content modalCustom">
