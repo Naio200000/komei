@@ -17,7 +17,9 @@ exampleModal.addEventListener('show.bs.modal', event => {
   // Update the modal's content.
   const modalTitle = exampleModal.querySelector('.modal-title');
   const modalBodyInput = exampleModal.querySelector('.modal-body input');
+  const inputRecipient = exampleModal.querySelector('.inputRecipient');
 
   modalTitle.textContent = `Mensaje Nuevo ${recipient}`;
   modalBodyInput.value = recipient;
+  inputRecipient.value = recipient;
 })

@@ -180,6 +180,17 @@ main {
 .puntero:hover {
     cursor: pointer;
 }
+.contactosRespuesta {
+    padding-top: 8px;
+    background-color: var(--main-bg-color);
+    color: var(--main-font-color);
+}
+.mensajeRespuesta {
+    display: block;
+    width: 100%;
+    padding-left: 5rem;
+    font-style: italic;
+}
 .contactoModal{
     color: var(--main-font-color);
 }

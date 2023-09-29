@@ -8,13 +8,25 @@
         <p class="fs-5 w-75 mx-auto">Con casi<strong> 20 años de difusión en Argentina</strong> se han formado varios dojos con sus respectivos <span lang="ja">Sensei</span>, quienes se han formado para ello.</p>
         <p class="fs-5 w-75 mx-auto">Comunicate directamente con los senseis y agota todas tus dudas</p>
     </article>
-    <article class="">
+    <article class="contactosRespuesta rounded-3">
         <?php 
-        ?>
-        <p class="fs-5 w-75">Hola Juan Perez.</p>
-        <p class="fs-5 w-75">Recibimos tu mensaje: "mensaje".</p>
-        <p class="fs-5 w-75">Sensei Dario Veja se contactara con vos al mail <span>mail@mail.com</span></p>
-        <p class="fs-5 w-75">Muchas gracias por tu mensaje</p>
+
+        $formDatos = $_POST;
+        if (!empty($formDatos)) {
+            $formNombre = strtolower($formDatos['nombre']);
+            $formApellido = strtolower($formDatos['apellido']);
+            $formEmail = strtolower($formDatos['email']);
+            $formMensaje = $formDatos['mensaje'];
+            $formRecepor = $formDatos['recipient-name'];
+            $formCheck = isset($datosForm['newsletter']) ? "En nuestro Newsletter encontraras promociones y todas nuestras novedades de las clases y seminarios." : "";
+            ?>
+            <p class="fs-5 w-75 px-5 text-capitalize"> Hola  <?= $formNombre . ' ' . $formApellido ?></p>
+            <p class="fs-5 w-75 px-5">Recibimos tu mensaje: <span class="mensajeRespuesta">" <?= $formMensaje ?> "</span></p>
+            <p class="fs-5 w-75 px-5">Sensei <?= buscaSensei($formRecepor); ?> se contactara con vos al mail: <span class="mensajeRespuesta"><?= $formEmail ?></span></p>
+            <p class="fs-5 w-75 px-5 pb-3">Muchas gracias por tu mensaje. <span><?= $formCheck ?></span></p>
+
+        
+        <?php } ?>
     </article>
     <article class="accordion" id="accordionDojo">
         <div class="accordion-item">
@@ -154,8 +166,9 @@
                         <div class="col col-lg-6 modal-body">
                             <div class="row">
                                 <div class="mb-3 form-floating">
-                                    <input type="text" class="form-control" id="recipient-name" disabled placeholder="a" name="recipient-name">
-                                    <label for="recipient-name" class="col-form-label ms-2">Receptor:</label>
+                                    <input type="text" class="form-control" id="recipient-show" placeholder="a" name="recipient-show" disabled>
+                                    <input type="hidden" class="form-control inputRecipient" id="recipient-name" name="recipient-name">
+                                    <label for="recipient-show" class="col-form-label ms-2">Receptor:</label>
                                 </div>
                                 <div class="mb-3 col-12 col-sm-6 form-floating">
                                     <input type="text" class="form-control" id="nombre" placeholder="a" name="nombre">
