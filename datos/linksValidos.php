@@ -24,5 +24,9 @@ $linksValidos = [
     "item" => [
         "link" => "Item",
         "title" => "Producto seleccionado"
+    ],
+    "rtaForm" => [
+        "link" => "Form",
+        "title" => "Gracias por Comunicarte"
     ]
 ];
