@@ -172,6 +172,7 @@ class Producto {
         return null; 
     }
 
+
     /**
     * Devuelve el precio de la unidad, formateado correctamente
     */

@@ -43,11 +43,13 @@
                         <p class="card-text fs-5"><?= $item->getDescripLarga()?></p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <?php foreach ($item->formatearSTNOBJ('etc') as $k => $v) { ?>
-                            <li class='list-group-item fs-5'>
-                                <span class='fw-bold text-capitalize'> <?= "$k : </span> $v </li>"?>
-                            <?php } ?>
-
+                        <?php foreach ($item->formatearSTNOBJ('etc') as $k => $v) { 
+                                if ($k == 'tipo' && $v != 'clase') {?>
+                                <li class='list-group-item fs-5'><span class='fw-bold text-capitalize'>Disponible: </span><?= $item->getTiempo() ?></li>
+                                <li class='list-group-item fs-5'><span class='fw-bold text-capitalize'> <?= "$k : </span> $v </li>"?>
+                                <?php } else { ?>
+                                <li class='list-group-item fs-5'><span class='fw-bold text-capitalize'> <?= "$k : </span> $v </li>"?>
+                            <?php } }?>
                     </ul>
                     <div class="card-body flex-grow-0 mt-auto" id="botonProducto">
                         <p class="fs-3 mb-3 fw-bold text-center preciocard"><?= $item->formatearPrecio()?></p>
