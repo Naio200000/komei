@@ -16,7 +16,7 @@
 		"descrip":"Disfruta de dos clase por semana en los días que prefieras",
 		"descrip_larga":"Te invitamos a participar dos clase semanal para el uso de la <span lang='ja'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.",
 		"etc":{"tipo":"clase","semanal":"2","personas":"grupal"},
-		"tiempo":"H",
+		"tiempo":"",
 		"precio": 8000,
 		"imagen":{"./img/productos/clases-01.jpg":"Banner de clases de Iaido","./img/productos/clases-02.jpg":"Imagen de un sensei sentado en frente a sus alumnos","./img/productos/clases-03.jpg":"Segundo Banner de clases de Iaido"},
 		"categoria":"clases"
@@ -27,7 +27,7 @@
 		"descrip":"Disfruta de tres clase por semana en los días que prefieras",
 		"descrip_larga":"Te invitamos a participar una clase semanal para el uso de la <span lang='ja'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.",
 		"etc":{"tipo":"clase","semanal":"3","personas":"grupal"},
-		"tiempo":"H",
+		"tiempo":"",
 		"precio": 9000,
 		"imagen":{"./img/productos/clases-01.jpg":"Banner de clases de Iaido","./img/productos/clases-02.jpg":"Imagen de un sensei sentado en frente a sus alumnos","./img/productos/clases-03.jpg":"Segundo Banner de clases de Iaido"},
 		"categoria":"clases"
@@ -38,7 +38,7 @@
 		"descrip":"Keikogi para entrenamiento, 100% Tetron",
 		"descrip_larga":"Elaborado en tetron: 65% poliéster +35% rayon, esta chaqueta está especialmente diseñada para la práctica de iaido. No achica, no pierde color y es fácil de mantener.",
 		"etc":{"tipo":"dogi","color":"azul","material":"tetron"},
-		"tiempo":"H",
+		"tiempo":"",
 		"precio": 5000,
 		"imagen":{"./img/productos/keikogi-01.jpg":"Chaqueta azul de entrenamiento","./img/productos/keikogi-02.jpg":"Chaqueta azul de entrenamiento","./img/productos/keikogi-03.jpg":"Planilla de tamaños de las chaquetas"},
 		"categoria":"ropa"
@@ -48,8 +48,8 @@
 		"nombre":"Obi de Ceda",
 		"descrip":"Cituron de entrenamiento, 100% Algodón",
 		"descrip_larga":"Elaborado en gabardina de 8 oz, posee una dimensión de 9 cm de ancho y 4 metros de largo.",
-		"etc":{"tipo":"obi","color":"blanco","material":"ceda"},
-		"tiempo":"H",
+		"etc":{"tipo":"obi","color":"gris","material":"ceda"},
+		"tiempo":"7",
 		"precio": 3000,
 		"imagen":{"./img/productos/obi-01.jpg":"Cinturon de entrenamiento","./img/productos/obi-02.jpg":"Cinturon de entrenamiento","./img/productos/obi-03.jpg":"Cinturon de entrenamiento"},
 		"categoria":"ropa"
@@ -60,7 +60,7 @@
 		"descrip":"Hakama para entrenamiento, 100% Tetron",
 		"descrip_larga":"Excelentes hakamas de tetrón para el entrenamiento de <span lang='ja'>iaido, kendo, aikido</span> y demas artes marciales. Tela antiarrugas con una composición de 65% poliester y 35% de rayón que asegura la permanencia de las tablas sin mayor esfuerzo de planchado. Elaboradas a mano y cosidas individualmente.",
 		"etc":{"tipo":"hakama","color":"negro","material":"tetron"},
-		"tiempo":"H",
+		"tiempo":"7",
 		"precio":6000,
 		"imagen":{"./img/productos//hakama-01.jpg":"Persona usando Hakama de entrenamiento","./img/productos/hakama-02.jpg":"Hakama de entrenamiento","./img/productos//hakama-03.jpg":"Planilla de tamanños de las Hakamas"},
 		"categoria":"ropa"
@@ -70,8 +70,8 @@
 		"nombre":"Shinken Premuim",
 		"descrip":"Katana de entenamiento con filo, Hecha en acero 1095",
 		"descrip_larga":"Una katanas hechas de manera tradicional es <span lang='ja'>nihonto</span> (literalmente 'espada japonesa'). forjada a partir de acero <span lang='ja'>tamahagane</span>.",
-		"etc":{"tipo":"","color":"negro","material":"acero_1095"},
-		"tiempo":"H",
+		"etc":{"tipo":"shinken","color":"negro","material":"acero_1095"},
+		"tiempo":"120",
 		"precio":60000,
 		"imagen":{"./img/productos/katana-01.jpg":"Banner mostrando partes de un Shinken","./img/productos/katana-02.jpg":"Shinken sobre un fondo blanco","./img/productos/katana-03.jpg":"Shinken sobre un fondo Negro"},
 		"categoria":"equipos"
@@ -81,8 +81,8 @@
 		"nombre":"Iaito",
 		"descrip":"Katana de entenamiento sin filo, hecha dealeacion de Aluminio",
 		"descrip_larga":"Una katanas hechas de manera moderna es <span lang='ja'>mugito</span> (literalmente 'espada de exhhibición). forjada a partir de una aleación de aluminio.",
-		"etc":{"tipo":"","color":"negro","material":"luminio"},
-		"tiempo":"H",
+		"etc":{"tipo":"iaito","color":"negro","material":"aluminio"},
+		"tiempo":"120",
 		"precio":45000,
 		"imagen":{"./img/productos/iaito-01.jpg":"4 Iaitos de diversos colores","./img/productos/iaito-02.jpg":"Iaito sobre un fondo oscuro","./img/productos/iaito-03.jpg":"TIaito sobre un fondo blanco"},
 		"categoria":"equipos"
@@ -92,8 +92,8 @@
 		"nombre":"Bokuto",
 		"descrip":"Katana de madera para entrenamiento, con saya de plastico",
 		"descrip_larga":"Una katanas hechas de madera es <span lang='ja'>bokuto</span> (literalmente 'espada de madera). tallada en diversas maderas para mejorar su relación con el peso",
-		"etc":{"tipo":"","material":"incienso"},
-		"tiempo":"H",
+		"etc":{"tipo":"bokuto","material":"incienso"},
+		"tiempo":"20",
 		"precio":20000,
 		"imagen":{"./img/productos/bokuto-01.jpg":"Bokkuto con Saya","./img/productos/bokuto-02.jpg":"3 Bokkutos con Sayas","./img/productos/bokuto-03.jpg":"Bokkuto con Saya"},
 		"categoria":"equipos"
@@ -104,7 +104,7 @@
 		"descrip":"Hakama para exibicion, 100% Lana",
 		"descrip_larga":"Excelentes hakamas de Lana para seremoñas o exibiciones de <span lang='ja'>iaido, aikido</span> y demas artes marciales. 100% Hilos de lana Mercerizada con un patron a rayas. Elaboradas a mano y cosidas individualmente.",
 		"etc":{"tipo":"hakama","color":"rayada","material":"lana"},
-		"tiempo":"H",
+		"tiempo":"30",
 		"precio":10000,
 		"imagen":{"./img/productos/hakama-gala-01.jpg":"Persona usando Hakama de entrenamiento","./img/productos/hakama-gala-02.jpg":"Hakama de Gala","./img/productos/hakama-03.jpg":"Planilla de tamanños de las Hakamas"},
 		"categoria":"ropa"
@@ -115,7 +115,7 @@
 		"descrip":"Kimono de Gala, 100% Lana",
 		"descrip_larga":"Excelentes Kimono de Lana para seremoñas o exibiciones de <span lang='ja'>iaido, aikido</span> y demas artes marciales. 100% Lana con interior de Ceda . Elaboradas a mano y cosidas individualmente.",
 		"etc":{"tipo":"dogi","color":"negro","material":"lana"},
-		"tiempo":"H",
+		"tiempo":"30",
 		"precio":15000,
 		"imagen":{"./img/productos/montsuki-01.jpg":"Persona usando un <span lang='ja'>Montsuki</span> negro para galas","./img/productos/montsuki-02.jpg":"<span lang='ja'>Montuski</span> negro","./img/productos/keikogi-03.jpg":"Planilla de tamaños de las chaquetas"},
 		"categoria":"ropa"
@@ -126,7 +126,7 @@
 		"descrip":"Sandalia de Igusa y Algodón",
 		"descrip_larga":"<span lang='ja'>Setta</span> es una fina y elegante sandalia japonesa hecha de Igusa, una planta utilizada para hacer tatamis tradicionales, y una tira de algodón mullido",
 		"etc":{"tipo":"calzado","color":"blanco","material":"igusa"},
-		"tiempo":"H",
+		"tiempo":"30",
 		"precio":8000,
 		"imagen":{"./img/productos/setta-01.jpg":"Persona usando un <span lang='ja'>Setta</span>","./img/productos/setta-02.jpg":"<span lang='ja'>Setta</span> de Igusa","./img/productos/setta-03.jpg":"<span lang='ja'>Setta</span> con tiras blancas"},
 		"categoria":"ropa"
@@ -136,8 +136,8 @@
 		"nombre":"Shinken",
 		"descrip":"Katana de entenamiento con filo, Hecha en acero 1060",
 		"descrip_larga":"Una katana hecah de manera industrial con acero de alta calidad. LLevada a filo de navaja",
-		"etc":{"tipo":"","color":"negro","material":"acero1060"},
-		"tiempo":"H",
+		"etc":{"tipo":"shinken","color":"negro","material":"acero1060"},
+		"tiempo":"120",
 		"precio":50000,
 		"imagen":{"./img/productos/katana-02.jpg":"Shinken sobre un fondo blanco","./img/productos/katana-01.jpg":"Banner mostrando partes de un Shinken","./img/productos/katana-03.jpg:":"Shinken sobre un fondo Negro"},
 		"categoria":"equipos"
@@ -148,7 +148,7 @@
 		"descrip":"Disfruta de 1 clase en nuestro seminario anual con Sekiguchi Sensei",
 		"descrip_larga":"Te invitamos a participar una clase de nuestro seminario de 3 dias con Sekiguchi Sensei, que nos visita una vez al año. Recivimos a Sensei con una gran seminario.",
 		"etc":{"tipo":"seminario","semanal":"1","personas":"grupal"},
-		"tiempo":"H",
+		"tiempo":"Mayo 2024",
 		"precio": 12000,
 		"imagen":{"./img/productos/clases-01.jpg":"Banner de clases de Iaido","./img/productos/clases-02.jpg":"Imagen de un sensei sentado en frente a sus alumnos","./img/productos/clases-03.jpg":"Segundo Banner de clases de Iaido"},
 		"categoria":"clases"
@@ -158,8 +158,8 @@
 		"nombre":"Iaidogi",
 		"descrip":"Keikogi para entrenamiento, 100% Tetron",
 		"descrip_larga":"Elaborado en tetron: 65% poliéster +35% rayon, esta chaqueta está especialmente diseñada para la práctica de iaido. No achica, no pierde color y es fácil de mantener.",
-		"etc":{"tipo":"","color":"negro","material":"tetron"},
-		"tiempo":"H",
+		"etc":{"tipo":"dogi","color":"negro","material":"tetron"},
+		"tiempo":"7",
 		"precio": 5000,
 		"imagen":{"./img/productos/keikogi-01.jpg":"Chaqueta azul de entrenamiento","./img/productos/keikogi-02.jpg":"Chaqueta azul de entrenamiento","./img/productos/keikogi-03.jpg":"Planilla de tamaños de las chaquetas"},
 		"categoria":"ropa"
@@ -170,7 +170,7 @@
 		"descrip":"Disfruta clase personal una vez por semana en los días que prefieras",
 		"descrip_larga":"Te invitamos a participar de 1 clase personales por semana para aprender el uso de la <span lang='ja'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.",
 		"etc":{"tipo":"clase","semanal":"1","personas":"personal"},
-		"tiempo":"H",
+		"tiempo":"",
 		"precio":9000,
 		"imagen":{"./img/productos/clases-01.jpg":"Banner de clases de Iaido","./img/productos/clases-02.jpg":"Imagen de un sensei sentado en frente a sus alumnos","./img/productos/clases-03.jpg":"Segundo Banner de clases de Iaido"},
 		"categoria":"clases"
@@ -181,7 +181,7 @@
 		"descrip":"Disfruta de 2 clases personales por semana en los días que prefieras",
 		"descrip_larga":"Te invitamos a participar de 3 clases personales por semana para aprender el uso de la <span lang='ja'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.",
 		"etc":{"tipo":"clase","semanal":"2","personas":"personal"},
-		"tiempo":"H",
+		"tiempo":"",
 		"precio":11000,
 		"imagen":{"./img/productos/clases-01.jpg":"Banner de clases de Iaido","./img/productos/clases-02.jpg":"Imagen de un sensei sentado en frente a sus alumnos","./img/productos/clases-03.jpg":"Segundo Banner de clases de Iaido"},
 		"categoria":"clases"
@@ -192,7 +192,7 @@
 		"descrip":"Disfruta de 3 clase personales por semana en los días que prefieras",
 		"descrip_larga":"Te invitamos a participar de 3 clases personales por semana para aprender el uso de la <span lang='ja'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.",
 		"etc":{"tipo":"clase","semanal":"3","personas":"personal"},
-		"tiempo":"H",
+		"tiempo":"",
 		"precio":13000,
 		"imagen":{"./img/productos/clases-01.jpg":"Banner de clases de Iaido","./img/productos/clases-02.jpg":"Imagen de un sensei sentado en frente a sus alumnos","./img/productos/clases-03.jpg":"Segundo Banner de clases de Iaido"},
 		"categoria":"clases"
@@ -203,7 +203,7 @@
 		"descrip":"Disfruta de 2 clase en nuestro seminario anual con Sekiguchi Sensei",
 		"descrip_larga":"Te invitamos a participar de 2 clases de nuestro seminario de 3 dias con Sekiguchi Sensei, que nos visita una vez al año. Recivimos a Sensei con una gran seminario.",
 		"etc":{"tipo":"clase","semanal":"2","personas":"grupal"},
-		"tiempo":"H",
+		"tiempo":"Mayo 2024",
 		"precio": 12000,
 		"imagen":{"./img/productos/clases-01.jpg":"Banner de clases de Iaido","./img/productos/clases-02.jpg":"Imagen de un sensei sentado en frente a sus alumnos","./img/productos/clases-03.jpg":"Segundo Banner de clases de Iaido"},
 		"categoria":"clases"
@@ -214,7 +214,7 @@
 		"descrip":"Disfruta de 3 clases en nuestro seminario anual con Sekiguchi Sensei",
 		"descrip_larga":"Te invitamos a participar de nuestro seminario completo de 3 dias con Sekiguchi Sensei, que nos visita una vez al año. Recivimos a Sensei con una gran seminario.",
 		"etc":{"tipo":"clase","semanal":"3","personas":"grupal"},
-		"tiempo":"H",
+		"tiempo":"Mayo 2024",
 		"precio": 12000,
 		"imagen":{"./img/productos/clases-01.jpg":"Banner de clases de Iaido","./img/productos/clases-02.jpg":"Imagen de un sensei sentado en frente a sus alumnos","./img/productos/clases-03.jpg":"Segundo Banner de clases de Iaido"},
 		"categoria":"clases"
@@ -225,7 +225,7 @@
 		"descrip":"Cituron de entrenamiento, 100% Algodón",
 		"descrip_larga":"Elaborado en gabardina de 8 oz, posee una dimensión de 9 cm de ancho y 4 metros de largo.",
 		"etc":{"tipo":"obi","color":"blanco","material":"algodón"},
-		"tiempo":"H",
+		"tiempo":"15",
 		"precio": 3000,
 		"imagen":{"./img/productos/obi-01.jpg":"Cinturon de entrenamiento","./img/productos/obi-02.jpg":"Cinturon de entrenamiento","./img/productos/obi-03.jpg":"Cinturon de entrenamiento"},
 		"categoria":"ropa"

@@ -103,8 +103,8 @@ class Producto {
             $productosOBJ[] = $newObject;
 
         }
-        usort($productosOBJ, array($this, 'comparar'));
-        return $productosOBJ;
+
+        return $this->ordenarOBJ($productosOBJ);
     }
 
     /**
@@ -197,11 +197,38 @@ class Producto {
         }
         return $datosAFormatear;
     }
+
+    /**
+     * da formato al dato de tiempo que se encuenta en el objeto
+     * @return string calcula la fecha dependiendo de un valor que se encuentra en el objeto y la devuelve.
+     */
+    public function formatearFecha():string {
+        if ($this->categoria == 'clases'){
+            if ($this->tiempo == '') {
+                return 'Todos los Sabados';
+            } else {
+                return $this->tiempo;
+            }
+        } else {
+            $date = Date('d-m-Y');
+            $dias = $this->tiempo;
+            return date('d/m/Y', strtotime($date . " + $dias days"));
+        }
+
+    }
+
+    private function ordenarOBJ($array) {
+        usort($array, array($this, 'compararTipo'));
+        usort($array, array($this, 'compararCate'));
+        return $array;
+    }
     /**
      * Funcion que compara valores. Se usa en conjunto con usort() para ordenar los valores
      */
-    function comparar($a, $b) {
+    private function compararCate($a, $b) {
         return $a->categoria <=> $b->categoria;
      }
-
+    private function compararTipo($a, $b) {
+        return $a->etc->tipo <=> $b->etc->tipo;
+     }
 }

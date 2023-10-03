@@ -36,12 +36,17 @@ var app = new Vue({
         datosRopa:{
             color:{
                 azul:"Azul",
-                negro:"Negro"
+                negro:"Negro",
+                blanco:"Blanco",
+                gris:"Gris",
+                rayada:"Rayada"
             },
             material:{
                 tetron:"Tetron",
                 algodon: "Algodon",
-                lana: "Lana"
+                lana: "Lana",
+                ceda:"Ceda",
+                igusa:"Igusa"
             },
         },
         datosEquipos:{

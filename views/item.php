@@ -43,13 +43,10 @@
                         <p class="card-text fs-5"><?= $item->getDescripLarga()?></p>
                     </div>
                     <ul class="list-group list-group-flush">
-                        <?php foreach ($item->formatearSTNOBJ('etc') as $k => $v) { 
-                                if ($k == 'tipo' && $v != 'clase') {?>
-                                <li class='list-group-item fs-5'><span class='fw-bold text-capitalize'>Disponible: </span><?= $item->getTiempo() ?></li>
-                                <li class='list-group-item fs-5'><span class='fw-bold text-capitalize'> <?= "$k : </span> $v </li>"?>
-                                <?php } else { ?>
-                                <li class='list-group-item fs-5'><span class='fw-bold text-capitalize'> <?= "$k : </span> $v </li>"?>
-                            <?php } }?>
+                        <li class='list-group-item fs-5'><span class='fw-bold text-capitalize'> Disponibilidad:  </span><?= $item->formatearFecha() ?></li>
+                        <?php foreach ($item->formatearSTNOBJ('etc') as $k => $v) { ?>
+                            <li class='list-group-item fs-5'><span class='fw-bold text-capitalize'> <?= "$k : </span> $v </li>"?>
+                            <?php }?>
                     </ul>
                     <div class="card-body flex-grow-0 mt-auto" id="botonProducto">
                         <p class="fs-3 mb-3 fw-bold text-center preciocard"><?= $item->formatearPrecio()?></p>
@@ -62,4 +59,4 @@
             <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center fw-bold my-2 mx-auto px-2">No pudimos encontrar el producto que buscabas.</h2>
             <p class="fs-5 w-75 mx-auto fw-bold text-center fs-5">Para volver a la home hás click <a class="fs-3" href="index.php?view=home">aquí.</a></p>
         <?PHP }?>
-</section>z
+</section>

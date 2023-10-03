@@ -127,60 +127,64 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
     <script type="module" src="js/main.js"></script>
 </body>
-<div>
-    <!-- <div class="modal fade" id="carritoModal" data-bs-keyboard="false" tabindex="-1" aria-labelledby="carritoModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content modalCustom">
-                <div class="modal-header">
-                    <p class="modal-title fs-5" id="carritoModalLabel">Tu Carrito</p>
-                </div>
-                <div class="modal-body">
-                    <div class="mx-auto container-md" id="modal-producto-carrito">
-                        <div class="d-flex flex-column flex-lg-row align-items-center align-items-lg-start gap-2 carritoproductos">
-                            <div id="contenedorProductosCarrito" class="contenedorProductosCarrito">
+<div class="modal fade contactoModal" id="modalContactoDojos" tabindex="-1" aria-labelledby="modalContactoDojosLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content modalCustom">
+            <div class="modal-header">
+                <p class="modal-title fs-5" id="modalContactoDojosLabel">Mensaje Nuevo</p>
+            </div>
+            <div class="container-fluid ">
+                <form action="index.php?view=rtaForm" method="POST">
+                    <div class="row align-items-start">
+                        <div class="col col-lg-6">
+                            <div class="my-4">
+                                <p class="text-center">Envíanos un mensaje con cualquier consulta que tengas.</p>
+                                <p class="text-center">También contanos tus experiencias en las artes marciales.</p>
+                                <img class="d-none d-lg-block img-fluid mx-auto mt-3 rounded-3" src="./img/misc/imagen-contactos.jpg" alt="Persona escribiendo en Japones">
                             </div>
-                            <div id="resumen" class="fs-5 mt-1 order-md-1 w-100 d-flex flex-column flex-grow-1 gap-3">
-                                <form class="descuento" method="get">
-                                    <label for="cupon-descuento" class="form-label">Código de descuento</label>
-                                    <div class="mb-3 d-flex gap-1">
-                                        <input type="text" class="form-control" id="cupon-descuento" placeholder="Código">
-                                        <input type="button" value="Aplicar" id="descuento" class="btn btn-komei">
-                                    </div>
-                                </form>
-                                <div class="recibo d-flex flex-column gap-3" id="recibo">
-                                    <div class="reciboTotal d-flex justify-content-between fw-bold" id="reciboTotal">
-                                        <span>Total</span>
-                                        <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
-                                                <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
-                                            </svg>
-                                            <span id="carritoPrecioProducto"></span>
-                                        </span>
-                                    </div>
-                                    <div class="cuotas mt-3" id="cuotas">
-                                        <img src="./img/misc/tarjetas.jfif" class="img-fluid" alt="logos de tarjetas" style="max-width:250px ;">
-                                        <p>6 Cuotas sin Interes</p>
-                                        <div class="cuotasCaldulo d-flex justify-content-between" id="cuotasCalculo">
-                                            <span class="text-info fs-6">6 Cuotas de</span>
-                                            <span class="text-info">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
-                                                <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
-                                            </svg>
-                                            <span id="carritoPrecioTotalCuota"></span>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="text-center mt-3 mb-1">
-                                        <button type="button" class="btn btn-secondary me-3" id="vaciarCarrito">Vaciar</button>
-                                        <button type="button" class="btn btn-komei fw-bold" data-bs-dismiss="modal">PAGAR</button>
-                                    </div>
+                        </div>
+                        <div class="col col-lg-6 modal-body">
+                            <div class="row">
+                                <div class="mb-3 form-floating">
+                                    <input type="text" class="form-control" id="recipient-show" placeholder="a" name="recipient-show" disabled>
+                                    <input type="hidden" class="form-control inputRecipient" id="recipient-name" name="recipient-name">
+                                    <label for="recipient-show" class="col-form-label ms-2">Receptor:</label>
+                                </div>
+                                <div class="mb-3 col-12 col-sm-6 form-floating">
+                                    <input type="text" class="form-control" id="nombre" placeholder="a" name="nombre">
+                                    <label for="nombre" class="col-form-label ms-2">Nombre<span class="red">*</span></label>
+                                </div>
+                                <div class="mb-3 col-12 col-sm-6 form-floating">
+                                    <input type="text" class="form-control" id="apellido" placeholder="a" name="apellido">
+                                    <label for="apellido" class="col-form-label ms-2">Apellido<span class="red">*</span></label>
+                                </div>
+                                <div class="mb-3 col-12 col-sm-6 form-floating">
+                                    <input type="text" class="form-control" id="email" placeholder="a" name="email">
+                                    <label for="email" class="col-form-label ms-2">E-mail<span class="red">*</span></label>
+                                </div>
+                                <div class="mb-3 col-12 col-sm-6 form-floating">
+                                    <input type="text" class="form-control" id="telefono" placeholder="a" name="telefono">
+                                    <label for="telefono" class="col-form-label ms-2">Telefono</label>
+                                </div>
+                                <div class="mb-3 form-floating">
+                                    <textarea class="form-control" id="message-text" placeholder="a" name="mensaje" rows="6" style="height:100%;"></textarea>
+                                    <label for="message-text" class="col-form-label ms-2">Mensaje:<span class="red">*</span></label>
+                                </div>
+                                <div class="form-check form-switch mb-3 ms-3">
+                                    <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">
+                                    <label class="form-check-label" for="newsletter">Deseas recibir promociones y noticias</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <input type="submit" value="Enviar mensaje" data-bs-dismiss="modal" class="btn btn-komei">
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
-    </div> -->
+    </div>
 </div>
 </html>
