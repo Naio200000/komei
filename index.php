@@ -151,24 +151,24 @@
                                     <label for="recipient-show" class="col-form-label ms-2">Receptor:</label>
                                 </div>
                                 <div class="mb-3 col-12 col-sm-6 form-floating">
-                                    <input type="text" class="form-control" id="nombre" placeholder="a" name="nombre">
-                                    <label for="nombre" class="col-form-label ms-2">Nombre<span class="red">*</span></label>
+                                    <input type="text" class="form-control" id="nombre" placeholder="a" name="nombre" >
+                                    <label for="nombre" class="col-form-label ms-2">Nombre</label>
                                 </div>
                                 <div class="mb-3 col-12 col-sm-6 form-floating">
-                                    <input type="text" class="form-control" id="apellido" placeholder="a" name="apellido">
-                                    <label for="apellido" class="col-form-label ms-2">Apellido<span class="red">*</span></label>
+                                    <input type="text" class="form-control" id="apellido" placeholder="a" name="apellido" >
+                                    <label for="apellido" class="col-form-label ms-2">Apellido</label>
                                 </div>
                                 <div class="mb-3 col-12 col-sm-6 form-floating">
-                                    <input type="text" class="form-control" id="email" placeholder="a" name="email">
-                                    <label for="email" class="col-form-label ms-2">E-mail<span class="red">*</span></label>
+                                    <input type="email" class="form-control" id="email" placeholder="a" name="email" >
+                                    <label for="email" class="col-form-label ms-2">E-mail</label>
                                 </div>
                                 <div class="mb-3 col-12 col-sm-6 form-floating">
                                     <input type="text" class="form-control" id="telefono" placeholder="a" name="telefono">
                                     <label for="telefono" class="col-form-label ms-2">Telefono</label>
                                 </div>
                                 <div class="mb-3 form-floating">
-                                    <textarea class="form-control" id="message-text" placeholder="a" name="mensaje" rows="6" style="height:100%;"></textarea>
-                                    <label for="message-text" class="col-form-label ms-2">Mensaje:<span class="red">*</span></label>
+                                    <textarea class="form-control" id="message-text" placeholder="a" name="mensaje" rows="6" style="height:100%;" ></textarea>
+                                    <label for="message-text" class="col-form-label ms-2">Mensaje:</label>
                                 </div>
                                 <div class="form-check form-switch mb-3 ms-3">
                                     <input class="form-check-input" type="checkbox" id="newsletter" name="newsletter">

@@ -1,8 +1,18 @@
-<?php 
+<?php
     $filtrar = empty($_POST) ? false : $_POST;
     if (empty($_POST)){
-        $category = isset($_GET['category']) ? $OBJProducto->filtrarCatalogo($_GET['category']) : $OBJProducto->filtrarCatalogo();
-        $CategorySelected = $_GET['category'] ?? "";
+        if (isset($_GET['category'])) {
+            if (in_array($_GET['category'], $linksValidos['tienda']['categorias'])) {
+                $category = $OBJProducto->filtrarCatalogo($_GET['category']);
+                $CategorySelected = $_GET['category'];
+            } else {
+                $CategorySelected = 'No se encontro la categoria';
+                $category = [];
+            }
+        } else {
+            $category = $OBJProducto->filtrarCatalogo();
+            $CategorySelected = 'Nuestro Catalogo Completo';
+        }
     } else {
         $cateTienda = $_POST['category'] ?? null;
         $etcTienda = $_POST['etc'] ?? null;
@@ -61,11 +71,7 @@
                 </div>
         </article>
         <div class="categoria pt-2 pe-2">
-            <h3 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">
-                <?php 
-                    $titulo = (!$CategorySelected == '') ? $CategorySelected : 'Nuestro Catalogo Completo';
-                    echo $titulo;
-                    ?></h3>
+            <h3 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2"><?= $CategorySelected ?></h3>
         </div> 
         <article id="productos">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 my-2 container mx-auto">
