@@ -23,7 +23,7 @@
 </section>
 <section class="home container-fluid container-md">
     <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center mt-2 mb-5 mx-auto px-2">Escuela de Iaido - Esgrima Samurai</h2>
-    <p class="pe-md-3 fs-5 w-75 mx-auto">Komei Juku Argentina es una escuela esgrima japonesa especializada en el estilo Muso Jikiden Eishin Ryu.</p>
-    <p class="pe-md-3 fs-5 w-75 mx-auto">Ofresemos clases en varios dojos, ropa de practica y equipos en general.</p>
-    <p class="pe-md-3 fs-5 w-75 mx-auto">Estamos a tu disposición por cualquier duda.</p>
+    <p class="pe-md-3 fs-5 w-75 mx-auto"><strong>Komei Juku Argentina</strong> es una escuela esgrima japonesa especializada en el estilo <em>Muso Jikiden Eishin Ryu</em>.</p>
+    <p class="pe-md-3 fs-5 w-75 mx-auto">Ofresemos <strong>clases</strong> en varios dojos, <strong>ropa</strong> de practica y <strong>equipos</strong> en general.</p>
+    <p class="pe-md-3 fs-5 w-75 mx-auto"><a href="index.php?view=dojos" class=""><em>Contactanos</em></a> por cualquier duda que tengas, estamos a tu disposición.</p>
 </section>

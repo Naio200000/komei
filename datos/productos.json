@@ -40,7 +40,7 @@
 		"etc":{"tipo":"dogi","color":"azul","material":"tetron"},
 		"tiempo":"",
 		"precio": 5000,
-		"imagen":{"./img/productos/keikogi-01.jpg":"Chaqueta azul de entrenamiento","./img/productos/keikogi-02.jpg":"Chaqueta azul de entrenamiento","./img/productos/keikogi-03.jpg":"Planilla de tamaños de las chaquetas"},
+		"imagen":{"./img/productos/keikogi-a-01.jpg":"Chaqueta azul de entrenamiento","./img/productos/keikogi-a-02.jpg":"Chaqueta azul de entrenamiento","./img/productos/keikogi-03.jpg":"Planilla de tamaños de las chaquetas"},
 		"categoria":"ropa"
 	},
 	{
@@ -51,7 +51,7 @@
 		"etc":{"tipo":"obi","color":"gris","material":"ceda"},
 		"tiempo":"7",
 		"precio": 3000,
-		"imagen":{"./img/productos/obi-01.jpg":"Cinturon de entrenamiento","./img/productos/obi-02.jpg":"Cinturon de entrenamiento","./img/productos/obi-03.jpg":"Cinturon de entrenamiento"},
+		"imagen":{"./img/productos/obi-c-01.jpg":"Cinturon de entrenamiento","./img/productos/obi-c-02.jpg":"Cinturon de entrenamiento","./img/productos/obi-c-03.jpg":"Cinturon de entrenamiento"},
 		"categoria":"ropa"
 	},
 	{
@@ -70,7 +70,7 @@
 		"nombre":"Shinken Premuim",
 		"descrip":"Katana de entenamiento con filo, Hecha en acero 1095",
 		"descrip_larga":"Una katanas hechas de manera tradicional es <span lang='ja'>nihonto</span> (literalmente 'espada japonesa'). forjada a partir de acero <span lang='ja'>tamahagane</span>.",
-		"etc":{"tipo":"shinken","color":"negro","material":"acero_1095"},
+		"etc":{"tipo":"shinken","color":"negro","material":"acero1095"},
 		"tiempo":"120",
 		"precio":60000,
 		"imagen":{"./img/productos/katana-01.jpg":"Banner mostrando partes de un Shinken","./img/productos/katana-02.jpg":"Shinken sobre un fondo blanco","./img/productos/katana-03.jpg":"Shinken sobre un fondo Negro"},
@@ -81,7 +81,7 @@
 		"nombre":"Iaito",
 		"descrip":"Katana de entenamiento sin filo, hecha dealeacion de Aluminio",
 		"descrip_larga":"Una katanas hechas de manera moderna es <span lang='ja'>mugito</span> (literalmente 'espada de exhhibición). forjada a partir de una aleación de aluminio.",
-		"etc":{"tipo":"iaito","color":"negro","material":"aluminio"},
+		"etc":{"tipo":"iaito","color":"azul","material":"aluminio"},
 		"tiempo":"120",
 		"precio":45000,
 		"imagen":{"./img/productos/iaito-01.jpg":"4 Iaitos de diversos colores","./img/productos/iaito-02.jpg":"Iaito sobre un fondo oscuro","./img/productos/iaito-03.jpg":"TIaito sobre un fondo blanco"},
@@ -161,7 +161,7 @@
 		"etc":{"tipo":"dogi","color":"negro","material":"tetron"},
 		"tiempo":"7",
 		"precio": 5000,
-		"imagen":{"./img/productos/keikogi-01.jpg":"Chaqueta azul de entrenamiento","./img/productos/keikogi-02.jpg":"Chaqueta azul de entrenamiento","./img/productos/keikogi-03.jpg":"Planilla de tamaños de las chaquetas"},
+		"imagen":{"./img/productos/keikogi-n-01.webp":"Chaqueta azul de entrenamiento","./img/productos/keikogi-n-02.webp":"Chaqueta azul de entrenamiento","./img/productos/keikogi-03.jpg":"Planilla de tamaños de las chaquetas"},
 		"categoria":"ropa"
 	},
 	{
