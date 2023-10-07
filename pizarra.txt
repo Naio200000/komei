@@ -1,0 +1,49 @@
+##Tabla - Comics
+id > INT / PRIMARY_KEY, AUTO_ICREMENT, NOT NULL, UNSIGNED
+titulo > VARCHAR(256)
+personaje_pricipal > INT / INDEX, NOT NULL, UNSIGNED
+serie > INT / INDEX, NOT NULL, UNSIGNED
+guionista > INT / INDEX, NOT NULL, UNSIGNED
+artista > INT / INDEX, NOT NULL, UNSIGNED
+volumen > TINYINT
+numero > SMALLINT
+publicacion > DATE
+origen > VARCHAR(256)
+editorial > VARCHAR(256)
+bajada > TEXT
+portada > VARCHAR(256)
+precio > FLOAT(8,2) 
+
+##Tabla - Personajes
+id > INT / PRIMARY_KEY, AUTO_ICREMENT, NOT NULL, UNSIGNED
+nombre > VARCHAR(256)
+alias > VARCHAR(256)
+biografia > TEXT
+creador > VARCHAR(256)
+primera_aparicion > YEAR
+imagen > VARCHAR(256)
+
+##Tabla - Guionistas
+id > INT / PRIMARY_KEY, AUTO_ICREMENT, NOT NULL, UNSIGNED
+nombre_completo > VARCHAR(256)
+biografia > TEXT
+foto_perfil > VARCHAR(256)
+
+##Tabla - Artistas
+id > INT / PRIMARY_KEY, AUTO_ICREMENT, NOT NULL, UNSIGNED
+nombre_completo > VARCHAR(256)
+biografia > TEXT
+foto_perfil > VARCHAR(256)
+
+##Tabla - Serie
+id > INT / PRIMARY_KEY, AUTO_ICREMENT, NOT NULL, UNSIGNED
+nombre > VARCHAR(256)
+historia > MEDIUMTEXT
+
+##Usuarios
+id > INT / PRIMARY_KEY, AUTO_ICREMENT, NOT NULL, UNSIGNED
+email > VARCHAR(256)
+nombre_usuario > VARCHAR(20)
+nombre_completo > VARCHAR(256)
+contraseña > VARCHAR(256)
+roles > VARCHAR(256) (cliente / admin / superadmin)
