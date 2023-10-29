@@ -62,7 +62,7 @@
 		"etc":{"tipo":"hakama","color":"negro","material":"tetron"},
 		"tiempo":"7",
 		"precio":6000,
-		"imagen":{"./img/productos//hakama-01.jpg":"Persona usando Hakama de entrenamiento","./img/productos/hakama-02.jpg":"Hakama de entrenamiento","./img/productos//hakama-03.jpg":"Planilla de tamanños de las Hakamas"},
+		"imagen":{"./img/productos/hakama-01.jpg":"Persona usando Hakama de entrenamiento","./img/productos/hakama-02.jpg":"Hakama de entrenamiento","./img/productos/hakama-03.jpg":"Planilla de tamanños de las Hakamas"},
 		"categoria":"ropa"
 	},
 	{
@@ -84,7 +84,7 @@
 		"etc":{"tipo":"iaito","color":"azul","material":"aluminio"},
 		"tiempo":"120",
 		"precio":45000,
-		"imagen":{"./img/productos/iaito-01.jpg":"4 Iaitos de diversos colores","./img/productos/iaito-02.jpg":"Iaito sobre un fondo oscuro","./img/productos/iaito-03.jpg":"TIaito sobre un fondo blanco"},
+		"imagen":{"./img/productos/iaito-01.jpg":"4 Iaitos de diversos colores","./img/productos/iaito-02.jpg":"Iaito sobre un fondo oscuro","./img/productos/iaito-03.jpg":"Iaito sobre un fondo blanco"},
 		"categoria":"equipos"
 	},
 	{
