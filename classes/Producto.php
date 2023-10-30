@@ -72,7 +72,6 @@ class Producto {
     * Obtiene el valor de categoria
     */ 
     public function getId_Categoria(){
-        // return $this->id_categoria;
         $categoria = (new Categoria())->categoriaID($this->id_categoria);
         return $categoria->getName();
     }
@@ -190,6 +189,10 @@ class Producto {
      */
     public function formatearSTNOBJ(string $dato) :array {
 
+        $categoria = (new Images())->imagenesProducto(1);
+        echo '<pre>';
+        print_r($categoria);
+        echo '</pre>';
         $formatear = (array)$this->$dato;
         $datosAFormatear = [];
         foreach ($formatear as $k => $v) {

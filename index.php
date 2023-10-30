@@ -4,6 +4,8 @@
 
     require_once "classes/Conexion.php";
     require_once "classes/Producto.php";
+    require_once "classes/Categoria.php";
+    require_once "classes/Images.php";
     
     $viewSelected = $_GET['view'] ?? 'home';
     if (!array_key_exists($viewSelected, $linksValidos)) {
@@ -26,7 +28,7 @@
     <link rel="stylesheet" href="estilos/style.css">
 </head>
 <body>
-    <header class="header">
+    <!-- <header class="header">
         <nav class="navbar navbar-expand-md fixed-top container-fluid x-auto ">
             <div class="nav container align-items-center">
                 <a class="navbar-brand " href="index.php?view=home"><img src="./img/logo/komei_Juku.png" alt="Logo de la escuela"></a>
@@ -96,7 +98,7 @@
                 </div>
             </div>
         </nav>
-    </header>
+    </header> -->
     <main>
         <?PHP require_once "views/$views.php";?>
     </main>
