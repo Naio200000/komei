@@ -1,26 +1,26 @@
 <?php
-    $filtrar = empty($_POST) ? false : $_POST;
-    if (empty($_POST)){
-        if (isset($_GET['category'])) {
-            if (in_array($_GET['category'], $linksValidos['tienda']['categorias'])) {
-                $category = $OBJProducto->filtrarCatalogo($_GET['category']);
-                $CategorySelected = $_GET['category'];
-            } else {
-                $CategorySelected = 'No se encontro la categoria';
-                $category = [];
-            }
-        } else {
-            $category = $OBJProducto->filtrarCatalogo();
-            $CategorySelected = 'Nuestro Catalogo Completo';
-        }
-    } else {
-        $cateTienda = $_POST['category'] ?? null;
-        $etcTienda = $_POST['etc'] ?? null;
-        $datoTienda = $_POST['dato'] ?? null;
-        $category = $OBJProducto->filtrarCatalogo($cateTienda, $etcTienda, $datoTienda);
-        $CategorySelected = $_POST['category'] ?? "";
-    }
-
+    // $filtrar = empty($_POST) ? false : $_POST;
+    // if (empty($_POST)){
+    //     if (isset($_GET['category'])) {
+    //         if (in_array($_GET['category'], $linksValidos['tienda']['categorias'])) {
+    //             $category = $OBJProducto->filtrarCatalogo($_GET['category']);
+    //             $CategorySelected = $_GET['category'];
+    //         } else {
+    //             $CategorySelected = 'No se encontro la categoria';
+    //             $category = [];
+    //         }
+    //     } else {
+    //         $category = $OBJProducto->filtrarCatalogo();
+    //         $CategorySelected = 'Nuestro Catalogo Completo';
+    //     }
+    // } else {
+    //     $cateTienda = $_POST['category'] ?? null;
+    //     $etcTienda = $_POST['etc'] ?? null;
+    //     $datoTienda = $_POST['dato'] ?? null;
+    //     $category = $OBJProducto->filtrarCatalogo($cateTienda, $etcTienda, $datoTienda);
+    //     $CategorySelected = $_POST['category'] ?? "";
+    // }
+        $OBJProducto->catalogoCompleto();
 ?>
 <section class="tienda container-fluid container-md pb-3" id="tienda">
     <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">Tienda</h2>

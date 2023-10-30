@@ -4,14 +4,14 @@
 class Producto {
 
     private $id;
-    private $nombre;
-    private $descripCorta;
-    private $descripLarga;
-    private $etc;
-    private $tiempo;
+    private $name;
+    private $descript;
+    private $id_categoria;
     private $precio;
+    private $tipo;
+    private $caracteristicas;
+    private $tiempo;
     private $imagen;
-    private $categoria;
 
     /**
     * Obtiene el valor de id
@@ -24,28 +24,21 @@ class Producto {
     * Obtiene el valor de nombre
     */ 
     public function getNombre(){
-        return $this->nombre;
+        return $this->name;
     }
 
     /**
-    * Obtiene el valor de descripCorta
+    * Obtiene el valor de descrip
     */ 
-    public function getDescripCorta(){
-        return $this->descripCorta;
+    public function getDescrip(){
+        return $this->descript;
     }
 
     /**
-    * Obtiene el valor de descripLarga
+    * Obtiene el array de caracteristicas
     */ 
-    public function getDescripLarga(){
-        return $this->descripLarga;
-    }
-
-    /**
-    * Obtiene el array de etc
-    */ 
-    public function getEtc(){
-        return $this->etc;
+    public function getCaracteristicas(){
+        return $this->caracteristicas;
     }
    
     /**
@@ -69,12 +62,17 @@ class Producto {
         return $this->imagen;
     }
 
-
+    /**
+    * Obtiene el valor de tipo
+    */ 
+    public function getTipo(){
+        return $this->tipo;
+    }
     /**
     * Obtiene el valor de categoria
     */ 
-    public function getCategoria(){
-        return $this->categoria;
+    public function getId_Categoria(){
+        return $this->id_categoria;
     }
 
     /**
@@ -82,29 +80,20 @@ class Producto {
     * @param string $categoria : Es un string de la categoría que estamos buescando.
     * @return array Un array de todos nuestros productos de la categoria seleccionada.
     */
-    private function catalogoCompleto() :array {
+    public function catalogoCompleto() :array {
         
-        $productosOBJ = [];
-        $productosJSON = file_get_contents('datos/productos.json');
-        $productos = json_decode($productosJSON);
-        foreach ($productos as $object) {
-            $newObject = new self ();
+       $conexion = (new Conexion())->getConexion();
+       $query = "SELECT p.id, p.name, p.descript, p.id_categoria, p.precio, t.name AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto Group by p.id";
+       $PDOStatement = $conexion->prepare($query);
+       $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+       $PDOStatement->execute();
+       $datos = $PDOStatement->fetchAll();
 
-            $newObject->id = $object->id;
-            $newObject->nombre = $object->nombre;
-            $newObject->descripCorta = $object->descrip;
-            $newObject->descripLarga = $object->descrip_larga;
-            $newObject->etc = $object->etc;
-            $newObject->tiempo = $object->tiempo;
-            $newObject->precio = $object->precio;
-            $newObject->imagen = $object->imagen;
-            $newObject->categoria = $object->categoria;
+        echo '<pre>';
+        print_r($datos);
+        echo '</pre>';
 
-            $productosOBJ[] = $newObject;
-
-        }
-
-        return $this->ordenarOBJ($productosOBJ);
+        return [];
     }
 
     /**
@@ -202,20 +191,20 @@ class Producto {
      * da formato al dato de tiempo que se encuenta en el objeto
      * @return string calcula la fecha dependiendo de un valor que se encuentra en el objeto y la devuelve.
      */
-    public function formatearFecha():string {
-        if ($this->categoria == 'clases'){
-            if ($this->tiempo == '') {
-                return 'Todos los Sabados';
-            } else {
-                return $this->tiempo;
-            }
-        } else {
-            $date = Date('d-m-Y');
-            $dias = $this->tiempo;
-            return date('d/m/Y', strtotime($date . " + $dias days"));
-        }
+    // public function formatearFecha():string {
+    //     if ($this->categoria == 'clases'){
+    //         if ($this->tiempo == '') {
+    //             return 'Todos los Sabados';
+    //         } else {
+    //             return $this->tiempo;
+    //         }
+    //     } else {
+    //         $date = Date('d-m-Y');
+    //         $dias = $this->tiempo;
+    //         return date('d/m/Y', strtotime($date . " + $dias days"));
+    //     }
 
-    }
+    // }
 
     private function ordenarOBJ($array) {
         usort($array, array($this, 'compararTipo'));
