@@ -72,7 +72,9 @@ class Producto {
     * Obtiene el valor de categoria
     */ 
     public function getId_Categoria(){
-        return $this->id_categoria;
+        // return $this->id_categoria;
+        $categoria = (new Categoria())->categoriaID($this->id_categoria);
+        return $categoria->getName();
     }
 
     /**
