@@ -1,26 +1,25 @@
 <?php
-    // $filtrar = empty($_POST) ? false : $_POST;
-    // if (empty($_POST)){
-    //     if (isset($_GET['category'])) {
-    //         if (in_array($_GET['category'], $linksValidos['tienda']['categorias'])) {
-    //             $category = $OBJProducto->filtrarCatalogo($_GET['category']);
-    //             $CategorySelected = $_GET['category'];
-    //         } else {
-    //             $CategorySelected = 'No se encontro la categoria';
-    //             $category = [];
-    //         }
-    //     } else {
-    //         $category = $OBJProducto->filtrarCatalogo();
-    //         $CategorySelected = 'Nuestro Catalogo Completo';
-    //     }
-    // } else {
-    //     $cateTienda = $_POST['category'] ?? null;
-    //     $etcTienda = $_POST['etc'] ?? null;
-    //     $datoTienda = $_POST['dato'] ?? null;
-    //     $category = $OBJProducto->filtrarCatalogo($cateTienda, $etcTienda, $datoTienda);
-    //     $CategorySelected = $_POST['category'] ?? "";
-    // }
-        $OBJProducto->catalogoCompleto();
+    $filtrar = empty($_POST) ? false : $_POST;
+    if (empty($_POST)){
+        if (isset($_GET['category'])) {
+            if (in_array($_GET['category'], $linksValidos['tienda']['categorias'])) {
+                $category = $OBJProducto->filtrarCatalogo($_GET['category']);
+                $CategorySelected = $_GET['category'];
+            } else {
+                $CategorySelected = 'No se encontro la categoria';
+                $category = [];
+            }
+        } else {
+            $category = $OBJProducto->filtrarCatalogo();
+            $CategorySelected = 'Nuestro Catalogo Completo';
+        }
+    } else {
+        $cateTienda = $_POST['category'] ?? null;
+        $etcTienda = $_POST['etc'] ?? null;
+        $datoTienda = $_POST['dato'] ?? null;
+        $category = $OBJProducto->filtrarCatalogo($cateTienda, $etcTienda, $datoTienda);
+        $CategorySelected = $_POST['category'] ?? "";
+    }
 ?>
 <section class="tienda container-fluid container-md pb-3" id="tienda">
     <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">Tienda</h2>
@@ -84,10 +83,10 @@
                                     foreach (array_splice($imagenCard,0,1) as $k => $v) { ?>
                                         <img src="<?= $k ?>" alt="<?= $v ?>" class="card-img-top">
                                 <?php } ?>
-                                <span class="mx-2 ms-auto capital"><?= $producto->getCategoria()?></span>
+                                <span class="mx-2 ms-auto capital"><?= $producto->getId_Categoria()?></span>
                                 <div class="card-body">
                                     <h4 class="card-title fs-2 titulocard" type="button" id="<?= $producto->getId()?>boton_mostrar"><a href="index.php?view=item&itemID=<?= $producto->getId()?>" class="fs-2 titulocard"><?= $producto->getNombre()?></a></h4>
-                                    <p class="card-text"><?= $producto->getDescripCorta()?></p>
+                                    <p class="card-text"><?= $producto->formatearDescript()?></p>
                                     <div class="row px2">
                                         <span class="col preciocard"><?=  $producto->formatearPrecio()?></span>
                                         <div class="col-7">

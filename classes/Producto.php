@@ -82,18 +82,16 @@ class Producto {
     */
     public function catalogoCompleto() :array {
         
-       $conexion = (new Conexion())->getConexion();
-       $query = "SELECT p.id, p.name, p.descript, p.id_categoria, p.precio, t.name AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto Group by p.id";
-       $PDOStatement = $conexion->prepare($query);
-       $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
-       $PDOStatement->execute();
-       $datos = $PDOStatement->fetchAll();
-
-        echo '<pre>';
-        print_r($datos);
-        echo '</pre>';
-
-        return [];
+        $conexion = (new Conexion())->getConexion();
+        $query = "SELECT p.id, p.name, p.descript, p.id_categoria, p.precio, t.name AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto Group by p.id";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute();
+        $datos = $PDOStatement->fetchAll();
+        echo "<pre>";
+        print_r($datos[1]);
+        echo "</pre>";
+        return $datos;
     }
 
     /**
@@ -107,7 +105,7 @@ class Producto {
         $completo = $this->catalogoCompleto();
 
         foreach ($completo as $cate) {
-            if ($cate->categoria == $categoria) {
+            if ($cate->id_categoria == $categoria) {
                 $catalogoCategoria[] = $cate;
             }
         }
@@ -161,6 +159,21 @@ class Producto {
         return null; 
     }
 
+    /**
+     * Devuelve un string recortado la descripcion
+     * @param boolean $a : Se es FALSE devuelve la primera parte de la descipcion (corta) si es TRUE devuelve la descripcion larga
+     * @return string descripcion formateada
+     */
+    public function formatearDescript($a = FALSE) :string{
+
+        $text = $this->descript;
+        $descript = explode(';', $text);
+        if (!$a) {
+            return $descript[0];
+        } else {
+            return $descript[1];
+        }
+    }
 
     /**
     * Devuelve el precio de la unidad, formateado correctamente
@@ -191,22 +204,25 @@ class Producto {
      * da formato al dato de tiempo que se encuenta en el objeto
      * @return string calcula la fecha dependiendo de un valor que se encuentra en el objeto y la devuelve.
      */
-    // public function formatearFecha():string {
-    //     if ($this->categoria == 'clases'){
-    //         if ($this->tiempo == '') {
-    //             return 'Todos los Sabados';
-    //         } else {
-    //             return $this->tiempo;
-    //         }
-    //     } else {
-    //         $date = Date('d-m-Y');
-    //         $dias = $this->tiempo;
-    //         return date('d/m/Y', strtotime($date . " + $dias days"));
-    //     }
+    public function formatearFecha():string {
+        if ($this->id_categoria == 'clases'){
+            if ($this->tiempo == '') {
+                return 'Todos los Sabados';
+            } else {
+                return $this->tiempo;
+            }
+        } else {
+            $date = Date('d-m-Y');
+            $dias = $this->tiempo;
+            return date('d/m/Y', strtotime($date . " + $dias days"));
+        }
 
-    // }
-
-    private function ordenarOBJ($array) {
+    }
+    /**
+     * Ordena los objetos por Tipo y luego por Categoria
+     * @param array array de objetos Producto
+     */
+    private function ordenarOBJ(array $array) {
         usort($array, array($this, 'compararTipo'));
         usort($array, array($this, 'compararCate'));
         return $array;
@@ -217,7 +233,12 @@ class Producto {
     private function compararCate($a, $b) {
         return $a->categoria <=> $b->categoria;
      }
+
+    /**
+     * Funcion que compara valores. Se usa en conjunto con usort() para ordenar los valores
+     */
     private function compararTipo($a, $b) {
         return $a->etc->tipo <=> $b->etc->tipo;
      }
+
 }
