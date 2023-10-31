@@ -100,11 +100,11 @@ class Producto {
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStatement->execute();
         $datos = $PDOStatement->fetchAll();
-        // echo "<pre>";
-        // print_r($datos);
-        // echo "</pre>";
 
-        return $datos;
+        $ordenado = $this->ordenarOBJ($datos);
+
+
+        return $ordenado;
     }
 
     /**
@@ -243,14 +243,14 @@ class Producto {
      * Funcion que compara valores. Se usa en conjunto con usort() para ordenar los valores
      */
     private function compararCate($a, $b) {
-        return $a->categoria <=> $b->categoria;
+        return $a->id_categoria <=> $b->id_categoria;
      }
 
     /**
      * Funcion que compara valores. Se usa en conjunto con usort() para ordenar los valores
      */
     private function compararTipo($a, $b) {
-        return $a->etc->tipo <=> $b->etc->tipo;
+        return $a->tipo <=> $b->tipo;
      }
 
 }
