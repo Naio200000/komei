@@ -40,9 +40,9 @@ class Images {
     public function imagenesProducto (int $id) :array{
 
         $conexion = (new Conexion())->getConexion();
-        $query = "SELECT GROUP_CONCAT(CONCAT(i.name, ':', i.descript) SEPARATOR ',') FROM imagenes_x_productos AS ixp JOIN images AS i ON ixp.id_imagen = i.id WHERE ixp.id_producto = $id";
+        $query = "SELECT i.id, i.name, i.descript FROM imagenes_x_productos AS ixp JOIN images AS i ON ixp.id_imagen = i.id WHERE ixp.id_producto = $id";
         $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStatement->execute();
         $datos = $PDOStatement->fetchAll();
         return $datos;

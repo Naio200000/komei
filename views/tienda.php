@@ -1,5 +1,5 @@
 <?php
-    $filtrar = empty($_POST) ? false : $_POST;
+    // $filtrar = empty($_POST) ? false : $_POST;
     if (empty($_POST)){
         if (isset($_GET['category'])) {
             if (in_array($_GET['category'], $linksValidos['tienda']['categorias'])) {
@@ -79,9 +79,9 @@
                         <div class="col">
                             <div class="card tarjetas-producto">
                                 <?php
-                                    $imagenCard = $producto->formatearSTNOBJ('imagen');
+                                    $imagenCard = $producto->getImagen();
                                     foreach (array_splice($imagenCard,0,1) as $k => $v) { ?>
-                                        <img src="<?= $k ?>" alt="<?= $v ?>" class="card-img-top">
+                                        <img src="./img/productos/<?= $k ?>.jpg" alt="<?= $v ?>" class="card-img-top">
                                 <?php } ?>
                                 <span class="mx-2 ms-auto capital"><?= $producto->getId_Categoria()?></span>
                                 <div class="card-body">

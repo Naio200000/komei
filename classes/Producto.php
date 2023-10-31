@@ -59,7 +59,11 @@ class Producto {
     * Obtiene  el array de imagenes
     */ 
     public function getImagen(){
-        return $this->imagen;
+        $imagenes = (new Images())->imagenesProducto($this->id);
+        foreach ($imagenes as $imagen){
+            $arrayImg[$imagen->getName()] = $imagen->getDescript();
+        }
+        return $arrayImg;
     }
 
     /**
@@ -89,9 +93,6 @@ class Producto {
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStatement->execute();
         $datos = $PDOStatement->fetchAll();
-        echo "<pre>";
-        print_r($datos[1]);
-        echo "</pre>";
         return $datos;
     }
 
@@ -104,9 +105,8 @@ class Producto {
 
         $catalogoCategoria = [];
         $completo = $this->catalogoCompleto();
-
         foreach ($completo as $cate) {
-            if ($cate->id_categoria == $categoria) {
+            if ($cate->getId_Categoria() == $categoria) {
                 $catalogoCategoria[] = $cate;
             }
         }
@@ -189,11 +189,7 @@ class Producto {
      */
     public function formatearSTNOBJ(string $dato) :array {
 
-        $categoria = (new Images())->imagenesProducto(1);
-        echo '<pre>';
-        print_r($categoria);
-        echo '</pre>';
-        $formatear = (array)$this->$dato;
+        $formatear = $this->getImagen();
         $datosAFormatear = [];
         foreach ($formatear as $k => $v) {
             if($k == 'semanal') {
