@@ -38,7 +38,14 @@ class Producto {
     * Obtiene el array de caracteristicas
     */ 
     public function getCaracteristicas(){
-        return $this->caracteristicas;
+
+        $arrayID = explode('|', $this->caracteristicas);
+        foreach($arrayID as $id) {
+            $OBJcaracteristicas = (new Caracteristicas())->caravalID($id);
+            $caracteristicas[$OBJcaracteristicas->getName()] = $OBJcaracteristicas->getValor();
+        }
+
+        return $caracteristicas;
     }
    
     /**
@@ -93,6 +100,10 @@ class Producto {
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStatement->execute();
         $datos = $PDOStatement->fetchAll();
+        // echo "<pre>";
+        // print_r($datos);
+        // echo "</pre>";
+
         return $datos;
     }
 
@@ -126,8 +137,8 @@ class Producto {
             if ($cate) {
                 $completo = $this->catalogoCategoria($cate);
                 foreach($completo as $m) {
-                    if (isset($m->etc->$etc)) {
-                        if ($m->etc->$etc == $filtrar) {
+                    if (isset($m->getCaracteristicas()[$etc])) {
+                        if ($m->getCaracteristicas()[$etc] == $filtrar) {
                             $catalogofiltrar[] = $m;
                         }
                     }

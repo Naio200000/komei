@@ -1,5 +1,5 @@
 <?php
-    // $filtrar = empty($_POST) ? false : $_POST;
+    // $OBJProducto->getCaracteristicas();
     if (empty($_POST)){
         if (isset($_GET['category'])) {
             if (in_array($_GET['category'], $linksValidos['tienda']['categorias'])) {
