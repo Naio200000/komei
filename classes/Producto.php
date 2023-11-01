@@ -205,7 +205,11 @@ class Producto {
         $datosAFormatear = [];
         foreach ($formatear as $k => $v) {
             if($k == 'semanal') {
-                $datosAFormatear['Clases'] = $v . "  por semana.";
+                if ($this->tipo == 'Seminario') {
+                    $datosAFormatear['Clases'] = $v . "  Clases";
+                } else {
+                    $datosAFormatear['Clases'] = $v . "  por semana";
+                }
             } else {
                 $datosAFormatear[$k] = $v;
             }
@@ -222,7 +226,7 @@ class Producto {
             if ($this->tiempo == 0) {
                 return 'Todos los días';
             } else {
-                return $this->tiempo;
+                return date('m/y', strtotime($this->tiempo));
             }
         } else {
             $date = Date('d-m-Y');
