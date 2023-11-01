@@ -7,7 +7,7 @@
     <?PHP
     if (!empty($item)) {?>
         <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center fw-bold my-2 mx-auto px-2"><?= $item->getNombre()?></h2>
-        <p class="fs-5 w-75 mx-auto fw-bold text-center"><?= $item->getDescripCorta()?></p>
+        <p class="fs-5 w-75 mx-auto fw-bold text-center"><?= $item->formatearDescript()?></p>
         <div class="card">
             <div class="row">
                 <div class="col-lg-6 d-flex flex-column">
@@ -20,9 +20,9 @@
                         <div class="carousel-inner p-5" id="carrusel-producto">
                             <?php
                                 $i = 0;
-                                foreach ($item->formatearSTNOBJ('imagen') as $k => $v) { ?>
+                                foreach ($item->getImagen() as $k => $v) { ?>
                                 <div class="carousel-item <?php if ($i == 0 ) echo 'active'; ?>">
-                                    <img class="card-img-top" src="<?= $k ?>" alt="<?= $v ?>">
+                                    <img class="card-img-top" src="./img/productos/<?= $k ?>.jpg" alt="<?= $v ?>">
                                 </div>
                             <?php $i++; }?>
                         </div>
@@ -35,12 +35,12 @@
                             <span class="visually-hidden">Proximo</span>
                         </button>
                     </div>
-                    <span class="text-uppercase p-2 text-lg-start text-end"><?= $item->getCategoria()?></span>
+                    <span class="text-uppercase p-2 text-lg-start text-end"><?= $item->getId_Categoria()?></span>
                 </div>
                 <div class="col-lg-6 d-flex flex-column p-3">
                     <div class="card-body flex-grow-0">
                         <h3 class="card-title fs-2"><?= $item->getNombre()?></h3>
-                        <p class="card-text fs-5"><?= $item->getDescripLarga()?></p>
+                        <p class="card-text fs-5"><?= $item->formatearDescript(true)?></p>
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class='list-group-item fs-5'><span class='fw-bold text-capitalize'> Disponibilidad:  </span><?= $item->formatearFecha() ?></li>

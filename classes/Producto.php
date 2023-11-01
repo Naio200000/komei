@@ -36,6 +36,7 @@ class Producto {
 
     /**
     * Obtiene el array de caracteristicas
+    *@return array array de caracteristicas con sus valores
     */ 
     public function getCaracteristicas(){
 
@@ -200,7 +201,7 @@ class Producto {
      */
     public function formatearSTNOBJ(string $dato) :array {
 
-        $formatear = $this->getImagen();
+        $formatear = $this->getCaracteristicas();
         $datosAFormatear = [];
         foreach ($formatear as $k => $v) {
             if($k == 'semanal') {
