@@ -27,7 +27,17 @@ class Categoria {
         return $datos;
     }
 
+    public function getAllCategorias() :array{
 
+        $conexion = (new Conexion())->getConexion();
+        $query = "SELECT categorias.name FROM categorias";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement->execute();
+        $datos = $PDOStatement->fetchAll();
+
+        return $datos;
+    }
     /**
      * Get the value of id
      */ 
