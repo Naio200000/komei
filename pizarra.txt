@@ -5,46 +5,8 @@ Tabla con datos de Senseis
 Programar para  que los datos de dojos de sql
 
 
-Acomodar la pagina parta que traiga todos los datos
-
 Acomodar para no hacer pedidos a la base de datos  constantemente
 
 Armar autoloader con __DIR__ (ventajas del autoloader es que tenemos un archivo que siempre se va a estar)
 
 Cambiar imagenes de clases y seminarios (diferenciarlas)
-
-queries
-
-Productos con sus datos
-
-SELECT 
-p.id as IdProducto,
-p.name as Nombre,
-p.descript as Descripcion,
-p.id_categoria as Categoria,
-p.precio as Precio,
-t.name as Tipos,
-GROUP_CONCAT(DISTINCT cxp.id_cate_valor separator "|") as Caracterisitcas_Valor,
-CONCAT_WS(' ',d.seminario, d.resto) as Disponibilidad,
-GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR "|") as imagenes
-FROM productos as p
-JOIN tipos as t on p.id_tipo = t.id
-LEFT JOIN caraval_x_producto as cxp on p.id = cxp.id_producto
-JOIN disponibilidad as d on t.id_disponible = d.id
-LEFT JOIN imagenes_x_productos as ixp on p.id = ixp.id_producto
-Group by IdProducto;
-
-
-$OBJconexion = new Conexion();
-$query = 'SELECT * FROM productos';
-
-$conexion = $OBJconexion->getConexion();
-$PDOStatement = $conexion->prepare($query);
-$PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
-$PDOStatement->execute();
-
-$datos = $PDOStatement->fetchAll();
-
-echo '<pre>';
-print_r($datos);
-echo '</pre>';
