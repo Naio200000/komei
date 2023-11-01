@@ -218,9 +218,9 @@ class Producto {
      * @return string calcula la fecha dependiendo de un valor que se encuentra en el objeto y la devuelve.
      */
     public function formatearFecha():string {
-        if ($this->id_categoria == 'clases'){
-            if ($this->tiempo == '') {
-                return 'Todos los Sabados';
+        if ($this->getId_Categoria() == 'clases'){
+            if ($this->tiempo == 0) {
+                return 'Todos los días';
             } else {
                 return $this->tiempo;
             }
