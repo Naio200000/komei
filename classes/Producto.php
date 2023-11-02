@@ -80,12 +80,6 @@ class Producto {
     public function getTipo(){
         return $this->tipo;
     }
-    /**
-    * Obtiene el valor de categoria
-    */ 
-    public function getId_Categoria(){
-        return $this->categoria;
-    }
 
     /**
      * Get the value of categoria
@@ -120,6 +114,7 @@ class Producto {
     * @return array Un array de todos nuestros productos de la categoria seleccionada.
     */
     private function catalogoCategoria(string $categoria): array {
+
         $conexion = (new Conexion())->getConexion();
         $query = "SELECT p.id, p.name, p.descript, c.name as categorias, p.precio, t.name AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN categorias AS c ON p.id_categoria = c.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto WHERE c.name = ? Group by p.id";
         $PDOStatement = $conexion->prepare($query);
@@ -166,15 +161,14 @@ class Producto {
     */
     public function productoID (int $id):?Producto {
 
-        $completo = $this->catalogoCompleto();
+        $conexion = (new Conexion())->getConexion();
+        $query = "SELECT p.id, p.name, p.descript, c.name as categorias, p.precio, t.name AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN categorias AS c ON p.id_categoria = c.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto WHERE p.id = ? Group by p.id";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute([$id]);
+        $datos = $PDOStatement->fetch();
 
-        foreach ($completo as $producto) {
-            if ($producto->id == $id) {
-                return $producto;
-            }
-        }
-
-        return null; 
+        return $datos ?? null; 
     }
 
     /**
@@ -227,7 +221,7 @@ class Producto {
      * @return string calcula la fecha dependiendo de un valor que se encuentra en el objeto y la devuelve.
      */
     public function formatearFecha():string {
-        if ($this->getId_Categoria() == 'clases'){
+        if ($this->getCategoria() == 'clases'){
             if ($this->tiempo == 0) {
                 return 'Todos los días';
             } else {

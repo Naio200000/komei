@@ -35,7 +35,7 @@
                             <span class="visually-hidden">Proximo</span>
                         </button>
                     </div>
-                    <span class="text-uppercase p-2 text-lg-start text-end"><?= $item->getId_Categoria()?></span>
+                    <span class="text-uppercase p-2 text-lg-start text-end"><?= $item->getCategoria()?></span>
                 </div>
                 <div class="col-lg-6 d-flex flex-column p-3">
                     <div class="card-body flex-grow-0">

@@ -83,7 +83,7 @@
                                     foreach (array_splice($imagenCard,0,1) as $k => $v) { ?>
                                         <img src="./img/productos/<?= $k ?>.jpg" alt="<?= $v ?>" class="card-img-top">
                                 <?php } ?>
-                                <span class="mx-2 ms-auto capital"><?= $producto->getId_Categoria()?></span>
+                                <span class="mx-2 ms-auto capital"><?= $producto->getCategoria()?></span>
                                 <div class="card-body">
                                     <h4 class="card-title fs-2 titulocard" type="button" id="<?= $producto->getId()?>boton_mostrar"><a href="index.php?view=item&itemID=<?= $producto->getId()?>" class="fs-2 titulocard"><?= $producto->getNombre()?></a></h4>
                                     <p class="card-text"><?= $producto->formatearDescript()?></p>
