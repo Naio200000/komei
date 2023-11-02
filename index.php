@@ -7,7 +7,7 @@
     require_once "classes/Categoria.php";
     require_once "classes/Images.php";
     require_once "classes/Caracteristicas.php";
-    $categorias = (new Categoria())->getAllCategorias();
+
     $viewSelected = $_GET['view'] ?? 'home';
     if (!array_key_exists($viewSelected, $linksValidos)) {
         $views = "404";
@@ -65,7 +65,8 @@
                             <a class="nav-link dropdown-toggle" href="index.php?view=tienda" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="index.php?view=tienda">Catalogo Completo</a></li>
-                                <?php 
+                                <?php
+                                    $categorias = (new Categoria())->getAllCategorias();
                                     foreach($categorias as $c) { ?>
                                         <li><a class="dropdown-item text-capitalize" href="index.php?view=tienda&category=<?= $c['name'] ?>"><?= $c['name'] ?></a></li>
                                 <?php } ?>

@@ -6,7 +6,7 @@ class Producto {
     private $id;
     private $name;
     private $descript;
-    private $id_categoria;
+    private $categoria;
     private $precio;
     private $tipo;
     private $caracteristicas;
@@ -84,10 +84,16 @@ class Producto {
     * Obtiene el valor de categoria
     */ 
     public function getId_Categoria(){
-        $categoria = (new Categoria())->categoriaID($this->id_categoria);
-        return $categoria->getName();
+        return $this->categoria;
     }
 
+    /**
+     * Get the value of categoria
+     */ 
+    public function getCategoria()
+    {
+        return $this->categoria;
+    }
     /**
     * Devuelve nuestro catalogo dependiendo de la categoria seleccionada.
     * @param string $categoria : Es un string de la categoría que estamos buescando.
@@ -96,7 +102,7 @@ class Producto {
     public function catalogoCompleto() :array {
         
         $conexion = (new Conexion())->getConexion();
-        $query = "SELECT p.id, p.name, p.descript, p.id_categoria, p.precio, t.name AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto Group by p.id";
+        $query = "SELECT p.id, p.name, p.descript, c.name as categorias, p.precio, t.name AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN categorias AS c ON p.id_categoria = c.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto Group by p.id";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStatement->execute();
@@ -114,15 +120,14 @@ class Producto {
     * @return array Un array de todos nuestros productos de la categoria seleccionada.
     */
     private function catalogoCategoria(string $categoria): array {
+        $conexion = (new Conexion())->getConexion();
+        $query = "SELECT p.id, p.name, p.descript, c.name as categorias, p.precio, t.name AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN categorias AS c ON p.id_categoria = c.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto WHERE c.name = ? Group by p.id";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute([$categoria]);
+        $datos = $PDOStatement->fetchAll();
 
-        $catalogoCategoria = [];
-        $completo = $this->catalogoCompleto();
-        foreach ($completo as $cate) {
-            if ($cate->getId_Categoria() == $categoria) {
-                $catalogoCategoria[] = $cate;
-            }
-        }
-        return $catalogoCategoria;
+        return $datos;
 
     }
 
@@ -248,7 +253,7 @@ class Producto {
      * Funcion que compara valores. Se usa en conjunto con usort() para ordenar los valores
      */
     private function compararCate($a, $b) {
-        return $a->id_categoria <=> $b->id_categoria;
+        return $a->categoria <=> $b->categoria;
      }
 
     /**
@@ -257,5 +262,6 @@ class Producto {
     private function compararTipo($a, $b) {
         return $a->tipo <=> $b->tipo;
      }
+
 
 }
