@@ -18,10 +18,10 @@ class Categoria {
     public function categoriaID(int $id) :Categoria {
 
         $conexion = (new Conexion())->getConexion();
-        $query = "SELECT * FROM categorias WHERE id = $id";
+        $query = "SELECT * FROM categorias WHERE id = ?";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
-        $PDOStatement->execute();
+        $PDOStatement->execute([$id]);
         $datos = $PDOStatement->fetch();
 
         return $datos;
