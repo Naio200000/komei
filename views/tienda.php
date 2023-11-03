@@ -2,7 +2,12 @@
     // $OBJProducto->getCaracteristicas();
     if (empty($_POST)){
         if (isset($_GET['category'])) {
-            if (in_array($_GET['category'], $linksValidos['tienda']['categorias'])) {
+            $categorias = (new Categoria())->formateaCategoriasa();
+
+            // echo "<pre>";
+            // print_r($categorias);
+            // echo "<pre>";
+            if (in_array($_GET['category'], $categorias)) {
                 $category = $OBJProducto->filtrarCatalogo($_GET['category']);
                 $CategorySelected = $_GET['category'];
             } else {

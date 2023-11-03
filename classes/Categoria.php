@@ -27,7 +27,7 @@ class Categoria {
         return $datos;
     }
 
-    public function getAllCategorias() :array{
+    private function getAllCategorias() :array{
 
         $conexion = (new Conexion())->getConexion();
         $query = "SELECT categorias.name FROM categorias";
@@ -60,5 +60,14 @@ class Categoria {
     public function getDescript()
     {
         return $this->descript;
+    }
+
+    public function formateaCategoriasa() {
+
+        $categorias = $this->getAllCategorias();
+        foreach ($categorias as $value) {
+            $datos[] = $value['name'];
+        }
+        return $datos;
     }
 }

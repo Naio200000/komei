@@ -66,9 +66,9 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="index.php?view=tienda">Catalogo Completo</a></li>
                                 <?php
-                                    $categorias = (new Categoria())->getAllCategorias();
+                                    $categorias = (new Categoria())->formateaCategoriasa();
                                     foreach($categorias as $c) { ?>
-                                        <li><a class="dropdown-item text-capitalize" href="index.php?view=tienda&category=<?= $c['name'] ?>"><?= $c['name'] ?></a></li>
+                                        <li><a class="dropdown-item text-capitalize" href="index.php?view=tienda&category=<?= $c?>"><?= $c?></a></li>
                                 <?php } ?>
                             </ul>
                         </li>

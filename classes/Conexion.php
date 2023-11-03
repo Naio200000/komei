@@ -12,7 +12,9 @@ class Conexion {
 
     private PDO $db;
 
-
+    /**
+     * Genera una un objeto PDO con los datos de conexion a la bd
+     */
     public function __construct() {
         try {
             $this->db = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS);
