@@ -1,12 +1,7 @@
 <?php
     require_once "datos/linksValidos.php";
     require_once "libraries/functions.php";
-
-    require_once "classes/Conexion.php";
-    require_once "classes/Producto.php";
-    require_once "classes/Categoria.php";
-    require_once "classes/Images.php";
-    require_once "classes/Caracteristicas.php";
+    require_once "libraries/autoloader.php";
 
     $viewSelected = $_GET['view'] ?? 'home';
     if (!array_key_exists($viewSelected, $linksValidos)) {
