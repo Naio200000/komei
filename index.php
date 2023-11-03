@@ -1,8 +1,8 @@
 <?php
-    require_once "datos/linksValidos.php";
     require_once "libraries/functions.php";
     require_once "libraries/autoloader.php";
 
+    $linksValidos = (new Links)->formateaLinks();
     $viewSelected = $_GET['view'] ?? 'home';
     if (!array_key_exists($viewSelected, $linksValidos)) {
         $views = "404";

@@ -27,6 +27,10 @@ class Categoria {
         return $datos;
     }
 
+    /**
+     * Trae un array con todos los nombres de las Categorias
+     * @return array Array con los nombres de las categorias
+      */
     private function getAllCategorias() :array{
 
         $conexion = Conexion::getConexion();

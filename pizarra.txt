@@ -1,8 +1,8 @@
 Cosas para agregar
 
+Agregar el ABM
 
-Tabla con datos de Senseis
-Programar para  que los datos de dojos de sql
-programar para que los datos de los links validos esten en la bd
 
 Cambiar imagenes de clases y seminarios (diferenciarlas)
+
+Si hay tiempo Programar para  que los datos de dojos de sql 
