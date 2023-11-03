@@ -3,6 +3,7 @@ Cosas para agregar
 
 Tabla con datos de Senseis
 Programar para  que los datos de dojos de sql
+programar para que los datos de los links validos esten en la bd
 
 
 Acomodar para no hacer pedidos a la base de datos  constantemente
