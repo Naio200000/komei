@@ -10,14 +10,14 @@ class Conexion {
     private const DB_NAME = 'pii_komei';
     private const DB_DSN = 'mysql:host=' . self::DB_HOST . ';dbname=' . self::DB_NAME . ';charset=utf8mb4';
 
-    private PDO $db;
+    private static ?PDO $db = null;
 
     /**
      * Genera una un objeto PDO con los datos de conexion a la bd
      */
-    public function __construct() {
+    public static function conexion() {
         try {
-            $this->db = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS);
+            self::$db = new PDO(self::DB_DSN, self::DB_USER, self::DB_PASS);
         } catch (Exception $e) {
             die('Error al conectar con la Base de datos.');
         }
@@ -27,7 +27,10 @@ class Conexion {
      * Devuelve una conexión PDO
      * @return PDO
      */
-    public function getConexion(): PDO {
-        return $this->db;
+    public static function getConexion(): PDO {
+        if (self::$db === null) {
+            self::conexion();
+        }
+        return self::$db;
     }
 }

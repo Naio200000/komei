@@ -44,7 +44,7 @@ class Caracteristicas {
     public function caravalID(int $id) :Caracteristicas {
 
 
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT vxc.id, c.name, v.valor FROM valor_x_caracteristica AS vxc JOIN caracteristicas AS c ON vxc.id_caracteristica = c.id JOIN valores AS v ON vxc.id_valor = v.id WHERE vxc.id = ?";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);

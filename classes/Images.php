@@ -39,7 +39,7 @@ class Images {
      */
     public function imagenesProducto (int $id) :array{
 
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT i.id, i.name, i.descript FROM imagenes_x_productos AS ixp JOIN images AS i ON ixp.id_imagen = i.id WHERE ixp.id_producto = ?";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);

@@ -17,7 +17,7 @@ class Categoria {
      */
     public function categoriaID(int $id) :Categoria {
 
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT * FROM categorias WHERE id = ?";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
@@ -29,7 +29,7 @@ class Categoria {
 
     private function getAllCategorias() :array{
 
-        $conexion = (new Conexion())->getConexion();
+        $conexion = Conexion::getConexion();
         $query = "SELECT categorias.name FROM categorias";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
