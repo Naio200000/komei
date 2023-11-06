@@ -32,6 +32,15 @@ class Images {
         return $this->descript;
     }
 
+    public function imagenID(int $id) :Images {
+        $conexion = Conexion::getConexion();
+        $query = "SELECT * FROM `images` WHERE id = ?";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute([$id]);
+        $datos = $PDOStatement->fetch();
+        return $datos;
+    }
     /**
      * Trae todas las imagenes de un producto
      * @param int ID del producto a buscar sus imagenes

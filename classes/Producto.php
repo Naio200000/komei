@@ -13,6 +13,8 @@ class Producto {
     private $tiempo;
     private $imagen;
 
+    private static $staticValues = ['id', 'name', 'descript', 'precio', 'tiempo'];
+
     /**
     * Obtiene el valor de id
     */ 
@@ -39,13 +41,6 @@ class Producto {
     *@return array array de caracteristicas con sus valores
     */ 
     public function getCaracteristicas(){
-
-        $arrayID = explode('|', $this->caracteristicas);
-        foreach($arrayID as $id) {
-            $OBJcaracteristicas = (new Caracteristicas())->caravalID($id);
-            $caracteristicas[$OBJcaracteristicas->getName()] = $OBJcaracteristicas->getValor();
-        }
-
         return $caracteristicas;
     }
    
@@ -67,11 +62,7 @@ class Producto {
     * Obtiene  el array de imagenes
     */ 
     public function getImagen(){
-        $imagenes = (new Images())->imagenesProducto($this->id);
-        foreach ($imagenes as $imagen){
-            $arrayImg[$imagen->getName()] = $imagen->getDescript();
-        }
-        return $arrayImg;
+        return $imagen;
     }
 
     /**
@@ -96,13 +87,19 @@ class Producto {
     public function catalogoCompleto() :array {
         
         $conexion = Conexion::getConexion();
-        $query = "SELECT p.id, p.name, p.descript, c.name as categorias, p.precio, t.name AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN categorias AS c ON p.id_categoria = c.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto Group by p.id";
+        $query = "SELECT p.id, p.name, p.descript, p.id_categoria as categoria, p.precio, p.id_tipo AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto Group by p.id;";
         $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute();
-        $datos = $PDOStatement->fetchAll();
+        while ($datos = $PDOStatement->fetch()) {
+            $catalogo[] = $this->formateaProducto($datos);
+        };
 
-        $ordenado = $this->ordenarOBJ($datos);
+        echo "<pre>";
+        print_r($catalogo);
+        echo "</pre>";
+        
+        $ordenado = $this->ordenarOBJ($catalogo);
 
 
         return $ordenado;
@@ -124,6 +121,28 @@ class Producto {
 
         return $datos;
 
+    }
+
+    private function formateaProducto (array $datos) :Producto {
+
+        $producto = new self();
+
+        foreach (self::$staticValues as $v) {
+            $producto->{$v} = $datos[$v];
+        }
+        $producto->categoria = (new Categoria)->categoriaID($datos['categoria']);
+        $producto->tipo = (new Tipo)->tipoID($datos['tipo']);
+        $arrayIDcara = explode('|', $datos['caracteristicas']);
+        foreach($arrayIDcara as $id) {
+            $OBJcaracteristicas[] = (new Caracteristicas())->caravalID(intval($id));
+        }
+        $producto->caracteristicas = $OBJcaracteristicas;
+        $arrayIDimagen = explode('|', $datos['imagen']);
+        foreach($arrayIDimagen as $id){
+            $OBJimange[] = (new Images())->imagenID(intval($id));
+        }
+        $producto->imagen = $OBJimange;
+        return $producto;
     }
 
     /**
@@ -239,8 +258,8 @@ class Producto {
      * @param array array de objetos Producto
      */
     private function ordenarOBJ(array $array) {
-        usort($array, array($this, 'compararTipo'));
-        usort($array, array($this, 'compararCate'));
+        // usort($array, array($this, 'compararTipo'));
+        // usort($array, array($this, 'compararCate'));
         return $array;
     }
     /**
