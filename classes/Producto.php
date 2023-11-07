@@ -143,10 +143,8 @@ class Producto {
         }
         $producto->caracteristicas = $OBJcaracteristicas;
         $arrayIDimagen = explode('|', $datos['imagen']);
-        foreach($arrayIDimagen as $id){
-            $OBJimange[] = (new Images())->imagenID(intval($id));
-        }
-        $producto->imagen = $OBJimange;
+        $producto->imagen  = (new Images())->imagenesProducto($producto->id);
+
         return $producto;
     }
 

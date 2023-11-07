@@ -34,7 +34,7 @@ class Images {
 
     public function imagenID(int $id) :Images {
         $conexion = Conexion::getConexion();
-        $query = "SELECT * FROM `images` WHERE id = ?";
+        $query = "SELECT i.* FROM images AS i JOIN imagenes_x_productos AS ixp ON images.id = ixp.id_imagen WHERE id = ? ORDER BY ixp.id";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStatement->execute([$id]);
@@ -49,7 +49,7 @@ class Images {
     public function imagenesProducto (int $id) :array{
 
         $conexion = Conexion::getConexion();
-        $query = "SELECT i.id, i.name, i.descript FROM imagenes_x_productos AS ixp JOIN images AS i ON ixp.id_imagen = i.id WHERE ixp.id_producto = ?";
+        $query = "SELECT i.id, i.name, i.descript FROM imagenes_x_productos AS ixp JOIN images AS i ON ixp.id_imagen = i.id WHERE ixp.id_producto = ? ORDER BY ixp.id";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStatement->execute([$id]);
