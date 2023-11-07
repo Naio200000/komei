@@ -3,10 +3,6 @@
     if (empty($_POST)){
         if (isset($_GET['category'])) {
             $categorias = (new Categoria())->formateaCategoriasa();
-
-            // echo "<pre>";
-            // print_r($categorias);
-            // echo "<pre>";
             if (in_array($_GET['category'], $categorias)) {
                 $category = $OBJProducto->filtrarCatalogo($_GET['category']);
                 $CategorySelected = $_GET['category'];
@@ -80,15 +76,16 @@
         <article id="productos">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 my-2 container mx-auto">
                 <?PHP
-                    foreach ($category as $producto) {?>         
+                    foreach ($category as $producto) {?>   
                         <div class="col">
+                            <?php 
+                            // echo "<pre>";
+                            // print_r($producto->getImagen());
+                            // echo "</pre>"; 
+                            ?>
                             <div class="card tarjetas-producto">
-                                <?php
-                                    $imagenCard = $producto->getImagen();
-                                    foreach (array_splice($imagenCard,0,1) as $k => $v) { ?>
-                                        <img src="./img/productos/<?= $k ?>.jpg" alt="<?= $v ?>" class="card-img-top">
-                                <?php } ?>
-                                <span class="mx-2 ms-auto capital"><?= $producto->getCategoria()?></span>
+                                <img src="./img/productos/<?= $producto->getImagen()[0]->getName() ?>.jpg" alt="<?= $producto->getImagen()[0]->getDescript() ?>" class="card-img-top">
+                                <span class="mx-2 ms-auto capital"><?= $producto->getCategoria()->getName()?></span>
                                 <div class="card-body">
                                     <h4 class="card-title fs-2 titulocard" type="button" id="<?= $producto->getId()?>boton_mostrar"><a href="index.php?view=item&itemID=<?= $producto->getId()?>" class="fs-2 titulocard"><?= $producto->getNombre()?></a></h4>
                                     <p class="card-text"><?= $producto->formatearDescript()?></p>

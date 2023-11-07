@@ -41,7 +41,7 @@ class Producto {
     *@return array array de caracteristicas con sus valores
     */ 
     public function getCaracteristicas(){
-        return $caracteristicas;
+        return $this->caracteristicas;
     }
    
     /**
@@ -62,7 +62,7 @@ class Producto {
     * Obtiene  el array de imagenes
     */ 
     public function getImagen(){
-        return $imagen;
+        return $this->imagen;
     }
 
     /**
@@ -95,9 +95,7 @@ class Producto {
             $catalogo[] = $this->formateaProducto($datos);
         };
 
-        echo "<pre>";
-        print_r($catalogo);
-        echo "</pre>";
+
         
         $ordenado = $this->ordenarOBJ($catalogo);
 
@@ -113,13 +111,20 @@ class Producto {
     private function catalogoCategoria(string $categoria): array {
 
         $conexion = Conexion::getConexion();
-        $query = "SELECT p.id, p.name, p.descript, c.name as categorias, p.precio, t.name AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN categorias AS c ON p.id_categoria = c.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto WHERE c.name = ? Group by p.id";
+        $query = "SELECT p.id, p.name, p.descript, p.id_categoria as categoria, p.precio, p.id_tipo AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto JOIN categorias ON p.id_categoria = categorias.id WHERE categorias.name = ? Group by p.id;";
         $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute([$categoria]);
-        $datos = $PDOStatement->fetchAll();
+        while ($datos = $PDOStatement->fetch()) {
+            $catalogo[] = $this->formateaProducto($datos);
+        };
 
-        return $datos;
+
+        
+        $ordenado = $this->ordenarOBJ($catalogo);
+
+
+        return $ordenado;
 
     }
 
@@ -181,12 +186,11 @@ class Producto {
     public function productoID (int $id):?Producto {
 
         $conexion = Conexion::getConexion();
-        $query = "SELECT p.id, p.name, p.descript, c.name as categorias, p.precio, t.name AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN categorias AS c ON p.id_categoria = c.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto WHERE p.id = ? Group by p.id";
+        $query = "SELECT p.id, p.name, p.descript, p.id_categoria as categoria, p.precio, p.id_tipo AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto WHERE p.id = ? Group by p.id;";
         $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute([$id]);
-        $datos = $PDOStatement->fetch();
-
+        $datos = $this->formateaProducto($PDOStatement->fetch());
         return $datos ?? null; 
     }
 
@@ -218,18 +222,20 @@ class Producto {
      * @return array array con los datos de etc con key y valor
      */
     public function formatearSTNOBJ(string $dato) :array {
-
+        // echo "<pre>";
+        // print_r($this->caracteristicas);
+        // echo "</pre>";
         $formatear = $this->getCaracteristicas();
         $datosAFormatear = [];
-        foreach ($formatear as $k => $v) {
-            if($k == 'semanal') {
+        foreach ($formatear as $v) {
+            if($v->getName() == 'semanal') {
                 if ($this->tipo == 'Seminario') {
-                    $datosAFormatear['Clases'] = $v . "  Clases";
+                    $datosAFormatear['Clases'] = $v->getValor() . "  Clases";
                 } else {
-                    $datosAFormatear['Clases'] = $v . "  por semana";
+                    $datosAFormatear['Clases'] = $v->getValor() . "  por semana";
                 }
             } else {
-                $datosAFormatear[$k] = $v;
+                $datosAFormatear[$v->getName()] = $v->getValor();
             }
         }
         return $datosAFormatear;
@@ -258,22 +264,22 @@ class Producto {
      * @param array array de objetos Producto
      */
     private function ordenarOBJ(array $array) {
-        // usort($array, array($this, 'compararTipo'));
-        // usort($array, array($this, 'compararCate'));
+        usort($array, array($this, 'compararTipo'));
+        usort($array, array($this, 'compararCate'));
         return $array;
     }
     /**
      * Funcion que compara valores. Se usa en conjunto con usort() para ordenar los valores
      */
     private function compararCate($a, $b) {
-        return $a->categoria <=> $b->categoria;
+        return $a->categoria->getId() <=> $b->categoria->getId();
      }
 
     /**
      * Funcion que compara valores. Se usa en conjunto con usort() para ordenar los valores
      */
     private function compararTipo($a, $b) {
-        return $a->tipo <=> $b->tipo;
+        return $a->tipo->getId() <=> $b->tipo->getId();
      }
 
 

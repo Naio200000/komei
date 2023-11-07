@@ -20,9 +20,9 @@
                         <div class="carousel-inner p-5" id="carrusel-producto">
                             <?php
                                 $i = 0;
-                                foreach ($item->getImagen() as $k => $v) { ?>
+                                foreach ($item->getImagen() as $v) { ?>
                                 <div class="carousel-item <?php if ($i == 0 ) echo 'active'; ?>">
-                                    <img class="card-img-top" src="./img/productos/<?= $k ?>.jpg" alt="<?= $v ?>">
+                                    <img class="card-img-top" src="./img/productos/<?= $v->getName() ?>.jpg" alt="<?= $v->getDescript() ?>">
                                 </div>
                             <?php $i++; }?>
                         </div>
@@ -35,7 +35,7 @@
                             <span class="visually-hidden">Proximo</span>
                         </button>
                     </div>
-                    <span class="text-uppercase p-2 text-lg-start text-end"><?= $item->getCategoria()?></span>
+                    <span class="text-uppercase p-2 text-lg-start text-end"><?= $item->getCategoria()->getName()?></span>
                 </div>
                 <div class="col-lg-6 d-flex flex-column p-3">
                     <div class="card-body flex-grow-0">
@@ -44,7 +44,7 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class='list-group-item fs-5'><span class='fw-bold text-capitalize'> Disponibilidad:  </span><?= $item->formatearFecha() ?></li>
-                        <li class='list-group-item fs-5'><span class='fw-bold text-capitalize'> Tipo:  </span><?= $item->getTipo() ?></li>
+                        <li class='list-group-item fs-5'><span class='fw-bold text-capitalize'> Tipo:  </span><?= $item->getTipo()->getName() ?></li>
                         <?php foreach ($item->formatearSTNOBJ('etc') as $k => $v) { ?>
                             <li class='list-group-item fs-5 text-capitalize'><span class='fw-bold text-capitalize'> <?= "$k : </span> $v </li>"?>
                             <?php }?>
