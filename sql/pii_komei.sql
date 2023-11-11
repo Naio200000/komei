@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 02-11-2023 a las 16:31:20
+-- Tiempo de generación: 11-11-2023 a las 22:30:42
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -42,18 +42,6 @@ INSERT INTO `caracteristicas` (`id`, `name`) VALUES
 (3, 'color'),
 (4, 'material'),
 (5, 'cantidad');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `caracteristicas_x_tipo`
---
-
-CREATE TABLE `caracteristicas_x_tipo` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `id_tipo` int(10) UNSIGNED NOT NULL,
-  `id_caracteristicas` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -295,6 +283,30 @@ INSERT INTO `images` (`id`, `name`, `descript`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `links_validos`
+--
+
+CREATE TABLE `links_validos` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `link` varchar(256) NOT NULL,
+  `title` varchar(256) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `links_validos`
+--
+
+INSERT INTO `links_validos` (`id`, `link`, `title`) VALUES
+(1, 'home', 'Bienvenidos'),
+(2, 'nosotros', 'Contactate con nuestros Dojos'),
+(3, 'tienda', 'Nuestro catalogo de Productos'),
+(4, 'item', 'Producto seleccionado'),
+(5, 'rtaForm', 'Gracias por Comunicarte'),
+(6, 'dojos', 'Contactate con nuestros Dojos');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `productos`
 --
 
@@ -478,14 +490,6 @@ ALTER TABLE `caracteristicas`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `caracteristicas_x_tipo`
---
-ALTER TABLE `caracteristicas_x_tipo`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_producto` (`id_tipo`),
-  ADD KEY `id_tipo_caracteristica` (`id_caracteristicas`);
-
---
 -- Indices de la tabla `caraval_x_producto`
 --
 ALTER TABLE `caraval_x_producto`
@@ -517,6 +521,12 @@ ALTER TABLE `imagenes_x_productos`
 -- Indices de la tabla `images`
 --
 ALTER TABLE `images`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `links_validos`
+--
+ALTER TABLE `links_validos`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -573,12 +583,6 @@ ALTER TABLE `caracteristicas`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT de la tabla `caracteristicas_x_tipo`
---
-ALTER TABLE `caracteristicas_x_tipo`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
 -- AUTO_INCREMENT de la tabla `caraval_x_producto`
 --
 ALTER TABLE `caraval_x_producto`
@@ -607,6 +611,12 @@ ALTER TABLE `imagenes_x_productos`
 --
 ALTER TABLE `images`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+
+--
+-- AUTO_INCREMENT de la tabla `links_validos`
+--
+ALTER TABLE `links_validos`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
@@ -647,13 +657,6 @@ ALTER TABLE `valor_x_caracteristica`
 --
 -- Restricciones para tablas volcadas
 --
-
---
--- Filtros para la tabla `caracteristicas_x_tipo`
---
-ALTER TABLE `caracteristicas_x_tipo`
-  ADD CONSTRAINT `caracteristicas_x_tipo_ibfk_1` FOREIGN KEY (`id_tipo`) REFERENCES `tipos` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `caracteristicas_x_tipo_ibfk_2` FOREIGN KEY (`id_caracteristicas`) REFERENCES `caracteristicas` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `caraval_x_producto`
