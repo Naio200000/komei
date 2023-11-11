@@ -84,7 +84,7 @@
                             // echo "</pre>"; 
                             ?>
                             <div class="card tarjetas-producto">
-                                <img src="./img/productos/<?= $producto->getImagen()[0]->getName() ?>.jpg" alt="<?= $producto->getImagen()[0]->getDescript() ?>" class="card-img-top">
+                                <img src="./img/productos/<?= $producto->getImagen()[0]->getName() ?>.webp" alt="<?= $producto->getImagen()[0]->getDescript() ?>" class="card-img-top">
                                 <span class="mx-2 ms-auto capital"><?= $producto->getCategoria()->getName()?></span>
                                 <div class="card-body">
                                     <h4 class="card-title fs-2 titulocard" type="button" id="<?= $producto->getId()?>boton_mostrar"><a href="index.php?view=item&itemID=<?= $producto->getId()?>" class="fs-2 titulocard"><?= $producto->getNombre()?></a></h4>

@@ -27,7 +27,7 @@
     <header class="header">
         <nav class="navbar navbar-expand-md fixed-top container-fluid x-auto ">
             <div class="nav container align-items-center">
-                <a class="navbar-brand " href="index.php?view=home"><img src="./img/logo/komei_Juku.png" alt="Logo de la escuela"></a>
+                <a class="navbar-brand " href="index.php?view=home"><img src="./img/logo/komei_Juku.webp" alt="Logo de la escuela"></a>
                 <h1 class="titulo text-uppercase text-center">Komei Juku</h1>
                 <button class="navbar-toggler ms-auto m-2" type="button" data-bs-toggle="collapse" data-bs-target="#ContenidoSoporteBarranNav" aria-controls="ContenidoSoporteBarranNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -104,7 +104,7 @@
         <div class="container-md">
             <div class="row align-items-center">
                 <div class="col col-lg-4 p-1">
-                <img class="imagen-perfil footer-perfil" src="./img/misc/perfil.jpg" alt="Un señor muy buen moso">
+                <img class="imagen-perfil footer-perfil" src="./img/misc/perfil.webp" alt="Un señor muy buen moso">
                 </div>
                 <div class="col">
                     <div class="row">
@@ -143,7 +143,7 @@
                             <div class="my-4">
                                 <p class="text-center">Envíanos un mensaje con cualquier consulta que tengas.</p>
                                 <p class="text-center">También contanos tus experiencias en las artes marciales.</p>
-                                <img class="d-none d-lg-block img-fluid mx-auto mt-3 rounded-3" src="./img/misc/imagen-contactos.jpg" alt="Persona escribiendo en Japones">
+                                <img class="d-none d-lg-block img-fluid mx-auto mt-3 rounded-3" src="./img/misc/imagen-contactos.webp" alt="Persona escribiendo en Japones">
                             </div>
                         </div>
                         <div class="col col-lg-6 modal-body">

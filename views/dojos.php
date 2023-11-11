@@ -15,7 +15,7 @@
                 <div class="accordion-body">
                     <div>
                         <div class="d-flex flex-column flex-sm-row justify-content-evenly align-items-center align-items-lg-start mb-4">
-                            <img class="my-1 imagen-perfil" src="./img/dojos/dario-perfil.jpg" alt="Un señor muy buen moso">
+                            <img class="my-1 imagen-perfil" src="./img/dojos/dario-perfil.webp" alt="Un señor muy buen moso">
                             <ul class="my-1">
                                 <li>Dario Vega Sensei</li>
                                 <li>Av. de los Constituyentes 4584</li>
@@ -44,7 +44,7 @@
                 <div class="accordion-body">
                     <div>
                         <div class="d-flex flex-column flex-sm-row justify-content-evenly align-items-center align-items-lg-start mb-4">
-                            <img class="my-1 imagen-perfil" src="./img/dojos/javier-perfil.jpg" alt="Un señor muy buen moso">
+                            <img class="my-1 imagen-perfil" src="./img/dojos/javier-perfil.webp" alt="Un señor muy buen moso">
                             <ul class="my-1">
                                 <li>Javier Alberdi Sensei</li>
                                 <li>Mendoza 1430</li>
@@ -73,7 +73,7 @@
                 <div class="accordion-body">
                     <div>
                         <div class="d-flex flex-column flex-sm-row justify-content-evenly align-items-center align-items-lg-start mb-4">
-                            <img class="my-1 imagen-perfil" src="./img/dojos/jorge-perfil.jpg" alt="Un señor muy buen moso">
+                            <img class="my-1 imagen-perfil" src="./img/dojos/jorge-perfil.webp" alt="Un señor muy buen moso">
                             <ul class="my-1">
                                 <li>Jorge Ruiz Sensei</li>
                                 <li>Espejo N°1179</li>
@@ -102,7 +102,7 @@
                 <div class="accordion-body">
                     <div>
                         <div class="d-flex flex-column flex-sm-row justify-content-evenly align-items-center align-items-lg-start mb-4">
-                            <img class="my-1 imagen-perfil" src="./img/dojos/horacio-perfil.jpg" alt="Un señor muy buen moso">
+                            <img class="my-1 imagen-perfil" src="./img/dojos/horacio-perfil.webp" alt="Un señor muy buen moso">
                             <ul class="my-1">
                                 <li>Horacio Machado Sensei</li>
                                 <li>Calle 6 esquina 153</li>

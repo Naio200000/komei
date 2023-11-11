@@ -6,13 +6,13 @@
             <p class="pe-md-3 fs-5 w-75 mx-auto">El <span lang="ja">Iaido/Iaijutsu</span> es el arte de desenvainar y cortar a la vez, nace del <span lang="ja">kenjutsu</span> que es el combate con sable Japonés (<span lang="ja">Katana</span>). <strong> Estas artes a lo largo de la historia han crecido y generado innumerables estilos a lo largo del tiempo,</strong> de los cuales pocos quedan hoy.</p>
         </div>
         <div class="col-12 col-lg-6">
-            <img class="img-fluid d-none d-lg-block" src="./img/historia/historia-1.jpg" alt="Primer plano de persona a punto de desenvainar una katana">
+            <img class="img-fluid d-none d-lg-block" src="./img/historia/historia-1.webp" alt="Primer plano de persona a punto de desenvainar una katana">
         </div>
     </div>
     <article class="bt-5 mb-3 mx-md-2 mx-lg-3">
         <div class="row">
             <div class="col-12 col-md-6 d-md-flex align-items-md-center text-center">
-                <img src="./img/historia/historia-2.jpg" alt="grupo de samurais" class="img-fluid pb-4" >
+                <img src="./img/historia/historia-2.webp" alt="grupo de samurais" class="img-fluid pb-4" >
             </div>
             <div class="col-12 col-md-6 align-self-center justify-content-md-ceneter">
                 <div class="">
@@ -28,7 +28,7 @@
     <article class="my-3 mx-md-2 mx-lg-3">
         <div class="row">
             <div class="col-12 col-md-6 d-md-flex align-items-md-center text-center order-md-1">
-                <img src="./img/historia/historia-3.jpg" alt="Hombre con una Katana frente a un templo Japones" class="img-fluid pb-4 ">
+                <img src="./img/historia/historia-3.webp" alt="Hombre con una Katana frente a un templo Japones" class="img-fluid pb-4 ">
             </div>
             <div class="col-12 col-md-6 align-self-center justify-content-md-ceneter">
                 <div class="">
@@ -43,7 +43,7 @@
     <article class="my-3 mx-md-2 mx-lg-3">
         <div class="row">
             <div class="col-12 col-md-6 d-md-flex align-items-md-center text-center">
-                <img src="./img/historia/historia-4.jpg" alt="Essential Nutrients" class="img-fluid pb-4">
+                <img src="./img/historia/historia-4.webp" alt="Essential Nutrients" class="img-fluid pb-4">
             </div>
             <div class="col-12 col-md-6 align-self-center justify-content-md-ceneter">
                 <div class="">

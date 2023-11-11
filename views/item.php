@@ -22,7 +22,7 @@
                                 $i = 0;
                                 foreach ($item->getImagen() as $v) { ?>
                                 <div class="carousel-item <?php if ($i == 0 ) echo 'active'; ?>">
-                                    <img class="card-img-top" src="./img/productos/<?= $v->getName() ?>.jpg" alt="<?= $v->getDescript() ?>">
+                                    <img class="card-img-top" src="./img/productos/<?= $v->getName() ?>.webp" alt="<?= $v->getDescript() ?>">
                                 </div>
                             <?php $i++; }?>
                         </div>
