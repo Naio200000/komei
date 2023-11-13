@@ -2,13 +2,13 @@
     <div id="CarrpuselHero" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active" data-bs-interval="10000">
-                <img src="./img/hero/komei-juku-hero-2.jpg" class="d-block w-100" alt="Grupo de estdiantes de Iaido">
+                <img src="./img/hero/komei-juku-hero-2.webp" class="d-block w-100" alt="Grupo de estdiantes de Iaido">
             </div>
             <div class="carousel-item" data-bs-interval="2000">
-                <img src="./img/hero/komei-juku-hero-3.jpg" class="d-block w-100" alt="Banner de promocion para clases">
+                <img src="./img/hero/komei-juku-hero-3.webp" class="d-block w-100" alt="Banner de promocion para clases">
             </div>
             <div class="carousel-item">
-                <img src="./img/hero/komei-juku-hero-4.jpg" class="d-block w-100" alt="Primer plano de persona a punto de desenvainar una katana">
+                <img src="./img/hero/komei-juku-hero-4.webp" class="d-block w-100" alt="Primer plano de persona a punto de desenvainar una katana">
             </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#CarrpuselHero" data-bs-slide="prev">

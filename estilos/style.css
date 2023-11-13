@@ -55,7 +55,7 @@ main {
     padding-top: 100px;
 }
 .banner {
-    background: url(../img/hero/error/samurai-perdido.jpg) no-repeat;
+    background: url(../img/hero/error/samurai-perdido.webp) no-repeat;
     background-size: contain;
     aspect-ratio: 16/9;
     color: var(--main-font-color);
