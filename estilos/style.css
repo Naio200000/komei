@@ -65,6 +65,17 @@ main {
     color: rgb(180, 16, 16);
     font-family: 'Spectral', serif;
 }
+.banner-adm {
+    background: url(../img/hero/error/samurai-perdido.webp) no-repeat;
+    background-size: contain;
+    aspect-ratio: 16/9;
+    color: var(--main-font-color);
+}
+.banner-adm > h2,
+.banner-adm > p{
+    color: rgb(180, 16, 16);
+    font-family: 'Spectral', serif;
+}
 .tienda {
     background-color: #fff;
     padding-top: 100px;
