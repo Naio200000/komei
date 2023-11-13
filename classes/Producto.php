@@ -87,7 +87,7 @@ class Producto {
     public function catalogoCompleto() :array {
         
         $conexion = Conexion::getConexion();
-        $query = "SELECT p.id, p.name, p.descript, p.id_categoria as categoria, p.precio, p.id_tipo AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto Group by p.id;";
+        $query = "SELECT p.id, p.name, p.descript, txc.id_categoria as categoria, p.precio, p.id_tipo AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN tipo_x_categorias AS txc ON t.id = txc.id_tipo LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto Group by p.id;";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute();
@@ -111,7 +111,7 @@ class Producto {
     private function catalogoCategoria(string $categoria): array {
 
         $conexion = Conexion::getConexion();
-        $query = "SELECT p.id, p.name, p.descript, p.id_categoria as categoria, p.precio, p.id_tipo AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto JOIN categorias ON p.id_categoria = categorias.id WHERE categorias.name = ? Group by p.id;";
+        $query = "SELECT p.id, p.name, p.descript, txc.id_categoria as categoria, p.precio, p.id_tipo AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN tipo_x_categorias AS txc ON t.id = txc.id_tipo JOIN categorias AS c ON txc.id_categoria = c.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto WHERE c.name = ? Group by p.id;";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute([$categoria]);
@@ -184,7 +184,7 @@ class Producto {
     public function productoID (int $id):?Producto {
 
         $conexion = Conexion::getConexion();
-        $query = "SELECT p.id, p.name, p.descript, p.id_categoria as categoria, p.precio, p.id_tipo AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto WHERE p.id = ? Group by p.id;";
+        $query = "SELECT p.id, p.name, p.descript, txc.id_categoria as categoria, p.precio, p.id_tipo AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN tipo_x_categorias AS txc ON t.id = txc.id_tipo LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto WHERE p.id = ? Group by p.id;";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute([$id]);
