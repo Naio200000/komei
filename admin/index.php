@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="./estilos/style.css">
 </head>
 <body>
-    <header class="header">
+    <!-- <header class="header">
         <nav class="navbar navbar-expand-md fixed-top container-fluid x-auto ">
             <div class="nav container align-items-center">
                 <a class="navbar-brand " href="index.php?view=dash"><img src="../img/logo/komei_Juku.webp" alt="Logo de la escuela"></a>
@@ -41,13 +41,14 @@
                             <a class="nav-link dropdown-toggle" href="index.php?view=tienda" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrar</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="index.php?view=categoria">Categorias</a></li>
+                                <li><a class="dropdown-item" href="index.php?view=tipo">Tipos</a></li>
                             </ul>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-    </header>
+    </header> -->
     <main>
         <?PHP require_once "views/$views.php";?>
     </main>

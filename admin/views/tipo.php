@@ -1,5 +1,5 @@
 <?php
-    $categorias = (new Categoria)->getAllCategorias();
+    $tipos = (new Tipo)->getAllTipos();
 ?>
 <section class="abm container-fluid container-md pb-3" id="abm">
     <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">Categorias</h2>
@@ -12,16 +12,20 @@
                         <tr>
                             <th class="px-1 text-center" scope="col">#</th>
                             <th class="px-1 text-center" scope="col">Nombre</th>
-                            <th class="px-1 text-center" scope="col" width="60%">Descripción</th>
+                            <th class="px-1 text-center" scope="col" width="40%">Descripción</th>
+                            <th class="px-1 text-center" scope="col">Disponible</th>
+                            <th class="px-1 text-center" scope="col">Categoria</th>
                             <th class="px-1 text-center" scope="col" width="20%">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($categorias as $c) { ?>
+                        <?php foreach($tipos as $t) { ?>
                             <tr>
-                                <th class="text-center" scope="row"><?= $c->getId() ?></th>
-                                <td class="text-capitalize text-center"><?= $c->getName() ?></td>
-                                <td><?= $c->getDescript() ?></td>
+                                <th class="text-center" scope="row"><?= $t->getId() ?></th>
+                                <td class="text-capitalize text-center"><?= $t->getName() ?></td>
+                                <td><?= $t->getDescript() ?></td>
+                                <td class="text-capitalize text-center"><?= $t->formateaDisponibilidad() ?></td>
+                                <td class="text-capitalize text-center"><?= $t->getCategoria()->getName() ?></td>
                                 <td>
                                     <ul>
                                         <li class="btn-editar btn"><a class="fw-bold" href="">Editar</a></li>
