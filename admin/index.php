@@ -21,13 +21,13 @@
     <title>Komei Juku :: <?= $title?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    <link rel="stylesheet" href="../estilos/style.css">
+    <link rel="stylesheet" href="./estilos/style.css">
 </head>
 <body>
     <header class="header">
         <nav class="navbar navbar-expand-md fixed-top container-fluid x-auto ">
             <div class="nav container align-items-center">
-                <a class="navbar-brand " href="index.php?view=home"><img src="../img/logo/komei_Juku.webp" alt="Logo de la escuela"></a>
+                <a class="navbar-brand " href="index.php?view=dash"><img src="../img/logo/komei_Juku.webp" alt="Logo de la escuela"></a>
                 <h1 class="titulo text-uppercase text-center">Komei Juku</h1>
                 <button class="navbar-toggler ms-auto m-2" type="button" data-bs-toggle="collapse" data-bs-target="#ContenidoSoporteBarranNav" aria-controls="ContenidoSoporteBarranNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -35,24 +35,13 @@
                 <div class="collapse navbar-collapse ms-5" id="ContenidoSoporteBarranNav">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=home">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=nosotros">Nosotros</a>
+                            <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=dash">Dashboard</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="index.php?view=tienda" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
+                            <a class="nav-link dropdown-toggle" href="index.php?view=tienda" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrar</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="index.php?view=tienda">Catalogo Completo</a></li>
-                                <?php
-                                    $categorias = (new Categoria())->formateaCategoriasa();
-                                    foreach($categorias as $c) { ?>
-                                        <li><a class="dropdown-item text-capitalize" href="index.php?view=tienda&category=<?= $c?>"><?= $c?></a></li>
-                                <?php } ?>
+                                <li><a class="dropdown-item" href="index.php?view=categoria">Categorias</a></li>
                             </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=dojos">Contactos</a>
                         </li>
                     </ul>
                 </div>

@@ -31,12 +31,12 @@ class Categoria {
      * Trae un array con todos los nombres de las Categorias
      * @return array Array con los nombres de las categorias
       */
-    private function getAllCategorias() :array{
+    public function getAllCategorias() :array{
 
         $conexion = Conexion::getConexion();
-        $query = "SELECT categorias.name FROM categorias";
+        $query = "SELECT * FROM categorias";
         $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStatement->execute();
         $datos = $PDOStatement->fetchAll();
 
