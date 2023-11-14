@@ -160,9 +160,11 @@ class Producto {
             if ($cate) {
                 $completo = $this->catalogoCategoria($cate);
                 foreach($completo as $m) {
-                    if (isset($m->getCaracteristicas()[$etc])) {
-                        if ($m->getCaracteristicas()[$etc] == $filtrar) {
-                            $catalogofiltrar[] = $m;
+                    foreach ($m->getCaracteristicas() as $c) {
+                        if ($c->getName() == $etc) {
+                            if ($c->getValor() == $filtrar) {
+                                $catalogofiltrar[] = $m;
+                            }
                         }
                     }
                 }

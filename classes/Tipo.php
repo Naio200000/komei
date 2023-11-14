@@ -60,7 +60,7 @@ class Tipo {
     public function tipoID(int $id) :Tipo{
 
         $conexion = Conexion::getConexion();
-        $query = "SELECT t.*, txc.id_categoria AS categoria FROM tipos AS t LEFT JOIN tipo_x_categorias AS txc ON t.id = txc.id_tipo WHERE id = ?";
+        $query = "SELECT t.*, txc.id_categoria AS categoria FROM tipos AS t LEFT JOIN tipo_x_categorias AS txc ON t.id = txc.id_tipo WHERE t.id = ?";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStatement->execute([$id]);

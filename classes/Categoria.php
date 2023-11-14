@@ -28,8 +28,8 @@ class Categoria {
     }
 
     /**
-     * Trae un array con todos los nombres de las Categorias
-     * @return array Array con los nombres de las categorias
+     * Trae un array con todos las Categorias
+     * @return array Array con todas las categorias
       */
     public function getAllCategorias() :array{
 
@@ -37,6 +37,21 @@ class Categoria {
         $query = "SELECT * FROM categorias";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute();
+        $datos = $PDOStatement->fetchAll();
+
+        return $datos;
+    }
+    /**
+     * Trae un array con todos los nombres de las Categorias
+     * @return array Array con los nombres de las categorias
+      */
+    private function getAllCategoriasName() :array{
+
+        $conexion = Conexion::getConexion();
+        $query = "SELECT categorias.name FROM categorias";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute();
         $datos = $PDOStatement->fetchAll();
 
@@ -68,7 +83,7 @@ class Categoria {
 
     public function formateaCategoriasa() {
 
-        $categorias = $this->getAllCategorias();
+        $categorias = $this->getAllCategoriasName();
         foreach ($categorias as $value) {
             $datos[] = $value['name'];
         }
