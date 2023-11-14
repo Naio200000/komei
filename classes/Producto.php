@@ -119,9 +119,10 @@ class Producto {
             $catalogo[] = $this->formateaProducto($datos);
         };
 
-
-        
-        $ordenado = $this->ordenarOBJ($catalogo);
+        $ordenado = [];
+        if (!empty($catalogo)){
+            $ordenado = $this->ordenarOBJ($catalogo);
+        }
 
 
         return $ordenado;
