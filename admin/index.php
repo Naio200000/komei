@@ -1,5 +1,4 @@
 <?php
-    // require_once "libraries/functions.php";
     require_once "../libraries/autoloader.php";
 
     $linksValidos = (new Links)->formateaLinks();
@@ -11,7 +10,6 @@
         $views = $viewSelected;
         $title = $linksValidos[$viewSelected]['title'];
     }
-    $OBJProducto = New Producto ();
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -42,6 +40,7 @@
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="index.php?view=categoria">Categorias</a></li>
                                 <li><a class="dropdown-item" href="index.php?view=tipo">Tipos</a></li>
+                                <li><a class="dropdown-item" href="index.php?view=producto">Productos</a></li>
                             </ul>
                         </li>
                     </ul>

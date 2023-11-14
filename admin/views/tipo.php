@@ -38,7 +38,7 @@
                 </table>
                 <div class="tabla col-12 p-2 d-flex">
                     <div class="ms-auto">
-                        <button class="btn btn-komei px-3 me-1"><a class="fw-bold" href="#">Agregar Categoria</a></button>      
+                        <button class="btn btn-komei px-3 me-1"><a class="fw-bold" href="#">Agregar Tipo</a></button>      
                     </div>
                 </div>
             </div>

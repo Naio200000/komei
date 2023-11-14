@@ -225,10 +225,7 @@ class Producto {
      * Formatea los datos de etc en un array asociativo para ser mostrados
      * @return array array con los datos de etc con key y valor
      */
-    public function formatearSTNOBJ(string $dato) :array {
-        // echo "<pre>";
-        // print_r($this->caracteristicas);
-        // echo "</pre>";
+    public function formatearSTNOBJ() :array {
         $formatear = $this->getCaracteristicas();
         $datosAFormatear = [];
         foreach ($formatear as $v) {
