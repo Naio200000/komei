@@ -127,7 +127,11 @@ class Producto {
         return $ordenado;
 
     }
-
+    /**
+     * Formatea los datos del producto para que contenga los objetos de las otras clases
+     * @param array $datos Array de los datos que llegan de la BD
+     * @return Producto Objto producto formateado donde los datos son objetos
+     */
     private function formateaProducto (array $datos) :Producto {
 
         $producto = new self();
