@@ -22,11 +22,13 @@
                                 <th class="text-center" scope="row"><?= $c->getId() ?></th>
                                 <td class="text-capitalize text-center"><?= $c->getName() ?></td>
                                 <td><?= $c->getDescript() ?></td>
-                                <td>
-                                    <ul>
-                                        <li class="btn-editar btn"><a class="fw-bold" href="">Editar</a></li>
-                                        <li class="btn-borrar btn"><a class="fw-bold" href="">Borrar</a></li>
-                                    </ul>
+                                <td class="d-flex justify-content-center">
+                                    <div>
+                                        <a href="index.php?view=abm-categoria&id=<?= $c->getId() ?>"><button class="me-1 btn-editar btn fw-bold">Editar</button></a>
+                                    </div>
+                                    <div>
+                                        <a href="index.php?view=abm-categoria&id=<?= $c->getId() ?>&del=true"><button class="ms-1 btn-borrar btn fw-bold">Borrar</button></a>
+                                    </div>
                                 </td>
                             </tr>
                         <?php } ?>

@@ -52,6 +52,34 @@ class Categoria {
         );
     }
     /**
+     * Edita los datos de una categoria en la DB
+     * @param string #name nombre de la categoria
+     * @param string $descript Parrafo de descripción de la categoría
+     */
+    public function editCategoria (string $nombre, string $descript) {
+
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE`categorias` SET name = :nombre, descript = :descript WHERE id = :id";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [   
+                'id' => $this->id,
+                'nombre' => $nombre,
+                'descript' => $descript
+            ]
+        );
+    }
+    /**
+     * Borra esta categoria
+     */
+    public function deleteCategoria () {
+
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM categorias WHERE id = ?";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([$this->id,]);
+    }
+    /**
      * Devuelve los datos de una categoria segun su ID
      * @param int Id de la Categoria a buscar
      * @return Categoria devuelve un objeto Categoria

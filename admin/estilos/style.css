@@ -76,8 +76,17 @@ main {
 .tarjetas-producto {
     min-height: 500px;
 }
+.agregar {
+    color: rgb(49, 232, 101);
+}
+.editar {
+    color: rgb(232, 168, 49);
+}
+.borrar {
+    color: rgb(203, 43, 43);
+}
 .btn-borrar {
-    background-color: rgb(203, 43, 43);;
+    background-color: rgb(203, 43, 43);
     
 }
 .btn-borrar a {
@@ -90,7 +99,7 @@ main {
     color: #fff;
 }
 .btn-editar {
-    background-color: rgb(232, 168, 49);;
+    background-color: rgb(232, 168, 49);
     
 }
 .btn-editar a {
@@ -127,18 +136,7 @@ main {
     background-color: rgb(151, 169, 178);
     color: #fff;
 }
-.dojos {
-    background-color: var(--second-bg-color);
-    padding-top: 100px;
-}
-.titulo-dojos {
-    font-size: 24px;
-    font-weight: bold;
-    color: var(--main-font-color);
-}
-.dojos-textos {
-    text-align: center;
-}
+
 .social,
 .datos {
     list-style: none;
@@ -157,71 +155,9 @@ main {
 .footer-perfil {
     padding: 1rem;
 }
-.contenedor {
-    display: grid;
-    padding: 10px;
-    gap: 10px;
-    grid-template-areas:    "imagen nada  cerrar"
-                            " texto texto precio";
-}
 
-.productoCarritoImagen {
-    grid-area: imagen;
-
-}
-.productoCarritoImagen img {
-    max-width: 100px;
-}
-
-.productoCarritoTexto {
-    grid-area: texto;
-}
-
-.productoCarritoCerrar {
-    grid-area: cerrar;
-}
-
-.productoCarritoPrecio {
-    grid-area: precio;
-}
-.modalCustom div {
-    border: none;
-}
-.modalCustom:first-child {
-    background-color: #eee ;
-    border-radius: 5px;
-}
-.modalCustom > div {
-    justify-content: center;
-}
-.puntero {
-    font-size: 1.3rem;
-}
-.puntero:hover {
-    cursor: pointer;
-}
-.contactosRespuesta {
-    padding-top: 8px;
-    background-color: var(--main-bg-color);
-    color: var(--main-font-color);
-}
-.mensajeRespuesta {
-    display: block;
-    width: 100%;
-    padding-left: 5rem;
-    font-style: italic;
-}
-.contactoModal{
-    color: var(--main-font-color);
-}
-.red{
-    color: rgb(180, 16, 16);
-}
 @media (min-width: 576px) {
-    .contenedor {
-        grid-template-areas:    "imagen texto   texto   texto   cerrar"
-                                "imagen texto   texto   texto   precio";
-    }
+
  }
 
 @media (min-width: 768px) {
@@ -229,9 +165,6 @@ main {
  }
 
 @media (min-width: 992px) { 
-    .contenedorProductosCarrito {
-        min-width: 500px;
-    }
     .footer {
         padding-bottom: 0;
     }
