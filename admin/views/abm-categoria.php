@@ -4,15 +4,15 @@
     <div class="listado pb-3">
         <article>
             <div class="row g-4 my-2 container mx-auto">
-                <form action="index.php?view=rtaForm" method="POST">
+                <form action="acciones/abm-categoria-accion.php" method="POST">
                     <div class="row align-items-start">
                         <div class="mb-3 col-12 col-sm-6 form-floating">
-                            <input type="text" class="form-control" id="nombre" placeholder="a" name="nombre" >
-                            <label for="nombre" class="col-form-label ms-2">Nombre de la Categoria</label>
+                            <input type="text" class="form-control" id="name" placeholder="a" name="name" >
+                            <label for="name" class="col-form-label ms-2">Nombre de la Categoria</label>
                         </div>
                         <div class="mb-3 form-floating">
-                            <textarea class="form-control" id="message-text" placeholder="a" name="mensaje" rows="6" style="height:100%;" ></textarea>
-                            <label for="message-text" class="col-form-label ms-2">Descripción para ser mostrada en Pagina principal de la categoria</label>
+                            <textarea class="form-control" id="descript-text" placeholder="a" name="descript" rows="6" style="height:100%;" ></textarea>
+                            <label for="descript-text" class="col-form-label ms-2">Descripción para ser mostrada en Pagina principal de la categoria</label>
                         </div>
                         <div class="bg-light col-12 p-2 d-flex">
                             <div class="ms-auto">

@@ -11,6 +11,47 @@ class Categoria {
 
 
     /**
+     * Get the value of id
+     */ 
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Get the value of name
+     */ 
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Get the value of descript
+     */ 
+    public function getDescript()
+    {
+        return $this->descript;
+    }
+
+    /**
+     * Inserta una nueva categoria en la BD
+     * @param string #name nombre de la categoria
+     * @param string $descript Parrafo de descripción de la categoría
+     */
+    Public function insertCategoria(string $nombre, string $descript) {
+
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO `categorias` (`name`, `descript`) VALUES (:nombre , :descript);";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'nombre' => $nombre,
+                'descript' => $descript
+            ]
+        );
+    }
+    /**
      * Devuelve los datos de una categoria segun su ID
      * @param int Id de la Categoria a buscar
      * @return Categoria devuelve un objeto Categoria
@@ -57,30 +98,11 @@ class Categoria {
 
         return $datos;
     }
-    /**
-     * Get the value of id
-     */ 
-    public function getId()
-    {
-        return $this->id;
-    }
 
     /**
-     * Get the value of name
-     */ 
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Get the value of descript
-     */ 
-    public function getDescript()
-    {
-        return $this->descript;
-    }
-
+     * Devuelve un array indexado con los nombres de las categorias
+     * @return array array de nombre de las categorias
+     */
     public function formateaCategoriasa() {
 
         $categorias = $this->getAllCategoriasName();
