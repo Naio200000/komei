@@ -34,7 +34,7 @@
                 </table>
                 <div class="tabla col-12 p-2 d-flex">
                     <div class="ms-auto">
-                        <button class="btn btn-komei px-3 me-1"><a class="fw-bold" href="#">Agregar Categoria</a></button>      
+                        <a class=" px-3 me-1" href="index.php?view=abm-categoria"><button class="fw-bold btn btn-agregar">Agregar Categoria</button></a>
                     </div>
                 </div>
             </div>

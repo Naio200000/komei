@@ -53,7 +53,7 @@
                 </table>
                 <div class="tabla col-12 p-2 d-flex">
                     <div class="ms-auto">
-                        <button class="btn btn-komei px-3 me-1"><a class="fw-bold" href="#">Agregar Producto</a></button>      
+                    <a class=" px-3 me-1" href="index.php?view=abm-producto"><button class="fw-bold btn btn-agregar">Agregar Producto</button></a>  
                     </div>
                 </div>
             </div>
