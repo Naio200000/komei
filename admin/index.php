@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="./estilos/style.css">
 </head>
 <body>
-    <header class="header">
+    <!-- <header class="header">
         <nav class="navbar navbar-expand-md fixed-top container-fluid x-auto ">
             <div class="nav container align-items-center">
                 <a class="navbar-brand " href="index.php?view=dash"><img src="../img/logo/komei_Juku.webp" alt="Logo de la escuela"></a>
@@ -47,7 +47,7 @@
                 </div>
             </div>
         </nav>
-    </header>
+    </header> -->
     <main>
         <?PHP require_once "views/$views.php";?>
     </main>
