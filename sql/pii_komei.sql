@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-11-2023 a las 22:30:42
+-- Tiempo de generación: 15-11-2023 a las 21:30:27
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -119,7 +119,7 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `name`, `descript`) VALUES
-(1, 'clases', NULL),
+(1, 'clases', 'Clases de Iaido'),
 (2, 'ropa', NULL),
 (3, 'equipos', NULL);
 
@@ -302,7 +302,13 @@ INSERT INTO `links_validos` (`id`, `link`, `title`) VALUES
 (3, 'tienda', 'Nuestro catalogo de Productos'),
 (4, 'item', 'Producto seleccionado'),
 (5, 'rtaForm', 'Gracias por Comunicarte'),
-(6, 'dojos', 'Contactate con nuestros Dojos');
+(6, 'dojos', 'Contactate con nuestros Dojos'),
+(7, 'dash', 'Panel de Control'),
+(8, 'categoria', 'Lista de Categorias de Productos'),
+(9, 'tipo', 'Lista de Tipos de Productos'),
+(10, 'producto', 'Lista de los Productos'),
+(11, 'abm-categoria', 'ABM de las categorias de Producto'),
+(12, 'abm-tipo', 'ABM de los Tipos de Producto');
 
 -- --------------------------------------------------------
 
@@ -315,7 +321,6 @@ CREATE TABLE `productos` (
   `name` varchar(256) NOT NULL,
   `descript` text NOT NULL,
   `id_tipo` int(10) UNSIGNED NOT NULL,
-  `id_categoria` int(10) UNSIGNED NOT NULL,
   `precio` decimal(9,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -323,28 +328,28 @@ CREATE TABLE `productos` (
 -- Volcado de datos para la tabla `productos`
 --
 
-INSERT INTO `productos` (`id`, `name`, `descript`, `id_tipo`, `id_categoria`, `precio`) VALUES
-(1, '1 Clase grupal', 'Disfruta de una clase por semana en los días que prefieras; Te invitamos a participar una clase semanal para el uso de la <span lang=\'ja\'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.', 1, 1, 7000.00),
-(2, '2 Clase grupal', 'Disfruta de dos clase por semana en los días que prefieras; Te invitamos a participar dos clase semanal para el uso de la <span lang=\'ja\'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.', 1, 1, 8000.00),
-(3, '3 Clase grupal', 'Disfruta de tres clase por semana en los días que prefieras; Te invitamos a participar una clase semanal para el uso de la <span lang=\'ja\'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.', 1, 1, 9000.00),
-(4, 'Iaidogi Azul', 'Keikogi para entrenamiento, 100% Tetron; Elaborado en tetron: 65% poliéster +35% rayon, esta chaqueta está especialmente diseñada para la práctica de iaido. No achica, no pierde color y es fácil de mantener.', 3, 2, 5000.00),
-(5, 'Obi de Ceda', 'Elegante Cintuon de Ceda; Elaborado en ceda de alta calidad con dimenciones de 15cm de ancho y 4 metros de largo', 4, 2, 5000.00),
-(6, 'Hakama', 'Hakama para entrenamiento, 100% Tetron; Excelentes hakamas de tetrón para el entrenamiento de <span lang=\'ja\'>iaido, kendo, aikido</span> y demas artes marciales. Tela antiarrugas con una composición de 65% poliester y 35% de rayón que asegura la permanencia de las tablas sin mayor esfuerzo de planchado. Elaboradas a mano y cosidas individualmente.', 5, 2, 6000.00),
-(7, 'Shinken Premuim', 'Katana de entenamiento con filo, Hecha en acero 1095; Una katanas hechas de manera tradicional es <span lang=\'ja\'>nihonto</span> (literalmente \'espada japonesa\'). forjada a partir de acero <span lang=\'ja\'>tamahagane</span>.', 6, 3, 60000.00),
-(8, 'Iaito', 'Katana de entenamiento sin filo, hecha dealeacion de Aluminio; Una katanas hechas de manera moderna es <span lang=\'ja\'>mugito</span> (literalmente \'espada de exhhibición). forjada a partir de una aleación de aluminio.', 7, 3, 45000.00),
-(9, 'Bokuto', 'Katana de madera para entrenamiento, con saya de plastico; Una katanas hechas de madera es <span lang=\'ja\'>bokuto</span> (literalmente \'espada de madera). tallada en diversas maderas para mejorar su relación con el peso', 8, 3, 20000.00),
-(10, 'Hakama de Gala', 'Hakama para exibicion, 100% Lana; Excelentes hakamas de Lana para seremoñas o exibiciones de <span lang=\'ja\'>iaido, aikido</span> y demas artes marciales. 100% Hilos de lana Mercerizada con un patron a rayas. Elaboradas a mano y cosidas individualmente.', 5, 2, 14000.00),
-(11, 'Montsuki', 'Kimono de Gala, 100% Lana; Excelentes Kimono de Lana para seremoñas o exibiciones de <span lang=\'ja\'>iaido, aikido</span> y demas artes marciales. 100% Lana con interior de Ceda . Elaboradas a mano y cosidas individualmente.', 3, 2, 17000.00),
-(12, 'Setta', 'Sandalia de Igusa y Algodón; <span lang=\'ja\'>Setta</span> es una fina y elegante sandalia japonesa hecha de Igusa, una planta utilizada para hacer tatamis tradicionales, y una tira de algodón mullido', 9, 2, 8000.00),
-(13, 'Shinken', 'Katana de entenamiento con filo, Hecha en acero 1060; Una katana hecah de manera industrial con acero de alta calidad. LLevada a filo de navaja.', 6, 3, 45000.00),
-(14, '1 clase de Seminario', 'Disfruta de 1 clase en nuestro seminario anual con Sekiguchi Sensei; Te invitamos a participar una clase de nuestro seminario de 3 dias con Sekiguchi Sensei, que nos visita una vez al año. Recivimos a Sensei con una gran seminario.', 10, 1, 12000.00),
-(15, 'Iaidogi Negro', 'Keikogi para entrenamiento, 100% Tetron; Elaborado en tetron: 65% poliéster +35% rayon, esta chaqueta está especialmente diseñada para la práctica de iaido. No achica, no pierde color y es fácil de mantener.', 3, 2, 5000.00),
-(16, '1 Clase personal', 'Disfruta clase personal una vez por semana en los días que prefieras; Te invitamos a participar de 1 clase personales por semana para aprender el uso de la <span lang=\'ja\'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.', 1, 1, 9000.00),
-(17, '2 Clases personales', 'Disfruta de 2 clases personales por semana en los días que prefieras; Te invitamos a participar de 3 clases personales por semana para aprender el uso de la <span lang=\'ja\'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.', 1, 1, 11000.00),
-(18, '3 Clases personales', 'Disfruta de 3 clase personales por semana en los días que prefieras; Te invitamos a participar de 3 clases personales por semana para aprender el uso de la <span lang=\'ja\'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.', 1, 1, 13000.00),
-(19, '2 clases de Seminario', 'Disfruta de 2 clase en nuestro seminario anual con Sekiguchi Sensei; Te invitamos a participar de 2 clases de nuestro seminario de 3 dias con Sekiguchi Sensei, que nos visita una vez al año. Recivimos a Sensei con una gran seminario.', 10, 1, 20000.00),
-(20, '3 clases de Seminario', 'Disfruta de 3 clases en nuestro seminario anual con Sekiguchi Sensei; Te invitamos a participar de nuestro seminario completo de 3 dias con Sekiguchi Sensei, que nos visita una vez al año. Recivimos a Sensei con una gran seminario.', 10, 1, 25000.00),
-(21, 'Obi de algodón', 'Cituron de entrenamiento, 100% Algodón; Elaborado en gabardina de 8 oz, posee una dimensión de 9 cm de ancho y 4 metros de largo.', 4, 2, 3000.00);
+INSERT INTO `productos` (`id`, `name`, `descript`, `id_tipo`, `precio`) VALUES
+(1, '1 Clase grupal', 'Disfruta de una clase por semana en los días que prefieras; Te invitamos a participar una clase semanal para el uso de la <span lang=\'ja\'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.', 1, 7000.00),
+(2, '2 Clase grupal', 'Disfruta de dos clase por semana en los días que prefieras; Te invitamos a participar dos clase semanal para el uso de la <span lang=\'ja\'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.', 1, 8000.00),
+(3, '3 Clase grupal', 'Disfruta de tres clase por semana en los días que prefieras; Te invitamos a participar una clase semanal para el uso de la <span lang=\'ja\'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.', 1, 9000.00),
+(4, 'Iaidogi Azul', 'Keikogi para entrenamiento, 100% Tetron; Elaborado en tetron: 65% poliéster +35% rayon, esta chaqueta está especialmente diseñada para la práctica de iaido. No achica, no pierde color y es fácil de mantener.', 3, 5000.00),
+(5, 'Obi de Ceda', 'Elegante Cintuon de Ceda; Elaborado en ceda de alta calidad con dimenciones de 15cm de ancho y 4 metros de largo', 4, 5000.00),
+(6, 'Hakama', 'Hakama para entrenamiento, 100% Tetron; Excelentes hakamas de tetrón para el entrenamiento de <span lang=\'ja\'>iaido, kendo, aikido</span> y demas artes marciales. Tela antiarrugas con una composición de 65% poliester y 35% de rayón que asegura la permanencia de las tablas sin mayor esfuerzo de planchado. Elaboradas a mano y cosidas individualmente.', 5, 6000.00),
+(7, 'Shinken Premuim', 'Katana de entenamiento con filo, Hecha en acero 1095; Una katanas hechas de manera tradicional es <span lang=\'ja\'>nihonto</span> (literalmente \'espada japonesa\'). forjada a partir de acero <span lang=\'ja\'>tamahagane</span>.', 6, 60000.00),
+(8, 'Iaito', 'Katana de entenamiento sin filo, hecha dealeacion de Aluminio; Una katanas hechas de manera moderna es <span lang=\'ja\'>mugito</span> (literalmente \'espada de exhhibición). forjada a partir de una aleación de aluminio.', 7, 45000.00),
+(9, 'Bokuto', 'Katana de madera para entrenamiento, con saya de plastico; Una katanas hechas de madera es <span lang=\'ja\'>bokuto</span> (literalmente \'espada de madera). tallada en diversas maderas para mejorar su relación con el peso', 8, 20000.00),
+(10, 'Hakama de Gala', 'Hakama para exibicion, 100% Lana; Excelentes hakamas de Lana para seremoñas o exibiciones de <span lang=\'ja\'>iaido, aikido</span> y demas artes marciales. 100% Hilos de lana Mercerizada con un patron a rayas. Elaboradas a mano y cosidas individualmente.', 5, 14000.00),
+(11, 'Montsuki', 'Kimono de Gala, 100% Lana; Excelentes Kimono de Lana para seremoñas o exibiciones de <span lang=\'ja\'>iaido, aikido</span> y demas artes marciales. 100% Lana con interior de Ceda . Elaboradas a mano y cosidas individualmente.', 3, 17000.00),
+(12, 'Setta', 'Sandalia de Igusa y Algodón; <span lang=\'ja\'>Setta</span> es una fina y elegante sandalia japonesa hecha de Igusa, una planta utilizada para hacer tatamis tradicionales, y una tira de algodón mullido', 9, 8000.00),
+(13, 'Shinken', 'Katana de entenamiento con filo, Hecha en acero 1060; Una katana hecah de manera industrial con acero de alta calidad. LLevada a filo de navaja.', 6, 45000.00),
+(14, '1 clase de Seminario', 'Disfruta de 1 clase en nuestro seminario anual con Sekiguchi Sensei; Te invitamos a participar una clase de nuestro seminario de 3 dias con Sekiguchi Sensei, que nos visita una vez al año. Recivimos a Sensei con una gran seminario.', 10, 12000.00),
+(15, 'Iaidogi Negro', 'Keikogi para entrenamiento, 100% Tetron; Elaborado en tetron: 65% poliéster +35% rayon, esta chaqueta está especialmente diseñada para la práctica de iaido. No achica, no pierde color y es fácil de mantener.', 3, 5000.00),
+(16, '1 Clase personal', 'Disfruta clase personal una vez por semana en los días que prefieras; Te invitamos a participar de 1 clase personales por semana para aprender el uso de la <span lang=\'ja\'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.', 1, 9000.00),
+(17, '2 Clases personales', 'Disfruta de 2 clases personales por semana en los días que prefieras; Te invitamos a participar de 3 clases personales por semana para aprender el uso de la <span lang=\'ja\'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.', 1, 11000.00),
+(18, '3 Clases personales', 'Disfruta de 3 clase personales por semana en los días que prefieras; Te invitamos a participar de 3 clases personales por semana para aprender el uso de la <span lang=\'ja\'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.', 1, 13000.00),
+(19, '2 clases de Seminario', 'Disfruta de 2 clase en nuestro seminario anual con Sekiguchi Sensei; Te invitamos a participar de 2 clases de nuestro seminario de 3 dias con Sekiguchi Sensei, que nos visita una vez al año. Recivimos a Sensei con una gran seminario.', 10, 20000.00),
+(20, '3 clases de Seminario', 'Disfruta de 3 clases en nuestro seminario anual con Sekiguchi Sensei; Te invitamos a participar de nuestro seminario completo de 3 dias con Sekiguchi Sensei, que nos visita una vez al año. Recivimos a Sensei con una gran seminario.', 10, 25000.00),
+(21, 'Obi de algodón', 'Cituron de entrenamiento, 100% Algodón; Elaborado en gabardina de 8 oz, posee una dimensión de 9 cm de ancho y 4 metros de largo.', 4, 3000.00);
 
 -- --------------------------------------------------------
 
@@ -383,7 +388,36 @@ INSERT INTO `tipos` (`id`, `name`, `descript`, `id_disponible`) VALUES
 (7, 'Iaito', NULL, 4),
 (8, 'Bokkuto', NULL, 6),
 (9, 'Calzado', NULL, 5),
-(10, 'Seminario', NULL, 1);
+(10, 'Seminario', NULL, 1),
+(11, 'Keiko Inro', 'Una decoración que se cuelga en la cadera', 7);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `tipo_x_categorias`
+--
+
+CREATE TABLE `tipo_x_categorias` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `id_tipo` int(10) UNSIGNED NOT NULL,
+  `id_categoria` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `tipo_x_categorias`
+--
+
+INSERT INTO `tipo_x_categorias` (`id`, `id_tipo`, `id_categoria`) VALUES
+(1, 1, 1),
+(2, 10, 1),
+(3, 3, 2),
+(4, 4, 2),
+(5, 5, 2),
+(6, 6, 3),
+(7, 7, 3),
+(8, 8, 3),
+(9, 9, 2),
+(12, 11, 2);
 
 -- --------------------------------------------------------
 
@@ -534,7 +568,6 @@ ALTER TABLE `links_validos`
 --
 ALTER TABLE `productos`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `idCategoria` (`id_categoria`),
   ADD KEY `id_tipo` (`id_tipo`),
   ADD KEY `id_tipo_2` (`id_tipo`);
 
@@ -550,6 +583,14 @@ ALTER TABLE `roles`
 ALTER TABLE `tipos`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_disponible` (`id_disponible`);
+
+--
+-- Indices de la tabla `tipo_x_categorias`
+--
+ALTER TABLE `tipo_x_categorias`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_tipo` (`id_tipo`),
+  ADD KEY `id_categoria` (`id_categoria`);
 
 --
 -- Indices de la tabla `usuario`
@@ -616,7 +657,7 @@ ALTER TABLE `images`
 -- AUTO_INCREMENT de la tabla `links_validos`
 --
 ALTER TABLE `links_validos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
@@ -634,7 +675,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `tipos`
 --
 ALTER TABLE `tipos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
+-- AUTO_INCREMENT de la tabla `tipo_x_categorias`
+--
+ALTER TABLE `tipo_x_categorias`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -676,7 +723,6 @@ ALTER TABLE `imagenes_x_productos`
 -- Filtros para la tabla `productos`
 --
 ALTER TABLE `productos`
-  ADD CONSTRAINT `productos_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`) ON UPDATE CASCADE,
   ADD CONSTRAINT `productos_ibfk_2` FOREIGN KEY (`id_tipo`) REFERENCES `tipos` (`id`) ON UPDATE CASCADE;
 
 --
@@ -684,6 +730,13 @@ ALTER TABLE `productos`
 --
 ALTER TABLE `tipos`
   ADD CONSTRAINT `tipos_ibfk_1` FOREIGN KEY (`id_disponible`) REFERENCES `disponibilidad` (`id`) ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `tipo_x_categorias`
+--
+ALTER TABLE `tipo_x_categorias`
+  ADD CONSTRAINT `tipo_x_categorias_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tipo_x_categorias_ibfk_3` FOREIGN KEY (`id_tipo`) REFERENCES `tipos` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuario`
