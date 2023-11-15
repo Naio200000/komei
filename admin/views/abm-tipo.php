@@ -2,11 +2,15 @@
     $id = $_GET['id'] ?? false;
     $del = $_GET['del'] ?? false;
     $tipo = $id ? (new tipo)->tipoID($id) : new Tipo;
+    $dispo = $tipo->getDisponibilidadId();
     $disponibilidad = $tipo->getAllDisponibilidad();
     $categorias = (new Categoria)->getAllCategorias();
-    echo '<pre>';
-    print_r($tipo);
-    echo '</pre>';
+    // echo '<pre>';
+    // print_r($tipo);
+    // echo '</pre>';
+    // echo '<pre>';
+    // print_r($tipo->getDisponibilidadId());
+    // echo '</pre>';
    
 ?>
 
@@ -68,9 +72,6 @@
                             </div>
                             <!-- radio -->
                             <div class="mb-3 formularioApp">
-                                <?php 
-                                    
-                                ?>
                                 <div class="form-check d-flex justify-content-start">
                                     <input v-model="radio" class="form-check-input" type="radio" id="select" name="radio" value="select">
                                     <label class="mx-2" for="select">Seleccione Disponibilidad</label>
@@ -82,7 +83,7 @@
                                     </select>
                                 </div>
                                 <div class="form-check d-flex justify-content-start">
-                                    <input v-model="radio" class="form-check-input" type="radio" id="fecha" name="radio" value="fecha">
+                                    <input v-model="radio" class="form-check-input" checked  type="radio" id="fecha" name="radio" value="fecha">
                                     <label class="mx-2" for="fecha">Ingrese la Fecha</label>
                                     <input class="ms-auto my-1" type="date" name="fecha" :disabled="(radio === 'dias' || radio === 'select') ? true : false">
                                 </div>

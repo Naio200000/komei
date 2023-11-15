@@ -155,13 +155,13 @@ class Tipo {
         return $datos;
     }
 
-    public function getDisponibilidadId(int $id) :array {
+    public function getDisponibilidadId() :mixed {
         $conexion = Conexion::getConexion();
         $query = "SELECT d.id, CONCAT_WS(' ', d.seminario, d.resto) as tiempo  FROM `disponibilidad` AS d WHERE d.id = ?";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
-        $PDOStatement->execute([$id]);
-        $datos = $PDOStatement->fetchAll();
+        $PDOStatement->execute([$this->getId_disponible()]);
+        $datos = $PDOStatement->fetch();
 
         return $datos;
     }
