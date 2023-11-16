@@ -126,24 +126,66 @@ class Tipo {
      * @param string #name nombre del tipo
      * @param string $descript Parrafo de descripción del tipo
      * @param string $descript Parrafo de descripción del tipo
-     * @param int $id_categoria Categoria a la que pertenece el tipo
      */
     public function editTipo (array $dataPOST) {
 
         $conexion = Conexion::getConexion();
-        
-        $query = "UPDATE`tipos` SET name = :nombre, descript = :descript WHERE id = :id";
+        if (isset($dataPOST['select'])) {
+            $id_disponible = $dataPOST['select'];
+        }
+        $query = "UPDATE`tipos` SET name = :nombre, descript = :descript, id_disponible = :disponible WHERE id = :id";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->execute(
             [   
                 'id' => $this->id,
-                'nombre' => $nombre,
-                'descript' => $descript
+                'nombre' => $dataPOST['name'],
+                'descript' => $dataPOST['descript'],
+                'disponible' => $id_disponible
+            ]
+        );
+
+    }
+
+    /**
+     * Inserta una nueva relación entre un tipo y una categoria
+     * @param int #id_tipo Id del tipo
+     * @param int $id_categoria ID de la categoria
+     */
+    Public function editTipoXCategoria( int $id_categoria) {
+
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE `tipo_x_categorias` SET id_categoria = :id_categoria WHERE id_tipo = :id_tipo";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'id_tipo' => $this->id,
+                'id_categoria' => $id_categoria
             ]
         );
     }
 
+        /**
+     * Inserta una nueva Disponibilidad en la BD
+     * @param string Fecha de la siponibilidad puede ser null
+     * @return int Cantidad de dias puede ser null
+     * @return int ID del nuevo ingreso
+     */
+    public function editDisponibilidad (string $fecha = null, int $cantidad = null) :int{
 
+        $conexion = Conexion::getConexion();
+        if ($fecha) {
+            $query = "INSERT INTO `disponibilidad` (`seminario`) VALUES( ?)";
+            $dato = $fecha;
+        } else {
+            $query = "INSERT INTO `disponibilidad` (`resto`) VALUES( ?)";
+            $dato = $cantidad;
+        }
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([$dato]);
+
+        
+        return $conexion->lastInsertId();
+    }
     // /**
     //  * Borra esta categoria
     //  */

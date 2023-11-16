@@ -2,20 +2,24 @@
     require_once "../../libraries/autoloader.php";
     $id = $_GET['id'] ?? FALSE;
     // $del = $_GET['del'] ?? FALSE;
-    // $categoria = $id ? (new Categoria)->categoriaID($id) : false;
+    $tipo = $id ? (new Tipo)->tipoID($id) : new Tipo();
     $datosPOST = $_POST;
-    // echo '<pre>';
-    // print_r($dataPOST);
-    // echo '</pre>';
+    echo '<pre>';
+    print_r($tipo);
+    echo '</pre>';
+    echo '<pre>';
+    print_r($datosPOST);
+    echo '</pre>';
     
     try {
         if (!$id) {
-            $tipo = new Tipo();
             $id_tipo = $tipo->insertTipo($datosPOST);
             $tipo->insertTipoXCategoria($id_tipo, $datosPOST['id_categoria']);
         } else {
     // //         if (!$del) {
-                $categoria->editTipo($datosPOST['name'], $datosPOST['descript']);
+                $tipo->editTipo($datosPOST);
+                $tipo->editTipoXCategoria($datosPOST['id_categoria']);
+
     // //         } else {
     // //             $categoria->deleteCategoria($id);
     // //         }
