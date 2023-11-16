@@ -2,6 +2,10 @@ Cosas para agregar
 
 Agregar el ABM
 
+Agregar log in / Verificacion de usuario y $_SESSION
+
+
+Agregar funcion que decide que color tienen los botones y titulos de ABM (Podria estar en la Clase Alert)
 
 Si hay tiempo Programar para  que los datos de dojos de sql 
 
