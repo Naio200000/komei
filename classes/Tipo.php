@@ -194,18 +194,25 @@ class Tipo {
         return $this->id_disponible;
     }
 
+    /**
+     * Borra este Tipo
+     */
+    public function deletetipo () {
 
-    // /**
-    //  * Borra esta categoria
-    //  */
-    // public function deleteCategoria () {
+        $this->deleteTipoxCategoria();
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM tipos WHERE id = ?";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([$this->id,]);
+    }
 
-    //     $conexion = Conexion::getConexion();
-    //     $query = "DELETE FROM categorias WHERE id = ?";
-    //     $PDOStatement = $conexion->prepare($query);
-    //     $PDOStatement->execute([$this->id,]);
-    // }
+    public function deleteTipoxCategoria () {
 
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM tipo_x_categorias WHERE id_tipo = ?";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([$this->id,]);
+    }
     /**
      * Devuelve un objeto Tipo
      * @param int ID del tipo a buscar

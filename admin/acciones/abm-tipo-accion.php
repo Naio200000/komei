@@ -1,7 +1,7 @@
 <?php
     require_once "../../libraries/autoloader.php";
     $id = $_GET['id'] ?? FALSE;
-    // $del = $_GET['del'] ?? FALSE;
+    $del = $_GET['del'] ?? FALSE;
     $tipo = $id ? (new Tipo)->tipoID($id) : new Tipo();
     $datosPOST = $_POST;
     echo '<pre>';
@@ -16,13 +16,13 @@
             $id_tipo = $tipo->insertTipo($datosPOST);
             $tipo->insertTipoXCategoria($id_tipo, $datosPOST['id_categoria']);
         } else {
-    // //         if (!$del) {
+            if (!$del) {
                 $tipo->editTipo($datosPOST);
                 $tipo->editTipoXCategoria($datosPOST['id_categoria']);
 
-    // //         } else {
-    // //             $categoria->deleteCategoria($id);
-    // //         }
+            } else {
+                $tipo->deleteTipo();
+            }
         }
 
         header('Location: ../index.php?view=tipo');
