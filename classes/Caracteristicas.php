@@ -43,7 +43,6 @@ class Caracteristicas {
      */
     public function caravalID(int $id) :Caracteristicas {
 
-
         $conexion = Conexion::getConexion();
         $query = "SELECT vxc.id, c.name, v.valor FROM valor_x_caracteristica AS vxc JOIN caracteristicas AS c ON vxc.id_caracteristica = c.id JOIN valores AS v ON vxc.id_valor = v.id WHERE vxc.id = ?";
         $PDOStatement = $conexion->prepare($query);
@@ -57,7 +56,6 @@ class Caracteristicas {
      * @return array devuelve array de caracteristica y valores
      */
     public function getAllCaraval() :array {
-
 
         $conexion = Conexion::getConexion();
         $query = "SELECT vxc.id, c.name, v.valor FROM valor_x_caracteristica AS vxc JOIN caracteristicas AS c ON vxc.id_caracteristica = c.id JOIN valores AS v ON vxc.id_valor = v.id";
@@ -73,7 +71,6 @@ class Caracteristicas {
      */
     public function getAllCaracteristicas() :array {
 
-
         $conexion = Conexion::getConexion();
         $query = "SELECT * FROM  caracteristicas";
         $PDOStatement = $conexion->prepare($query);
@@ -87,7 +84,6 @@ class Caracteristicas {
      * @return array Array de valores
      */
     public function getAllvalores() :array {
-
 
         $conexion = Conexion::getConexion();
         $query = "SELECT * FROM  valores";

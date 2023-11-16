@@ -137,6 +137,12 @@ main {
     color: #fff;
 }
 
+.titulo-caraval {
+    font-size: 24px;
+    font-weight: bold;
+    color: var(--main-font-color);
+}
+
 .social,
 .datos {
     list-style: none;

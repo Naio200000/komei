@@ -3,6 +3,15 @@ Cosas para agregar
 Agregar el ABM
 
 
-Cambiar imagenes de clases y seminarios (diferenciarlas)
-
 Si hay tiempo Programar para  que los datos de dojos de sql 
+
+
+Query
+SELECT 
+vxc.id,
+c.name,
+GROUP_CONCAT(v.valor)
+FROM valor_x_caracteristica AS vxc
+JOIN caracteristicas AS c ON vxc.id_caracteristica = c.id
+JOIN valores AS v ON vxc.id_valor = v.id
+GROUP BY c.id;
