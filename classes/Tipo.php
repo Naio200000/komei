@@ -132,6 +132,8 @@ class Tipo {
         $conexion = Conexion::getConexion();
         if (isset($dataPOST['select'])) {
             $id_disponible = $dataPOST['select'];
+        } else {
+            $id_disponible = $this->editDisponibilidad($dataPOST['fecha'], $dataPOST['dias']);
         }
         $query = "UPDATE`tipos` SET name = :nombre, descript = :descript, id_disponible = :disponible WHERE id = :id";
         $PDOStatement = $conexion->prepare($query);
@@ -164,28 +166,35 @@ class Tipo {
         );
     }
 
-        /**
+    //Falta verificar si este dato ingresado ya esta en la BD
+    /**
      * Inserta una nueva Disponibilidad en la BD
      * @param string Fecha de la siponibilidad puede ser null
      * @return int Cantidad de dias puede ser null
      * @return int ID del nuevo ingreso
+     * @return int ID de la Disponibilidad editada
      */
-    public function editDisponibilidad (string $fecha = null, int $cantidad = null) :int{
+    public function editDisponibilidad (string $fecha = null, int $cantidad = null) :int {
 
         $conexion = Conexion::getConexion();
         if ($fecha) {
-            $query = "INSERT INTO `disponibilidad` (`seminario`) VALUES( ?)";
+            $query = "UPDATE `disponibilidad` SET seminario = :dato , resto = NULL WHERE id = :id";
             $dato = $fecha;
         } else {
-            $query = "INSERT INTO `disponibilidad` (`resto`) VALUES( ?)";
+            $query = "UPDATE `disponibilidad` SET seminario = NULl, resto = :dato WHERE id = :id";
             $dato = $cantidad;
         }
         $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->execute([$dato]);
-
-        
-        return $conexion->lastInsertId();
+        $PDOStatement->execute(
+            [
+                'id' => $this->id_disponible,
+                'dato' =>$dato
+            ]
+        );
+        return $this->id_disponible;
     }
+
+
     // /**
     //  * Borra esta categoria
     //  */
