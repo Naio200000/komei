@@ -52,4 +52,49 @@ class Caracteristicas {
         $datos = $PDOStatement->fetch();
         return $datos;
     }
+    /**
+     * Devuelve las caracteristicas con sus valores
+     * @return array devuelve array de caracteristica y valores
+     */
+    public function getAllCaraval() :array {
+
+
+        $conexion = Conexion::getConexion();
+        $query = "SELECT vxc.id, c.name, v.valor FROM valor_x_caracteristica AS vxc JOIN caracteristicas AS c ON vxc.id_caracteristica = c.id JOIN valores AS v ON vxc.id_valor = v.id";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute();
+        $datos = $PDOStatement->fetchAll();
+        return $datos;
+    }
+    /**
+     * Devuelve un array con solo las caracteristicas en la db
+     * @return array Array de caracteristicas
+     */
+    public function getAllCaracteristicas() :array {
+
+
+        $conexion = Conexion::getConexion();
+        $query = "SELECT * FROM  caracteristicas";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement->execute();
+        $datos = $PDOStatement->fetchAll();
+        return $datos;
+    }
+    /**
+     * Devuelve un array con solo los valores en la db
+     * @return array Array de valores
+     */
+    public function getAllvalores() :array {
+
+
+        $conexion = Conexion::getConexion();
+        $query = "SELECT * FROM  valores";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement->execute();
+        $datos = $PDOStatement->fetchAll();
+        return $datos;
+    }
 }

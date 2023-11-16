@@ -5,13 +5,6 @@
     $dispo = $tipo->getDisponibilidadId();
     $disponibilidad = $tipo->getAllDisponibilidad();
     $categorias = (new Categoria)->getAllCategorias();
-    echo '<pre>';
-    print_r($tipo);
-    echo '</pre>';
-    // echo '<pre>';
-    // print_r($tipo->getDisponibilidadId());
-    // echo '</pre>';
-   
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
