@@ -57,7 +57,7 @@
                             </div>
                             <!-- input cate -->
                             <div class="mb-3 form-floating">
-                                <select class="form-select" name="id_categoria" id="id_categoria" required>
+                                <select <?php echo $del ? "Disabled" : ""; ?> class="form-select" name="id_categoria" id="id_categoria" required>
                                     <option value="" selected disabled>Elija una opción</option>
                                     <?PHP foreach ($categorias as $c) { ?>
                                         <option class="text-capitalize" value="<?= $c->getId() ?>" <?= $c->getId() == $tipo->getCategoria() ? "selected" : "" ?>><?= $c->getName() ?></option>
@@ -68,12 +68,13 @@
                         <div class="col-12 col-sm-6">
                             <!-- texto radio -->
                             <div class="mb-3">
-                                <p class=""><span Class="fw-bold">Seleccione si la Disponibilidad del Tipo de producto si ya existe. <br></span><span class="fw-bold">Si tiene que cargar nueva,</span> tiene la opción de elegir una Fecha Particular o Ingresar una cantidad de días. Ponga 0 en cantidad de días si está disponible en el momento o todos los días</p>
+                               <?php echo $del ? " <p class='text-center'><span class='fs-5'>Disponibilidad</span></p>" : "<p><span Class='fw-bold'>Seleccione si la Disponibilidad del Tipo de producto si ya existe. <br></span><span class='fw-bold'>Si tiene que cargar nueva,</span> tiene la opción de elegir una Fecha Particular o Ingresar una cantidad de días. Ponga 0 en cantidad de días si está disponible en el momento o todos los días</p>"; ?>
                             </div>
                             <!-- radio -->
                             <div class="mb-3 formularioApp">
                                 <?php
                                     $validate = false;
+                                    $ternaryVue = '(radio === "dias" || radio === "fecha") ? true : false';
                                     $html = '';
                                     if ($dispo){
                                         foreach ($disponibilidad as $d => $v) {
@@ -93,9 +94,9 @@
                                     }
                                 ?>
                                 <div class="form-check d-flex justify-content-start">
-                                    <input <?= $validate ? ":placeholder='checked()'":"" ?> v-model="radio" class="form-check-input" type="radio" id="select" name="radio" value="select">
+                                    <input <?= $validate ? ":placeholder='checked()'":"" ?> <?php echo $del ? "Disabled" : ""; ?> v-model="radio" class="form-check-input" type="radio" id="select" name="radio" value="select">
                                     <label class="mx-2" for="select">Seleccione Disponibilidad</label>
-                                    <select class="ms-auto my-1" name="select" id="select" :disabled="(radio === 'dias' || radio === 'fecha') ? true : false">
+                                    <select class="ms-auto my-1" name="select" id="select" <?php echo $del ? "Disabled" : ":disabled='$ternaryVue'" ?> >
                                         <option value="" selected >Elija una opción</option>
                                         <?= $html ?>
                                     </select>
