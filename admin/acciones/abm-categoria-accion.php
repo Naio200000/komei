@@ -2,7 +2,7 @@
     require_once "../../libraries/autoloader.php";
     $id = $_GET['id'] ?? FALSE;
     $del = $_GET['del'] ?? FALSE;
-    $categoria = $id ? (new Categoria)->categoriaID($id) : false;
+    $categoria = $id ? (new Categoria)->categoriaID($id) : (new Categoria);
     $datosPOST = $_POST;
     echo '<pre>';
     print_r($del);
@@ -10,7 +10,7 @@
     
     try {
         if (!$id) {
-            (new Categoria)->insertCategoria($datosPOST['name'], $datosPOST['descript']);
+            $categoria->insertCategoria($datosPOST['name'], $datosPOST['descript']);
         } else {
             if (!$del) {
                 $categoria->editCategoria($datosPOST['name'], $datosPOST['descript']);
