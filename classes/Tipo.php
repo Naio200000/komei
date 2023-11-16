@@ -56,19 +56,23 @@ class Tipo {
 
     /**
      * Inserta una nueva tipo en la BD
-     * @param string #name nombre del tipo
-     * @param string $descript Parrafo de descripción del tipo
-     * @param string $disponibilidad Fecha o cantidad de días 
+     * @param array Todos los datos para ingresar
+     * @return int ID del nuevo ingreso
      */
-    Public function insertTipo(string $nombre, string $descript, int $id_disponible) {
+    Public function insertTipo(array $dataPOST) :int {
 
         $conexion = Conexion::getConexion();
+        if (isset($dataPOST['select'])) {
+            $id_disponible = $dataPOST['select'];
+        } else {
+           $id_disponible = $this->insertDisponibilidad($dataPOST['fecha'], $dataPOST['dias']);
+        }
         $query = "INSERT INTO `tipos` (`name`, `descript`, `id_disponible` ) VALUES (:nombre , :descript, :id_disponible);";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->execute(
             [
-                'nombre' => $nombre,
-                'descript' => $descript,
+                'nombre' => $dataPOST['name'],
+                'descript' => $dataPOST['descript'],
                 'id_disponible' => $id_disponible
             ]
         );
@@ -76,7 +80,28 @@ class Tipo {
         
         return $conexion->lastInsertId();
     }
+    /**
+     * Inserta una nueva Disponibilidad en la BD
+     * @param string Fecha de la siponibilidad puede ser null
+     * @return int Cantidad de dias puede ser null
+     * @return int ID del nuevo ingreso
+     */
+    public function insertDisponibilidad (string $fecha = null, int $cantidad = null) :int{
 
+        $conexion = Conexion::getConexion();
+        if ($fecha) {
+            $query = "INSERT INTO `disponibilidad` (`seminario`) VALUES( ?)";
+            $dato = $fecha;
+        } else {
+            $query = "INSERT INTO `disponibilidad` (`resto`) VALUES( ?)";
+            $dato = $cantidad;
+        }
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([$dato]);
+
+        
+        return $conexion->lastInsertId();
+    }
     /**
      * Inserta una nueva relación entre un tipo y una categoria
      * @param int #id_tipo Id del tipo
@@ -96,24 +121,29 @@ class Tipo {
     }
 
 
-    // /**
-    //  * Edita los datos de una categoria en la DB
-    //  * @param string #name nombre de la categoria
-    //  * @param string $descript Parrafo de descripción de la categoría
-    //  */
-    // public function editCategoria (string $nombre, string $descript) {
+    /**
+     * Edita los datos de un tipo en la DB
+     * @param string #name nombre del tipo
+     * @param string $descript Parrafo de descripción del tipo
+     * @param string $descript Parrafo de descripción del tipo
+     * @param int $id_categoria Categoria a la que pertenece el tipo
+     */
+    public function editTipo (array $dataPOST) {
 
-    //     $conexion = Conexion::getConexion();
-    //     $query = "UPDATE`categorias` SET name = :nombre, descript = :descript WHERE id = :id";
-    //     $PDOStatement = $conexion->prepare($query);
-    //     $PDOStatement->execute(
-    //         [   
-    //             'id' => $this->id,
-    //             'nombre' => $nombre,
-    //             'descript' => $descript
-    //         ]
-    //     );
-    // }
+        $conexion = Conexion::getConexion();
+        
+        $query = "UPDATE`tipos` SET name = :nombre, descript = :descript WHERE id = :id";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [   
+                'id' => $this->id,
+                'nombre' => $nombre,
+                'descript' => $descript
+            ]
+        );
+    }
+
+
     // /**
     //  * Borra esta categoria
     //  */

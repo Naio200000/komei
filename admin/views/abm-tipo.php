@@ -5,9 +5,9 @@
     $dispo = $tipo->getDisponibilidadId();
     $disponibilidad = $tipo->getAllDisponibilidad();
     $categorias = (new Categoria)->getAllCategorias();
-    // echo '<pre>';
-    // print_r($tipo);
-    // echo '</pre>';
+    echo '<pre>';
+    print_r($tipo);
+    echo '</pre>';
     // echo '<pre>';
     // print_r($tipo->getDisponibilidadId());
     // echo '</pre>';
@@ -72,18 +72,36 @@
                             </div>
                             <!-- radio -->
                             <div class="mb-3 formularioApp">
+                                <?php
+                                    $validate = false;
+                                    $html = '';
+                                    if ($dispo){
+                                        foreach ($disponibilidad as $d => $v) {
+                                            $selected = '';
+                                            $tiempo = strtotime($v['tiempo']) ? $v['tiempo'] : $v['tiempo']." dias";
+                                            if ($dispo['id'] == $v['id']) {
+                                                $validate = true;
+                                                $selected = ' selected ';
+                                            }
+                                            $html = $html . '<option value=' . $v['id'] . $selected . '>' . $tiempo . '</option>';
+                                        }
+                                    } else {
+                                        foreach($disponibilidad as $d =>$v) {
+                                            $tiempo = strtotime($v['tiempo']) ? $v['tiempo'] : $v['tiempo']." dias";
+                                            $html = $html . '<option value=' . $v['id']  . '>' . $tiempo . '</option>';
+                                        }
+                                    }
+                                ?>
                                 <div class="form-check d-flex justify-content-start">
-                                    <input v-model="radio" class="form-check-input" type="radio" id="select" name="radio" value="select">
+                                    <input <?= $validate ? ":placeholder='checked()'":"" ?> v-model="radio" class="form-check-input" type="radio" id="select" name="radio" value="select">
                                     <label class="mx-2" for="select">Seleccione Disponibilidad</label>
                                     <select class="ms-auto my-1" name="select" id="select" :disabled="(radio === 'dias' || radio === 'fecha') ? true : false">
                                         <option value="" selected >Elija una opción</option>
-                                        <?PHP foreach ($disponibilidad as $d => $v) { ?>
-                                            <option value="<?= $v['id'] ?>"><?php echo strtotime($v['tiempo']) ? $v['tiempo'] : $v['tiempo']." dias"; ?></option>
-                                        <?PHP } ?>
+                                        <?= $html ?>
                                     </select>
                                 </div>
                                 <div class="form-check d-flex justify-content-start">
-                                    <input v-model="radio" class="form-check-input" checked  type="radio" id="fecha" name="radio" value="fecha">
+                                    <input v-model="radio" class="form-check-input" type="radio" id="fecha" name="radio" value="fecha">
                                     <label class="mx-2" for="fecha">Ingrese la Fecha</label>
                                     <input class="ms-auto my-1" type="date" name="fecha" :disabled="(radio === 'dias' || radio === 'select') ? true : false">
                                 </div>
