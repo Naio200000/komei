@@ -272,14 +272,14 @@ class Tipo {
         $PDOStatement->execute([$this->id_disponible]);
         $datos = $PDOStatement->fetch();
         
-        if ($datos['name'] == 'clases'){
+        if ($datos['name'] != 'seminario'){
             if ($datos['tiempo'] == 0) {
                 return 'Todos los días';
             } else {
-                return date('m/y', strtotime($datos['tiempo']));
+                return $datos['tiempo'] . " Dias";
             }
         } else {
-            return $datos['tiempo'] . " Dias";
+            return date('m/y', strtotime($datos['tiempo']));
         }
 
     }

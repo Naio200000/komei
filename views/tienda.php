@@ -34,6 +34,7 @@
                 <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
                     <div class="accordion-body">
                         <p class="fs-5 w-75 mx-auto">Filtra nuestros productos por lo que estes buscando.</p>
+                        <?php //Falta acomodar para que los filtros se actualicen cuando cargamos nuevos datos ?>
                         <form action="index.php?view=tienda" method="post">
                             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 my-2 container mx-auto">
                                 <div class="col form-floating">
@@ -57,6 +58,9 @@
                                             <option :value="key">{{item}}</option>
                                         </template>
                                         <template v-if="cateSelected == 'equipos'" v-for="(item, key) of datosEquipos[dataSelected]">
+                                            <option :value="key">{{item}}</option>
+                                        </template>
+                                        <template v-if="cateSelected == 'seminario'" v-for="(item, key) of datosSeminario[dataSelected]">
                                             <option :value="key">{{item}}</option>
                                         </template>
                                     </select>

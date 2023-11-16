@@ -13,6 +13,9 @@ var app = new Vue({
                 semanal: "Clases por semana", 
                 personas: "En grupo o solo?"
             },
+            seminario:{
+                semanal: "Clases por semana", 
+            },
             equipos:{
                 color:"Que color de equipo",
                 material:"Que material de equipo",
@@ -31,6 +34,13 @@ var app = new Vue({
             personas: {
                 grupal: "Clases grupales",
                 personal: "Clases personales"
+            },
+        },
+        datosSeminario:{
+            semanal:{
+                1: "1 Clase",
+                2: "2 Clase",
+                3: "3 Clase"
             },
         },
         datosRopa:{
