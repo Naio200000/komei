@@ -2,7 +2,7 @@
     require_once "../../libraries/autoloader.php";
     $id = $_GET['id'] ?? FALSE;
     $del = $_GET['del'] ?? FALSE;
-    $caraval = $id ? (new Caracteristicas)->caravalID($id) : new Caracteristicas();
+    $caraval = $id ? (new Caraval)->caravalID($id) : new Caraval();
     $datosPOST = $_POST;
     // echo '<pre>';
     // print_r($caraval);
