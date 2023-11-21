@@ -79,6 +79,8 @@ class Categoria {
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->execute([$this->id,]);
     }
+
+    
     /**
      * Devuelve los datos de una categoria segun su ID
      * @param int Id de la Categoria a buscar

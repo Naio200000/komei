@@ -55,7 +55,7 @@ class Caracteristicas {
     }
 
         /**
-     * Edita los datos de una relacion en particular
+     * Edita los datos de una relacion en la tabla valor_x_caracteristica en particular
      * @param array array con los datos IDs de caracteristicas y valores para editar
      */
     public function editRelacion (array $data) {
@@ -71,6 +71,19 @@ class Caracteristicas {
             ]
         );
     }
+
+    /**
+     * Borra esta Relacion de la tabla valor_x_caracteristica
+     */
+    public function deleteRelacion () {
+
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM valor_x_caracteristica WHERE id = ?";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([$this->id,]);
+    }
+
+
     /**
      * Devuelve las caracteristicas con sus valores de un producto especifico
      * @param int ID del combo Caracteristica/Valor a buscar

@@ -15,13 +15,13 @@
         if (!$id) {
             $caraval->insertRelacion($datosPOST);
         } else {
-    //         if (!$del) {
+            if (!$del) {
                 $caraval->editRelacion($datosPOST);
-    //             $tipo->editTipoXCategoria($datosPOST['id_categoria']);
+                $tipo->editTipoXCategoria($datosPOST['id_categoria']);
 
-    //         } else {
-    //             $tipo->deleteTipo();
-    //         }
+            } else {
+                $caraval->deleteRelacion();
+            }
         }
 
         header('Location: ../index.php?view=caraval');

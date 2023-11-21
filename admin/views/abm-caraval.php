@@ -51,7 +51,7 @@
                         <div class="col-12 col-sm-6">
                             <div class="my-3">
                                 <label for="caracterisitca" class="form-label">Caracteristicas</label>
-                                <select class="form-select" name="caracterisitca" id="caracterisitca" required>
+                                <select class="form-select" <?php echo $del ? "Disabled" : ""; ?> name="caracterisitca" id="caracterisitca" required>
                                     <option value="" selected disabled>Elija una Caracteristica</option>
                                     <?PHP foreach ($caracteristicas as $c) { ?>
                                         <option  value="<?= $c['id'] ?>" <?= $c['name'] == $caraval->getName() ? "selected" : "" ?>><?= $c['name'] ?></option>
@@ -60,7 +60,7 @@
                             </div>
                             <div class="my-3">
                                 <label for="valor" class="form-label">Valores</label>
-                                <select class="form-select" name="valor" id="valor" required>
+                                <select class="form-select" <?php echo $del ? "Disabled" : ""; ?> name="valor" id="valor" required>
                                     <option value="" selected disabled>Elija un Valor</option>
                                     <?PHP foreach ($valores as $v) { ?>
                                         <option value="<?= $v['id'] ?>" <?= $v['valor'] == $caraval->getValor() ? "selected" : "" ?>><?= $v['valor'] ?></option>
