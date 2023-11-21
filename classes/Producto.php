@@ -166,8 +166,8 @@ class Producto {
                 $completo = $this->catalogoCategoria($cate);
                 foreach($completo as $m) {
                     foreach ($m->getCaracteristicas() as $c) {
-                        if ($c->getName() == $etc) {
-                            if ($c->getValor() == $filtrar) {
+                        if ($c->getName()->getName() == $etc) {
+                            if ($c->getValor()->getValor() == $filtrar) {
                                 $catalogofiltrar[] = $m;
                             }
                         }
@@ -228,9 +228,6 @@ class Producto {
      */
     public function formatearCaravalOBJ() :array {
         $formatear = $this->getCaracteristicas();
-        // echo '<pre>';
-        // print_r($formatear);
-        // echo '<pre>';
         $datosAFormatear = [];
         foreach ($formatear as $v) {
             if($v->getName()->getName() == 'semanal') {
