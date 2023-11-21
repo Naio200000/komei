@@ -1,7 +1,7 @@
 <?php
     $id = $_GET['id'] ?? false;
     $del = $_GET['del'] ?? false;
-    $caraval = $id ? (new Caracteristicas)->caravalID($id) : new Caracteristicas;
+    $caraval = $id ? (new Caraval)->caravalID($id) : new Caraval;
     $caracteristicas = $caraval->getAllCaracteristicas();
     $valores = $caraval->getAllValores();  
 ?>

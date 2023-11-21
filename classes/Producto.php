@@ -144,7 +144,7 @@ class Producto {
         $producto->tipo = (new Tipo)->tipoID($datos['tipo']);
         $arrayIDcara = explode('|', $datos['caracteristicas']);
         foreach($arrayIDcara as $id) {
-            $OBJcaracteristicas[] = (new Caracteristicas())->caravalID(intval($id));
+            $OBJcaracteristicas[] = (new Caraval())->caravalID(intval($id));
         }
         $producto->caracteristicas = $OBJcaracteristicas;
         $arrayIDimagen = explode('|', $datos['imagen']);

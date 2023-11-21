@@ -1,5 +1,5 @@
 <?php
-    $caraval = (new Caracteristicas);
+    $caraval = (new Caraval);
     $allCaraval = $caraval->getAllCaraval();
     $caracteristicas = $caraval->getAllCaracteristicas();
     $valores = $caraval->getAllValores();
