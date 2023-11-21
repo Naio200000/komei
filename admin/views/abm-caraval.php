@@ -3,17 +3,7 @@
     $del = $_GET['del'] ?? false;
     $caraval = $id ? (new Caracteristicas)->caravalID($id) : new Caracteristicas;
     $caracteristicas = $caraval->getAllCaracteristicas();
-    $valores = $caraval->getAllValores();
-    // $dispo = $caraval->getDisponibilidadId();
-    // $disponibilidad = $caraval->getAllDisponibilidad();
-    // $categorias = (new Categoria)->getAllCategorias();
-    // echo '<pre>';
-    // print_r($caracteristicas);
-    // echo '</pre>';
-    // echo '<pre>';
-    // print_r($caraval->getDisponibilidadId());
-    // echo '</pre>';
-   
+    $valores = $caraval->getAllValores();  
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">

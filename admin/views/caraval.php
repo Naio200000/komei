@@ -81,10 +81,10 @@
                                                 <td class="text-capitalize text-center"><?= $c['name'] ?></td>
                                                 <td class="d-flex justify-content-center">
                                                     <div>
-                                                        <a href="index.php?view=abm-caraval&id=<?= $c['id']?>"><button class="me-1 btn-editar btn fw-bold">Editar</button></a>
+                                                        <a href="index.php?view=abm-caracteristica&id=<?= $c['id']?>"><button class="me-1 btn-editar btn fw-bold">Editar</button></a>
                                                     </div>
                                                     <div>
-                                                        <a href="index.php?view=abm-caraval&id=<?= $c['id']?>&del=true"><button class="ms-1 btn-borrar btn fw-bold">Borrar</button></a>
+                                                        <a href="index.php?view=abm-caracteristica&id=<?= $c['id']?>&del=true"><button class="ms-1 btn-borrar btn fw-bold">Borrar</button></a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -93,7 +93,7 @@
                                 </table>
                                 <div class="tabla col-12 p-2 d-flex">
                                     <div class="ms-auto">
-                                    <a class=" px-3 me-1" href="index.php?view=abm-caraval"><button class="fw-bold btn btn-agregar">Agregar Caracteristica</button></a>
+                                    <a class=" px-3 me-1" href="index.php?view=abm-caracteristica"><button class="fw-bold btn btn-agregar">Agregar Caracteristica</button></a>
                                     </div>
                                 </div>
                             </div>
@@ -113,10 +113,10 @@
                                                 <td class="text-capitalize text-center"><?= $v['valor']?></td>
                                                 <td class="d-flex justify-content-center">
                                                     <div>
-                                                        <a href="index.php?view=abm-caraval&id=<?= $v['id']?>"><button class="me-1 btn-editar btn fw-bold">Editar</button></a>
+                                                        <a href="index.php?view=abm-valor&id=<?= $v['id']?>"><button class="me-1 btn-editar btn fw-bold">Editar</button></a>
                                                     </div>
                                                     <div>
-                                                        <a href="index.php?view=abm-caraval&id=<?= $v['id']?>&del=true"><button class="ms-1 btn-borrar btn fw-bold">Borrar</button></a>
+                                                        <a href="index.php?view=abm-valor&id=<?= $v['id']?>&del=true"><button class="ms-1 btn-borrar btn fw-bold">Borrar</button></a>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -125,7 +125,7 @@
                                 </table>
                                 <div class="tabla col-12 p-2 d-flex">
                                     <div class="ms-auto">
-                                        <a class=" px-3 me-1" href="index.php?view=abm-caraval"><button class="fw-bold btn btn-agregar">Agregar Valor</button></a>
+                                        <a class=" px-3 me-1" href="index.php?view=abm-valor"><button class="fw-bold btn btn-agregar">Agregar Valor</button></a>
                                     </div>
                                 </div>
                             </div>

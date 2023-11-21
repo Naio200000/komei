@@ -83,7 +83,7 @@ class Caracteristicas {
         $PDOStatement->execute([$this->id,]);
     }
 
-
+    
     /**
      * Devuelve las caracteristicas con sus valores de un producto especifico
      * @param int ID del combo Caracteristica/Valor a buscar
