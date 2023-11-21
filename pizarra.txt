@@ -21,3 +21,18 @@ FROM valor_x_caracteristica AS vxc
 JOIN caracteristicas AS c ON vxc.id_caracteristica = c.id
 JOIN valores AS v ON vxc.id_valor = v.id
 GROUP BY c.id;
+
+
+Editar titulos de los abm
+                    <div class="mb-3 col-12 col-sm-6">
+                        <?php 
+                            if (!$id) { ?>
+                                <h3 class='text-center fw-bold agregar'>Agregar Imagen</h3>
+                            <?php } else {
+                                if (!$del) { ?>
+                                    <h3 class='text-center fw-bold editar'> Editar Imagen</h3>
+                                <?php } else  { ?>        
+                                    <h3 class='text-center fw-bold borrar'> Borrar Imagen</h3>
+                                <?php } 
+                            } ?>
+                    </div>

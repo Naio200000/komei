@@ -20,15 +20,6 @@
                     <form action="acciones/abm-categoria-accion.php" method="POST">
                 <?php  }?>
                     <div class="row align-items-start">
-                        <div class="mb-3 col-12 col-sm-6 form-floating">
-                            <?php 
-                                if ($categoria){?>
-                                    <input type="text" class="form-control" id="name" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $categoria->getName() ?>"  name="name" >
-                            <?php  } else {?>
-                                <input type="text" class="form-control" id="name" placeholder="a" name="name" >
-                            <?php  }?>
-                            <label for="name" class="col-form-label ms-2">Nombre de la Categoria</label>
-                        </div>
                         <div class="mb-3 col-12 col-sm-6">
                             <?php
                                 echo "<h3";  
@@ -42,6 +33,16 @@
                                 echo " Categoria</h3>";
                             ?>
                         </div>
+                        <div class="mb-3 col-12 col-sm-6 form-floating">
+                            <?php 
+                                if ($categoria){?>
+                                    <input type="text" class="form-control" id="name" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $categoria->getName() ?>"  name="name" >
+                            <?php  } else {?>
+                                <input type="text" class="form-control" id="name" placeholder="a" name="name" >
+                            <?php  }?>
+                            <label for="name" class="col-form-label ms-2">Nombre de la Categoria</label>
+                        </div>
+
                         <div class="mb-3 form-floating">
                         <?php 
                                 if ($categoria){?>

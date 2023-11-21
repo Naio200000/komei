@@ -31,6 +31,93 @@ class Images {
     {
         return $this->descript;
     }
+
+    /**
+     * Inserta una nueva Imagen en la BD
+     * @param string $nombre nombre de la Imagen
+     * @param string $descript descripcion de la Imagen
+     */
+    Public function insertImagen(string $descript, string $nombre ) {
+
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO `images` (`name`, `descript`) VALUES (:nombre , :descript);";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'nombre' => $nombre,
+                'descript' => $descript
+            ]
+        );
+    }
+
+    /**
+     * Edita los datos de una Imagen en la DB
+     * @param string #name nombre de la Imagen
+     * @param string $descript Parrafo de descripción de la Imagen
+     */
+    public function editImagen (string $nombre, string $descript) {
+
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE`images` SET name = :nombre, descript = :descript WHERE id = :id";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [   
+                'id' => $this->id,
+                'nombre' => $nombre,
+                'descript' => $descript
+            ]
+        );
+    }
+
+    /**
+     * Borra esta Imagen
+     */
+    public function deleteImagen () {
+
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM images WHERE id = ?";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([$this->id,]);
+    }
+
+    /**
+     * Sube una imagen al repositorio de images de productos
+     * @param string $direccion direccio del repositorio don de guardar imagenes
+     * @param string $$dato datos de la imagen nueva
+     * @return string nombre de la nueva imagen
+     */
+    public function uploadImagen(string $direccion, array $datos) :string {
+
+            $imgName= (explode(".", $datos['name']));
+            $extension = end($imgName);
+            $filename = time();
+    
+            $fileUpload = move_uploaded_file($datos['tmp_name'], "$direccion/$filename" . ".$extension");
+    
+            if (!$fileUpload) {
+                throw new Exception("No se pudo subir la imagen");
+            } else {
+                return $filename;
+            }
+    }
+
+    /**
+     * Borra el Archivo del repositorio de imagenes
+     * @param string $archivo nombre y direccion del archovo a borrar
+     */
+    public function deleteImagenFile($archivo) :bool {
+
+        if (file_exists(($archivo))) { 
+            $fileDelete =  unlink($archivo);
+            if (!$fileDelete) {
+                throw new Exception("No se pudo eliminar la imagen");
+            } else {
+                return TRUE;
+            }
+        }else{
+            return FALSE;
+        }
+    }
     /**
      * Trae una imagen segun su id
      * @param int ID de la imagen
@@ -38,7 +125,7 @@ class Images {
      */
     public function imagenID(int $id) :Images {
         $conexion = Conexion::getConexion();
-        $query = "SELECT i.* FROM images AS i JOIN imagenes_x_productos AS ixp ON images.id = ixp.id_imagen WHERE id = ? ORDER BY ixp.id";
+        $query = "SELECT * FROM images WHERE id = ?";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStatement->execute([$id]);
