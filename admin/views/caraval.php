@@ -2,12 +2,7 @@
     $caraval = (new Caraval);
     $allCaraval = $caraval->getAllCaraval();
     $caracteristicas = (new Caracteristica)->getAllCaracteristicas();
-    $valores = (new Valor)->getAllValores();    // echo '<pre>';
-    // print_r($caraval);
-    // echo '</pre>';
-    echo '<pre>';
-    print_r($datosPOST);
-    echo '</pre>';
+    $valores = (new Valor)->getAllValores();
 ?>
 <section class="abm container-fluid container-md pb-3" id="abm">
     <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">Categorias</h2>

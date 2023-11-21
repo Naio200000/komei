@@ -1,12 +1,12 @@
 <?php
     $id = $_GET['id'] ?? false;
     $del = $_GET['del'] ?? false;
-    $caraval = $id ? (new Caraval)->caravalID($id) : false;
+    $caracteristica = $id ? (new Caracteristica)->CaracteristicaID($id) : false;
     // $dispo = $caraval->getDisponibilidadId();
     // $disponibilidad = $caraval->getAllDisponibilidad();
     // $categorias = (new Categoria)->getAllCategorias();
     echo '<pre>';
-    print_r($caraval);
+    print_r($caracteristica);
     echo '</pre>';
     // echo '<pre>';
     // print_r($caraval->getDisponibilidadId());
@@ -20,7 +20,7 @@
         <article>
             <div class="row g-4 my-2 container mx-auto">
                 <?php 
-                    if ($caraval){
+                    if ($caracteristica){
                         if ($del) { ?>
                             <form action="acciones/abm-caracteristica-accion.php?id=<?= $id ?>&del=<?= $del ?>" method="POST">
                         <?php } ?>
@@ -31,8 +31,8 @@
                     <div class="row align-items-start">
                         <div class="mb-3 col-12 col-sm-6 form-floating">
                             <?php 
-                                if ($caraval){?>
-                                    <input type="text" class="form-control" required id="name" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $categoria->getName() ?>"  name="name" >
+                                if ($caracteristica){?>
+                                    <input type="text" class="form-control" required id="name" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $caracteristica->getName() ?>"  name="name" >
                             <?php  } else {?>
                                 <input type="text" class="form-control" required id="name" placeholder="a" name="name" >
                             <?php  }?>

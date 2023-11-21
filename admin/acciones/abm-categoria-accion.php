@@ -15,7 +15,7 @@
             if (!$del) {
                 $categoria->editCategoria($datosPOST['name'], $datosPOST['descript']);
             } else {
-                $categoria->deleteCategoria($id);
+                $categoria->deleteCategoria();
             }
         }
 

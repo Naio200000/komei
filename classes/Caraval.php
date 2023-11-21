@@ -83,18 +83,6 @@ class Caraval {
         $PDOStatement->execute([$this->id,]);
     }
 
-        /**
-     * Inserta una nueva caracteristicas
-     * @param string nombre de la nueva caracteristica a insertar
-     */
-    public function insertCaracteristica(string $data) {
-
-        $conexion = Conexion::getConexion();
-        $query = "INSERT INTO `caracteristicas` (`name`) VALUES (?);";
-        $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->execute([$data]);
-    }
-
     /**
      * Devuelve las caracteristicas con sus valores de un producto especifico
      * @param int ID del combo Caracteristica/Valor a buscar

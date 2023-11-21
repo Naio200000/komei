@@ -2,7 +2,7 @@
     require_once "../../libraries/autoloader.php";
     $id = $_GET['id'] ?? FALSE;
     $del = $_GET['del'] ?? FALSE;
-    $caraval = $id ? (new Caracteristicas)->caravalID($id) : (new Caracteristicas);
+    $Caracteristica = $id ? (new Caracteristica)->CaracteristicaID($id) : (new Caracteristica);
     $datosPOST = $_POST;
     echo '<pre>';
     print_r($caraval);
@@ -12,15 +12,15 @@
     echo '<pre>';
     
     try {
-    //     if (!$id) {
-            $caraval->insertCaracteristica($datosPOST['name']);
-    //     } else {
-    //         if (!$del) {
-    //             $caraval->editcaraval($datosPOST['name'], $datosPOST['descript']);
-    //         } else {
-    //             $caraval->deletecaraval($id);
-    //         }
-    //     }
+        if (!$id) {
+            $Caracteristica->insertCaracteristica($datosPOST['name']);
+        } else {
+            if (!$del) {
+                $Caracteristica->editCaracteristica($datosPOST['name']);
+            } else {
+                $Caracteristica->deleteCaracteristica();
+            }
+        }
 
         header('Location: ../index.php?view=caraval');
 
