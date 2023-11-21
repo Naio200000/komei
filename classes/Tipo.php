@@ -226,6 +226,7 @@ class Tipo {
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStatement->execute([$id]);
         $datos = $PDOStatement->fetch();
+        $datos->categoria = (new Categoria)->categoriaID($datos->categoria);
         return $datos;
     }
 
@@ -273,7 +274,7 @@ class Tipo {
         $datos = $PDOStatement->fetch();
         
         if ($datos['name'] != 'seminario'){
-            if ($datos['tiempo'] == 0) {
+            if ($datos['tiempo'] == '0') {
                 return 'Todos los días';
             } else {
                 return $datos['tiempo'] . " Dias";

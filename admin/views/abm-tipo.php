@@ -53,9 +53,10 @@
                                 <select <?php echo $del ? "Disabled" : ""; ?> class="form-select" name="id_categoria" id="id_categoria" required>
                                     <option value="" selected disabled>Elija una Categoria</option>
                                     <?PHP foreach ($categorias as $c) { ?>
-                                        <option class="text-capitalize" value="<?= $c->getId() ?>" <?= $c->getId() == $tipo->getCategoria() ? "selected" : "" ?>><?= $c->getName() ?></option>
+                                        <option class="text-capitalize" value="<?= $c->getId() ?>" <?= $c->getId() == $tipo->getCategoria()->getId() ? "selected" : "" ?>><?= $c->getName() ?></option>
                                     <?PHP } ?>
                                 </select>
+                                <label for="id_categoria" class="col-form-label ms-2"> Seleccione una Catergoria</label>
                             </div>
                         </div>
                         <div class="col-12 col-sm-6">

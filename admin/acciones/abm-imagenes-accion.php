@@ -26,8 +26,8 @@
                 }
                 $images->editImagen( $imgName, $datosPOST['descript']);
             } else {
-                $images->deleteImagenFile(__DIR__ . "/../../img/productos/" . $datosPOST['imagen_og'] . ".webp");
                 $images->deleteImagen();
+                $images->deleteImagenFile(__DIR__ . "/../../img/productos/" . $datosPOST['imagen_og'] . ".webp");
             }
         }
 
