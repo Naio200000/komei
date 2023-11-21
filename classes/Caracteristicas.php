@@ -54,6 +54,23 @@ class Caracteristicas {
         );
     }
 
+        /**
+     * Edita los datos de una relacion en particular
+     * @param array array con los datos IDs de caracteristicas y valores para editar
+     */
+    public function editRelacion (array $data) {
+
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE`valor_x_caracteristica` SET id_caracteristica = :id_caracteristica, id_valor = :id_valor WHERE id = :id";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [   
+                'id' => $this->id,
+                'id_caracteristica' => $data['caracterisitca'],
+                'id_valor' => $data['valor']
+            ]
+        );
+    }
     /**
      * Devuelve las caracteristicas con sus valores de un producto especifico
      * @param int ID del combo Caracteristica/Valor a buscar

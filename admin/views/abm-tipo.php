@@ -51,7 +51,7 @@
                             <!-- input cate -->
                             <div class="mb-3 form-floating">
                                 <select <?php echo $del ? "Disabled" : ""; ?> class="form-select" name="id_categoria" id="id_categoria" required>
-                                    <option value="" selected disabled>Elija una opción</option>
+                                    <option value="" selected disabled>Elija una Categoria</option>
                                     <?PHP foreach ($categorias as $c) { ?>
                                         <option class="text-capitalize" value="<?= $c->getId() ?>" <?= $c->getId() == $tipo->getCategoria() ? "selected" : "" ?>><?= $c->getName() ?></option>
                                     <?PHP } ?>

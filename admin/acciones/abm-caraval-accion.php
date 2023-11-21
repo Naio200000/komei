@@ -4,25 +4,25 @@
     $del = $_GET['del'] ?? FALSE;
     $caraval = $id ? (new Caracteristicas)->caravalID($id) : new Caracteristicas();
     $datosPOST = $_POST;
-    echo '<pre>';
-    print_r($caraval);
-    echo '</pre>';
+    // echo '<pre>';
+    // print_r($caraval);
+    // echo '</pre>';
     echo '<pre>';
     print_r($datosPOST);
     echo '</pre>';
     
     try {
-    //     if (!$id) {
+        if (!$id) {
             $caraval->insertRelacion($datosPOST);
-    //     } else {
+        } else {
     //         if (!$del) {
-    //             $tipo->editTipo($datosPOST);
+                $caraval->editRelacion($datosPOST);
     //             $tipo->editTipoXCategoria($datosPOST['id_categoria']);
 
     //         } else {
     //             $tipo->deleteTipo();
     //         }
-    //     }
+        }
 
         header('Location: ../index.php?view=caraval');
 

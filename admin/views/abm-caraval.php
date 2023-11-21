@@ -7,9 +7,9 @@
     // $dispo = $caraval->getDisponibilidadId();
     // $disponibilidad = $caraval->getAllDisponibilidad();
     // $categorias = (new Categoria)->getAllCategorias();
-    echo '<pre>';
-    print_r($caraval);
-    echo '</pre>';
+    // echo '<pre>';
+    // print_r($caracteristicas);
+    // echo '</pre>';
     // echo '<pre>';
     // print_r($caraval->getDisponibilidadId());
     // echo '</pre>';
@@ -54,7 +54,7 @@
                                 <select class="form-select" name="caracterisitca" id="caracterisitca" required>
                                     <option value="" selected disabled>Elija una Caracteristica</option>
                                     <?PHP foreach ($caracteristicas as $c) { ?>
-                                        <option  value="<?= $c['id'] ?>"><?= $c['name'] ?></option>
+                                        <option  value="<?= $c['id'] ?>" <?= $c['name'] == $caraval->getName() ? "selected" : "" ?>><?= $c['name'] ?></option>
                                     <?PHP } ?>
                                 </select>
                             </div>
@@ -63,7 +63,7 @@
                                 <select class="form-select" name="valor" id="valor" required>
                                     <option value="" selected disabled>Elija un Valor</option>
                                     <?PHP foreach ($valores as $v) { ?>
-                                        <option value="<?= $v['id'] ?>"><?= $v['valor'] ?></option>
+                                        <option value="<?= $v['id'] ?>" <?= $v['valor'] == $caraval->getValor() ? "selected" : "" ?>><?= $v['valor'] ?></option>
                                     <?PHP } ?>
                                 </select>
                             </div>
