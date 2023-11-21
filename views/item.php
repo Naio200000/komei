@@ -1,6 +1,9 @@
 <?php 
     $ID = $_GET['itemID'] ?? False;
     $item = $OBJProducto->productoID($ID);
+    // echo '<pre>';
+    // print_r($item);
+    // echo '<pre>';
 ?>
 
 <section class="item container-fluid container-md pb-3">
@@ -45,7 +48,7 @@
                     <ul class="list-group list-group-flush">
                         <li class='list-group-item fs-5'><span class='fw-bold text-capitalize'> Disponibilidad:  </span><?= $item->formatearFecha() ?></li>
                         <li class='list-group-item fs-5'><span class='fw-bold text-capitalize'> Tipo:  </span><?= $item->getTipo()->getName() ?></li>
-                        <?php foreach ($item->formatearSTNOBJ() as $k => $v) { ?>
+                        <?php foreach ($item->formatearCaravalOBJ() as $k => $v) { ?>
                             <li class='list-group-item fs-5 text-capitalize'><span class='fw-bold text-capitalize'> <?= "$k : </span> $v </li>"?>
                             <?php }?>
                     </ul>

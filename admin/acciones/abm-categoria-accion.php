@@ -3,11 +3,7 @@
     $id = $_GET['id'] ?? FALSE;
     $del = $_GET['del'] ?? FALSE;
     $categoria = $id ? (new Categoria)->categoriaID($id) : (new Categoria);
-    $datosPOST = $_POST;
-    echo '<pre>';
-    print_r($del);
-    echo '<pre>';
-    
+    $datosPOST = $_POST; 
     try {
         if (!$id) {
             $categoria->insertCategoria($datosPOST['name'], $datosPOST['descript']);

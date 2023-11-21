@@ -226,18 +226,21 @@ class Producto {
      * Formatea los datos de etc en un array asociativo para ser mostrados
      * @return array array con los datos de etc con key y valor
      */
-    public function formatearSTNOBJ() :array {
+    public function formatearCaravalOBJ() :array {
         $formatear = $this->getCaracteristicas();
+        // echo '<pre>';
+        // print_r($formatear);
+        // echo '<pre>';
         $datosAFormatear = [];
         foreach ($formatear as $v) {
-            if($v->getName() == 'semanal') {
-                if ($this->tipo == 'Seminario') {
-                    $datosAFormatear['Clases'] = $v->getValor() . "  Clases";
+            if($v->getName()->getName() == 'semanal') {
+                if ($this->getTipo()->getName() == 'Seminario') {
+                    $datosAFormatear['Clases'] = $v->getValor()->getValor() . "  Clases";
                 } else {
-                    $datosAFormatear['Clases'] = $v->getValor() . "  por semana";
+                    $datosAFormatear['Clases'] = $v->getValor()->getValor() . "  por semana";
                 }
             } else {
-                $datosAFormatear[$v->getName()] = $v->getValor();
+                $datosAFormatear[$v->getName()->getName()] = $v->getValor()->getValor();
             }
         }
         return $datosAFormatear;
