@@ -41,6 +41,7 @@
                                 <li><a class="dropdown-item" href="index.php?view=categoria">Categorias</a></li>
                                 <li><a class="dropdown-item" href="index.php?view=tipo">Tipos</a></li>
                                 <li><a class="dropdown-item" href="index.php?view=caraval">Caracteristicas</a></li>
+                                <li><a class="dropdown-item" href="index.php?view=imagenes">Imagenes</a></li>
                                 <li><a class="dropdown-item" href="index.php?view=producto">Productos</a></li>
                             </ul>
                         </li>

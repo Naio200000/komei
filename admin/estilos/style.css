@@ -142,7 +142,9 @@ main {
     font-weight: bold;
     color: var(--main-font-color);
 }
-
+.img-productos {
+    width: 100%;
+}
 .social,
 .datos {
     list-style: none;

@@ -83,9 +83,6 @@
                     foreach ($category as $producto) {?>   
                         <div class="col">
                             <?php 
-                            // echo "<pre>";
-                            // print_r($producto->getImagen());
-                            // echo "</pre>"; 
                             ?>
                             <div class="card tarjetas-producto">
                                 <img src="./img/productos/<?= $producto->getImagen()[0]->getName() ?>.webp" alt="<?= $producto->getImagen()[0]->getDescript() ?>" class="card-img-top">

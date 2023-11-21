@@ -4,13 +4,6 @@
     $del = $_GET['del'] ?? FALSE;
     $valor = $id ? (new Valor)->valorID($id) : (new Valor);
     $datosPOST = $_POST;
-    echo '<pre>';
-    print_r($valor);
-    echo '<pre>';
-    echo '<pre>';
-    print_r($datosPOST);
-    echo '<pre>';
-    
     try {
         if (!$id) {
             $valor->insertValor($datosPOST['valor']);

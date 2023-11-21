@@ -31,7 +31,11 @@ class Images {
     {
         return $this->descript;
     }
-
+    /**
+     * Trae una imagen segun su id
+     * @param int ID de la imagen
+     * @return Images Objeto Images
+     */
     public function imagenID(int $id) :Images {
         $conexion = Conexion::getConexion();
         $query = "SELECT i.* FROM images AS i JOIN imagenes_x_productos AS ixp ON images.id = ixp.id_imagen WHERE id = ? ORDER BY ixp.id";
@@ -39,6 +43,21 @@ class Images {
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStatement->execute([$id]);
         $datos = $PDOStatement->fetch();
+        return $datos;
+    }
+    /**
+     * Trae una imagen segun su id
+     * @param int ID de la imagen
+     * @return Images Objeto Images
+     */
+    public function getAllImages () : array {
+
+        $conexion = Conexion::getConexion();
+        $query = "SELECT * FROM images";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute();
+        $datos = $PDOStatement->fetchAll();
         return $datos;
     }
     /**
