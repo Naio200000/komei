@@ -36,6 +36,24 @@ class Caracteristicas {
         return $this->valor;
     }
 
+
+    /**
+     * Inserta una nueva relacion en la tabla valores_x_caracteristicas
+     * @param array Array con los id de las caracteristicas a insertar
+     */
+    public function insertRelacion(array $data) {
+
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO `valor_x_caracteristica` (`id_caracteristica`, `id_valor`) VALUES (:id_caracteristica , :id_valor);";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'id_caracteristica' => $data['caracterisitca'],
+                'id_valor' => $data['valor']
+            ]
+        );
+    }
+
     /**
      * Devuelve las caracteristicas con sus valores de un producto especifico
      * @param int ID del combo Caracteristica/Valor a buscar

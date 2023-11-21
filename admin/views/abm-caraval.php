@@ -7,9 +7,9 @@
     // $dispo = $caraval->getDisponibilidadId();
     // $disponibilidad = $caraval->getAllDisponibilidad();
     // $categorias = (new Categoria)->getAllCategorias();
-    // echo '<pre>';
-    // print_r($valores);
-    // echo '</pre>';
+    echo '<pre>';
+    print_r($caraval);
+    echo '</pre>';
     // echo '<pre>';
     // print_r($caraval->getDisponibilidadId());
     // echo '</pre>';
@@ -25,11 +25,11 @@
                 <?php 
                     if ($caraval){
                         if ($del) { ?>
-                            <form action="acciones/abm-tipo-accion.php?id=<?= $id ?>&del=<?= $del ?>" method="POST">
+                            <form action="acciones/abm-caraval-accion.php?id=<?= $id ?>&del=<?= $del ?>" method="POST">
                         <?php } ?>
-                        <form action="acciones/abm-tipo-accion.php?id=<?= $id ?>" method="POST">
+                        <form action="acciones/abm-caraval-accion.php?id=<?= $id ?>" method="POST">
                 <?php  } else {?>
-                    <form action="acciones/abm-tipo-accion.php" method="POST">
+                    <form action="acciones/abm-caraval-accion.php" method="POST">
                 <?php  }?>
                     <div class="row align-items-start">
                         <div class="col-12 col-sm-6">
@@ -44,7 +44,7 @@
                                     } else {
                                         echo " class='text-center fw-bold borrar'> Borrar";    
                                     }
-                                    echo " Relacion Caracteristica/Valor</h3>";
+                                    echo " Relacion <br> Caracteristica/Valor</h3>";
                                 ?>
                             </div>
                         </div>
@@ -54,7 +54,7 @@
                                 <select class="form-select" name="caracterisitca" id="caracterisitca" required>
                                     <option value="" selected disabled>Elija una Caracteristica</option>
                                     <?PHP foreach ($caracteristicas as $c) { ?>
-                                        <option value="<?= $c['id'] ?>"><?= $c['name'] ?></option>
+                                        <option  value="<?= $c['id'] ?>"><?= $c['name'] ?></option>
                                     <?PHP } ?>
                                 </select>
                             </div>
@@ -73,26 +73,26 @@
                         <!-- <div class="col-12 col-sm-6">
                             <radio -
                                 <?php
-                                    $validate = false;
-                                    $ternaryVue = '(radio === "dias" || radio === "fecha") ? true : false';
-                                    $html = '';
-                                    if ($dispo){
-                                        foreach ($disponibilidad as $d => $v) {
-                                            $selected = '';
-                                            $tiempo = strtotime($v['tiempo']) ? $v['tiempo'] : $v['tiempo']." dias";
-                                            if ($dispo['id'] == $v['id']) {
-                                                $validate = true;
-                                                $selected = ' selected ';
-                                            }
-                                            $html = $html . '<option value=' . $v['id'] . $selected . '>' . $tiempo . '</option>';
-                                        }
-                                    } else {
-                                        foreach($disponibilidad as $d =>$v) {
-                                            $tiempo = strtotime($v['tiempo']) ? $v['tiempo'] : $v['tiempo']." dias";
-                                            $html = $html . '<option value=' . $v['id']  . '>' . $tiempo . '</option>';
-                                        }
-                                    }
-                                ?>
+                                //     $validate = false;
+                                //     $ternaryVue = '(radio === "dias" || radio === "fecha") ? true : false';
+                                //     $html = '';
+                                //     if ($dispo){
+                                //         foreach ($disponibilidad as $d => $v) {
+                                //             $selected = '';
+                                //             $tiempo = strtotime($v['tiempo']) ? $v['tiempo'] : $v['tiempo']." dias";
+                                //             if ($dispo['id'] == $v['id']) {
+                                //                 $validate = true;
+                                //                 $selected = ' selected ';
+                                //             }
+                                //             $html = $html . '<option value=' . $v['id'] . $selected . '>' . $tiempo . '</option>';
+                                //         }
+                                //     } else {
+                                //         foreach($disponibilidad as $d =>$v) {
+                                //             $tiempo = strtotime($v['tiempo']) ? $v['tiempo'] : $v['tiempo']." dias";
+                                //             $html = $html . '<option value=' . $v['id']  . '>' . $tiempo . '</option>';
+                                //         }
+                                //     }
+                                 ?>
                                 <div class="form-check d-flex justify-content-start">
                                     <input <?= $validate ? ":placeholder='checked()'":"" ?> <?php echo $del ? "Disabled" : ""; ?> v-model="radio" class="form-check-input" type="radio" id="select" name="radio" value="select">
                                     <label class="mx-2" for="select">Seleccione Disponibilidad</label>
@@ -105,7 +105,7 @@
                         <div class="bg-light col-12 p-2 d-flex">
                             <div class="ms-auto">
                                 <?php
-                                    echo "<a class='px-3 me-1' href='index.php?view=abm-tipo-accion'><button class='fw-bold btn btn-";  
+                                    echo "<a class='px-3 me-1' href='index.php?view=abm-caraval-accion'><button class='fw-bold btn btn-";  
                                     if (!$id) {
                                         echo "agregar'";
                                     } elseif (!$del) {
