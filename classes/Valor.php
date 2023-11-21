@@ -25,6 +25,43 @@ class Valor {
     }
 
     /**
+     * Inserta una nueva caracteristicas
+     * @param string nombre de la nueva caracteristica a insertar
+     */
+    public function insertValor(string $data) {
+
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO `valores` (`valor`) VALUES (?);";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([$data]);
+    }
+    /**
+     * Edita los datos de una Caracteristica en la DB
+     * @param string #name nombre de la Caracteristica
+     */
+    public function editValor (string $valor) {
+
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE`valores` SET valor = :valor WHERE id = :id";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [   
+                'id' => $this->id,
+                'valor' => $valor
+            ]
+        );
+    }
+    /**
+     * Borra esta caracteristica
+     */
+    public function deleteValor () {
+
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM valores WHERE id = ?";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([$this->id,]);
+    }
+    /**
      * Trae los datos de la tabla valor segun ID
      * @param int @id id de la valor a buscar
      * @return Valor Devuelve objeto valor
