@@ -4,13 +4,6 @@
     $del = $_GET['del'] ?? FALSE;
     $caraval = $id ? (new Caraval)->caravalID($id) : new Caraval();
     $datosPOST = $_POST;
-    // echo '<pre>';
-    // print_r($caraval);
-    // echo '</pre>';
-    echo '<pre>';
-    print_r($datosPOST);
-    echo '</pre>';
-    
     try {
         if (!$id) {
             $caraval->insertRelacion($datosPOST);

@@ -2,7 +2,12 @@
     $caraval = (new Caraval);
     $allCaraval = $caraval->getAllCaraval();
     $caracteristicas = (new Caracteristica)->getAllCaracteristicas();
-    $valores = (new Valor)->getAllValores();
+    $valores = (new Valor)->getAllValores();    // echo '<pre>';
+    // print_r($caraval);
+    // echo '</pre>';
+    echo '<pre>';
+    print_r($datosPOST);
+    echo '</pre>';
 ?>
 <section class="abm container-fluid container-md pb-3" id="abm">
     <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">Categorias</h2>
@@ -109,14 +114,14 @@
                                     <tbody>
                                         <?php foreach($valores as $v) { ?>
                                             <tr>
-                                                <th class="text-center" scope="row"><?= $v['id']?></th>
-                                                <td class="text-capitalize text-center"><?= $v['valor']?></td>
+                                                <th class="text-center" scope="row"><?= $v->getId()?></th>
+                                                <td class="text-capitalize text-center"><?= $v->getValor()?></td>
                                                 <td class="d-flex justify-content-center">
                                                     <div>
-                                                        <a href="index.php?view=abm-valor&id=<?= $v['id']?>"><button class="me-1 btn-editar btn fw-bold">Editar</button></a>
+                                                        <a href="index.php?view=abm-valor&id=<?= $v->getId()?>"><button class="me-1 btn-editar btn fw-bold">Editar</button></a>
                                                     </div>
                                                     <div>
-                                                        <a href="index.php?view=abm-valor&id=<?= $v['id']?>&del=true"><button class="ms-1 btn-borrar btn fw-bold">Borrar</button></a>
+                                                        <a href="index.php?view=abm-valor&id=<?= $v->getId()?>&del=true"><button class="ms-1 btn-borrar btn fw-bold">Borrar</button></a>
                                                     </div>
                                                 </td>
                                             </tr>
