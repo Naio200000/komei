@@ -2,8 +2,9 @@
     $id = $_GET['id'] ?? false;
     $del = $_GET['del'] ?? false;
     $caraval = $id ? (new Caraval)->caravalID($id) : new Caraval;
-    $caracteristicas = $caraval->getAllCaracteristicas();
-    $valores = $caraval->getAllValores();  
+    $caracteristicas = (new Caracteristica)->getAllCaracteristicas();
+    $valores = (new Valor)->getAllValores();
+
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
@@ -44,7 +45,7 @@
                                 <select class="form-select" <?php echo $del ? "Disabled" : ""; ?> name="caracterisitca" id="caracterisitca" required>
                                     <option value="" selected disabled>Elija una Caracteristica</option>
                                     <?PHP foreach ($caracteristicas as $c) { ?>
-                                        <option  value="<?= $c['id'] ?>" <?= $c['name'] == $caraval->getName() ? "selected" : "" ?>><?= $c['name'] ?></option>
+                                        <option  value="<?= $c->getId() ?>" <?= $id ? $c->getName() == $caraval->getName()->getName() ? "selected" : "" : "" ?>><?= $c->getName()?></option>
                                     <?PHP } ?>
                                 </select>
                             </div>
@@ -53,7 +54,7 @@
                                 <select class="form-select" <?php echo $del ? "Disabled" : ""; ?> name="valor" id="valor" required>
                                     <option value="" selected disabled>Elija un Valor</option>
                                     <?PHP foreach ($valores as $v) { ?>
-                                        <option value="<?= $v['id'] ?>" <?= $v['valor'] == $caraval->getValor() ? "selected" : "" ?>><?= $v['valor'] ?></option>
+                                        <option value="<?= $v->getId() ?>" <?= $id ? $v->getValor() == $caraval->getValor()->getValor() ? "selected" : "" : "" ?>><?= $v->getValor() ?></option>
                                     <?PHP } ?>
                                 </select>
                             </div>
