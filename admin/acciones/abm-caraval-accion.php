@@ -11,24 +11,24 @@
     print_r($datosPOST);
     echo '</pre>';
     
-    try {
-        if (!$id) {
-            $caraval->insertRelacion($datosPOST);
-        } else {
-            if (!$del) {
-                $caraval->editRelacion($datosPOST);
-                $tipo->editTipoXCategoria($datosPOST['id_categoria']);
+    // try {
+    //     if (!$id) {
+    //         $caraval->insertRelacion($datosPOST);
+    //     } else {
+    //         if (!$del) {
+    //             $caraval->editRelacion($datosPOST);
+    //             $tipo->editTipoXCategoria($datosPOST['id_categoria']);
 
-            } else {
-                $caraval->deleteRelacion();
-            }
-        }
+    //         } else {
+    //             $caraval->deleteRelacion();
+    //         }
+    //     }
 
-        header('Location: ../index.php?view=caraval');
+    //     header('Location: ../index.php?view=caraval');
 
-    } catch (Exception $e) {
-        echo '<pre>';
-        print_r($e);
-        echo '</pre>';
-        die('No se pudo cargar la Categoria');
-    }
+    // } catch (Exception $e) {
+    //     echo '<pre>';
+    //     print_r($e);
+    //     echo '</pre>';
+    //     die('No se pudo cargar la Categoria');
+    // }

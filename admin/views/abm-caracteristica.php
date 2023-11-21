@@ -22,19 +22,19 @@
                 <?php 
                     if ($caraval){
                         if ($del) { ?>
-                            <form action="acciones/abm-categoria-accion.php?id=<?= $id ?>&del=<?= $del ?>" method="POST">
+                            <form action="acciones/abm-caracteristica-accion.php?id=<?= $id ?>&del=<?= $del ?>" method="POST">
                         <?php } ?>
-                        <form action="acciones/abm-categoria-accion.php?id=<?= $id ?>" method="POST">
+                        <form action="acciones/abm-caracteristica-accion.php?id=<?= $id ?>" method="POST">
                 <?php  } else {?>
-                    <form action="acciones/abm-categoria-accion.php" method="POST">
+                    <form action="acciones/abm-caracteristica-accion.php" method="POST">
                 <?php  }?>
                     <div class="row align-items-start">
                         <div class="mb-3 col-12 col-sm-6 form-floating">
                             <?php 
                                 if ($caraval){?>
-                                    <input type="text" class="form-control" id="name" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $categoria->getName() ?>"  name="name" >
+                                    <input type="text" class="form-control" required id="name" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $categoria->getName() ?>"  name="name" >
                             <?php  } else {?>
-                                <input type="text" class="form-control" id="name" placeholder="a" name="name" >
+                                <input type="text" class="form-control" required id="name" placeholder="a" name="name" >
                             <?php  }?>
                             <label for="name" class="col-form-label ms-2">Nombre de la Caracteristica</label>
                         </div>
@@ -54,7 +54,7 @@
                         <div class="bg-light col-12 p-2 d-flex">
                             <div class="ms-auto">
                                 <?php
-                                    echo "<a class='px-3 me-1' href='index.php?view=abm-categoria-accion'><button class='fw-bold btn btn-";  
+                                    echo "<a class='px-3 me-1' href='index.php?view=abm-caracteristica-accion'><button class='fw-bold btn btn-";  
                                     if (!$id) {
                                         echo "agregar'";
                                     } elseif (!$del) {

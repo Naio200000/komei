@@ -100,15 +100,19 @@ class Caraval {
      * @param int ID del combo Caracteristica/Valor a buscar
      * @return Categoria devuelve objetos categoria
      */
-    public function caravalID(int $id) :Caraval {
-
+    public function caravalID(int $id) :?Caraval {
+        
         $conexion = Conexion::getConexion();
-        $query = "SELECT vxc.id, c.name, v.valor FROM valor_x_caracteristica AS vxc JOIN caracteristicas AS c ON vxc.id_caracteristica = c.id JOIN valores AS v ON vxc.id_valor = v.id WHERE vxc.id = ?";
+        $query = "SELECT * FROM valor_x_caracteristica WHERE id = ?";
         $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute([$id]);
-        $datos = $PDOStatement->fetch();
-        return $datos;
+
+        $datos = $this->formateaCaraval($PDOStatement->fetch());
+
+
+        return $datos ?? null;
+
     }
     /**
      * Devuelve las caracteristicas con sus valores
@@ -117,12 +121,30 @@ class Caraval {
     public function getAllCaraval() :array {
 
         $conexion = Conexion::getConexion();
-        $query = "SELECT vxc.id, c.name, v.valor FROM valor_x_caracteristica AS vxc JOIN caracteristicas AS c ON vxc.id_caracteristica = c.id JOIN valores AS v ON vxc.id_valor = v.id";
+        $query = "SELECT * FROM valor_x_caracteristica";
         $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute();
-        $datos = $PDOStatement->fetchAll();
-        return $datos;
+        while ($datos = $PDOStatement->fetch()) {
+            $caraval[] = $this->formateaCaraval($datos);
+        };
+
+        return $caraval;
+    }
+
+    public function formateaCaraval (array $datos) {
+
+        $caraval = new self();
+        $caraval->id = $datos['id'];
+        $caraval->name = (new Caracteristica)->CaracteristicaID($datos['id_caracteristica']);
+        $caraval->valor = (new Valor)->ValorID($datos['id_valor']);
+
+        echo 'meg';
+        echo '<pre>';
+        print_r($caraval);
+        echo '</pre>';
+
+
     }
     /**
      * Devuelve un array con solo las caracteristicas en la db
