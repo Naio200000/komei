@@ -1,8 +1,8 @@
 <?php
     $caraval = (new Caraval);
     $allCaraval = $caraval->getAllCaraval();
-    $caracteristicas = $caraval->getAllCaracteristicas();
-    $valores = $caraval->getAllValores();
+    $caracteristicas = (new Caracteristica)->getAllCaracteristicas();
+    $valores = (new Valor)->getAllValores();
 ?>
 <section class="abm container-fluid container-md pb-3" id="abm">
     <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">Categorias</h2>
@@ -32,8 +32,8 @@
                                         <?php foreach($allCaraval as $cv) { ?>
                                             <tr>
                                                 <th class="text-center" scope="row"><?= $cv->getId()?></th>
-                                                <td class="text-capitalize text-center"><?= $cv->getName() ?></td>
-                                                <td class="text-capitalize text-center"><?= $cv->getValor() ?></td>
+                                                <td class="text-capitalize text-center"><?= $cv->getName()->getName() ?></td>
+                                                <td class="text-capitalize text-center"><?= $cv->getValor()->getValor() ?></td>
                                                 <td class="d-flex justify-content-center">
                                                     <div>
                                                         <a href="index.php?view=abm-caraval&id=<?= $cv->getId()?>"><button class="me-1 btn-editar btn fw-bold">Editar</button></a>
@@ -77,14 +77,14 @@
                                     <tbody>
                                         <?php foreach($caracteristicas as $c) { ?>
                                             <tr>
-                                                <th class="text-center" scope="row"><?= $c['id'] ?></th>
-                                                <td class="text-capitalize text-center"><?= $c['name'] ?></td>
+                                                <th class="text-center" scope="row"><?= $c->getID() ?></th>
+                                                <td class="text-capitalize text-center"><?= $c->getName() ?></td>
                                                 <td class="d-flex justify-content-center">
                                                     <div>
-                                                        <a href="index.php?view=abm-caracteristica&id=<?= $c['id']?>"><button class="me-1 btn-editar btn fw-bold">Editar</button></a>
+                                                        <a href="index.php?view=abm-caracteristica&id=<?= $c->getID()?>"><button class="me-1 btn-editar btn fw-bold">Editar</button></a>
                                                     </div>
                                                     <div>
-                                                        <a href="index.php?view=abm-caracteristica&id=<?= $c['id']?>&del=true"><button class="ms-1 btn-borrar btn fw-bold">Borrar</button></a>
+                                                        <a href="index.php?view=abm-caracteristica&id=<?= $c->getID()?>&del=true"><button class="ms-1 btn-borrar btn fw-bold">Borrar</button></a>
                                                     </div>
                                                 </td>
                                             </tr>

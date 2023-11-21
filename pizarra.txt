@@ -9,6 +9,8 @@ Agregar funcion que decide que color tienen los botones y titulos de ABM (Podria
 
 Si hay tiempo Programar para  que los datos de dojos de sql 
 
+Ver formatear objeto el arrayid imagen
+
 
 Query
 SELECT 

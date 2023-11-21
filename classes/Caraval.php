@@ -132,48 +132,21 @@ class Caraval {
         return $caraval;
     }
 
-    public function formateaCaraval (array $datos) {
+    /**
+     * Formatea los datos de caraval para que contenga los objetos de las otras clase
+     * @param array $datos array con los ddatos que llegan de la bd
+     * @return Caraval objeto caraval formateado
+     */
+    public function formateaCaraval (array $datos) :caraval {
 
         $caraval = new self();
         $caraval->id = $datos['id'];
         $caraval->name = (new Caracteristica)->CaracteristicaID($datos['id_caracteristica']);
         $caraval->valor = (new Valor)->ValorID($datos['id_valor']);
 
-        echo 'meg';
-        echo '<pre>';
-        print_r($caraval);
-        echo '</pre>';
-
-
+        return $caraval;
     }
-    /**
-     * Devuelve un array con solo las caracteristicas en la db
-     * @return array Array de caracteristicas
-     */
-    public function getAllCaracteristicas() :array {
 
-        $conexion = Conexion::getConexion();
-        $query = "SELECT * FROM  caracteristicas";
-        $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
-        $PDOStatement->execute();
-        $datos = $PDOStatement->fetchAll();
-        return $datos;
-    }
-    /**
-     * Devuelve un array con solo los valores en la db
-     * @return array Array de valores
-     */
-    public function getAllvalores() :array {
-
-        $conexion = Conexion::getConexion();
-        $query = "SELECT * FROM  valores";
-        $PDOStatement = $conexion->prepare($query);
-        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
-        $PDOStatement->execute();
-        $datos = $PDOStatement->fetchAll();
-        return $datos;
-    }
 
     /**
      * Trae los datos de las caracteristicas por el id
