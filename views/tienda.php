@@ -6,8 +6,7 @@
         $filtrar = (new Categoria())->formateaCategoriasa();
         if ($categoriaGET) {
             if (in_array($categoriaGET, $categorias)) {
-                $filtrar = (new Categoria)->formateaTipos($categoriaGET);
-                
+                $filtrar = (new Categoria)->formateaTipos($categoriaGET); 
                 $category = $OBJProducto->filtrarCatalogo($categoriaGET);
                 $CategorySelected = $categoriaGET;
             } else {
@@ -45,7 +44,7 @@
                             <div class="d-flex justify-content-around">
                                 <?php foreach ($filtrar as $key => $value) { ?>
                                     <div>
-                                        <a class='px-3 text-uppercase' href='index.php?view=tienda<?=$categoriaGET ? "&category=$categoriaGET&type=$value" : "&category=$value" ?>'><button class='fw-bold btn btn-komei'><?= $value ?></button></a>
+                                        <a class='px-3 text-uppercase' href='index.php?view=tienda<?=$categoriaGET ? "&category=$categoriaGET&type=$key" : "&category=$value" ?>'><button class='fw-bold btn btn-komei'><?= $value ?></button></a>
                                     </div>
                                 <?php  } ?>
                             </div>

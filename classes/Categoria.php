@@ -150,7 +150,7 @@ class Categoria {
     private function getTiposCategoria (string $categoria) {
 
         $conexion = Conexion::getConexion();
-        $query = "SELECT t.name FROM categorias AS c JOIN tipo_x_categorias AS txc ON c.id = txc.id_categoria JOIN tipos AS t ON txc.id_tipo = t.id WHERE c.name = ?";
+        $query = "SELECT t.id, t.name FROM categorias AS c JOIN tipo_x_categorias AS txc ON c.id = txc.id_categoria JOIN tipos AS t ON txc.id_tipo = t.id WHERE c.name = ?";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute([$categoria]);
@@ -165,10 +165,9 @@ class Categoria {
      * @return array array de nombre de las categorias
      */
     public function formateaTipos($categoria) {
-
         $tipos = $this->getTiposCategoria($categoria);
-        foreach ($tipos as $value) {
-            $datos[] = strtolower($value['name']);
+        foreach ($tipos as  $value) {
+            $datos[$value['id']] = strtolower($value['name']);
         }
         return $datos;
     }
