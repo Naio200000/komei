@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2023 a las 04:15:52
+-- Tiempo de generación: 22-11-2023 a las 17:09:29
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -62,20 +62,12 @@ CREATE TABLE `caraval_x_producto` (
 INSERT INTO `caraval_x_producto` (`id`, `id_producto`, `id_cate_valor`) VALUES
 (27, 1, 1),
 (28, 1, 21),
-(29, 2, 2),
-(30, 2, 21),
-(31, 3, 3),
-(32, 3, 21),
 (33, 4, 7),
 (34, 4, 19),
 (35, 5, 10),
 (36, 5, 15),
 (37, 6, 11),
 (38, 6, 19),
-(39, 7, 11),
-(40, 7, 13),
-(41, 8, 7),
-(42, 8, 14),
 (43, 9, 17),
 (44, 10, 8),
 (45, 10, 18),
@@ -83,24 +75,32 @@ INSERT INTO `caraval_x_producto` (`id`, `id_producto`, `id_cate_valor`) VALUES
 (47, 11, 18),
 (48, 12, 9),
 (49, 12, 16),
-(50, 13, 11),
-(51, 13, 12),
 (52, 15, 11),
 (53, 15, 19),
-(54, 14, 21),
-(55, 14, 1),
-(56, 19, 21),
-(57, 19, 2),
-(58, 20, 21),
-(59, 20, 3),
 (60, 16, 1),
 (61, 16, 26),
-(62, 17, 2),
-(63, 17, 26),
-(64, 18, 3),
-(65, 18, 26),
 (66, 21, 9),
-(67, 21, 27);
+(67, 21, 27),
+(78, 2, 2),
+(79, 2, 21),
+(80, 3, 3),
+(81, 3, 21),
+(82, 17, 2),
+(83, 17, 26),
+(84, 18, 3),
+(85, 18, 26),
+(100, 7, 11),
+(101, 7, 13),
+(102, 13, 11),
+(103, 13, 12),
+(104, 8, 7),
+(105, 8, 14),
+(106, 14, 1),
+(107, 14, 21),
+(108, 19, 2),
+(109, 19, 21),
+(110, 20, 3),
+(111, 20, 21);
 
 -- --------------------------------------------------------
 
@@ -172,12 +172,6 @@ INSERT INTO `imagenes_x_productos` (`id`, `id_producto`, `id_imagen`) VALUES
 (1, 1, 1),
 (2, 1, 2),
 (3, 1, 3),
-(4, 2, 1),
-(5, 2, 2),
-(6, 2, 3),
-(7, 3, 1),
-(8, 3, 2),
-(9, 3, 3),
 (10, 4, 4),
 (11, 4, 5),
 (12, 4, 6),
@@ -187,12 +181,6 @@ INSERT INTO `imagenes_x_productos` (`id`, `id_producto`, `id_imagen`) VALUES
 (16, 6, 10),
 (17, 6, 11),
 (18, 6, 12),
-(19, 7, 13),
-(20, 7, 14),
-(21, 7, 15),
-(22, 8, 16),
-(23, 8, 17),
-(24, 8, 18),
 (25, 9, 19),
 (26, 9, 20),
 (27, 9, 21),
@@ -205,33 +193,45 @@ INSERT INTO `imagenes_x_productos` (`id`, `id_producto`, `id_imagen`) VALUES
 (34, 12, 28),
 (35, 12, 29),
 (36, 12, 30),
-(37, 13, 14),
-(38, 13, 13),
-(39, 13, 15),
-(40, 14, 1),
-(41, 14, 2),
-(42, 14, 3),
 (43, 15, 31),
 (44, 15, 32),
 (45, 15, 6),
 (46, 16, 1),
 (47, 16, 2),
 (48, 16, 3),
-(49, 17, 1),
-(50, 17, 2),
-(51, 17, 3),
-(52, 18, 1),
-(53, 18, 2),
-(54, 18, 3),
-(55, 19, 1),
-(56, 19, 2),
-(57, 19, 3),
-(58, 20, 1),
-(59, 20, 2),
-(60, 20, 3),
 (61, 21, 34),
 (62, 21, 35),
-(63, 21, 36);
+(63, 21, 36),
+(79, 2, 2),
+(80, 2, 3),
+(81, 2, 42),
+(82, 3, 2),
+(83, 3, 3),
+(84, 3, 43),
+(85, 17, 2),
+(86, 17, 3),
+(87, 17, 41),
+(88, 18, 2),
+(89, 18, 3),
+(90, 18, 40),
+(113, 7, 13),
+(114, 7, 49),
+(115, 7, 50),
+(116, 13, 13),
+(117, 13, 49),
+(118, 13, 50),
+(119, 8, 16),
+(120, 8, 49),
+(121, 8, 50),
+(122, 14, 44),
+(123, 14, 47),
+(124, 14, 48),
+(125, 19, 45),
+(126, 19, 47),
+(127, 19, 48),
+(128, 20, 46),
+(129, 20, 47),
+(130, 20, 48);
 
 -- --------------------------------------------------------
 
@@ -250,9 +250,9 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `name`, `descript`) VALUES
-(1, '1700593128', 'Banner de clases de Iaido'),
-(2, 'clases-02', 'Imagen de un sensei sentado en frente a sus alumnos'),
-(3, 'clases-03', 'Segundo Banner de clases de Iaido'),
+(1, '1700593128', 'Banner de 1 clase personal de Iaido'),
+(2, '1700660093', 'Baner de clases de Iaido'),
+(3, '1700660164', 'Segundo Banner de clases de Iaido'),
 (4, '1700594250', 'Chaqueta azul de entrenamiento'),
 (5, 'keikogi-a-02', 'Chaqueta azul de entrenamiento'),
 (6, 'keikogi-03', 'Planilla de tamaños de las chaquetas'),
@@ -263,11 +263,7 @@ INSERT INTO `images` (`id`, `name`, `descript`) VALUES
 (11, 'hakama-02', 'Hakama de entrenamiento'),
 (12, 'hakama-03', 'Planilla de tamanños de las Hakamas'),
 (13, 'katana-01', 'Banner mostrando partes de un Shinken'),
-(14, 'katana-02', 'Shinken sobre un fondo blanco'),
-(15, 'katana-03', 'Shinken sobre un fondo Negro'),
 (16, 'iaito-01', '4 Iaitos de diversos colores'),
-(17, 'iaito-02', 'Iaito sobre un fondo oscuro'),
-(18, 'iaito-03', 'Iaito sobre un fondo blanco'),
 (19, 'bokuto-01', 'Bokkuto con Saya'),
 (20, 'bokuto-02', '3 Bokkutos con Sayas'),
 (21, 'bokuto-03', 'Bokkuto con Saya'),
@@ -282,7 +278,18 @@ INSERT INTO `images` (`id`, `name`, `descript`) VALUES
 (32, 'keikogi-n-02', 'Chaqueta negra de entrenamiento'),
 (34, 'obi-01', 'Cinturon de entrenamiento'),
 (35, 'obi-02', 'Cinturon de entrenamiento'),
-(36, 'obi-03', 'Cinturon de entrenamiento');
+(36, 'obi-03', 'Cinturon de entrenamiento'),
+(40, '1700660207', 'Banner de 3 clases personales de Iaido'),
+(41, '1700660039', 'Banner de 2 clases personales de Iaido'),
+(42, '1700660241', 'Banner de 2 clase grupales de Iaido'),
+(43, '1700660285', 'Banner de 3 clases personales de Iaido'),
+(44, '1700660324', 'Banner de 1 clase de Seminario de Iaido'),
+(45, '1700660346', 'Banner de 2 clases de Seminario de Iaido'),
+(46, '1700660363', 'Banner de 3 clases de Seminario de Iaido'),
+(47, '1700660387', 'Banner de Seminario Komei Juku de Iaido'),
+(48, '1700660398', 'Banner de Seminario Komei Juku de Iaido'),
+(49, '1700660784', 'Katana sobre un fondo oscuro'),
+(50, '1700660964', 'Katana sobre un fondo blanco');
 
 -- --------------------------------------------------------
 
@@ -637,7 +644,7 @@ ALTER TABLE `caracteristicas`
 -- AUTO_INCREMENT de la tabla `caraval_x_producto`
 --
 ALTER TABLE `caraval_x_producto`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -655,13 +662,13 @@ ALTER TABLE `disponibilidad`
 -- AUTO_INCREMENT de la tabla `imagenes_x_productos`
 --
 ALTER TABLE `imagenes_x_productos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
 -- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT de la tabla `links_validos`
