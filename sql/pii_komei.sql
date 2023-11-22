@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-11-2023 a las 21:30:27
+-- Tiempo de generación: 22-11-2023 a las 04:15:52
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -121,7 +121,8 @@ CREATE TABLE `categorias` (
 INSERT INTO `categorias` (`id`, `name`, `descript`) VALUES
 (1, 'clases', 'Clases de Iaido'),
 (2, 'ropa', NULL),
-(3, 'equipos', NULL);
+(3, 'equipos', NULL),
+(4, 'seminario', 'Seminarios anuales que se organizan por la escuela y se trae a diferentes Senseis');
 
 -- --------------------------------------------------------
 
@@ -146,7 +147,10 @@ INSERT INTO `disponibilidad` (`id`, `seminario`, `resto`) VALUES
 (4, NULL, '120'),
 (5, NULL, '20'),
 (6, NULL, '30'),
-(7, NULL, '15');
+(7, NULL, '15'),
+(12, NULL, '90'),
+(13, NULL, '3'),
+(14, NULL, '78');
 
 -- --------------------------------------------------------
 
@@ -246,10 +250,10 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `name`, `descript`) VALUES
-(1, 'clases-01', 'Banner de clases de Iaido'),
+(1, '1700593128', 'Banner de clases de Iaido'),
 (2, 'clases-02', 'Imagen de un sensei sentado en frente a sus alumnos'),
 (3, 'clases-03', 'Segundo Banner de clases de Iaido'),
-(4, 'keikogi-a-01', 'Chaqueta azul de entrenamiento'),
+(4, '1700594250', 'Chaqueta azul de entrenamiento'),
 (5, 'keikogi-a-02', 'Chaqueta azul de entrenamiento'),
 (6, 'keikogi-03', 'Planilla de tamaños de las chaquetas'),
 (7, 'obi-c-01', 'Cinturon de entrenamiento'),
@@ -308,7 +312,15 @@ INSERT INTO `links_validos` (`id`, `link`, `title`) VALUES
 (9, 'tipo', 'Lista de Tipos de Productos'),
 (10, 'producto', 'Lista de los Productos'),
 (11, 'abm-categoria', 'ABM de las categorias de Producto'),
-(12, 'abm-tipo', 'ABM de los Tipos de Producto');
+(12, 'abm-tipo', 'ABM de los Tipos de Producto'),
+(13, 'caraval', 'Lista de las caracteristicas y sus valores'),
+(14, 'abm-caraval', 'ABM de las caracteristicas y sus valores'),
+(15, 'abm-caracteristica', 'ABM de las caracteristicas'),
+(16, 'abm-valor', 'ABM de los valores '),
+(17, 'abm-imagenes', 'ABM de Imagenes'),
+(18, 'imagenes', 'Lista de Todas las imagenes'),
+(19, 'producto', 'Lista de Todos los productos'),
+(20, 'abm-producto', 'ABM de los productos');
 
 -- --------------------------------------------------------
 
@@ -383,13 +395,12 @@ INSERT INTO `tipos` (`id`, `name`, `descript`, `id_disponible`) VALUES
 (1, 'Clase', NULL, 2),
 (3, 'Dogi', NULL, 7),
 (4, 'Obi', NULL, 3),
-(5, 'Hakama', NULL, 5),
+(5, 'Hakama', '', 5),
 (6, 'Shinken', NULL, 4),
 (7, 'Iaito', NULL, 4),
 (8, 'Bokkuto', NULL, 6),
-(9, 'Calzado', NULL, 5),
-(10, 'Seminario', NULL, 1),
-(11, 'Keiko Inro', 'Una decoración que se cuelga en la cadera', 7);
+(9, 'Calzado', '', 5),
+(10, 'Seminario', '', 1);
 
 -- --------------------------------------------------------
 
@@ -409,15 +420,14 @@ CREATE TABLE `tipo_x_categorias` (
 
 INSERT INTO `tipo_x_categorias` (`id`, `id_tipo`, `id_categoria`) VALUES
 (1, 1, 1),
-(2, 10, 1),
+(2, 10, 4),
 (3, 3, 2),
 (4, 4, 2),
 (5, 5, 2),
 (6, 6, 3),
 (7, 7, 3),
 (8, 8, 3),
-(9, 9, 2),
-(12, 11, 2);
+(9, 9, 2);
 
 -- --------------------------------------------------------
 
@@ -621,49 +631,49 @@ ALTER TABLE `valor_x_caracteristica`
 -- AUTO_INCREMENT de la tabla `caracteristicas`
 --
 ALTER TABLE `caracteristicas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `caraval_x_producto`
 --
 ALTER TABLE `caraval_x_producto`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `disponibilidad`
 --
 ALTER TABLE `disponibilidad`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `imagenes_x_productos`
 --
 ALTER TABLE `imagenes_x_productos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=64;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=73;
 
 --
 -- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- AUTO_INCREMENT de la tabla `links_validos`
 --
 ALTER TABLE `links_validos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -675,13 +685,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `tipos`
 --
 ALTER TABLE `tipos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_x_categorias`
 --
 ALTER TABLE `tipo_x_categorias`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -693,13 +703,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `valores`
 --
 ALTER TABLE `valores`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT de la tabla `valor_x_caracteristica`
 --
 ALTER TABLE `valor_x_caracteristica`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- Restricciones para tablas volcadas
