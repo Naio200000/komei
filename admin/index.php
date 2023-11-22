@@ -1,8 +1,7 @@
 <?php
     require_once "../libraries/autoloader.php";
-
     $linksValidos = (new Links)->formateaLinks();
-    $viewSelected = $_GET['view'] ?? 'dash';
+    $viewSelected = $_GET['view'] ?? 'login';
     if (!array_key_exists($viewSelected, $linksValidos)) {
         $views = "404";
         $title = "Error 404 - Pagina no encontrada.";
@@ -22,7 +21,7 @@
     <link rel="stylesheet" href="./estilos/style.css">
 </head>
 <body>
-    <header class="header">
+    <!-- <header class="header">
         <nav class="navbar navbar-expand-md fixed-top container-fluid x-auto ">
             <div class="nav container align-items-center">
                 <a class="navbar-brand " href="index.php?view=dash"><img src="../img/logo/komei_Juku.webp" alt="Logo de la escuela"></a>
@@ -49,7 +48,7 @@
                 </div>
             </div>
         </nav>
-    </header>
+    </header> -->
     <main>
         <?PHP require_once "views/$views.php";?>
     </main>

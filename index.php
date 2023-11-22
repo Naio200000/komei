@@ -1,6 +1,6 @@
 <?php
-    require_once "libraries/functions.php";
     require_once "libraries/autoloader.php";
+    require_once "libraries/functions.php";
 
     $linksValidos = (new Links)->formateaLinks();
     $viewSelected = $_GET['view'] ?? 'home';
