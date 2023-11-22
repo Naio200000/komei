@@ -123,18 +123,32 @@ class Images {
      * @param int Id del producto
      * @param int id de la imagen
      */
-    public function insertRelacionProducto(int $id_producto, int $id_caraval) {
+    public function insertRelacionProducto(int $id_producto, int $id_imagen) {
 
         $conexion = Conexion::getConexion();
-        $query = "INSERT INTO `caraval_x_producto` (`id_producto`, `id_cate_valor`) VALUES (:id_producto , :id_caraval);";
+        $query = "INSERT INTO `imagenes_x_productos` (`id_producto`, `id_imagen`) VALUES (:id_producto , :id_imagen);";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->execute(
             [
                 'id_producto' => $id_producto,
-                'id_caraval' => $id_caraval
+                'id_imagen' => $id_imagen
             ]
         );
     }
+
+    /**
+     * Borra las relaciones que tenga el producto con las imagenes
+     * @param int Id del producto
+
+     */
+    public function deleteRelacionProducto(int $id_producto) {
+
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM imagenes_x_productos  WHERE id_producto = ?";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([$id_producto]);
+    }
+
     /**
      * Trae una imagen segun su id
      * @param int ID de la imagen

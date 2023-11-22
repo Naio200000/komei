@@ -100,7 +100,18 @@ class Caraval {
             ]
         );
     }
+    /**
+     * Borra las relaciones que tenga el producto con las caraval
+     * @param int Id del producto
 
+     */
+    public function deleteRelacionProducto(int $id_producto) {
+
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM caraval_x_producto WHERE id_producto = ?";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([$id_producto]);
+    }
     /**
      * Devuelve las caracteristicas con sus valores de un producto especifico
      * @param int ID del combo Caracteristica/Valor a buscar

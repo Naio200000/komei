@@ -100,6 +100,39 @@ class Producto {
         );
         return $conexion->lastInsertId();
     }
+
+    /**
+     * Inserta una instacia de producto en la bd
+     * @param array $datosPro datos para editar al producto
+
+     */
+    public function editProducto($datosPro)  {
+
+        $conexion = Conexion::getConexion();
+        $query = "UPDATE `productos` SET name = :nombre, descript = :descript, id_tipo = :id_tipo, precio = :precio WHERE id = :id";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'id' => $this->id,
+                'nombre' => $datosPro['name'],
+                'descript' => $datosPro['descript'],
+                'id_tipo' => $datosPro['id_tipo'],
+                'precio' => $datosPro['precio']
+            ]
+        );
+    }
+
+    /**
+     * Borra esta Imagen
+     */
+    public function deleteProducto () {
+
+        $conexion = Conexion::getConexion();
+        $query = "DELETE FROM productos WHERE id = ?";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute([$this->id,]);
+    }
+
     /**
     * Devuelve nuestro catalogo dependiendo de la categoria seleccionada.
     * @param string $categoria : Es un string de la categoría que estamos buescando.
