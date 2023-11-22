@@ -11,7 +11,7 @@
         if($login == "usuario"){
             header('location: ../../index.php?view=home');
         }else{
-            echo 'meg';
+            
             header('location: ../index.php?view=dash');
         }
         

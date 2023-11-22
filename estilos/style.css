@@ -40,6 +40,11 @@ main {
     background-color: #fff;
     color: var(--second-font-color);
 }
+.login {
+    margin: auto;
+    padding-top: 72px;
+    min-height: 500px;
+}
 .home {
     background-color: #fff;
     padding: 1rem;

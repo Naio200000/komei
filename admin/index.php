@@ -6,10 +6,12 @@
         $views = "404";
         $title = "Error 404 - Pagina no encontrada.";
     } else {
+        if ($viewSelected != 'login') {
+            $user = (new Login)->verificar() ? $_SESSION : null;
+        }
         $views = $viewSelected;
         $title = $linksValidos[$viewSelected]['title'];
     }
-    $user = $_SESSION['user'] ?? false;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -36,7 +38,7 @@
                             <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=dash">Dashboard</a>
                         </li>
                         <?php 
-                            if ($user) { ?>
+                            if (isset($user)) { ?>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="index.php?view=tienda" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrar</a>
                                     <ul class="dropdown-menu">
@@ -50,7 +52,7 @@
                             </ul>
                         </div>
                         <div>
-                            <p class="fs-4 fw-bold me-2">Bienvenido: <span class="fw-normal"> <?= $user->getUsername() ?></span></p>
+
                         </div>
                         <div>
                             <a href="acciones/auth_logout-accion.php"><p class="btn btn-komei fw-bold">Log out</p></a>

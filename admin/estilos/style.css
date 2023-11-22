@@ -35,6 +35,11 @@ a {
     padding-top: 72px;
     min-height: 500px;
 }
+.login {
+    margin: auto;
+    padding-top: 72px;
+    min-height: 500px;
+}
 main {
     background-color: #fff;
     color: var(--second-font-color);

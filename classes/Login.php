@@ -14,7 +14,6 @@ class Login {
         if ($datosUsuario) {
             if (password_verify($password, $datosUsuario->getPassword())) {
                 $_SESSION['user'] = $datosUsuario;
-                echo $datosUsuario->getRol()->getRoles();
                 return $datosUsuario->getRol()->getRoles();
             } else {
                 return FALSE;
@@ -31,25 +30,12 @@ class Login {
         };
     }
 
-    // public function verify($admin = TRUE): bool
-    // {
-      
-    //     if (isset($_SESSION['user'])) {
+    public function verificar() {
 
-    //         if($admin){
-
-    //             if ($_SESSION['user']['rol'] == "admin" OR $_SESSION['user']['rol'] == "superadmin"){
-    //                 return TRUE;
-    //             }else{
-    //                 // (new Alerta())->add_alerta('warning', "El usuario no tiene permisos para ingresar a este area");
-    //                 header('location: index.php?sec=login');
-    //             }
-
-    //         }else{
-    //             return TRUE;
-    //         }
-    //     } else {
-    //         header('location: index.php?sec=login');
-    //     }
-    // }
+        if (isset($_SESSION['user'])) {
+            return true; 
+        } else {
+            header('location: index.php?view=login');
+        }
+    }
 }
