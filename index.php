@@ -12,6 +12,7 @@
         $title = $linksValidos[$viewSelected]['title'];
     }
     $OBJProducto = New Producto ();
+    $user = $_SESSION['user'] ?? null;
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -32,6 +33,7 @@
                 <button class="navbar-toggler ms-auto m-2" type="button" data-bs-toggle="collapse" data-bs-target="#ContenidoSoporteBarranNav" aria-controls="ContenidoSoporteBarranNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="order-md-last minicarrito d-none d-lg-flex justify-content-lg-evenly align-items-lg-center">
                     <div class=" text-center">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
@@ -71,6 +73,16 @@
                             <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=dojos">Contactos</a>
                         </li>
                     </ul>
+                    <?php
+                    if (isset($user)) { ?>
+                        <div>
+                            <a href="./admin/acciones/auth_logout-accion.php"><p class="btn btn-komei fw-bold">Log out</p></a>
+                        </div>
+                        <?php  } else { ?> 
+                            <div>
+                                <a href="index.php?view=login"><p class="btn btn-komei fw-bold">Log In</p></a>
+                            </div>
+                    <?php } ?>
                 </div>
             </div>
         </nav>

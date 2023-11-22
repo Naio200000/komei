@@ -3,4 +3,4 @@
 
 
     (new Login())->log_out();
-    header('location: ../index.php?view=login');
+    header('location: ../../index.php?view=login');

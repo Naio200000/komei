@@ -7,7 +7,7 @@
         $title = "Error 404 - Pagina no encontrada.";
     } else {
         if ($viewSelected != 'login') {
-            $user = (new Login)->verificar() ? $_SESSION : null;
+            $user = (new Login)->verificar() ? $_SESSION['user'] : null;
         }
         $views = $viewSelected;
         $title = $linksValidos[$viewSelected]['title'];
