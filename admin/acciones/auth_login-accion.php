@@ -4,9 +4,7 @@
 
 
     $login = (new Login())->log_in($datosPOST['username'], $datosPOST['password']);
-    echo '<pre>';
-    print_r($_SESSION['user']);
-    echo '</pre>';
+
 
     if ($login) {
 

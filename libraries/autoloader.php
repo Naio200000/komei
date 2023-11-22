@@ -1,5 +1,4 @@
 <?php 
-session_start();
 function autoloadClass($clase) {
     
     $classFile = __DIR__ . "/../classes/$clase.php";
@@ -10,3 +9,4 @@ function autoloadClass($clase) {
     }
 }
 spl_autoload_register('autoloadClass');
+session_start();

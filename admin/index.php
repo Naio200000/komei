@@ -9,6 +9,10 @@
         $views = $viewSelected;
         $title = $linksValidos[$viewSelected]['title'];
     }
+    $user = $_SESSION['user'] ?? false;
+    // echo '<pre>';
+    // print_r($user);
+    // echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -21,7 +25,7 @@
     <link rel="stylesheet" href="./estilos/style.css">
 </head>
 <body>
-    <!-- <header class="header">
+    <header class="header">
         <nav class="navbar navbar-expand-md fixed-top container-fluid x-auto ">
             <div class="nav container align-items-center">
                 <a class="navbar-brand " href="index.php?view=dash"><img src="../img/logo/komei_Juku.webp" alt="Logo de la escuela"></a>
@@ -46,9 +50,19 @@
                         </li>
                     </ul>
                 </div>
+                <?php 
+                    if ($user) { ?>
+                        <div>
+                            <p class="fs-4 fw-bold me-2">Bienvenido: <span class="fw-normal"> <?= $user->getUsername() ?></span></p>
+                        </div>
+                        <div>
+                            <a href="acciones/auth_logout-accion.php"><p class="btn btn-komei fw-bold">Log out</p></a>
+                        </div>
+                    <?php }
+                ?>
             </div>
         </nav>
-    </header> -->
+    </header>
     <main>
         <?PHP require_once "views/$views.php";?>
     </main>
