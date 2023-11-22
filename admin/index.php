@@ -10,9 +10,6 @@
         $title = $linksValidos[$viewSelected]['title'];
     }
     $user = $_SESSION['user'] ?? false;
-    // echo '<pre>';
-    // print_r($user);
-    // echo '</pre>';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -38,20 +35,20 @@
                         <li class="nav-item">
                             <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=dash">Dashboard</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="index.php?view=tienda" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrar</a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="index.php?view=categoria">Categorias</a></li>
-                                <li><a class="dropdown-item" href="index.php?view=tipo">Tipos</a></li>
-                                <li><a class="dropdown-item" href="index.php?view=caraval">Caracteristicas</a></li>
-                                <li><a class="dropdown-item" href="index.php?view=imagenes">Imagenes</a></li>
-                                <li><a class="dropdown-item" href="index.php?view=producto">Productos</a></li>
+                        <?php 
+                            if ($user) { ?>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="index.php?view=tienda" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrar</a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="index.php?view=categoria">Categorias</a></li>
+                                        <li><a class="dropdown-item" href="index.php?view=tipo">Tipos</a></li>
+                                        <li><a class="dropdown-item" href="index.php?view=caraval">Caracteristicas</a></li>
+                                        <li><a class="dropdown-item" href="index.php?view=imagenes">Imagenes</a></li>
+                                        <li><a class="dropdown-item" href="index.php?view=producto">Productos</a></li>
+                                    </ul>
+                                </li>
                             </ul>
-                        </li>
-                    </ul>
-                </div>
-                <?php 
-                    if ($user) { ?>
+                        </div>
                         <div>
                             <p class="fs-4 fw-bold me-2">Bienvenido: <span class="fw-normal"> <?= $user->getUsername() ?></span></p>
                         </div>
