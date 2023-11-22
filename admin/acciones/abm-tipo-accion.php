@@ -4,13 +4,7 @@
     $del = $_GET['del'] ?? FALSE;
     $tipo = $id ? (new Tipo)->tipoID($id) : new Tipo();
     $datosPOST = $_POST;
-    echo '<pre>';
-    print_r($tipo);
-    echo '</pre>';
-    echo '<pre>';
-    print_r($datosPOST);
-    echo '</pre>';
-    
+
     try {
         if (!$id) {
             $id_tipo = $tipo->insertTipo($datosPOST);

@@ -27,3 +27,122 @@ Editar titulos de los abm
                                 <?php } 
                             } ?>
                     </div>
+
+
+Formulario de filtros con vue
+                        <form action="index.php?view=tienda" method="post">
+                            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 my-2 container mx-auto">
+                                <div class="col form-floating">
+                                    <select class="form-select" name="category" id="category" v-model="cateSelected" aria-label="Default select example">
+                                        <option v-for="(item, key) of category" :value="key">{{key | mayuscula}}</option>
+                                    </select>
+                                    <label for="category">Filtrart por Categoria:</label>
+                                </div>
+                                <div v-if="!cateSelected == ''" class="col form-floating">
+                                    <select class="form-select" name="etc" v-model="dataSelected" aria-label="Default select example">
+                                        <option v-for="(item, key) of category[cateSelected]" :value="key">{{item}}</option>
+                                    </select>
+                                    <label for="etc">Filtrart por:</label>
+                                </div>
+                                <div v-if="!dataSelected == ''" class="col form-floating">
+                                    <select class="form-select" name="dato" aria-label="Default select example">
+                                        <template >
+                                            <option v-if="cateSelected == 'clases'" v-for="(item, key) of datosClases[dataSelected]" :value="key">{{item}}</option>
+                                        </template>
+                                        <template v-if="cateSelected == 'ropa'" v-for="(item, key) of datosRopa[dataSelected]">
+                                            <option :value="key">{{item}}</option>
+                                        </template>
+                                        <template v-if="cateSelected == 'equipos'" v-for="(item, key) of datosEquipos[dataSelected]">
+                                            <option :value="key">{{item}}</option>
+                                        </template>
+                                        <template v-if="cateSelected == 'seminario'" v-for="(item, key) of datosSeminario[dataSelected]">
+                                            <option :value="key">{{item}}</option>
+                                        </template>
+                                    </select>
+                                    <label for="dato">Datos</label>
+                                </div>
+                            </div>
+                            <div class=" text-end me-5 mb-3">
+                                <input class="btn btn-komei text-uppercase" type="submit" value="aplicar">
+                            </div>
+                        </form>
+
+
+JS vue para filtrar
+
+Vue.filter('mayuscula', function (value) {
+    if (!value) return ''
+    value = value.toString()
+    return value.charAt(0).toUpperCase() + value.slice(1)
+}); 
+var app = new Vue({
+    el: ".formularioLogica",
+    data:{
+        dataSelected: "",
+        cateSelected: "",
+        category: {
+            clases:{
+                semanal: "Clases por semana", 
+                personas: "En grupo o solo?"
+            },
+            seminario:{
+                semanal: "Clases por semana", 
+            },
+            equipos:{
+                color:"Que color de equipo",
+                material:"Que material de equipo",
+            },
+            ropa:{
+                color:"Color de la Ropa",
+                material:"Material de la Ropa"
+            },
+        },
+        datosClases:{
+            semanal:{
+                1: "1 Clase",
+                2: "2 Clase",
+                3: "3 Clase"
+            },
+            personas: {
+                grupal: "Clases grupales",
+                personal: "Clases personales"
+            },
+        },
+        datosSeminario:{
+            semanal:{
+                1: "1 Clase",
+                2: "2 Clase",
+                3: "3 Clase"
+            },
+        },
+        datosRopa:{
+            color:{
+                azul:"Azul",
+                negro:"Negro",
+                blanco:"Blanco",
+                gris:"Gris",
+                rayada:"Rayada"
+            },
+            material:{
+                tetron:"Tetron",
+                algodon: "Algodon",
+                lana: "Lana",
+                ceda:"Ceda",
+                igusa:"Igusa"
+            },
+        },
+        datosEquipos:{
+            color:{
+                azul:"Azul",
+                negro:"Negro"
+            },
+            material:{
+                acero1060:"Acero 1060",
+                acero1095:"Acero 1095",
+                aluminio: "Aluminio",
+                incienso: "Incienso"
+            }
+        },
+    }
+
+});

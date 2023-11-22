@@ -141,4 +141,35 @@ class Categoria {
         }
         return $datos;
     }
+
+    /**
+     * Trae todos los tipos segun la categoria
+     * @param string $categoria categoria del cual se buscan los tipos
+     * @return array lista de tipos segun categoria
+     */
+    private function getTiposCategoria (string $categoria) {
+
+        $conexion = Conexion::getConexion();
+        $query = "SELECT t.name FROM categorias AS c JOIN tipo_x_categorias AS txc ON c.id = txc.id_categoria JOIN tipos AS t ON txc.id_tipo = t.id WHERE c.name = ?";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement->execute([$categoria]);
+        $datos = $PDOStatement->fetchAll();
+
+        return $datos;
+    }
+
+    
+    /**
+     * Devuelve un array indexado con los nombres de las categorias
+     * @return array array de nombre de las categorias
+     */
+    public function formateaTipos($categoria) {
+
+        $tipos = $this->getTiposCategoria($categoria);
+        foreach ($tipos as $value) {
+            $datos[] = $value['name'];
+        }
+        return $datos;
+    }
 }
