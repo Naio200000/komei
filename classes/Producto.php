@@ -214,23 +214,19 @@ class Producto {
      * @param ?mixed $filtrar el tipo de material que queremos filtrar
      * @return array $catalogoMaterial catalogo filtrado por material
      */
-    public function filtrarCatalogo(mixed $cate = null, mixed $etc = null, mixed $filtrar = null): array {
+    public function filtrarCatalogo(mixed $cate = null, mixed $type = null): array {
             $catalogofiltrar = [];
             if ($cate) {
                 $completo = $this->catalogoCategoria($cate);
                 foreach($completo as $m) {
-                    foreach ($m->getCaracteristicas() as $c) {
-                        if ($c->getName()->getName() == $etc) {
-                            if ($c->getValor()->getValor() == $filtrar) {
-                                $catalogofiltrar[] = $m;
-                            }
-                        }
+                    if ($m->getTipo()->getId() == $type) {
+                        $catalogofiltrar[] = $m;
                     }
                 }
             } else {
                 return $this->catalogoCompleto();
             }
-            if (!$etc) {
+            if (!$type) {
                 return $completo;
             }
             

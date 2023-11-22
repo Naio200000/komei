@@ -7,7 +7,7 @@
         if ($categoriaGET) {
             if (in_array($categoriaGET, $categorias)) {
                 $filtrar = (new Categoria)->formateaTipos($categoriaGET); 
-                $category = $OBJProducto->filtrarCatalogo($categoriaGET);
+                $category = $OBJProducto->filtrarCatalogo($categoriaGET, $tiposGET);
                 $CategorySelected = $categoriaGET;
             } else {
                 $filtrar = false;
