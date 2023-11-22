@@ -168,7 +168,7 @@ class Categoria {
 
         $tipos = $this->getTiposCategoria($categoria);
         foreach ($tipos as $value) {
-            $datos[] = $value['name'];
+            $datos[] = strtolower($value['name']);
         }
         return $datos;
     }

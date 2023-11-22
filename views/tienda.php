@@ -1,14 +1,15 @@
 <?php
-    $datosGET = $_GET['category'] ?? false ;
+    $categoriaGET = $_GET['category'] ?? false ;
+    $tiposGET = $_GET['type'] ?? false;
     $datosPOST = $_POST ?? false ;
     if (empty($datosPOST)){
         $filtrar = (new Categoria())->formateaCategoriasa();
-        if ($datosGET) {
-            if (in_array($datosGET, $categorias)) {
-                $filtrar = (new Categoria)->formateaTipos($datosGET);
+        if ($categoriaGET) {
+            if (in_array($categoriaGET, $categorias)) {
+                $filtrar = (new Categoria)->formateaTipos($categoriaGET);
                 
-                $category = $OBJProducto->filtrarCatalogo($datosGET);
-                $CategorySelected = $datosGET;
+                $category = $OBJProducto->filtrarCatalogo($categoriaGET);
+                $CategorySelected = $categoriaGET;
             } else {
                 $filtrar = false;
                 $CategorySelected = 'No se encontro la categoria';
@@ -44,7 +45,7 @@
                             <div class="d-flex justify-content-around">
                                 <?php foreach ($filtrar as $key => $value) { ?>
                                     <div>
-                                        <a class='px-3 text-capitalize' href=''><button class='fw-bold btn btn-komei'><?= $value ?></button></a>
+                                        <a class='px-3 text-uppercase' href='index.php?view=tienda<?=$categoriaGET ? "&category=$categoriaGET&type=$value" : "&category=$value" ?>'><button class='fw-bold btn btn-komei'><?= $value ?></button></a>
                                     </div>
                                 <?php  } ?>
                             </div>
