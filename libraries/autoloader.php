@@ -1,5 +1,5 @@
 <?php 
-
+session_start();
 function autoloadClass($clase) {
     
     $classFile = __DIR__ . "/../classes/$clase.php";
