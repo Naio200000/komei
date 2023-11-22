@@ -16,7 +16,6 @@
                             <th class="px-1 text-center" scope="col">Categoria</th>
                             <th class="px-1 text-center" scope="col">Tipo</th>
                             <th class="px-1 text-center" scope="col" width="15%">Caracteristicas</th>
-                            <th class="px-1 text-center" scope="col">Disponible</th>
                             <th class="px-1 text-center" scope="col">Precio</th>
                             <th class="px-1 text-center" scope="col" width="20%">Imagenes</th>
                             <th class="px-1 text-center" scope="col">Acciones</th>
@@ -28,12 +27,11 @@
                                 <th class="text-center" scope="row"><?= $p->getId() ?></th>
                                 <td class="text-capitalize text-center"><?= $p->getNombre() ?></td>
                                 <td><?= $p->getDescrip() ?></td>
-                                <td><?= $p->getCategoria()->getName() ?></td>
+                                <td><?= $p->getTipo()->getcategoria()->getName() ?></td>
                                 <td><?= $p->getTipo()->getName() ?></td>
-                                <td><?php foreach ($p->formatearSTNOBJ() as $k => $v) { ?>
+                                <td><?php foreach ($p->formatearCaravalOBJ() as $k => $v) { ?>
                                     <p class=''><span class='fw-bold text-capitalize'> <?= "$k : </span> $v </p>"?><?php }?>
                                 </td>
-                                <td><?= $p->getTipo()->formateaDisponibilidad() ?></td>
                                 <td><?= $p->getPrecio() ?></td>
                                 <td>
                                     <?php foreach($p->getImagen() as $i) { ?> 

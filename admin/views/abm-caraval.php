@@ -59,40 +59,6 @@
                                 </select>
                             </div>
                         </div>
-                            
-
-                        <!-- <div class="col-12 col-sm-6">
-                            <radio -
-                                <?php
-                                //     $validate = false;
-                                //     $ternaryVue = '(radio === "dias" || radio === "fecha") ? true : false';
-                                //     $html = '';
-                                //     if ($dispo){
-                                //         foreach ($disponibilidad as $d => $v) {
-                                //             $selected = '';
-                                //             $tiempo = strtotime($v['tiempo']) ? $v['tiempo'] : $v['tiempo']." dias";
-                                //             if ($dispo['id'] == $v['id']) {
-                                //                 $validate = true;
-                                //                 $selected = ' selected ';
-                                //             }
-                                //             $html = $html . '<option value=' . $v['id'] . $selected . '>' . $tiempo . '</option>';
-                                //         }
-                                //     } else {
-                                //         foreach($disponibilidad as $d =>$v) {
-                                //             $tiempo = strtotime($v['tiempo']) ? $v['tiempo'] : $v['tiempo']." dias";
-                                //             $html = $html . '<option value=' . $v['id']  . '>' . $tiempo . '</option>';
-                                //         }
-                                //     }
-                                 ?>
-                                <div class="form-check d-flex justify-content-start">
-                                    <input <?= $validate ? ":placeholder='checked()'":"" ?> <?php echo $del ? "Disabled" : ""; ?> v-model="radio" class="form-check-input" type="radio" id="select" name="radio" value="select">
-                                    <label class="mx-2" for="select">Seleccione Disponibilidad</label>
-                                    <select class="ms-auto my-1" name="select" id="select" <?php echo $del ? "Disabled" : ":disabled='$ternaryVue'" ?> >
-                                        <option value="" selected >Elija una opción</option>
-                                        <?= $html ?>
-                                    </select>
-                                </div>                         
-                        </div> -->
                         <div class="bg-light col-12 p-2 d-flex">
                             <div class="ms-auto">
                                 <?php

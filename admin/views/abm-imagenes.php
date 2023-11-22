@@ -2,12 +2,6 @@
     $id = $_GET['id'] ?? false;
     $del = $_GET['del'] ?? false;
     $imagen = $id ? (new Images)->imagenID($id) : new Images;
-    // $dispo = $caraval->getDisponibilidadId();
-    // $disponibilidad = $caraval->getAllDisponibilidad();
-    // $categorias = (new Categoria)->getAllCategorias();
-    echo '<pre>';
-    print_r($imagen);
-    echo '</pre>';
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
