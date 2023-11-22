@@ -122,8 +122,8 @@
                                                                                 }
                                                                             }
                                                                         ?>
-                                                                        <input class="form-check-input" <?= $checked ?> type="checkbox" role="switch" id="<?= $cv->getId()?>" name="caraval[]" value="<?= $cv->getId()?>" <?php echo $del ? "Disabled" : ""; ?>>
-                                                                        <label class="form-check-label" for="<?= $cv->getId()?>">
+                                                                        <input class="form-check-input" <?= $checked ?> type="checkbox" role="switch" id="caraval<?= $cv->getId()?>" name="caraval[]" value="<?= $cv->getId()?>" <?php echo $del ? "Disabled" : ""; ?>>
+                                                                        <label class="form-check-label" for="caraval<?= $cv->getId()?>">
                                                                             <p class=''><span class='fw-bold text-capitalize'> <?= $cv->getName()->getName()?> : </span><?= $cv->getValor()->getValor()?> </p> 
                                                                         </label>
                                                                     </div>
@@ -178,13 +178,13 @@
                                                                     }
                                                                 ?>
                                                                     <div>
-                                                                    <label for="<?= $i->getId()?>">
+                                                                    <label for="imagen<?= $i->getId()?>">
                                                                         <img src="./../img/productos/<?= $i->getName() ?>.webp" alt="<?= $i->getDescript() ?>" class="img-productos">    
                                                                     </label>
                                                                 </div>
                                                                 <div class="form-check form-switch pt-1">
-                                                                    <input  class="form-check-input" type="checkbox" role="switch" id="<?= $i->getId()?>" <?= $checked?> name="imagenes[]" value="<?= $i->getId()?>" <?php echo $del ? "Disabled" : ""; ?>>
-                                                                    <label class="form-check-label" for="<?= $i->getId()?>">Seleccionar</label>
+                                                                    <input  class="form-check-input" type="checkbox" role="switch" id="imagen<?= $i->getId()?>" <?= $checked?> name="imagenes[]" value="<?= $i->getId()?>" <?php echo $del ? "Disabled" : ""; ?>>
+                                                                    <label class="form-check-label" for="imagen<?= $i->getId()?>">Seleccionar</label>
                                                                 </div>
                                                             </div>
                                                     <?php } ?>

@@ -84,6 +84,24 @@ class Caraval {
     }
 
     /**
+     * Inserta una nueva relacion en la tabla valores_x_caracteristicas
+     * @param int Id del producto
+     * @param int id de la relacion caracteristica/valor
+     */
+    public function insertRelacionProducto(int $id_producto, int $id_caraval) {
+
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO `caraval_x_producto` (`id_producto`, `id_cate_valor`) VALUES (:id_producto , :id_caraval);";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'id_producto' => $id_producto,
+                'id_caraval' => $id_caraval
+            ]
+        );
+    }
+
+    /**
      * Devuelve las caracteristicas con sus valores de un producto especifico
      * @param int ID del combo Caracteristica/Valor a buscar
      * @return Categoria devuelve objetos categoria

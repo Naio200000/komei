@@ -4,12 +4,16 @@
     $del = $_GET['del'] ?? FALSE;
     $producto = $id ? (new Producto)->productoID($id) : (new Producto);
     $datosPOST = $_POST;
+    $caraval = $_POST['caraval'];
     echo '<pre>';
     print_r($datosPOST);
     echo '</pre>';
     // try {
     //     if (!$id) {
-            // $producto->insertProducto($datosPOST);
+            $id_producto = $producto->insertProducto($datosPOST);
+            foreach ($caraval as $cv) {
+                (new Caraval)->insertRelacionProducto($id_producto, $cv);
+            }
     //     } else {
     //         if (!$del) {
     //             $valor->editValor($datosPOST['valor']);

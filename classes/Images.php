@@ -119,6 +119,23 @@ class Images {
         }
     }
     /**
+     * Inserta una nueva relacion en la tabla Imagenes por Producto
+     * @param int Id del producto
+     * @param int id de la imagen
+     */
+    public function insertRelacionProducto(int $id_producto, int $id_caraval) {
+
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO `caraval_x_producto` (`id_producto`, `id_cate_valor`) VALUES (:id_producto , :id_caraval);";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'id_producto' => $id_producto,
+                'id_caraval' => $id_caraval
+            ]
+        );
+    }
+    /**
      * Trae una imagen segun su id
      * @param int ID de la imagen
      * @return Images Objeto Images
