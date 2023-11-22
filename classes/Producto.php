@@ -79,6 +79,27 @@ class Producto {
     {
         return $this->categoria;
     }
+
+    /**
+     * Inserta una instacia de producto en la bd
+     * @param array $datosPro datos para agregar al producto
+     * @return int numero de ID del ultimo producto agregado
+     */
+    public function insertProducto($datosPro) :int {
+
+        $conexion = Conexion::getConexion();
+        $query = "INSERT INTO `productos` (`name`, `descript`, `id_tipo`, `precio` ) VALUES (:nombre , :descript, :id_tipo, :precio);";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->execute(
+            [
+                'nombre' => $datosPro['name'],
+                'descript' => $datosPro['descript'],
+                'id_tipo' => $datosPro['id_tipo'],
+                'precio' => $datosPro['precio']
+            ]
+        );
+        return $conexion->lastInsertId();
+    }
     /**
     * Devuelve nuestro catalogo dependiendo de la categoria seleccionada.
     * @param string $categoria : Es un string de la categoría que estamos buescando.

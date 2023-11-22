@@ -13,11 +13,10 @@
                             <th class="px-1 text-center" scope="col">#</th>
                             <th class="px-1 text-center" scope="col">Nombre</th>
                             <th class="px-1 text-center" scope="col" width="40%">Descripción</th>
-                            <th class="px-1 text-center" scope="col">Categoria</th>
                             <th class="px-1 text-center" scope="col">Tipo</th>
                             <th class="px-1 text-center" scope="col" width="15%">Caracteristicas</th>
                             <th class="px-1 text-center" scope="col">Precio</th>
-                            <th class="px-1 text-center" scope="col" width="20%">Imagenes</th>
+                            <th class="px-1 text-center" scope="col" width="15%">Imagenes</th>
                             <th class="px-1 text-center" scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -27,7 +26,6 @@
                                 <th class="text-center" scope="row"><?= $p->getId() ?></th>
                                 <td class="text-capitalize text-center"><?= $p->getNombre() ?></td>
                                 <td><?= $p->getDescrip() ?></td>
-                                <td><?= $p->getTipo()->getcategoria()->getName() ?></td>
                                 <td><?= $p->getTipo()->getName() ?></td>
                                 <td><?php foreach ($p->formatearCaravalOBJ() as $k => $v) { ?>
                                     <p class=''><span class='fw-bold text-capitalize'> <?= "$k : </span> $v </p>"?><?php }?>
@@ -41,8 +39,8 @@
                                     <?php } ?></td>
                                 <td>
                                     <ul>
-                                        <li class="btn-editar btn m-1"><a class="fw-bold" href="">Editar</a></li>
-                                        <li class="btn-borrar btn m-1"><a class="fw-bold" href="">Borrar</a></li>
+                                        <li class="btn-editar btn m-1"><a class="fw-bold" href="index.php?view=abm-producto&id=<?= $p->getId() ?>">Editar</a></li>
+                                        <li class="btn-borrar btn m-1"><a class="fw-bold" href="index.php?view=abm-producto&id=<?= $p->getId() ?>&del=1">Borrar</a></li>
                                     </ul>
                                 </td>
                             </tr>

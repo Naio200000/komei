@@ -73,6 +73,9 @@ main {
 .tabla{
     background-color: #fff;
 }
+.grey{
+    background-color: rgb(233,236,239);
+}
 .tarjetas-producto {
     min-height: 500px;
 }
