@@ -10,13 +10,15 @@ class Alert {
      * @param string $tipo el tipo de alerta 
      * @param string $mensaje mensaje de la alerta
      */
-    public function insertAlerta(string $tipo, string $mensaje)  {
+    public function insertAlerta( string $tipo, string $mensaje)  {
 
         $_SESSION['alert'][] = [
             'tipo' => $tipo,
             'mensaje' => $mensaje
         ];
     }
+
+    
 
     /**
      * Borra las alertas de las $_SESSION
@@ -49,7 +51,7 @@ class Alert {
 
         if (!empty($_SESSION['alert'])) {
 
-            $alerts = "";
+            $alerts = '';
             foreach ($_SESSION['alert'] as $a) {
                 $alerts .= $this->formateaAlert($a);
             }
@@ -60,6 +62,53 @@ class Alert {
         }
     }
 
+     /**
+     * Devuelve las alertas de los formularios que se encuentre en la $_SESSION y despues las borra
+     * @param array array de campos con errores de formulario.
+     * @return ?string devuelve las alertas formateadas o null de no haber alertas.
+     */
+    public function insertFormAlert($array, $tipo, $mensaje)  {
+
+        $arrayAlert = [];
+        foreach ($array as $value) {
+            
+            $arrayAlert[$value] = [
+                'tipo' => $tipo,
+                'mensaje' => $mensaje
+            ];
+
+        }
+        
+        $_SESSION['alertForm'] = $arrayAlert;
+
+    }
+
+     /**
+     * Devuelve las alertas que se encuentre en la $_SESSION y despues las borra
+     * @return ?array devuelve las alertas formateadas o null de no haber alertas.
+     */
+    public function getFormAlert() :?array {
+
+        if (!empty($_SESSION['alertForm'])) {
+
+            $alerts = [];
+            foreach ($_SESSION['alertForm'] as $k => $a) {
+                $alerts[$k] = $this->formateaAlert($a);
+            }
+            $this->deleteFormAlert();
+
+            return $alerts;
+        } else {
+            return null;
+        }
+    }
 
 
+    /**
+     * Borra las alertas de las $_SESSION
+     */
+    public function deleteFormAlert() {
+
+        $_SESSION['alertForm'] = [];
+    }
 }
