@@ -6,7 +6,10 @@
     <p class="fs-5 w-75 text-center mx-auto">Administrador de Categorias principales de la tienda</p>
     <div class="listado pb-3">
         <article>
-            <div class="row g-4 my-2 container mx-auto">
+            <div class="row g-4 my-2 container mx-auto">               
+                <div>
+                    <?= (new Alert())->getAlert(); ?>
+                </div> 
                 <table class="tabla table table-striped">
                     <thead>
                         <tr>
