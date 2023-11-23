@@ -3,9 +3,6 @@
     $del = $_GET['del'] ?? false;
     $categoria = $id ? (new Categoria)->categoriaID($id) : (new Categoria);
     $datosForm = (new Validate)->getForm();
-    echo "<pre>";
-    print_r($datosForm);
-    echo "</pre>";
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
@@ -45,8 +42,10 @@
                                 <input type="text" class="form-control" id="name" placeholder="a" name="name" >
                             <?php  }?>
                             <label for="name" class="col-form-label ms-2">Nombre de la Categoria<span class="obligatorio fs-4"> *</span></label>
+                            <div>
+                                <?= (new Alert())->getAlert(); ?>
+                            </div> 
                         </div>
-
                         <div class="mb-3 form-floating">
                         <?php 
                                 if ($id){?>
