@@ -4,11 +4,13 @@
     $del = $_GET['del'] ?? FALSE;
     $producto = $id ? (new Producto)->productoID($id) : (new Producto);
     $datosPOST = $_POST;
+    $datosPOST['descript'] = $datosPOST['descriptcorta'] . ' ; ' . $datosPOST['descript'];
     $caraval = $_POST['caraval'];
     $imagenes = $_POST['imagenes'];
-    echo '<pre>';
-    print_r($datosPOST);
-    echo '</pre>';
+
+    echo "</br>";
+    echo $datosPOST['descript'];
+
     try {
         if (!$id) {
             $id_producto = $producto->insertProducto($datosPOST);

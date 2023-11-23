@@ -12,7 +12,8 @@
                         <tr>
                             <th class="px-1 text-center" scope="col">#</th>
                             <th class="px-1 text-center" scope="col">Nombre</th>
-                            <th class="px-1 text-center" scope="col" width="40%">Descripción</th>
+                            <th class="px-1 text-center" scope="col" width="15%">Descripción Corta</th>
+                            <th class="px-1 text-center" scope="col" width="40%">Descripción Larga</th>
                             <th class="px-1 text-center" scope="col">Tipo</th>
                             <th class="px-1 text-center" scope="col" width="15%">Caracteristicas</th>
                             <th class="px-1 text-center" scope="col">Precio</th>
@@ -25,7 +26,8 @@
                             <tr>
                                 <th class="text-center" scope="row"><?= $p->getId() ?></th>
                                 <td class="text-capitalize text-center"><?= $p->getNombre() ?></td>
-                                <td><?= $p->getDescrip() ?></td>
+                                <td><?= $p->formatearDescript() ?></td>
+                                <td><?= $p->formatearDescript(true) ?></td>
                                 <td><?= $p->getTipo()->getName() ?></td>
                                 <td><?php foreach ($p->formatearCaravalOBJ() as $k => $v) { ?>
                                     <p class=''><span class='fw-bold text-capitalize'> <?= "$k : </span> $v </p>"?><?php }?>
