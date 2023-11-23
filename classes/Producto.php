@@ -283,9 +283,6 @@ class Producto {
      */
     public function formatearCaravalOBJ() :array {
         $formatear = $this->getCaracteristicas();
-        echo "<pre>";
-        print_r($formatear);
-        echo "</pre>";
         $datosAFormatear = [];
         foreach ($formatear as $v) {
             if($v->getName()->getName() == 'semanal') {
