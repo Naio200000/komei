@@ -19,41 +19,40 @@
                             <form action="acciones/abm-tipo-accion.php?id=<?= $id ?>&del=<?= $del ?>" method="POST">
                         <?php } ?>
                         <form action="acciones/abm-tipo-accion.php?id=<?= $id ?>" method="POST">
-                <?php  } else {?>
-                    <form action="acciones/abm-tipo-accion.php" method="POST">
-                <?php  }?>
+                    <?php  } else {?>
+                        <form action="acciones/abm-tipo-accion.php" method="POST">
+                    <?php  }?>
                     <div class="row align-items-start">
                         <div class="col-12 col-sm-6">
                             <!-- titlo -->
                             <div class="mb-3">
-                                <?php
-                                    echo "<h3";  
-                                    if (!$id) {
-                                        echo " class='text-center fw-bold agregar'>Agregar";
-                                    } elseif (!$del) {
-                                        echo " class='text-center fw-bold editar'> Editar";    
-                                    } else {
-                                        echo " class='text-center fw-bold borrar'> Borrar";    
-                                    }
-                                    echo " TIPO</h3>";
-                                ?>
+                                <?php 
+                                    if (!$id) { ?>
+                                        <h3 class='text-center fw-bold agregar'>Agregar Tipo</h3>
+                                    <?php } else {
+                                    if (!$del) { ?>
+                                        <h3 class='text-center fw-bold editar'> Editar Tipo</h3>
+                                    <?php } else  { ?>        
+                                        <h3 class='text-center fw-bold borrar'> Borrar Tipo</h3>
+                                    <?php } 
+                                } ?>
                             </div>
                             <!-- input nombre -->
                             <div class="mb-3 form-floating">
                                 <?php 
-                                    if ($tipo){?>
+                                    if ($id){?>
                                         <input type="text" class="form-control" id="name" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $tipo->getName() ?>"  name="name" >
                                 <?php  } else {?>
                                     <input type="text" class="form-control" id="name" placeholder="a" name="name" >
                                 <?php  }?>
-                                <label for="name" class="col-form-label ms-2">Nombre del tipo</label>
+                                <label for="name" class="col-form-label ms-2" placeholder="a">Nombre del tipo</label>
                             </div>
                             <!-- input cate -->
                             <div class="mb-3 form-floating">
                                 <select <?php echo $del ? "Disabled" : ""; ?> class="form-select" name="id_categoria" id="id_categoria" required>
                                     <option value="" selected disabled>Elija una Categoria</option>
                                     <?PHP foreach ($categorias as $c) { ?>
-                                        <option class="text-capitalize" value="<?= $c->getId() ?>" <?= $c->getId() == $tipo->getCategoria()->getId() ? "selected" : "" ?>><?= $c->getName() ?></option>
+                                        <option class="text-capitalize" value="<?= $c->getId() ?>" <?= $id ? ($c->getId() == $tipo->getCategoria()->getId() ? "selected" : "") : "" ?>><?= $c->getName() ?></option>
                                     <?PHP } ?>
                                 </select>
                                 <label for="id_categoria" class="col-form-label ms-2"> Seleccione una Catergoria</label>
