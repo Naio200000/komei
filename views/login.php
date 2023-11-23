@@ -6,6 +6,9 @@
         <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center mt-2 mb-5 mx-auto px-2">Inciar Sessión</h2>
         <div class="row my-5 justify-content-center">
             <div class="col col-md-4">
+                <div>
+                    <?= (new Alert())->getAlert(); ?>
+                </div> 
                 <form action="./admin/acciones/auth_login-accion.php" method="POST">
                     <div class="mb-3 form-floating">
                         <input type="text" class="form-control" id="username" name="username" placeholder="a">

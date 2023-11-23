@@ -16,9 +16,11 @@ class Login {
                 $_SESSION['user'] = $datosUsuario;
                 return $datosUsuario->getRol()->getRoles();
             } else {
+                (new Alert())->insertAlerta('danger', "La contraseña es Incorrecta");
                 return FALSE;
             }
         } else {
+            (new Alert())->insertAlerta('warning', "El usuario $usuario no exhiste, compruebe que lo haya escrito correctamente");
             return NULL;
         }
     }
