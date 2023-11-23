@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2023 a las 05:03:55
+-- Tiempo de generación: 23-11-2023 a las 17:56:44
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -119,11 +119,10 @@ CREATE TABLE `categorias` (
 --
 
 INSERT INTO `categorias` (`id`, `name`, `descript`) VALUES
-(1, 'clases', 'Clases de Iaido'),
-(2, 'ropa', NULL),
-(3, 'equipos', NULL),
-(4, 'seminario', 'Seminarios anuales que se organizan por la escuela y se trae a diferentes Senseis'),
-(7, 'Decoraciones', 'Decoraciones para los Dojos');
+(1, 'clases', '    <p>\r\n      Sumérgete en el fascinante mundo del <strong>Iaido</strong>, un antiguo arte marcial japonés centrado en la precisión y la gracia en el manejo de la katana. Nuestras clases de Iaido ofrecen a los estudiantes la oportunidad de explorar la conexión entre mente, cuerpo y espada, desarrollando habilidades que van más allá de la destreza física. Guiados por instructores expertos, los participantes aprenderán las técnicas esenciales para desenvainar, cortar y volver a guardar la katana con elegancia y eficacia.\r\n    </p>\r\n    <p>\r\n      Las lecciones se centran no solo en el dominio técnico, sino también en la <em>disciplina mental</em>, la concentración y el respeto por la tradición. Únete a nosotros y descubre cómo el Iaido puede ser una vía única para el autodescubrimiento y el perfeccionamiento personal.\r\n    </p>\r\n'),
+(2, 'ropa', '    <p>\r\n      En la disciplina del Iaido, la vestimenta juega un papel crucial, proporcionando comodidad, tradición y funcionalidad durante la práctica. Aquí describimos las prendas esenciales utilizadas en nuestras clases:\r\n    </p>\r\n\r\n    <p>\r\n      El <strong>dogi</strong> es la chaqueta tradicional japonesa que se usa en la práctica de Iaido. Fabricada generalmente en algodón resistente, el gi permite libertad de movimiento mientras mantiene una apariencia elegante. Su diseño se adapta a las exigencias del entrenamiento, brindando transpirabilidad y durabilidad.\r\n    </p>\r\n\r\n    <p>\r\n      Complementando el gi, el <strong>hakama</strong> es un pantalón tradicional japonés que se amarra alrededor de la cintura y se pliega de manera distintiva. Usado tanto por hombres como por mujeres, el hakama simboliza el nivel de habilidad del practicante y ofrece una capa adicional de dignidad a la práctica de Iaido.\r\n    </p>\r\n\r\n    <p>\r\n      El <strong>obi</strong> es el cinturón que se ata alrededor del gi para mantenerlo en su lugar y ajustar la prenda a la forma del cuerpo. Además de su función práctica, el obi es un elemento simbólico en la progresión del estudiante, reflejando su nivel de experiencia en la disciplina.\r\n    </p>\r\n'),
+(3, 'equipos', '    <p>\r\n      La <strong>katana</strong> es la espada japonesa emblemática utilizada en las prácticas de Iaido. Con su hoja afilada y su diseño elegante, la katana es una obra maestra de artesanía que representa la tradición y la destreza. En nuestras clases, fomentamos el respeto y el cuidado adecuado de esta poderosa arma, enseñando a los estudiantes no solo a dominar las técnicas, sino también a apreciar la importancia cultural de la katana.\r\n    </p>\r\n\r\n    <p>\r\n      El <strong>iaito</strong> es una versión no afilada de la katana, diseñada específicamente para la práctica segura del Iaido. Aunque no tiene filo, mantiene el equilibrio y la apariencia auténtica de una katana real. Los estudiantes utilizan el iaito para perfeccionar sus movimientos sin el riesgo de lesiones, permitiendo un entrenamiento más intensivo y preciso.\r\n    </p>\r\n\r\n    <p>\r\n      Además de la katana, los <strong>bokkenes</strong> (espadas de madera) son herramientas esenciales en las clases de Iaido. Estas réplicas de madera imitan la forma y el peso de una katana, permitiendo a los estudiantes practicar técnicas de corte y bloqueo de manera segura. El uso del bokken promueve el control del cuerpo y la concentración, elementos fundamentales en el desarrollo de habilidades en Iaido.\r\n    </p>\r\n'),
+(4, 'seminario', 'Seminarios anuales que se organizan por la escuela y se trae a diferentes Senseis');
 
 -- --------------------------------------------------------
 
@@ -151,7 +150,9 @@ INSERT INTO `disponibilidad` (`id`, `seminario`, `resto`) VALUES
 (7, NULL, '15'),
 (12, NULL, '90'),
 (13, NULL, '3'),
-(14, NULL, '78');
+(14, NULL, '78'),
+(28, NULL, '3423'),
+(29, '2023-11-15', NULL);
 
 -- --------------------------------------------------------
 
@@ -664,25 +665,25 @@ ALTER TABLE `caracteristicas`
 -- AUTO_INCREMENT de la tabla `caraval_x_producto`
 --
 ALTER TABLE `caraval_x_producto`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `disponibilidad`
 --
 ALTER TABLE `disponibilidad`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 
 --
 -- AUTO_INCREMENT de la tabla `imagenes_x_productos`
 --
 ALTER TABLE `imagenes_x_productos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=154;
 
 --
 -- AUTO_INCREMENT de la tabla `images`
@@ -700,7 +701,7 @@ ALTER TABLE `links_validos`
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
@@ -712,13 +713,13 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `tipos`
 --
 ALTER TABLE `tipos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_x_categorias`
 --
 ALTER TABLE `tipo_x_categorias`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
@@ -766,14 +767,14 @@ ALTER TABLE `productos`
 -- Filtros para la tabla `tipos`
 --
 ALTER TABLE `tipos`
-  ADD CONSTRAINT `tipos_ibfk_1` FOREIGN KEY (`id_disponible`) REFERENCES `disponibilidad` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `tipos_ibfk_2` FOREIGN KEY (`id`) REFERENCES `tipo_x_categorias` (`id_tipo`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `tipos_ibfk_1` FOREIGN KEY (`id_disponible`) REFERENCES `disponibilidad` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `tipo_x_categorias`
 --
 ALTER TABLE `tipo_x_categorias`
-  ADD CONSTRAINT `tipo_x_categorias_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `tipo_x_categorias_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tipo_x_categorias_ibfk_3` FOREIGN KEY (`id_tipo`) REFERENCES `tipos` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuario`
