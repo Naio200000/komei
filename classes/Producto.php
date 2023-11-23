@@ -272,12 +272,20 @@ class Producto {
         return number_format($this->precio, 2,",",".");
     }
 
+     /**
+      * Hay que reformatear esta funcion para que si un producto tiene mas de 
+      * una de la misma caracteristica traiga todos los valores
+      */
+
     /**
      * Formatea los datos de etc en un array asociativo para ser mostrados
      * @return array array con los datos de etc con key y valor
      */
     public function formatearCaravalOBJ() :array {
         $formatear = $this->getCaracteristicas();
+        echo "<pre>";
+        print_r($formatear);
+        echo "</pre>";
         $datosAFormatear = [];
         foreach ($formatear as $v) {
             if($v->getName()->getName() == 'semanal') {
