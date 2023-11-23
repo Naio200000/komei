@@ -120,9 +120,7 @@
         </nav>
     </header>
     <main>
-        <?PHP require_once "views/$views.php";
-        echo $hola;
-        ?>
+        <?PHP require_once "views/$views.php"; ?>
     </main>
     <footer class="container-fluid mb-lg-0 footer">
         <div class="container-md">
