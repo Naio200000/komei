@@ -16,5 +16,5 @@
         }
         
     } else {
-        header('location: ../index.php?view=login');
+        header('location: ../../index.php?view=login');
     }
