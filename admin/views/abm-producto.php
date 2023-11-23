@@ -54,11 +54,11 @@
                             <div class="mb-3 form-floating">
                                 <?php 
                                     if ($id){?>
-                                        <textarea class="form-control" id="descript-text" <?php echo $del ? "Disabled" : ""; ?>  name="descript" rows="6" style="height:100%;" ><?= $producto->getDescrip() ?></textarea>
+                                        <textarea class="form-control" id="descript-text" <?php echo $del ? "Disabled" : ""; ?>  name="descript" rows="6" style="height:100%;" ><?= $producto->formatearDescript(true) ?></textarea>
                                 <?php  } else {?>
                                         <textarea class="form-control" id="descript-text" placeholder="a" name="descript" rows="4" style="height:100%;" ></textarea>
                                 <?php  }?>
-                                <label for="descript-text" class="col-form-label ms-2">Descripción del Producto</label>
+                                <label for="descript-text" class="col-form-label ms-2">Descripción larga del Producto</label>
                             </div>
                         </div>
                         <div class=" col-12 col-sm-6">
@@ -95,6 +95,15 @@
                                     </div>
                             <?php } ?>
                         </div>
+                        <div class="mb-3 col-12 form-floating">
+                                <?php 
+                                    if ($id){?>
+                                        <input type="text" class="form-control" id="descriptcorta" <?php echo $del ? "Disabled" : ""; ?> value="<?= $producto->formatearDescript() ?>"  name="descriptcorta" >
+                                <?php  } else {?>
+                                    <input type="text" class="form-control" id="descriptcorta" placeholder="a" name="descriptcorta" >
+                                <?php  }?>
+                                <label for="descriptcorta" class="col-form-label ms-2">Descripcion corta del producto</label>
+                            </div>
                         <!-- Accordion  -->
                         <div class="col-12 <?php echo $del ? "grey" : "tabla"; ?> mb-3">
                             <div class="py-3">
