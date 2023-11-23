@@ -1,13 +1,23 @@
 <?php
     require_once "libraries/autoloader.php";
     require_once "libraries/functions.php";
-
     $linksValidos = (new Links)->formateaLinks();
     $viewSelected = $_GET['view'] ?? 'home';
+    $user = $_SESSION['user'] ?? false;
+    $validar = false;
     if (!array_key_exists($viewSelected, $linksValidos)) {
         $views = "404";
         $title = "Error 404 - Pagina no encontrada.";
     } else {
+        if ($user) {
+            $hola = $user->getRol()->getRoles();
+            if ($user->getRol()->getRoles() != 'admin') { 
+                $validar = true;
+            } else {
+                header('location: admin/index.php?view=dash');
+            }
+        }
+
         $views = $viewSelected;
         $title = $linksValidos[$viewSelected]['title'];
     }
@@ -74,7 +84,7 @@
                         </li>
                     </ul>
                     <?php
-                    if (isset($user)) { ?>
+                    if ($validar) { ?>
                         <div>
                             <a href="./admin/acciones/auth_logout-accion.php"><p class="btn btn-komei fw-bold">Log out</p></a>
                         </div>
@@ -110,7 +120,9 @@
         </nav>
     </header>
     <main>
-        <?PHP require_once "views/$views.php";?>
+        <?PHP require_once "views/$views.php";
+        echo $hola;
+        ?>
     </main>
     <footer class="container-fluid mb-lg-0 footer">
         <div class="container-md">

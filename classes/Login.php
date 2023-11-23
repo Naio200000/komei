@@ -23,6 +23,9 @@ class Login {
         }
     }
 
+    /**
+     * borra los datos de user en sesion
+     */
     public function log_out() {
      
         if (isset($_SESSION['user'])) {
@@ -30,6 +33,11 @@ class Login {
         };
     }
 
+
+    /**
+     * veritica si hay datos de usuario en sesion si no hay usuario, redirige a la pagina de log in
+     * @return true si hay usuario devuelve true
+     */
     public function verificar() {
 
         if (isset($_SESSION['user'])) {

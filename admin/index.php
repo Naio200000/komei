@@ -1,13 +1,21 @@
 <?php
     require_once "../libraries/autoloader.php";
     $linksValidos = (new Links)->formateaLinks();
-    $viewSelected = $_GET['view'] ?? 'login';
+    $viewSelected = $_GET['view'] ??  header('location: ../index.php?view=404');
+    $validar = false;
     if (!array_key_exists($viewSelected, $linksValidos)) {
         $views = "404";
         $title = "Error 404 - Pagina no encontrada.";
     } else {
         if ($viewSelected != 'login') {
-            $user = (new Login)->verificar() ? $_SESSION['user'] : null;
+            if ((new Login)->verificar()) {
+                $user =  $_SESSION['user'];
+                if ($user->getRol()->getRoles() != 'usuario') {
+                    $validar = true;
+                }else {
+                    header('location: ../index.php?view=404');
+                }
+            }
         }
         $views = $viewSelected;
         $title = $linksValidos[$viewSelected]['title'];
@@ -38,7 +46,7 @@
                             <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=dash">Dashboard</a>
                         </li>
                         <?php 
-                            if (isset($user)) { ?>
+                            if ($validar) { ?>
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle" href="index.php?view=tienda" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrar</a>
                                     <ul class="dropdown-menu">
@@ -63,7 +71,7 @@
         </nav>
     </header>
     <main>
-        <?PHP require_once "views/$views.php";?>
+        <?PHP require_once "views/$views.php"; ?>
     </main>
     <footer class="container-fluid mb-lg-0 footer">
         <div class="container-md">
