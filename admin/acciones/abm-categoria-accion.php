@@ -4,6 +4,7 @@
     $del = $_GET['del'] ?? FALSE;
     $categoria = $id ? (new Categoria)->categoriaID($id) : (new Categoria);
     $datosPOST = $_POST;
+    if ($id) $datosPOST['id'] = $id;
 
 
     try {

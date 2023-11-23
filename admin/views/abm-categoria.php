@@ -3,6 +3,7 @@
     $del = $_GET['del'] ?? false;
     $categoria = $id ? (new Categoria)->categoriaID($id) : (new Categoria);
     $datosForm = (new Validate)->getForm();
+    $id = $datosForm ? $datosForm['id'] : $id;
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
