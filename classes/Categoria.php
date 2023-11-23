@@ -98,6 +98,24 @@ class Categoria {
         return $datos;
     }
 
+
+    /**
+     * Devuelve los datos de una categoria segun su nombre
+     * @param string $name de la Categoria a buscar
+     * @return Categoria devuelve un objeto Categoria
+     */
+    public function categoriaName(string $name) :Categoria {
+
+        $conexion = Conexion::getConexion();
+        $query = "SELECT * FROM categorias WHERE name = ?";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
+        $PDOStatement->execute([$name]);
+        $datos = $PDOStatement->fetch();
+
+        return $datos;
+    }
+
     /**
      * Trae un array con todos las Categorias
      * @return array Array con todas las categorias

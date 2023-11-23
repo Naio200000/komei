@@ -1,14 +1,15 @@
 <?php
-    $categoriaGET = $_GET['category'] ?? false ;
+    $categoriaGET = isset($_GET['category']) ? (new Categoria)->categoriaName($_GET['category']) : false ;
+
     $tiposGET = $_GET['type'] ?? false;
     $datosPOST = $_POST ?? false ;
     if (empty($datosPOST)){
-        $filtrar = (new Categoria())->formateaCategoriasa();
         if ($categoriaGET) {
-            if (in_array($categoriaGET, $categorias)) {
-                $filtrar = (new Categoria)->formateaTipos($categoriaGET); 
-                $category = $OBJProducto->filtrarCatalogo($categoriaGET, $tiposGET);
-                $CategorySelected = $categoriaGET;
+            $filtrar = $categoriaGET->formateaCategoriasa();
+            if (in_array($categoriaGET->getName(), $categorias)) {
+                $filtrar = $categoriaGET->formateaTipos($categoriaGET->getName()); 
+                $category = $OBJProducto->filtrarCatalogo($categoriaGET->getName(), $tiposGET);
+                $CategorySelected = $categoriaGET->getName();
             } else {
                 $filtrar = false;
                 $CategorySelected = 'No se encontro la categoria';
@@ -31,7 +32,15 @@
     <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">Tienda</h2>
     <p class="fs-5 w-75 mx-auto">En nuestra tienda encontrarás todo lo <em>necesario para tu entrenamiento</em>. Podrás encontrar paquetes de clases, toda la ropa necesaria (<span lang="ja">keikogi, Obi, Hakamas</span>) de diversos tamaños y calidad, y también podrás encontrar los equipos necesarios (<span lang="ja">Katana, Bokken</span>)</p>
     <div class="productos pb-3 formularioLogica">
-        <?php if($filtrar) { ?>
+        <article>
+            <div class="categoria pt-2 pe-2">
+                <h3 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2"><?= $CategorySelected ?></h3>
+            </div> 
+            <div class="categoria pt-2 pe-2">
+                <div class="w-75 w-lg-100 my-2 mx-auto px-2" ><?= $categoriaGET ? $categoriaGET->getDescript() : "" ?></div>
+            </div>
+        </article>
+        <?php if($filtrar) {  ?>
             <article class="accordion accordion-flush px-4" id="accordionFlushExample">
                 <div class="accordion-item">
                     <p class="accordion-header" id="flush-headingOne">
@@ -44,18 +53,15 @@
                             <div class="d-flex justify-content-around">
                                 <?php foreach ($filtrar as $key => $value) { ?>
                                     <div>
-                                        <a class='px-3 text-uppercase' href='index.php?view=tienda<?=$categoriaGET ? "&category=$categoriaGET&type=$key" : "&category=$value" ?>'><button class='fw-bold btn btn-komei'><?= $value ?></button></a>
+                                        <a class='px-3 text-uppercase' href='index.php?view=tienda<?= $categoriaGET ? ($categoriaGET->getName() ? "&category={$categoriaGET->getName()}&type=$key" : "&category=$value") : "&category=$value" ?>'><button class='fw-bold btn btn-komei'><?= $value ?></button></a>
                                     </div>
-                                <?php  } ?>
+                                <?php } ?>
                             </div>
                         </div>
                     </div>
                 </div>
             </article>
         <?php } ?>
-        <div class="categoria pt-2 pe-2">
-            <h3 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2"><?= $CategorySelected ?></h3>
-        </div> 
         <article id="productos">
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 my-2 container mx-auto">
                 <?PHP

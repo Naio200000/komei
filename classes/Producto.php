@@ -215,6 +215,7 @@ class Producto {
      * @return array $catalogoMaterial catalogo filtrado por material
      */
     public function filtrarCatalogo(mixed $cate = null, mixed $type = null): array {
+
             $catalogofiltrar = [];
             if ($cate) {
                 $completo = $this->catalogoCategoria($cate);
