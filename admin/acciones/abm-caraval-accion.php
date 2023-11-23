@@ -7,14 +7,14 @@
     try {
         if (!$id) {
             $caraval->insertRelacion($datosPOST);
-            (new Alert())->insertAlerta('success', "Se agrego una relacion correctamente");
+            (new Alert())->insertAlerta('success', "Se agrego una Relacion correctamente");
         } else {
             if (!$del) {
                 $caraval->editRelacion($datosPOST);
-                (new Alert())->insertAlerta('success', "Se edito la relacion entre {$caraval->getName()->getName()} <=> {$caraval->getName()->getName()}");
+                (new Alert())->insertAlerta('success', "Se edito la Relacion entre {$caraval->getName()->getName()} <=> {$caraval->getName()->getName()}");
             } else {
                 $caraval->deleteRelacion();
-                (new Alert())->insertAlerta('danger', "Se borro la relacion entre {$caraval->getName()->getName()} <=> {$caraval->getValor()->getValor()}");
+                (new Alert())->insertAlerta('danger', "Se borro la Relacion entre {$caraval->getName()->getName()} <=> {$caraval->getValor()->getValor()}");
             }
         }
 
@@ -25,6 +25,11 @@
         // print_r($e);
         // echo '</pre>';
         // die('No se pudo cargar la Categoria');
-        (new Alert())->insertAlerta('danger', "Hubo un error inesperado. Comunicarse con el Administrador de sistema.");
-        header('Location: ../index.php?view=categoria');
+        if ($e->getCode() == 23000) {
+            (new Alert())->insertAlerta('danger', "La Relacion entre {$caraval->getName()->getName()} <=> {$caraval->getValor()->getValor()}no se pudo eliminaro porque esta asociada con un o mas Productos.");
+        } else {
+            (new Alert())->insertAlerta('danger', "Hubo un error inesperado. Comunicarse con el Administrador de sistema.");
+        }
+
+        header('Location: ../index.php?view=caraval');
     }
