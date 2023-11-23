@@ -3,6 +3,7 @@
     $linksValidos = (new Links)->formateaLinks();
     $viewSelected = $_GET['view'] ??  header('location: ../index.php?view=404');
     $validar = false;
+    $superadmin = false;
     if (!array_key_exists($viewSelected, $linksValidos)) {
         $views = "404";
         $title = "Error 404 - Pagina no encontrada.";
@@ -12,7 +13,10 @@
                 $user =  $_SESSION['user'];
                 if ($user->getRol()->getRoles() != 'usuario') {
                     $validar = true;
-                }else {
+                    if ($user->getRol()->getRoles() == 'superadmin') {
+                        $superadmin = true;
+                    }
+                } else {
                     header('location: ../index.php?view=404');
                 }
             }
@@ -45,28 +49,28 @@
                         <li class="nav-item">
                             <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=dash">Dashboard</a>
                         </li>
-                        <?php 
-                            if ($validar) { ?>
-                                <li class="nav-item dropdown">
-                                    <a class="nav-link dropdown-toggle" href="index.php?view=tienda" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrar</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a class="dropdown-item" href="index.php?view=categoria">Categorias</a></li>
-                                        <li><a class="dropdown-item" href="index.php?view=tipo">Tipos</a></li>
-                                        <li><a class="dropdown-item" href="index.php?view=caraval">Caracteristicas</a></li>
-                                        <li><a class="dropdown-item" href="index.php?view=imagenes">Imagenes</a></li>
-                                        <li><a class="dropdown-item" href="index.php?view=producto">Productos</a></li>
-                                    </ul>
-                                </li>
+                <?php if ($validar) { ?>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="index.php?view=tienda" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrar</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="index.php?view=categoria">Categorias</a></li>
+                                <li><a class="dropdown-item" href="index.php?view=tipo">Tipos</a></li>
+                                <li><a class="dropdown-item" href="index.php?view=caraval">Caracteristicas</a></li>
+                                <li><a class="dropdown-item" href="index.php?view=imagenes">Imagenes</a></li>
+                                <li><a class="dropdown-item" href="index.php?view=producto">Productos</a></li>
                             </ul>
-                        </div>
-                        <div>
-
-                        </div>
-                        <div>
-                            <a href="acciones/auth_logout-accion.php"><p class="btn btn-komei fw-bold">Log out</p></a>
-                        </div>
-                    <?php }
-                ?>
+                        </li>
+                    </ul>
+                </div>
+                <?php if ($superadmin) { ?>
+                    <div>
+                        <a href="../index.php?view=home"><p class="btn btn-komei me-2 fw-bold">Tienda</p></a>
+                    </div>
+                <?php } ?>
+                <div>
+                    <a href="acciones/auth_logout-accion.php"><p class="btn btn-komei fw-bold">Log out</p></a>
+                </div>
+                <?php } ?>
             </div>
         </nav>
     </header>

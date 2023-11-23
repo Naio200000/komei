@@ -22,7 +22,6 @@
         $title = $linksValidos[$viewSelected]['title'];
     }
     $OBJProducto = New Producto ();
-    $user = $_SESSION['user'] ?? null;
 ?>
 <!DOCTYPE html>
 <html lang="es">
