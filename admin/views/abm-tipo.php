@@ -14,7 +14,7 @@
         <article>
             <div class="row g-4 my-2 container mx-auto">
                 <?php 
-                    if ($tipo){
+                    if ($id){
                         if ($del) { ?>
                             <form action="acciones/abm-tipo-accion.php?id=<?= $id ?>&del=<?= $del ?>" method="POST">
                         <?php } ?>

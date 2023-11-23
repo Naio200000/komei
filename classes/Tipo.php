@@ -67,6 +67,7 @@ class Tipo {
         } else {
            $id_disponible = $this->insertDisponibilidad($dataPOST['fecha'], $dataPOST['dias']);
         }
+
         $query = "INSERT INTO `tipos` (`name`, `descript`, `id_disponible` ) VALUES (:nombre , :descript, :id_disponible);";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->execute(
