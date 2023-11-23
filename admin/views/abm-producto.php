@@ -67,7 +67,7 @@
                                 <select <?php echo $del ? "Disabled" : ""; ?> class="form-select" name="id_tipo" id="id_tipo" required>
                                     <option value="" selected disabled>Elija un Tipo</option>
                                     <?PHP foreach ($tipos as $t) { ?>
-                                        <option class="text-capitalize" value="<?= $t->getId() ?>" <?= $id ? $t->getId() == $producto->getTipo()->getId() ? "selected" : "" : "" ?>><?= $t->getName() ?></option>
+                                        <option class="text-capitalize" value="<?= $t->getId() ?>" <?= $id ? ($t->getId() == $producto->getTipo()->getId() ? "selected" : "") : "" ?>><?= $t->getName() ?></option>
                                     <?PHP } ?>
                                 </select>
                                 <label for="id_tipo" class="col-form-label ms-2"> Seleccione un Tipo</label>

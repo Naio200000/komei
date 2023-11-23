@@ -1,6 +1,5 @@
 Cosas para agregar
 
-separar el campo descrpt de los productos en corto y largo
 
 Agregar log in / Verificacion de usuario y $_SESSION
 
