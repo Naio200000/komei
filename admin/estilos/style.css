@@ -144,7 +144,9 @@ main {
     background-color: rgb(151, 169, 178);
     color: #fff;
 }
-
+.obligatorio {
+    color: red;
+}
 .titulo-caraval {
     font-size: 24px;
     font-weight: bold;

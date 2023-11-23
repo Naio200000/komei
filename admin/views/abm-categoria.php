@@ -21,17 +21,17 @@
                 <?php  }?>
                     <div class="row align-items-start">
                         <div class="mb-3 col-12 col-sm-6">
-                            <?php
-                                echo "<h3";  
-                                if (!$id) {
-                                    echo " class='text-center fw-bold agregar'>Agregar";
-                                } elseif (!$del) {
-                                    echo " class='text-center fw-bold editar'> Editar";    
-                                } else {
-                                    echo " class='text-center fw-bold borrar'> Borrar";    
-                                }
-                                echo " Categoria</h3>";
-                            ?>
+                           <?php 
+                            if (!$id) { ?>
+                                <h3 class='text-center fw-bold agregar'>Agregar Categoria</h3>
+                            <?php } else {
+                                if (!$del) { ?>
+                                    <h3 class='text-center fw-bold editar'> Editar Categoria</h3>
+                                <?php } else  { ?>        
+                                    <h3 class='text-center fw-bold borrar'> Borrar Categoria</h3>
+                                <?php } 
+                            } ?>
+                            <p class="text-center">Los campos marcados con <span class="obligatorio fs-4"> *</span> son obligatorios</p>
                         </div>
                         <div class="mb-3 col-12 col-sm-6 form-floating">
                             <?php 
@@ -40,7 +40,7 @@
                             <?php  } else {?>
                                 <input type="text" class="form-control" id="name" placeholder="a" name="name" >
                             <?php  }?>
-                            <label for="name" class="col-form-label ms-2">Nombre de la Categoria</label>
+                            <label for="name" class="col-form-label ms-2">Nombre de la Categoria<span class="obligatorio fs-4"> *</span></label>
                         </div>
 
                         <div class="mb-3 form-floating">
