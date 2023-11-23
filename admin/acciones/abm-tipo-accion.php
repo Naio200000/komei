@@ -28,8 +28,10 @@
         // print_r($e);
         // echo '</pre>';
         // die('No se pudo cargar la Categoria');
-
-
-        (new Alert())->insertAlerta('danger', "Hubo un error inesperado. Comunicarse con el Administrador de sistema.");
-        header('Location: ../index.php?view=categoria');
+        if ($e->getCode() == 23000) {
+            (new Alert())->insertAlerta('danger', "El tipo {$tipo->getName()} no se pudo eliminaro porque esta asociada con un o mas Productos o a una Categoria.");
+        } else {
+            (new Alert())->insertAlerta('danger', "Hubo un error inesperado. Comunicarse con el Administrador de sistema.");
+        }
+        header('Location: ../index.php?view=tipo');
     }
