@@ -201,7 +201,6 @@ class Producto {
             $OBJcaracteristicas[] = (new Caraval())->caravalID(intval($id));
         }
         $producto->caracteristicas = $OBJcaracteristicas;
-        $arrayIDimagen = explode('|', $datos['imagen']);
         $producto->imagen  = (new Images())->imagenesProducto($producto->id);
 
         return $producto;
