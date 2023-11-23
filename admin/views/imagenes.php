@@ -1,11 +1,5 @@
 <?php
     $imagenes = (new Images)->getAllImages();
-    // echo '<pre>';
-    // print_r($imagenes);
-    // echo '<pre>';
-    // echo '<pre>';
-    // print_r($datosPOST);
-    // echo '<pre>';
 ?>
 <section class="abm container-fluid container-md pb-3" id="abm">
     <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">Imagenes</h2>
@@ -13,6 +7,9 @@
     <div class="listado pb-3">
         <article>
             <div class="row g-4 my-2 container mx-auto">
+                <div>
+                    <?= (new Alert())->getAlert(); ?>
+                </div> 
                 <?php 
                     foreach ($imagenes as $i) { ?>
                         <div class="col-12 col-sm-6 col-md-4 col-lg-2 form-check">

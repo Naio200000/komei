@@ -7,6 +7,9 @@
     <div class="listado pb-3">
         <article>
             <div class="row g-4 my-2 container mx-auto">
+                <div>
+                    <?= (new Alert())->getAlert(); ?>
+                </div> 
                 <table class="tabla table table-striped">
                     <thead>
                         <tr>
