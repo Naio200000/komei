@@ -27,19 +27,18 @@
                     <div class="row align-items-start">
                         <!-- Titulo -->
                         <div class="mb-3">
-                            <?php
-                                echo "<h3";  
-                                if (!$id) {
-                                    echo " class='text-center fw-bold agregar'>Agregar";
-                                } elseif (!$del) {
-                                    echo " class='text-center fw-bold editar'> Editar";    
-                                } else {
-                                    echo " class='text-center fw-bold borrar'> Borrar";    
-                                }
-                                echo " Producto</h3>";
-                            ?>
-                        </div>
-                            <div class=" col-12 col-sm-6">
+                            <?php 
+                                if (!$id) { ?>
+                                    <h3 class='text-center fw-bold agregar'>Agregar Producto</h3>
+                            <?php } else {
+                                if (!$del) { ?>
+                                    <h3 class='text-center fw-bold editar'> Editar Producto</h3>
+                                <?php } else  { ?>        
+                                    <h3 class='text-center fw-bold borrar'> Borrar Producto</h3>
+                                <?php } 
+                            } ?>
+                       </div>
+                        <div class=" col-12 col-sm-6">
                             <!-- Nombre -->
                             <div class="mb-3 col-12 form-floating">
                                 <?php 
