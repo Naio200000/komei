@@ -35,9 +35,9 @@
         <article>
             <div class="categoria pt-2 pe-2">
                 <h3 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2"><?= $CategorySelected ?></h3>
-            </div> 
-            <div class="categoria pt-2 pe-2">
-                <div class="w-75 w-lg-100 my-2 mx-auto px-2" ><?= $categoriaGET ? $categoriaGET->getDescript() : "" ?></div>
+            </div>  
+            <div class="categoria pt-2 pe-2 bg-light">
+                <div class="w-75 w-lg-100 my-2 mx-auto px-2 pb-1" ><?= $categoriaGET ? $categoriaGET->getDescript() : "" ?></div>
             </div>
         </article>
         <?php if($filtrar) {  ?>

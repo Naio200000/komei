@@ -1,13 +1,10 @@
 Cosas para agregar
 
-
-Agregar log in / Verificacion de usuario y $_SESSION
-
-Agregar funcion que decide que color tienen los botones y titulos de ABM (Podria estar en la Clase Alert)
+agregar verificaciones a los form
 
 Si hay tiempo Programar para  que los datos de dojos de sql 
 
-Ver formatear objeto el arrayid imagen
+Agregar orden a las imagenes
 
 Modificar los botones en todos los formularios de abm
 
