@@ -1,7 +1,7 @@
 <?php
     $id = $_GET['id'] ?? false;
     $del = $_GET['del'] ?? false;
-    $categoria = $id ? (new Categoria)->categoriaID($id) : false;
+    $categoria = $id ? (new Categoria)->categoriaID($id) : (new Categoria);
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
@@ -11,7 +11,7 @@
         <article>
             <div class="row g-4 my-2 container mx-auto">
                 <?php 
-                    if ($categoria){
+                    if ($id){
                         if ($del) { ?>
                             <form action="acciones/abm-categoria-accion.php?id=<?= $id ?>&del=<?= $del ?>" method="POST">
                         <?php } ?>
@@ -35,7 +35,7 @@
                         </div>
                         <div class="mb-3 col-12 col-sm-6 form-floating">
                             <?php 
-                                if ($categoria){?>
+                                if ($id){?>
                                     <input type="text" class="form-control" id="name" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $categoria->getName() ?>"  name="name" >
                             <?php  } else {?>
                                 <input type="text" class="form-control" id="name" placeholder="a" name="name" >
@@ -45,7 +45,7 @@
 
                         <div class="mb-3 form-floating">
                         <?php 
-                                if ($categoria){?>
+                                if ($id){?>
                             <textarea class="form-control" id="descript-text" <?php echo $del ? "Disabled" : ""; ?>  name="descript" rows="6" style="height:100%;" ><?= $categoria->getDescript() ?></textarea>
                             <?php  } else {?>
                                 <textarea class="form-control" id="descript-text" placeholder="a" name="descript" rows="6" style="height:100%;" ></textarea>
