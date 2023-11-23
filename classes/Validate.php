@@ -23,9 +23,9 @@ class Validate {
 
         /**
      * Devuelve los datos de form de la variable session y los borra
-     * @return ?array devuelve un array con los datos del form
+     * @return mixed devuelve un array con los datos del form
      */
-    public function getForm() :?array {
+    public function getForm() :mixed {
 
         if (!empty($_SESSION['form'])) {
 
@@ -36,7 +36,7 @@ class Validate {
 
         } else {
 
-            return null;
+            return false;
         }
     }
 

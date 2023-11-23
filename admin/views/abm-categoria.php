@@ -2,6 +2,10 @@
     $id = $_GET['id'] ?? false;
     $del = $_GET['del'] ?? false;
     $categoria = $id ? (new Categoria)->categoriaID($id) : (new Categoria);
+    $datosForm = (new Validate)->getForm();
+    echo "<pre>";
+    print_r($datosForm);
+    echo "</pre>";
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
@@ -46,9 +50,9 @@
                         <div class="mb-3 form-floating">
                         <?php 
                                 if ($id){?>
-                            <textarea class="form-control" id="descript-text" <?php echo $del ? "Disabled" : ""; ?>  name="descript" rows="6" style="height:100%;" ><?= $categoria->getDescript() ?></textarea>
+                            <textarea class="form-control" id="descript-text" <?php echo $del ? "Disabled" : ""; ?>  name="descript" rows="6" style="height:100%;" ><?= $categoria->getDescript() ?? $datosForm['descript'] ?></textarea>
                             <?php  } else {?>
-                                <textarea class="form-control" id="descript-text" placeholder="a" name="descript" rows="6" style="height:100%;" ></textarea>
+                                <textarea class="form-control" id="descript-text" placeholder="a" name="descript" rows="6" style="height:100%;" ><?= $datosForm['descript'] ?? "" ?></textarea>
                             <?php  }?>
                             <label for="descript-text" class="col-form-label ms-2">Descripción para ser mostrada en Pagina principal de la categoria</label>
                         </div>
