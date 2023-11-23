@@ -8,6 +8,9 @@
     <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">Categorias</h2>
     <p class="fs-5 w-75 text-center mx-auto">Administrador de Categorias principales de la tienda</p>
     <div class="listado pb-3">
+        <div>
+            <?= (new Alert())->getAlert(); ?>
+        </div> 
         <article class="accordion" id="accordionCaraval">
             <div class="accordion-item">
                 <h3 class="accordion-header" id="headingOne">
@@ -15,10 +18,11 @@
                         <span class="titulo-caraval">Relaciones Caracteristica/Valor</span>
                     </button>
                 </h3>
-                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionCaraval">
+                <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionCaraval">
                     <div class="accordion-body">
                         <div class="row g-4 my-2 container mx-auto">
                             <div class="col">
+
                                 <table class="tabla table table-striped">
                                     <thead>
                                         <tr>

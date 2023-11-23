@@ -7,7 +7,7 @@
     try {
         if (!$id) {
             $categoria->insertCategoria($datosPOST['name'], $datosPOST['descript']);
-            (new Alert())->insertAlerta('success', "Se agrego la categoria {$categoria->getName()} correctamente");
+            (new Alert())->insertAlerta('success', "Se agrego una nueva Categoria correctamente");
         } else {
             if (!$del) {
                 $categoria->editCategoria($datosPOST['name'], $datosPOST['descript']);  
