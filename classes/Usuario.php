@@ -74,9 +74,11 @@ class Usuario {
         $PDOStatement->execute([$username]);
         $datos = $PDOStatement->fetch();
 
+        if (!$datos) {
+            return null;
+        }
         $datos->rol = (new Rol)->rolID($datos->rol);
-
-        return $datos ?? null;
+        return $datos;
     }
 
     
