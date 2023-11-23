@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2023 a las 17:09:29
+-- Tiempo de generación: 23-11-2023 a las 05:03:55
 -- Versión del servidor: 10.4.28-MariaDB
 -- Versión de PHP: 8.2.4
 
@@ -60,12 +60,8 @@ CREATE TABLE `caraval_x_producto` (
 --
 
 INSERT INTO `caraval_x_producto` (`id`, `id_producto`, `id_cate_valor`) VALUES
-(27, 1, 1),
-(28, 1, 21),
 (33, 4, 7),
 (34, 4, 19),
-(35, 5, 10),
-(36, 5, 15),
 (37, 6, 11),
 (38, 6, 19),
 (43, 9, 17),
@@ -100,7 +96,11 @@ INSERT INTO `caraval_x_producto` (`id`, `id_producto`, `id_cate_valor`) VALUES
 (108, 19, 2),
 (109, 19, 21),
 (110, 20, 3),
-(111, 20, 21);
+(111, 20, 21),
+(112, 5, 10),
+(113, 5, 15),
+(126, 1, 1),
+(127, 1, 21);
 
 -- --------------------------------------------------------
 
@@ -122,7 +122,8 @@ INSERT INTO `categorias` (`id`, `name`, `descript`) VALUES
 (1, 'clases', 'Clases de Iaido'),
 (2, 'ropa', NULL),
 (3, 'equipos', NULL),
-(4, 'seminario', 'Seminarios anuales que se organizan por la escuela y se trae a diferentes Senseis');
+(4, 'seminario', 'Seminarios anuales que se organizan por la escuela y se trae a diferentes Senseis'),
+(7, 'Decoraciones', 'Decoraciones para los Dojos');
 
 -- --------------------------------------------------------
 
@@ -169,15 +170,9 @@ CREATE TABLE `imagenes_x_productos` (
 --
 
 INSERT INTO `imagenes_x_productos` (`id`, `id_producto`, `id_imagen`) VALUES
-(1, 1, 1),
-(2, 1, 2),
-(3, 1, 3),
 (10, 4, 4),
 (11, 4, 5),
 (12, 4, 6),
-(13, 5, 7),
-(14, 5, 8),
-(15, 5, 9),
 (16, 6, 10),
 (17, 6, 11),
 (18, 6, 12),
@@ -231,7 +226,13 @@ INSERT INTO `imagenes_x_productos` (`id`, `id_producto`, `id_imagen`) VALUES
 (127, 19, 48),
 (128, 20, 46),
 (129, 20, 47),
-(130, 20, 48);
+(130, 20, 48),
+(131, 5, 7),
+(132, 5, 8),
+(133, 5, 51),
+(147, 1, 1),
+(148, 1, 2),
+(149, 1, 3);
 
 -- --------------------------------------------------------
 
@@ -258,7 +259,6 @@ INSERT INTO `images` (`id`, `name`, `descript`) VALUES
 (6, 'keikogi-03', 'Planilla de tamaños de las chaquetas'),
 (7, 'obi-c-01', 'Cinturon de entrenamiento'),
 (8, 'obi-c-02', 'Cinturon de entrenamiento'),
-(9, 'obi-c-03', 'Cinturon de entrenamiento'),
 (10, 'hakama-01', 'Persona usando Hakama de entrenamiento'),
 (11, 'hakama-02', 'Hakama de entrenamiento'),
 (12, 'hakama-03', 'Planilla de tamanños de las Hakamas'),
@@ -289,7 +289,8 @@ INSERT INTO `images` (`id`, `name`, `descript`) VALUES
 (47, '1700660387', 'Banner de Seminario Komei Juku de Iaido'),
 (48, '1700660398', 'Banner de Seminario Komei Juku de Iaido'),
 (49, '1700660784', 'Katana sobre un fondo oscuro'),
-(50, '1700660964', 'Katana sobre un fondo blanco');
+(50, '1700660964', 'Katana sobre un fondo blanco'),
+(51, '1700709418', 'Obi de ceda con patron de nubes.');
 
 -- --------------------------------------------------------
 
@@ -327,7 +328,8 @@ INSERT INTO `links_validos` (`id`, `link`, `title`) VALUES
 (17, 'abm-imagenes', 'ABM de Imagenes'),
 (18, 'imagenes', 'Lista de Todas las imagenes'),
 (19, 'producto', 'Lista de Todos los productos'),
-(20, 'abm-producto', 'ABM de los productos');
+(20, 'abm-producto', 'ABM de los productos'),
+(21, 'login', 'Inicie sesion');
 
 -- --------------------------------------------------------
 
@@ -348,11 +350,11 @@ CREATE TABLE `productos` (
 --
 
 INSERT INTO `productos` (`id`, `name`, `descript`, `id_tipo`, `precio`) VALUES
-(1, '1 Clase grupal', 'Disfruta de una clase por semana en los días que prefieras; Te invitamos a participar una clase semanal para el uso de la <span lang=\'ja\'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.', 1, 7000.00),
+(1, '1 Clase grupal', 'Disfruta de una clase por semana en los días que prefieras    ;     Te invitamos a participar una clase semanal para el uso de la <span lang=\'ja\'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.', 1, 7000.00),
 (2, '2 Clase grupal', 'Disfruta de dos clase por semana en los días que prefieras; Te invitamos a participar dos clase semanal para el uso de la <span lang=\'ja\'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.', 1, 8000.00),
 (3, '3 Clase grupal', 'Disfruta de tres clase por semana en los días que prefieras; Te invitamos a participar una clase semanal para el uso de la <span lang=\'ja\'>katana</span> japonesa (esgrima samurai). En la misma podrás ver los fundamentos básicos de uso de la katana japonés. Todo el material lo provee el dojo, solo necesitas ropa cómoda.', 1, 9000.00),
 (4, 'Iaidogi Azul', 'Keikogi para entrenamiento, 100% Tetron; Elaborado en tetron: 65% poliéster +35% rayon, esta chaqueta está especialmente diseñada para la práctica de iaido. No achica, no pierde color y es fácil de mantener.', 3, 5000.00),
-(5, 'Obi de Ceda', 'Elegante Cintuon de Ceda; Elaborado en ceda de alta calidad con dimenciones de 15cm de ancho y 4 metros de largo', 4, 5000.00),
+(5, 'Obi de Ceda', 'Elegante Cintuon de Ceda ;  Elaborado en ceda de alta calidad con dimenciones de 15cm de ancho y 4 metros de largo', 4, 5000.00),
 (6, 'Hakama', 'Hakama para entrenamiento, 100% Tetron; Excelentes hakamas de tetrón para el entrenamiento de <span lang=\'ja\'>iaido, kendo, aikido</span> y demas artes marciales. Tela antiarrugas con una composición de 65% poliester y 35% de rayón que asegura la permanencia de las tablas sin mayor esfuerzo de planchado. Elaboradas a mano y cosidas individualmente.', 5, 6000.00),
 (7, 'Shinken Premuim', 'Katana de entenamiento con filo, Hecha en acero 1095; Una katanas hechas de manera tradicional es <span lang=\'ja\'>nihonto</span> (literalmente \'espada japonesa\'). forjada a partir de acero <span lang=\'ja\'>tamahagane</span>.', 6, 60000.00),
 (8, 'Iaito', 'Katana de entenamiento sin filo, hecha dealeacion de Aluminio; Una katanas hechas de manera moderna es <span lang=\'ja\'>mugito</span> (literalmente \'espada de exhhibición). forjada a partir de una aleación de aluminio.', 7, 45000.00),
@@ -378,8 +380,17 @@ INSERT INTO `productos` (`id`, `name`, `descript`, `id_tipo`, `precio`) VALUES
 
 CREATE TABLE `roles` (
   `id` int(10) UNSIGNED NOT NULL,
-  `name` enum('client','admin','superadmin') NOT NULL
+  `roles` enum('usuario','admin','superadmin') NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`id`, `roles`) VALUES
+(1, 'usuario'),
+(2, 'admin'),
+(3, 'superadmin');
 
 -- --------------------------------------------------------
 
@@ -426,7 +437,6 @@ CREATE TABLE `tipo_x_categorias` (
 --
 
 INSERT INTO `tipo_x_categorias` (`id`, `id_tipo`, `id_categoria`) VALUES
-(1, 1, 1),
 (2, 10, 4),
 (3, 3, 2),
 (4, 4, 2),
@@ -434,7 +444,8 @@ INSERT INTO `tipo_x_categorias` (`id`, `id_tipo`, `id_categoria`) VALUES
 (6, 6, 3),
 (7, 7, 3),
 (8, 8, 3),
-(9, 9, 2);
+(9, 9, 2),
+(21, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -448,8 +459,17 @@ CREATE TABLE `usuario` (
   `username` varchar(20) NOT NULL,
   `email` varchar(256) NOT NULL,
   `password` varchar(256) NOT NULL,
-  `id_rol` int(10) UNSIGNED NOT NULL
+  `rol` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `full_name`, `username`, `email`, `password`, `rol`) VALUES
+(1, 'Nicolas Alsinet', 'nalsinet_sa', 'nicolas.alsinet@davinci.edu.ar', '$2y$10$nz31V64TQjmQjczlS0eB9.6lgtQpmIjiA5sKKMLKszmhUthrX9C/a', 3),
+(2, 'Nicolas Alsinet', 'nalsinet_a', 'nicolas.alsinet@davinci.edu.ar', '$2y$10$nz31V64TQjmQjczlS0eB9.6lgtQpmIjiA5sKKMLKszmhUthrX9C/a', 2),
+(3, 'Nicolas Alsinet', 'nalsinet_u', 'nicolas.alsinet@davinci.edu.ar', '$2y$10$nz31V64TQjmQjczlS0eB9.6lgtQpmIjiA5sKKMLKszmhUthrX9C/a', 1);
 
 -- --------------------------------------------------------
 
@@ -614,7 +634,7 @@ ALTER TABLE `tipo_x_categorias`
 --
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_rol` (`id_rol`);
+  ADD KEY `id_rol` (`rol`);
 
 --
 -- Indices de la tabla `valores`
@@ -638,19 +658,19 @@ ALTER TABLE `valor_x_caracteristica`
 -- AUTO_INCREMENT de la tabla `caracteristicas`
 --
 ALTER TABLE `caracteristicas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `caraval_x_producto`
 --
 ALTER TABLE `caraval_x_producto`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=112;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=128;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
 --
 ALTER TABLE `categorias`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `disponibilidad`
@@ -662,61 +682,61 @@ ALTER TABLE `disponibilidad`
 -- AUTO_INCREMENT de la tabla `imagenes_x_productos`
 --
 ALTER TABLE `imagenes_x_productos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=131;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=150;
 
 --
 -- AUTO_INCREMENT de la tabla `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT de la tabla `links_validos`
 --
 ALTER TABLE `links_validos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `productos`
 --
 ALTER TABLE `productos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT de la tabla `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `tipos`
 --
 ALTER TABLE `tipos`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_x_categorias`
 --
 ALTER TABLE `tipo_x_categorias`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `valores`
 --
 ALTER TABLE `valores`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT de la tabla `valor_x_caracteristica`
 --
 ALTER TABLE `valor_x_caracteristica`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- Restricciones para tablas volcadas
@@ -746,20 +766,20 @@ ALTER TABLE `productos`
 -- Filtros para la tabla `tipos`
 --
 ALTER TABLE `tipos`
-  ADD CONSTRAINT `tipos_ibfk_1` FOREIGN KEY (`id_disponible`) REFERENCES `disponibilidad` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `tipos_ibfk_1` FOREIGN KEY (`id_disponible`) REFERENCES `disponibilidad` (`id`) ON UPDATE CASCADE,
+  ADD CONSTRAINT `tipos_ibfk_2` FOREIGN KEY (`id`) REFERENCES `tipo_x_categorias` (`id_tipo`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `tipo_x_categorias`
 --
 ALTER TABLE `tipo_x_categorias`
-  ADD CONSTRAINT `tipo_x_categorias_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `tipo_x_categorias_ibfk_3` FOREIGN KEY (`id_tipo`) REFERENCES `tipos` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `tipo_x_categorias_ibfk_2` FOREIGN KEY (`id_categoria`) REFERENCES `categorias` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`rol`) REFERENCES `roles` (`id`) ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `valor_x_caracteristica`
