@@ -43,9 +43,9 @@
                             <div class="mb-3 form-floating">
                                 <?php 
                                     if ($id){?>
-                                        <textarea class="form-control" id="descript-text" <?php echo $del ? "Disabled" : ""; ?>  name="descript" rows="6" style="height:100%;" ><?php //$datosForm['descript'] ?? $producto->formatearDescript(true) ?></textarea>
+                                        <textarea class="form-control" id="descript-text" <?php echo $del ? "Disabled" : ""; ?>  name="descript" rows="6" style="height:100%;" ><?= $producto->formatearDescript(true) ?></textarea>
                                 <?php  } else {?>
-                                        <textarea class="form-control" id="descript-text" placeholder="a" name="descript" rows="4" style="height:100%;" ><?php //$datosForm['descript'] ?? '' ?></textarea>
+                                        <textarea class="form-control" id="descript-text" placeholder="a" name="descript" rows="4" style="height:100%;" ><?php // echo $datosForm['descript'] ?? '' ?></textarea>
                                 <?php  }?>
                                 <label for="descript-text" class="col-form-label ms-2">Descripción larga del Producto<span class="obligatorio fs-4"> *</span></label>
                             </div>

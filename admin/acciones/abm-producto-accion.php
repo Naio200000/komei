@@ -27,7 +27,7 @@
                 $valiData = $producto->validaProducto($datosPOST);
                 (new Validate)->inserForm($valiData);
                 (new Alert())->insertFormAlert($valiData, 'danger', 'Debe llenar este camopo');
-                header("Location: ../index.php?view=abm-producto");
+                header("Location: ../index.php?view=abm-producto&id=$id");
             } elseif ($id) {
                 $producto->editProducto($datosPOST);
                 (new Caraval)->deleteRelacionProducto($producto->getId());
@@ -39,7 +39,7 @@
                     (new Images)->insertRelacionProducto($producto->getId(), $i);
                 }
                 (new Alert())->insertAlerta('success', "Se edito el Producto {$producto->getNombre()} correctamente");   
-                header('Location: ../index.php?view=producto');
+                header("Location: ../index.php?view=producto");
             } else {
                 $id_producto = $producto->insertProducto($datosPOST);
                 foreach ($caraval as $cv) {
