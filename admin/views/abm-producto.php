@@ -1,10 +1,16 @@
 <?php
     $id = $_GET['id'] ?? false;
     $del = $_GET['del'] ?? false;
+    $datosForm = (new Validate)->getForm();
+    $id = $datosForm ? ( $datosForm['id'] ?? $id ) : $id;
+    $alertForm = $_SESSION['alertForm'] ? (new Alert)->getFormAlert() : false;
     $producto = $id ? (new Producto)->productoID($id) : (new Producto);
     $imagenes = (new Images)->getAllImages();
     $tipos = (new Tipo)->getAllTipos();
     $caraval = (new Caraval)->getAllCaraval();
+    echo "<pre>";
+    print_r($alertForm);
+    echo "</pre>";
 
 ?>
 
@@ -15,28 +21,12 @@
         <article>
             <div class="row g-4 my-2 container mx-auto">
                 <!-- form -->
-                <?php 
-                    if ($id){
-                        if ($del) { ?>
-                            <form action="acciones/abm-producto-accion.php?id=<?= $id ?>&del=<?= $del ?>" method="POST">
-                        <?php } ?>
-                        <form action="acciones/abm-producto-accion.php?id=<?= $id ?>" method="POST">
-                <?php  } else {?>
-                    <form action="acciones/abm-producto-accion.php" method="POST">
-                <?php  }?>
+                <form action="acciones/abm-producto-accion.php<?= $id ? ($del ? "?id=$id&del=1" : "?id=$id" ) : "" ?>" method="POST">
                     <div class="row align-items-start">
                         <!-- Titulo -->
                         <div class="mb-3">
-                            <?php 
-                                if (!$id) { ?>
-                                    <h3 class='text-center fw-bold agregar'>Agregar Producto</h3>
-                            <?php } else {
-                                if (!$del) { ?>
-                                    <h3 class='text-center fw-bold editar'> Editar Producto</h3>
-                                <?php } else  { ?>        
-                                    <h3 class='text-center fw-bold borrar'> Borrar Producto</h3>
-                                <?php } 
-                            } ?>
+                            <h3 class='text-center fw-bold text-capitalize <?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?> '><?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?> Producto</h3>
+                            <p class="text-center">Los campos marcados con <span class="obligatorio fs-4"> *</span> son obligatorios</p>
                        </div>
                         <div class=" col-12 col-sm-6">
                             <!-- Nombre -->
@@ -47,7 +37,7 @@
                                 <?php  } else {?>
                                     <input type="text" class="form-control" id="name" placeholder="a" name="name" >
                                 <?php  }?>
-                                <label for="name" class="col-form-label ms-2">Nombre de la producto</label>
+                                <label for="name" class="col-form-label ms-2">Nombre de la producto<span class="obligatorio fs-4"> *</span></label>
                             </div>
                             <!-- Descripcion -->
                             <div class="mb-3 form-floating">
@@ -57,19 +47,19 @@
                                 <?php  } else {?>
                                         <textarea class="form-control" id="descript-text" placeholder="a" name="descript" rows="4" style="height:100%;" ></textarea>
                                 <?php  }?>
-                                <label for="descript-text" class="col-form-label ms-2">Descripción larga del Producto</label>
+                                <label for="descript-text" class="col-form-label ms-2">Descripción larga del Producto<span class="obligatorio fs-4"> *</span></label>
                             </div>
                         </div>
                         <div class=" col-12 col-sm-6">
                             <!-- Tipos -->
                             <div class="mb-3 form-floating">
-                                <select <?php echo $del ? "Disabled" : ""; ?> class="form-select" name="id_tipo" id="id_tipo" required>
+                                <select <?php echo $del ? "Disabled" : ""; ?> class="form-select" name="id_tipo" id="id_tipo" >
                                     <option value="" selected disabled>Elija un Tipo</option>
                                     <?PHP foreach ($tipos as $t) { ?>
                                         <option class="text-capitalize" value="<?= $t->getId() ?>" <?= $id ? ($t->getId() == $producto->getTipo()->getId() ? "selected" : "") : "" ?>><?= $t->getName() ?></option>
                                     <?PHP } ?>
                                 </select>
-                                <label for="id_tipo" class="col-form-label ms-2"> Seleccione un Tipo</label>
+                                <label for="id_tipo" class="col-form-label ms-2"> Seleccione un Tipo<span class="obligatorio fs-4"> *</span></label>
                             </div>
                             <!-- precio -->
                             <div class="mb-3 col-12 form-floating">
@@ -77,9 +67,9 @@
                                     if ($id){?>
                                         <input type="text" class="form-control" id="precio" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $producto->getPrecio() ?>"  name="precio" >
                                 <?php  } else {?>
-                                    <input type="text" class="form-control" id="precio" placeholder="a" name="precio" >
+                                    <input type="number" class="form-control" id="precio" placeholder="a" name="precio" >
                                 <?php  }?>
-                                <label for="precio" class="col-form-label ms-2">Precio del Produto</label>
+                                <label for="precio" class="col-form-label ms-2">Precio del Produto<span class="obligatorio fs-4"> *</span></label>
                             </div>
                             <!-- caracteristicas -->
                             <?php 
@@ -101,7 +91,7 @@
                                 <?php  } else {?>
                                     <input type="text" class="form-control" id="descriptcorta" placeholder="a" name="descriptcorta" >
                                 <?php  }?>
-                                <label for="descriptcorta" class="col-form-label ms-2">Descripcion corta del producto</label>
+                                <label for="descriptcorta" class="col-form-label ms-2">Descripcion corta del producto<span class="obligatorio fs-4"> *</span></label>
                             </div>
                         <!-- Accordion  -->
                         <div class="col-12 <?php echo $del ? "grey" : "tabla"; ?> mb-3">
@@ -110,7 +100,7 @@
                                     <div class="accordion-item ">
                                         <h3 class="accordion-header" id="headingOne">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                                <span class="text-dark fw-bold fs-4">Seleccionar Caracteristica</span>
+                                                <span class="text-dark fw-bold fs-4">Seleccionar Caracteristica<span class="obligatorio fs-4"> *</span></span>
                                             </button>
                                         </h3>
                                         <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionSelect">
@@ -167,7 +157,7 @@
                                     <div class="accordion-item">
                                         <h3 class="accordion-header" id="headingTwo">
                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                <span class="text-dark fw-bold fs-4">Seleccionar Imagenes</span>
+                                                <span class="text-dark fw-bold fs-4">Seleccionar Imagenes<span class="obligatorio fs-4"> *</span></span>
                                             </button>
                                         </h3>
                                         <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="accordionSelect">
@@ -204,18 +194,8 @@
                             </div>
                         </div>
                         <div class="bg-light col-12 mt-3 p-2 d-flex">
-                            <div class="ms-auto">
-                                <?php
-                                    echo "<a class='px-3 me-1' href='index.php?view=abm-producto-accion'><button class='fw-bold btn btn-";  
-                                    if (!$id) {
-                                        echo "agregar'";
-                                    } elseif (!$del) {
-                                        echo "editar'";    
-                                    } else {
-                                        echo "borrar'";    
-                                    }
-                                    echo ">Confirmar</button></a>";
-                                ?>
+                        <div class="ms-auto">
+                                <a class="mx-3 me-1" href=""><button class="fw-bold btn btn-<?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?>">Confirmar</button></a>
                             </div>
                         </div>
                     </div>
