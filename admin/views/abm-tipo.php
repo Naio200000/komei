@@ -27,7 +27,7 @@
                         <form action="acciones/abm-tipo-accion.php?id=<?= $id ?>" method="POST">
                     <?php  } else {?>
                         <form action="acciones/abm-tipo-accion.php" method="POST">
-                    <?php  }?>
+                <?php  }?>
                     <div class="row align-items-start">
                         <div class="col-12 col-sm-6">
                             <!-- titlo -->
@@ -62,8 +62,8 @@
                                 <select <?php echo $del ? "Disabled" : ""; ?> class="form-select" name="id_categoria" id="id_categoria" >
                                     <option value="" selected disabled>Elija una Categoria</option>
                                     <?PHP foreach ($categorias as $c) { 
-                                        $selected = $datosForm['id_categoria'] == $c->getId() ? 'selected' : '' ?>
-                                        <option class="text-capitalize" value="<?= $c->getId() ?>" <?= $id ? ($c->getId() == $tipo->getCategoria()->getId() ? "selected" : "") : "$selected" ?>><?= $c->getName() ?></option>
+                                        $selectedCate = $datosForm['id_categoria'] == $c->getId() ? 'selected' : '' ?>
+                                        <option class="text-capitalize" value="<?= $c->getId() ?>" <?= $id ? ($c->getId() == $tipo->getCategoria()->getId() ? "selected" : "") : "$selectedCate" ?>><?= $c->getName() ?></option>
                                     <?PHP } ?>
                                 </select>
                                 <label for="id_categoria" class="col-form-label ms-2"> Seleccione una Catergoria<span class="obligatorio fs-5"> *</span></label>
@@ -80,7 +80,7 @@
                             <!-- radio -->
                             <div class="mb-3 formularioApp">
                                 <?php
-                                    $validate = false;
+                                    $checkRadio = $datosForm['radio'] ?? false;
                                     $ternaryVue = '(radio === "dias" || radio === "fecha") ? true : false';
                                     $html = '';
                                     if ($dispo){
@@ -88,7 +88,7 @@
                                             $selected = '';
                                             $tiempo = strtotime($v['tiempo']) ? $v['tiempo'] : $v['tiempo']." dias";
                                             if ($dispo['id'] == $v['id']) {
-                                                $validate = true;
+                                                $checkRadio = 'select';
                                                 $selected = ' selected ';
                                             }
                                             $html = $html . '<option value=' . $v['id'] . $selected . '>' . $tiempo . '</option>';
@@ -104,7 +104,7 @@
                                 <?= $alertForm ? (array_key_exists('radio', $alertForm) ? $alertForm['radio'] : "") : '' ?>
                                 </div>
                                 <div class="form-check d-flex justify-content-start">
-                                    <input <?= $validate ? ":placeholder='checked()'":"" ?> <?php echo $del ? "Disabled" : ""; ?> v-model="radio" class="form-check-input" type="radio" id="select" name="radio" value="select">
+                                    <input <?= $checkRadio == 'select' ? ":placeholder='checked()'" :"" ?> <?php echo $del ? "Disabled" : ""; ?> v-model="radio" class="form-check-input" type="radio" id="select" name="radio" value="select">
                                     <label class="mx-2" for="select">Seleccione Disponibilidad</label>
                                     <select class="ms-auto my-1" name="select" id="select" <?php echo $del ? "Disabled" : ":disabled='$ternaryVue'" ?> >
                                         <option value="" selected >Elija una opción</option>
@@ -112,14 +112,14 @@
                                     </select>
                                 </div>
                                 <div class="form-check d-flex justify-content-start">
-                                    <input v-model="radio" class="form-check-input" type="radio" id="fecha" name="radio" value="fecha">
+                                    <input v-model="radio" <?= $checkRadio == 'fecha' ? ":placeholder='checked()'" :"" ?> class="form-check-input" type="radio" id="fecha" name="radio" value="fecha">
                                     <label class="mx-2" for="fecha">Ingrese la Fecha</label>
-                                    <input class="ms-auto my-1" type="date" name="fecha" :disabled="(radio === 'dias' || radio === 'select') ? true : false">
+                                    <input class="ms-auto my-1" type="date" name="fecha" :disabled="(radio === 'dias' || radio === 'select') ? true : false" value="<?= $datosForm['fecha'] ?? "" ?>">
                                 </div>
                                 <div class="form-check  d-flex justify-content-start">
-                                    <input v-model="radio" class="form-check-input" type="radio" id="dias" name="radio" value="dias">
+                                    <input v-model="radio" <?= $checkRadio == 'dias' ? ":placeholder='checked()'" :"" ?> class="form-check-input" type="radio" id="dias" name="radio" value="dias">
                                     <label class="mx-2" for="dias">Ingrese la cantidad de días</label>
-                                    <input class="ms-auto my-1" type="number" name="dias" :disabled="(radio === 'fecha' || radio === 'select') ? true : false">
+                                    <input class="ms-auto my-1" type="number" name="dias" :disabled="(radio === 'fecha' || radio === 'select') ? true : false" value="<?= $datosForm['dias'] ?? "" ?>" >
                                 </div>
                             </div>
                             <?= $alertForm ? (array_key_exists('tiempo', $alertForm) ? $alertForm['tiempo'] : "") : '' ?>
