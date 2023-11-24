@@ -7,10 +7,8 @@
     $datosPOST['descript'] = $datosPOST['descriptcorta'] . ' ; ' . $datosPOST['descript'];
     $caraval = $_POST['caraval'] ?? false;
     $imagenes = $_POST['imagenes'] ?? false;
+    if ($id) $datosPOST['id'] = $id;
 
-    echo "<pre>";
-    print_r($datosPOST);
-    echo "</pre>";
 
 
     /**

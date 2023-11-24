@@ -137,15 +137,15 @@ class Producto {
     public function validaProducto(array $dataPost) :?array {
         if (
             !array_key_exists('caraval', $dataPost)
-            && !array_key_exists('caraval', $dataPost)
-            && !array_key_exists('imagenes', $dataPost)
-            && !array_key_exists('id_tipo', $dataPost)
-            && empty($dataPost['precio'])
-            && ($dataPost['descript'] == ' ; ')
-            && empty($dataPost['name'])
-            && empty($dataPost['id_tipo'])
-            && empty($dataPost['precio'])
-            && empty($dataPost['descriptcorta']) ) {
+            || !array_key_exists('caraval', $dataPost)
+            || !array_key_exists('imagenes', $dataPost)
+            || !array_key_exists('id_tipo', $dataPost)
+            || empty($dataPost['precio'])
+            || ($dataPost['descript'] == ' ; ')
+            || empty($dataPost['name'])
+            || empty($dataPost['id_tipo'])
+            || empty($dataPost['precio'])
+            || empty($dataPost['descriptcorta']) ) {
                 if (!array_key_exists('caraval', $dataPost)) {
                     $dataPost['caraval'] = '';   
                 }
@@ -160,6 +160,10 @@ class Producto {
                         (new Alert())->insertFormAlert($dataPost, 'danger', 'El precio debe ser un Numero');
                     }
                 }
+                if ($dataPost['descript'] == ' ; ') {
+                    $dataPost['descript'] = '';
+                }
+            
                 return $dataPost;
             }
         return null;
