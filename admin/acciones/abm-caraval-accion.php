@@ -4,21 +4,36 @@
     $del = $_GET['del'] ?? FALSE;
     $caraval = $id ? (new Caraval)->caravalID($id) : new Caraval();
     $datosPOST = $_POST;
+    if ($id) $datosPOST['id'] = $id;
+
+
+
     try {
-        if (!$id) {
-            $caraval->insertRelacion($datosPOST);
-            (new Alert())->insertAlerta('success', "Se agrego una Relacion correctamente");
+
+        if ($del) {
+            $caraval->deleteRelacion();
+            (new Alert())->insertAlerta('danger', "Se borro la Relacion entre {$caraval->getName()->getName()} <=> {$caraval->getValor()->getValor()}");      
+            header('Location: ../index.php?view=caraval');
         } else {
-            if (!$del) {
+            if (empty($datosPOST['caracterisitca']) || empty($datosPOST['valor'])) {
+                if (!array_key_exists('caracteristica', $datosPOST)) $datosPOST['caracteristica'] = '';
+                if (!array_key_exists('valor', $datosPOST)) $datosPOST['valor'] = '';
+                (new Validate)->inserForm($datosPOST);
+                (new Alert())->insertFormAlert($datosPOST, 'danger', 'Debe llenar este camopo');
+
+                header('Location: ../index.php?view=abm-caraval');
+            } elseif ($id) {
                 $caraval->editRelacion($datosPOST);
                 (new Alert())->insertAlerta('success', "Se edito la Relacion entre {$caraval->getName()->getName()} <=> {$caraval->getName()->getName()}");
+                header('Location: ../index.php?view=caraval');
             } else {
-                $caraval->deleteRelacion();
-                (new Alert())->insertAlerta('danger', "Se borro la Relacion entre {$caraval->getName()->getName()} <=> {$caraval->getValor()->getValor()}");
+                $caraval->insertRelacion($datosPOST);
+                (new Alert())->insertAlerta('success', "Se agrego una Relacion correctamente");
+                header('Location: ../index.php?view=caraval');
             }
         }
 
-        header('Location: ../index.php?view=caraval');
+    
 
     } catch (Exception $e) {
         // echo '<pre>';

@@ -93,7 +93,6 @@ class Alert {
 
             $alerts = [];
             foreach ($_SESSION['alertForm'] as $v) {
-
                 foreach ($v as $k => $a) {
                     $alerts[$k] = $this->formateaAlert($a);
                 }
