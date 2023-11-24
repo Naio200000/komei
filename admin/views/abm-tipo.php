@@ -2,9 +2,6 @@
     $id = $_GET['id'] ?? false;
     $del = $_GET['del'] ?? false;
     $datosForm = (new Validate)->getForm();
-    echo '<pre>';
-    print_r($datosForm);
-    echo '</pre>';
     $id = $datosForm ? ( $datosForm['id'] ?? $id ) : $id;
     $alertForm = $_SESSION['alertForm'] ? (new Alert)->getFormAlert() : false;
     $tipo = $id ? (new tipo)->tipoID($id) : new Tipo;
@@ -48,9 +45,9 @@
                             <div class="mb-3 form-floating">
                                 <?php 
                                     if ($id){?>
-                                        <input type="text" class="form-control" id="name" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $datosForm['name'] ?? $tipo->getDescript() ?>"  name="name" >
+                                        <input type="text" class="form-control" id="name" <?php echo $del ? "Disabled" : ""; ?>   value="<?=  $tipo->getName() ?>"  name="name" >
                                 <?php  } else {?>
-                                    <input type="text" class="form-control" id="name" placeholder="a" name="name" value="<?= $datosForm['name'] ?? "" ?>" >
+                                    <input type="text" class="form-control" id="name" placeholder="a" name="name" value="<?= $datosForm['name'] ?? $tipo->getName() ?>" >
                                 <?php  }?>
                                 <label for="name" class="col-form-label ms-2" placeholder="a">Nombre del tipo<span class="obligatorio fs-5"> *</span></label>
                                 <div>
