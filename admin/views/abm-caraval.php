@@ -7,7 +7,6 @@
     $caraval = $id ? (new Caraval)->caravalID($id) : new Caraval;
     $caracteristicas = (new Caracteristica)->getAllCaracteristicas();
     $valores = (new Valor)->getAllValores();
-
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
@@ -29,10 +28,11 @@
                         <div class="col-12 col-sm-6">
                             <div class="my-3">
                                 <label for="caracterisitca" class="form-label">Caracteristicas<span class="obligatorio fs-4"> *</span></label>
-                                <select class="form-select" <?php echo $del ? "Disabled" : ""; ?> name="caracterisitca" id="caracterisitca" >
+                                <select class="form-select" <?php echo $del ? "Disabled" : ""; ?> name="caracteristica" id="caracteristica" >
                                     <option value="" selected disabled>Elija una Caracteristica</option>
-                                    <?PHP foreach ($caracteristicas as $c) { ?>
-                                        <option  value="<?= $c->getId() ?>" <?= $id ? $c->getName() == $caraval->getName()->getName() ? "selected" : "" : "" ?>><?= $c->getName()?></option>
+                                    <?PHP foreach ($caracteristicas as $c) {
+                                        $selectedCara = $datosForm['caracteristica'] == $c->getId() ? 'selected' : '' ?>
+                                        <option value="<?= $c->getId() ?>" <?= $id ? ($c->getName() == $caraval->getName()->getName() ? "selected" : "" ) : "$selectedCara" ?>><?= $c->getName()?></option>
                                     <?PHP } ?>
                                 </select>
                                 <div>
@@ -44,8 +44,9 @@
                                 <label for="valor" class="form-label">Valores<span class="obligatorio fs-4"> *</span></label>
                                 <select class="form-select" <?php echo $del ? "Disabled" : ""; ?> name="valor" id="valor">
                                     <option value="" selected disabled>Elija un Valor</option>
-                                    <?PHP foreach ($valores as $v) { ?>
-                                        <option value="<?= $v->getId() ?>" <?= $id ? $v->getValor() == $caraval->getValor()->getValor() ? "selected" : "" : "" ?>><?= $v->getValor() ?></option>
+                                    <?PHP foreach ($valores as $v) { 
+                                        $selectedVal = $datosForm['valor'] == $v->getId() ? 'selected' : '' ?>                                        
+                                        <option value="<?= $v->getId() ?>" <?= $id ? ( $v->getValor() == $caraval->getValor()->getValor() ? "selected" : "" ) : "$selectedVal" ?>><?= $v->getValor() ?></option>
                                     <?PHP } ?>
                                 </select>
                                 <div>

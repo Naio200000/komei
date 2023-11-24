@@ -20,7 +20,6 @@
                 if (!array_key_exists('valor', $datosPOST)) $datosPOST['valor'] = '';
                 (new Validate)->inserForm($datosPOST);
                 (new Alert())->insertFormAlert($datosPOST, 'danger', 'Debe llenar este camopo');
-
                 header('Location: ../index.php?view=abm-caraval');
             } elseif ($id) {
                 $caraval->editRelacion($datosPOST);
