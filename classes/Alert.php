@@ -70,16 +70,16 @@ class Alert {
     public function insertFormAlert($array, $tipo, $mensaje)  {
 
         $arrayAlert = [];
-        foreach ($array as $value) {
-            
-            $arrayAlert[$value] = [
-                'tipo' => $tipo,
-                'mensaje' => $mensaje
-            ];
+        foreach ($array as $key => $value) {
+            if (!$value) {
+                $arrayAlert[$key] = [
+                    'tipo' => $tipo,
+                    'mensaje' => $mensaje
+                ];
 
-        }
-        
-        $_SESSION['alertForm'] = $arrayAlert;
+            }   
+        }    
+        $_SESSION['alertForm'][] = $arrayAlert;
 
     }
 
@@ -92,8 +92,11 @@ class Alert {
         if (!empty($_SESSION['alertForm'])) {
 
             $alerts = [];
-            foreach ($_SESSION['alertForm'] as $k => $a) {
-                $alerts[$k] = $this->formateaAlert($a);
+            foreach ($_SESSION['alertForm'] as $v) {
+
+                foreach ($v as $k => $a) {
+                    $alerts[$k] = $this->formateaAlert($a);
+                }
             }
             $this->deleteFormAlert();
 

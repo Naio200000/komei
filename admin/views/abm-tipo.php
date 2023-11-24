@@ -5,6 +5,10 @@
     $dispo = $tipo->getDisponibilidadId();
     $disponibilidad = $tipo->getAllDisponibilidad();
     $categorias = (new Categoria)->getAllCategorias();
+    $alertForm = $_SESSION['alertForm'] ? (new Alert)->getFormAlert() : false;
+    // echo '<pre>';
+    // print_r($alertForm);
+    // echo '</pre>';
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
@@ -46,16 +50,22 @@
                                     <input type="text" class="form-control" id="name" placeholder="a" name="name" >
                                 <?php  }?>
                                 <label for="name" class="col-form-label ms-2" placeholder="a">Nombre del tipo</label>
+                                <div>
+                                    <?= $alertForm ? (array_key_exists('name', $alertForm) ? $alertForm['name'] : "") : '' ?>
+                                </div> 
                             </div>
                             <!-- input cate -->
                             <div class="mb-3 form-floating">
-                                <select <?php echo $del ? "Disabled" : ""; ?> class="form-select" name="id_categoria" id="id_categoria" required>
+                                <select <?php echo $del ? "Disabled" : ""; ?> class="form-select" name="id_categoria" id="id_categoria" >
                                     <option value="" selected disabled>Elija una Categoria</option>
                                     <?PHP foreach ($categorias as $c) { ?>
                                         <option class="text-capitalize" value="<?= $c->getId() ?>" <?= $id ? ($c->getId() == $tipo->getCategoria()->getId() ? "selected" : "") : "" ?>><?= $c->getName() ?></option>
                                     <?PHP } ?>
                                 </select>
                                 <label for="id_categoria" class="col-form-label ms-2"> Seleccione una Catergoria</label>
+                                <div>
+                                <?= $alertForm ? (array_key_exists('id_categoria', $alertForm) ? $alertForm['id_categoria'] : "") : '' ?>
+                                </div> 
                             </div>
                         </div>
                         <div class="col-12 col-sm-6">
@@ -86,6 +96,9 @@
                                         }
                                     }
                                 ?>
+                                <div>
+                                <?= $alertForm ? (array_key_exists('radio', $alertForm) ? $alertForm['radio'] : "") : '' ?>
+                                </div>
                                 <div class="form-check d-flex justify-content-start">
                                     <input <?= $validate ? ":placeholder='checked()'":"" ?> <?php echo $del ? "Disabled" : ""; ?> v-model="radio" class="form-check-input" type="radio" id="select" name="radio" value="select">
                                     <label class="mx-2" for="select">Seleccione Disponibilidad</label>
@@ -105,7 +118,7 @@
                                     <input class="ms-auto my-1" type="number" name="dias" :disabled="(radio === 'fecha' || radio === 'select') ? true : false">
                                 </div>
                             </div>
-                            
+                            <?= $alertForm ? (array_key_exists('tiempo', $alertForm) ? $alertForm['tiempo'] : "") : '' ?>
                         </div>
                         <div class="mb-3 form-floating">
                             <?php 
