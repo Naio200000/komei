@@ -29,18 +29,17 @@
 
                 (new Validate)->inserForm($datosPOST);
                 (new Alert())->insertFormAlert($datosPOST, 'danger', 'Debe llenar este camopo');
-                header("Location: ../index.php?view=abm-tipo&id=$id");
-                echo '<pre>';
-                print_r($datosPOST);
-                echo '</pre>';
+                header("Location: ../index.php?view=abm-tipo");
             } elseif ($id) {
                 $tipo->editTipo($datosPOST);
                 $tipo->editTipoXCategoria($datosPOST['id_categoria']);
+                (new Validate)->inserForm($datosPOST);
                 (new Alert())->insertAlerta('success', "Se edito el tipo {$tipo->getName()} correctamente");     
-                // header('Location: ../index.php?view=tipo');
+                header('Location: ../index.php?view=tipo');
             } else {
                 $id_tipo = $tipo->insertTipo($datosPOST);
                 $tipo->insertTipoXCategoria($id_tipo, $datosPOST['id_categoria']);
+                (new Validate)->inserForm($datosPOST);
                 (new Alert())->insertAlerta('success', "Se agrego un tipo correctamente");
                 header('Location: ../index.php?view=tipo');
             }

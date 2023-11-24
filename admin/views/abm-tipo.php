@@ -2,6 +2,9 @@
     $id = $_GET['id'] ?? false;
     $del = $_GET['del'] ?? false;
     $datosForm = (new Validate)->getForm();
+    echo '<pre>';
+    print_r($datosForm);
+    echo '</pre>';
     $id = $datosForm ? ( $datosForm['id'] ?? $id ) : $id;
     $alertForm = $_SESSION['alertForm'] ? (new Alert)->getFormAlert() : false;
     $tipo = $id ? (new tipo)->tipoID($id) : new Tipo;
@@ -45,9 +48,9 @@
                             <div class="mb-3 form-floating">
                                 <?php 
                                     if ($id){?>
-                                        <input type="text" class="form-control" id="name" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $tipo->getName() ?>"  name="name" >
+                                        <input type="text" class="form-control" id="name" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $datosForm['name'] ?? $tipo->getDescript() ?>"  name="name" >
                                 <?php  } else {?>
-                                    <input type="text" class="form-control" id="name" placeholder="a" name="name" >
+                                    <input type="text" class="form-control" id="name" placeholder="a" name="name" value="<?= $datosForm['name'] ?? "" ?>" >
                                 <?php  }?>
                                 <label for="name" class="col-form-label ms-2" placeholder="a">Nombre del tipo<span class="obligatorio fs-5"> *</span></label>
                                 <div>
@@ -58,8 +61,9 @@
                             <div class="mb-3 form-floating">
                                 <select <?php echo $del ? "Disabled" : ""; ?> class="form-select" name="id_categoria" id="id_categoria" >
                                     <option value="" selected disabled>Elija una Categoria</option>
-                                    <?PHP foreach ($categorias as $c) { ?>
-                                        <option class="text-capitalize" value="<?= $c->getId() ?>" <?= $id ? ($c->getId() == $tipo->getCategoria()->getId() ? "selected" : "") : "" ?>><?= $c->getName() ?></option>
+                                    <?PHP foreach ($categorias as $c) { 
+                                        $selected = $datosForm['id_categoria'] == $c->getId() ? 'selected' : '' ?>
+                                        <option class="text-capitalize" value="<?= $c->getId() ?>" <?= $id ? ($c->getId() == $tipo->getCategoria()->getId() ? "selected" : "") : "$selected" ?>><?= $c->getName() ?></option>
                                     <?PHP } ?>
                                 </select>
                                 <label for="id_categoria" class="col-form-label ms-2"> Seleccione una Catergoria<span class="obligatorio fs-5"> *</span></label>
@@ -120,6 +124,7 @@
                             </div>
                             <?= $alertForm ? (array_key_exists('tiempo', $alertForm) ? $alertForm['tiempo'] : "") : '' ?>
                         </div>
+                        <!-- descript -->
                         <div class="mb-3 form-floating">
                             <?php 
                                 if ($id){?>
