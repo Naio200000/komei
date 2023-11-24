@@ -20,8 +20,8 @@
                         <div class="col-12 col-sm-6">
                             <!-- titlo -->
                             <div class="mt-5 mb-3">
-                            <h3 class='text-center fw-bold <?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?> '>Agregar Relación <span class="d-block">Caracteristica / Valor</span> </h3>
-                            <p class="text-center">Los campos marcados con <span class="obligatorio fs-4"> *</span> son obligatorios</p>
+                                <h3 class='text-center fw-bold <?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?> '>Agregar Relación <span class="d-block">Caracteristica / Valor</span> </h3>
+                                <p class="text-center">Los campos marcados con <span class="obligatorio fs-4"> *</span> son obligatorios</p>
                             </div>
                         </div>
                         <!-- caracteristicas -->

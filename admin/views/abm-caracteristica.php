@@ -14,56 +14,34 @@
     <div class="listado pb-3">
         <article>
             <div class="row g-4 my-2 container mx-auto">
-                <?php 
-                    if ($caracteristica){
-                        if ($del) { ?>
-                            <form action="acciones/abm-caracteristica-accion.php?id=<?= $id ?>&del=<?= $del ?>" method="POST">
-                        <?php } ?>
-                        <form action="acciones/abm-caracteristica-accion.php?id=<?= $id ?>" method="POST">
-                <?php  } else {?>
-                    <form action="acciones/abm-caracteristica-accion.php" method="POST">
-                <?php  }?>
+                <form action="acciones/abm-caracteristica-accion.php<?= $id ? ($del ? "?id=$id&del=1" : "?id=$id" ) : "" ?>" method="POST">
+
                     <div class="row align-items-start">
-                        <div class="mb-3 col-12 col-sm-6 form-floating">
-                            <?php 
-                                if ($caracteristica){?>
-                                    <input type="text" class="form-control"  id="name" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $caracteristica->getName() ?>"  name="name" >
-                            <?php  } else {?>
-                                <input type="text" class="form-control"  id="name" placeholder="a" name="name" >
-                            <?php  }?>
-                            <label for="name" class="col-form-label ms-2">Nombre de la Caracteristica</label>
-                            <div>
-                                <?= $alertForm ? (array_key_exists('name', $alertForm) ? $alertForm['name'] : "") : '' ?>
-                            </div> 
-                        </div>
-                        <div class="mb-3 col-12 col-sm-6">
-                            <?php
-                                echo "<h3";  
-                                if (!$id) {
-                                    echo " class='text-center fw-bold agregar'>Agregar";
-                                } elseif (!$del) {
-                                    echo " class='text-center fw-bold editar'> Editar";    
-                                } else {
-                                    echo " class='text-center fw-bold borrar'> Borrar";    
-                                }
-                                echo " Caracteristica</h3>";
-                            ?>
-                        </div>
-                        <div class="bg-light col-12 p-2 d-flex">
-                            <div class="ms-auto">
-                                <?php
-                                    echo "<a class='px-3 me-1' href='index.php?view=abm-caracteristica-accion'><button class='fw-bold btn btn-";  
-                                    if (!$id) {
-                                        echo "agregar'";
-                                    } elseif (!$del) {
-                                        echo "editar'";    
-                                    } else {
-                                        echo "borrar'";    
-                                    }
-                                    echo ">Confirmar</button></a>";
-                                ?>
+                        
+                        <div class="mb-3 mx-auto col-sm-6">
+                            <div class="mt-5 mb-3">
+                                <h3 class='text-center fw-bold <?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?> '>Agregar Caracteristica</h3>
+                                <p class="text-center">Los campos marcados con <span class="obligatorio fs-4"> *</span> son obligatorios</p>
+                            </div>
+                            <div class="mb-3 form-floating">
+                                <?php 
+                                    if ($caracteristica){?>
+                                        <input type="text" class="form-control"  id="name" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $caracteristica->getName() ?>"  name="name" >
+                                <?php  } else {?>
+                                    <input type="text" class="form-control"  id="name" placeholder="a" name="name" >
+                                <?php  }?>
+                                <label for="name" class="col-form-label ms-2">Nombre de la Caracteristica</label>
+                                <div>
+                                    <?= $alertForm ? (array_key_exists('name', $alertForm) ? $alertForm['name'] : "") : '' ?>
+                                </div> 
                             </div>
                         </div>
+                        <div class="bg-light col-12  p-2 d-flex">
+                            <div class="ms-auto">
+                                <a class="mx-3 me-1" href=""><button class="fw-bold btn btn-<?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?>">Confirmar</button></a>
+                            </div>
+                        </div>
+
                     </div>
                 </form>
             </div>
