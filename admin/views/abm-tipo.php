@@ -1,12 +1,13 @@
 <?php
     $id = $_GET['id'] ?? false;
     $del = $_GET['del'] ?? false;
+    $datosForm = (new Validate)->getForm();
+    $id = $datosForm ? ( $datosForm['id'] ?? $id ) : $id;
+    $alertForm = $_SESSION['alertForm'] ? (new Alert)->getFormAlert() : false;
     $tipo = $id ? (new tipo)->tipoID($id) : new Tipo;
     $dispo = $tipo->getDisponibilidadId();
     $disponibilidad = $tipo->getAllDisponibilidad();
     $categorias = (new Categoria)->getAllCategorias();
-    $id = $datosForm ? ( $datosForm['id'] ?? $id ) : $id;
-    $alertForm = $_SESSION['alertForm'] ? (new Alert)->getFormAlert() : false;
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
@@ -121,10 +122,10 @@
                         </div>
                         <div class="mb-3 form-floating">
                             <?php 
-                                if ($tipo){?>
-                            <textarea class="form-control" id="descript-text" <?php echo $del ? "Disabled" : ""; ?>  name="descript" rows="6" style="height:100%;" ><?= $tipo->getDescript() ?></textarea>
+                                if ($id){?>
+                            <textarea class="form-control" id="descript-text" <?php echo $del ? "Disabled" : ""; ?>  name="descript" rows="6" style="height:100%;" placeholder="a"><?= $datosForm['descript'] ?? $tipo->getDescript() ?></textarea>
                             <?php  } else {?>
-                                <textarea class="form-control" id="descript-text" placeholder="a" name="descript" rows="6" style="height:100%;" ></textarea>
+                                <textarea class="form-control" id="descript-text" placeholder="a" name="descript" rows="6" style="height:100%;" ><?= $datosForm['descript'] ?? "" ?></textarea>
                             <?php  }?>
                             <label for="descript-text" class="col-form-label ms-2">Descripción del Tipo de producto</label>
                         </div>

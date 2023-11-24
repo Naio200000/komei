@@ -1,10 +1,10 @@
 <?php
     $id = $_GET['id'] ?? false;
     $del = $_GET['del'] ?? false;
-    $categoria = $id ? (new Categoria)->categoriaID($id) : (new Categoria);
     $datosForm = (new Validate)->getForm();
     $id = $datosForm ? ( $datosForm['id'] ?? $id ) : $id;
     $alertForm = $_SESSION['alertForm'] ? (new Alert)->getFormAlert() : false;
+    $categoria = $id ? (new Categoria)->categoriaID($id) : (new Categoria);
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">

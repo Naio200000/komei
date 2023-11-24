@@ -5,11 +5,6 @@
     $tipo = $id ? (new Tipo)->tipoID($id) : new Tipo();
     $datosPOST = $_POST;
     if ($id) $datosPOST['id'] = $id;
-
-        echo '<pre>';
-        print_r($datosPOST);
-        echo '</pre>';
-
         
     try {
         if ($del) {
@@ -17,26 +12,32 @@
             (new Alert())->insertAlerta('danger', "Se borro la el tipo {$tipo->getName()}");        
             header('Location: ../index.php?view=tipo');
         } else {
-            if (!array_key_exists('radio', $datosPOST)) {
-                $r['radio'] = '';
-                (new Alert())->insertFormAlert($r, 'danger', 'Debe seleccionar uno!');
-            }
-            if (empty($datosPOST['select']) && empty($datosPOST['fecha']) && empty($datosPOST['dias'])) {
-                $datosPOST['tiempo'] = '';
-            }
-            if (!array_key_exists('id_categoria', $datosPOST)) {
-                $datosPOST['id_categoria'] = '';
-            } 
-            if ( empty($datosPOST['name']) || empty( $datosPOST['id_categoria'])) {
+            //ESTO ES UNA MIERDA, PERO NO SE ME OCURRE COMO HACERLO MEJOR
+            if ($tipo->validaForm($datosPOST)) {
+
+                if (!array_key_exists('radio', $datosPOST)) {
+                    $r['radio'] = '';
+                    (new Alert())->insertFormAlert($r, 'danger', 'Debe seleccionar uno!');
+                }
+                if (empty($datosPOST['select']) && empty($datosPOST['fecha']) && empty($datosPOST['dias'])) {
+                    $datosPOST['tiempo'] = '';
+
+                }
+                if (!array_key_exists('id_categoria', $datosPOST)) {
+                    $datosPOST['id_categoria'] = '';
+                } 
+
                 (new Validate)->inserForm($datosPOST);
                 (new Alert())->insertFormAlert($datosPOST, 'danger', 'Debe llenar este camopo');
-                header('Location: ../index.php?view=abm-tipo');
-
+                header("Location: ../index.php?view=abm-tipo&id=$id");
+                echo '<pre>';
+                print_r($datosPOST);
+                echo '</pre>';
             } elseif ($id) {
                 $tipo->editTipo($datosPOST);
                 $tipo->editTipoXCategoria($datosPOST['id_categoria']);
                 (new Alert())->insertAlerta('success', "Se edito el tipo {$tipo->getName()} correctamente");     
-                header('Location: ../index.php?view=tipo');
+                // header('Location: ../index.php?view=tipo');
             } else {
                 $id_tipo = $tipo->insertTipo($datosPOST);
                 $tipo->insertTipoXCategoria($id_tipo, $datosPOST['id_categoria']);

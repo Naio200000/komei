@@ -134,7 +134,8 @@ class Tipo {
         if (isset($dataPOST['select'])) {
             $id_disponible = $dataPOST['select'];
         } else {
-            $id_disponible = $this->editDisponibilidad($dataPOST['fecha'], $dataPOST['dias']);
+            // var_dump(strtotime($dataPOST['fecha']));
+            $id_disponible = $this->editDisponibilidad( strtotime($dataPOST['fecha']), intval($dataPOST['dias']));
         }
         $query = "UPDATE`tipos` SET name = :nombre, descript = :descript, id_disponible = :disponible WHERE id = :id";
         $PDOStatement = $conexion->prepare($query);
@@ -265,6 +266,7 @@ class Tipo {
 
         return $datos;
     }
+
     public function formateaDisponibilidad() :mixed {
         
         $conexion = Conexion::getConexion();
@@ -283,6 +285,21 @@ class Tipo {
         } else {
             return date('m/y', strtotime($datos['tiempo']));
         }
+    }
+
+    public function validaForm(array $datosForm) :bool {
+        
+        if ( 
+        !array_key_exists('radio', $datosForm) 
+        || (empty($datosForm['select']) && empty($datosForm['fecha']) && empty($datosForm['dias'])) 
+        || !array_key_exists('id_categoria', $datosForm) 
+        || empty($datosForm['name']) 
+        || empty( $datosForm['id_categoria'])
+        ) {
+            return true;
+        }
+
+        return false; 
 
     }
 }
