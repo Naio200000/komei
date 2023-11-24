@@ -193,4 +193,16 @@ class Images {
         $datos = $PDOStatement->fetchAll();
         return $datos;
     }
+
+
+    public function validaImagen(int $id = null, array $dataPost, array $imagenPost) :?array {
+
+        if (empty($imagenPost['tmp_name']) && empty($dataPost['imagen_og']) && empty($dataPost['descript'])) { 
+            $dataPost['tmp_name'] = '';
+            return $dataPost;
+        }
+
+
+        return [];
+    }
 }
