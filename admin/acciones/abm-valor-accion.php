@@ -4,23 +4,35 @@
     $del = $_GET['del'] ?? FALSE;
     $valor = $id ? (new Valor)->valorID($id) : (new Valor);
     $datosPOST = $_POST;
+
+
+    /**
+     * Verifica los datos del formulario y actua acorde si tiene que agregar borrar o modificar
+     * y si hay algun problema devuelve los mensajes
+     */
     try {
-        if (!$id) {
-            $valor->insertValor($datosPOST['valor']);
-            (new Alert())->insertAlerta('success', "Se agrego un nuev Valor correctamente");
+        if ($del) {
+            $valor->deleteValor();
+            (new Alert())->insertAlerta('danger', "Se borro le Valor {$valor->getValor()}");     
+            header('Location: ../index.php?view=caraval');
         } else {
-            if (!$del) {
+            if (empty($datosPOST['name'])) {
+                (new Validate)->inserForm($datosPOST);
+                (new Alert())->insertFormAlert($datosPOST, 'danger', 'Debe llenar este camopo');
+                header('Location: ../index.php?view=abm-valor');
+            } elseif ($id) {
                 $valor->editValor($datosPOST['valor']);
                 (new Alert())->insertAlerta('success', "Se edito el Valor {$valor->getValor()} correctamente");
+                header('Location: ../index.php?view=caraval');
             } else {
-                $valor->deleteValor();
-                (new Alert())->insertAlerta('danger', "Se borro le Valor {$valor->getValor()}");
+                $valor->insertValor($datosPOST['valor']);
+                (new Alert())->insertAlerta('success', "Se agrego un nuev Valor correctamente");
+                header('Location: ../index.php?view=caraval');
             }
         }
 
-        header('Location: ../index.php?view=caraval');
-
     } catch (Exception $e) {
+    
         // echo '<pre>';
         // print_r($e);
         // echo '<pre>';

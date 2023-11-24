@@ -15,7 +15,6 @@
         <article>
             <div class="row g-4 my-2 container mx-auto">
                 <form action="acciones/abm-caracteristica-accion.php<?= $id ? ($del ? "?id=$id&del=1" : "?id=$id" ) : "" ?>" method="POST">
-
                     <div class="row align-items-start">
                         
                         <div class="mb-3 mx-auto col-sm-6">
@@ -25,7 +24,7 @@
                             </div>
                             <div class="mb-3 form-floating">
                                 <?php 
-                                    if ($caracteristica){?>
+                                    if ($id){?>
                                         <input type="text" class="form-control"  id="name" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $caracteristica->getName() ?>"  name="name" >
                                 <?php  } else {?>
                                     <input type="text" class="form-control"  id="name" placeholder="a" name="name" >

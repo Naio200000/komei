@@ -1,16 +1,11 @@
 <?php
     $id = $_GET['id'] ?? false;
     $del = $_GET['del'] ?? false;
+    $datosForm = (new Validate)->getForm();
+    $id = $datosForm ? ( $datosForm['id'] ?? $id ) : $id;
+    $alertForm = $_SESSION['alertForm'] ? (new Alert)->getFormAlert() : false;
     $valor = $id ? (new Valor)->valorID($id) : false;
-    // $dispo = $caraval->getDisponibilidadId();
-    // $disponibilidad = $caraval->getAllDisponibilidad();
-    // $categorias = (new Categoria)->getAllCategorias();
-    echo '<pre>';
-    print_r($valor);
-    echo '</pre>';
-    // echo '<pre>';
-    // print_r($caraval->getDisponibilidadId());
-    // echo '</pre>';
+
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
@@ -19,51 +14,30 @@
     <div class="listado pb-3">
         <article>
             <div class="row g-4 my-2 container mx-auto">
-                <?php 
-                    if ($valor){
-                        if ($del) { ?>
-                            <form action="acciones/abm-valor-accion.php?id=<?= $id ?>&del=<?= $del ?>" method="POST">
-                        <?php } ?>
-                        <form action="acciones/abm-valor-accion.php?id=<?= $id ?>" method="POST">
-                <?php  } else {?>
-                    <form action="acciones/abm-valor-accion.php" method="POST">
-                <?php  }?>
-                    <div class="row align-items-start">
-                        <div class="mb-3 col-12 col-sm-6 form-floating">
-                            <?php 
-                                if ($valor){?>
-                                    <input type="text" class="form-control" required id="valor" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $valor->getValor() ?>"  name="valor" >
-                            <?php  } else {?>
-                                <input type="text" class="form-control" required id="valor" placeholder="a" name="valor" >
-                            <?php  }?>
-                            <label for="valor" class="col-form-label ms-2">Nombre de la Valor</label>
+                <form action="acciones/abm-valor-accion.php<?= $id ? ($del ? "?id=$id&del=1" : "?id=$id" ) : "" ?>" method="POST">
+                    <div class="row align-items-start">          
+                        <div class="mb-3 mx-auto col-sm-6">
+                            <!-- titulo -->
+                            <div class="mt-5 mb-3">
+                                <h3 class='text-center fw-bold <?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?> '>Agregar Valor</h3>
+                                <p class="text-center">Los campos marcados con <span class="obligatorio fs-4"> *</span> son obligatorios</p>
+                            </div>
+                            <!-- valor -->
+                            <div class="mb-3 form-floating">
+                                <?php if ($id){?>
+                                    <input type="text" class="form-control"  id="valor" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $valor->getValor() ?>"  name="valor" >
+                                    <?php  } else {?>
+                                    <input type="text" class="form-control"  id="valor" placeholder="a" name="valor" >
+                                <?php  }?>
+                                <label for="valor" class="col-form-label ms-2">Nombre de la Valor</label>
+                                <div>
+                                    <?= $alertForm ? (array_key_exists('valor', $alertForm) ? $alertForm['valor'] : "") : '' ?>
+                                </div> 
+                            </div>
                         </div>
-                        <div class="mb-3 col-12 col-sm-6">
-                            <?php
-                                echo "<h3";  
-                                if (!$id) {
-                                    echo " class='text-center fw-bold agregar'>Agregar";
-                                } elseif (!$del) {
-                                    echo " class='text-center fw-bold editar'> Editar";    
-                                } else {
-                                    echo " class='text-center fw-bold borrar'> Borrar";    
-                                }
-                                echo " Valor</h3>";
-                            ?>
-                        </div>
-                        <div class="bg-light col-12 p-2 d-flex">
+                        <div class="bg-light col-12  p-2 d-flex">
                             <div class="ms-auto">
-                                <?php
-                                    echo "<a class='px-3 me-1' href='index.php?view=abm-valor-accion'><button class='fw-bold btn btn-";  
-                                    if (!$id) {
-                                        echo "agregar'";
-                                    } elseif (!$del) {
-                                        echo "editar'";    
-                                    } else {
-                                        echo "borrar'";    
-                                    }
-                                    echo ">Confirmar</button></a>";
-                                ?>
+                                <a class="mx-3 me-1" href=""><button class="fw-bold btn btn-<?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?>">Confirmar</button></a>
                             </div>
                         </div>
                     </div>
