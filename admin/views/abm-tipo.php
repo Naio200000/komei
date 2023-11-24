@@ -5,10 +5,8 @@
     $dispo = $tipo->getDisponibilidadId();
     $disponibilidad = $tipo->getAllDisponibilidad();
     $categorias = (new Categoria)->getAllCategorias();
+    $id = $datosForm ? ( $datosForm['id'] ?? $id ) : $id;
     $alertForm = $_SESSION['alertForm'] ? (new Alert)->getFormAlert() : false;
-    // echo '<pre>';
-    // print_r($alertForm);
-    // echo '</pre>';
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
@@ -40,6 +38,7 @@
                                         <h3 class='text-center fw-bold borrar'> Borrar Tipo</h3>
                                     <?php } 
                                 } ?>
+                            <p class="text-center">Los campos marcados con <span class="obligatorio fs-4"> *</span> son obligatorios</p>
                             </div>
                             <!-- input nombre -->
                             <div class="mb-3 form-floating">
@@ -49,7 +48,7 @@
                                 <?php  } else {?>
                                     <input type="text" class="form-control" id="name" placeholder="a" name="name" >
                                 <?php  }?>
-                                <label for="name" class="col-form-label ms-2" placeholder="a">Nombre del tipo</label>
+                                <label for="name" class="col-form-label ms-2" placeholder="a">Nombre del tipo<span class="obligatorio fs-5"> *</span></label>
                                 <div>
                                     <?= $alertForm ? (array_key_exists('name', $alertForm) ? $alertForm['name'] : "") : '' ?>
                                 </div> 
@@ -62,7 +61,7 @@
                                         <option class="text-capitalize" value="<?= $c->getId() ?>" <?= $id ? ($c->getId() == $tipo->getCategoria()->getId() ? "selected" : "") : "" ?>><?= $c->getName() ?></option>
                                     <?PHP } ?>
                                 </select>
-                                <label for="id_categoria" class="col-form-label ms-2"> Seleccione una Catergoria</label>
+                                <label for="id_categoria" class="col-form-label ms-2"> Seleccione una Catergoria<span class="obligatorio fs-5"> *</span></label>
                                 <div>
                                 <?= $alertForm ? (array_key_exists('id_categoria', $alertForm) ? $alertForm['id_categoria'] : "") : '' ?>
                                 </div> 
@@ -71,7 +70,7 @@
                         <div class="col-12 col-sm-6">
                             <!-- texto radio -->
                             <div class="mb-3">
-                               <?php echo $del ? " <p class='text-center'><span class='fs-5'>Disponibilidad</span></p>" : "<p><span Class='fw-bold'>Seleccione si la Disponibilidad del Tipo de producto si ya existe. <br></span><span class='fw-bold'>Si tiene que cargar nueva,</span> tiene la opción de elegir una Fecha Particular o Ingresar una cantidad de días. Ponga 0 en cantidad de días si está disponible en el momento o todos los días</p>"; ?>
+                               <?php echo $del ? " <p class='text-center'><span class='fs-5'>Disponibilidad</span></p>" : "<p><span Class='fw-bold'>Seleccione si la Disponibilidad del Tipo de producto si ya existe.</span><br></span>Selecciones 0 si esta disponible todos los dias<br> <span class='fw-bold'>Si tiene que cargar nueva,</span> tiene la opción de elegir una Fecha Particular o Ingresar una cantidad de días.<span class='obligatorio fs-5'> *</span></p>"; ?>
                             </div>
                             <!-- radio -->
                             <div class="mb-3 formularioApp">

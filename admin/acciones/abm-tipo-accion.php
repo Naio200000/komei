@@ -13,9 +13,9 @@
         
     try {
         if ($del) {
-            // $tipo->deleteTipo();
-            // (new Alert())->insertAlerta('danger', "Se borro la el tipo {$tipo->getName()}");        
-            // header('Location: ../index.php?view=tipo');
+            $tipo->deleteTipo();
+            (new Alert())->insertAlerta('danger', "Se borro la el tipo {$tipo->getName()}");        
+            header('Location: ../index.php?view=tipo');
         } else {
             if (!array_key_exists('radio', $datosPOST)) {
                 $r['radio'] = '';
@@ -27,22 +27,22 @@
             if (!array_key_exists('id_categoria', $datosPOST)) {
                 $datosPOST['id_categoria'] = '';
             } 
-            if ( empty($datosPOST['name']) || !array_key_exists('id_categoria', $datosPOST)) {
+            if ( empty($datosPOST['name']) || empty( $datosPOST['id_categoria'])) {
                 (new Validate)->inserForm($datosPOST);
                 (new Alert())->insertFormAlert($datosPOST, 'danger', 'Debe llenar este camopo');
                 header('Location: ../index.php?view=abm-tipo');
 
-             } //elseif ($id) {
-            //     $tipo->editTipo($datosPOST);
-            //     $tipo->editTipoXCategoria($datosPOST['id_categoria']);
-            //     (new Alert())->insertAlerta('success', "Se edito el tipo {$tipo->getName()} correctamente");     
-            //     header('Location: ../index.php?view=tipo');
-            // } else {
-            //     $id_tipo = $tipo->insertTipo($datosPOST);
-            //     $tipo->insertTipoXCategoria($id_tipo, $datosPOST['id_categoria']);
-            //     (new Alert())->insertAlerta('success', "Se agrego un tipo correctamente");
-            //     header('Location: ../index.php?view=tipo');
-            // }
+            } elseif ($id) {
+                $tipo->editTipo($datosPOST);
+                $tipo->editTipoXCategoria($datosPOST['id_categoria']);
+                (new Alert())->insertAlerta('success', "Se edito el tipo {$tipo->getName()} correctamente");     
+                header('Location: ../index.php?view=tipo');
+            } else {
+                $id_tipo = $tipo->insertTipo($datosPOST);
+                $tipo->insertTipoXCategoria($id_tipo, $datosPOST['id_categoria']);
+                (new Alert())->insertAlerta('success', "Se agrego un tipo correctamente");
+                header('Location: ../index.php?view=tipo');
+            }
         }
 
     } catch (Exception $e) {
@@ -51,10 +51,10 @@
         // echo '</pre>';
         // die('No se pudo cargar el Tipo');
 
-        // if ($e->getCode() == 23000) {
-        //     (new Alert())->insertAlerta('danger', "El tipo {$tipo->getName()} no se pudo eliminaro porque esta asociada con un o mas Productos o a una Categoria.");
-        // } else {
-        //     (new Alert())->insertAlerta('danger', "Hubo un error inesperado. Comunicarse con el Administrador de sistema.");
-        // }
-        // header('Location: ../index.php?view=tipo');
+        if ($e->getCode() == 23000) {
+            (new Alert())->insertAlerta('danger', "El tipo {$tipo->getName()} no se pudo eliminaro porque esta asociada con un o mas Productos o a una Categoria.");
+        } else {
+            (new Alert())->insertAlerta('danger', "Hubo un error inesperado. Comunicarse con el Administrador de sistema.");
+        }
+        header('Location: ../index.php?view=tipo');
     }
