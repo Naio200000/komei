@@ -29,16 +29,7 @@
                         <div class="col-12 col-sm-6">
                             <!-- titlo -->
                             <div class="mb-3">
-                                <?php 
-                                    if (!$id) { ?>
-                                        <h3 class='text-center fw-bold agregar'>Agregar Tipo</h3>
-                                    <?php } else {
-                                    if (!$del) { ?>
-                                        <h3 class='text-center fw-bold editar'> Editar Tipo</h3>
-                                    <?php } else  { ?>        
-                                        <h3 class='text-center fw-bold borrar'> Borrar Tipo</h3>
-                                    <?php } 
-                                } ?>
+                            <h3 class='text-center fw-bold <?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?> '>Agregar Tipo</h3>
                             <p class="text-center">Los campos marcados con <span class="obligatorio fs-4"> *</span> son obligatorios</p>
                             </div>
                             <!-- input nombre -->
