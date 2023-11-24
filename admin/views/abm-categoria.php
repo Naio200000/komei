@@ -3,7 +3,8 @@
     $del = $_GET['del'] ?? false;
     $categoria = $id ? (new Categoria)->categoriaID($id) : (new Categoria);
     $datosForm = (new Validate)->getForm();
-    $id = $datosForm ? $datosForm['id'] : $id;
+    $id = $datosForm ? ( $datosForm['id'] ?? $id ) : $id;
+    $alertForm = $_SESSION['alertForm'] ? (new Alert)->getFormAlert() : false;
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
@@ -12,6 +13,7 @@
     <div class="listado pb-3">
         <article>
             <div class="row g-4 my-2 container mx-auto">
+                <!-- form -->
                 <?php 
                     if ($id){
                         if ($del) { ?>
@@ -23,6 +25,7 @@
                 <?php  }?>
                     <div class="row align-items-start">
                         <div class="mb-3 col-12 col-sm-6">
+                            <!-- titulo -->
                            <?php 
                             if (!$id) { ?>
                                 <h3 class='text-center fw-bold agregar'>Agregar Categoria</h3>
@@ -44,7 +47,7 @@
                             <?php  }?>
                             <label for="name" class="col-form-label ms-2">Nombre de la Categoria<span class="obligatorio fs-4"> *</span></label>
                             <div>
-                                <?= (new Alert())->getAlert(); ?>
+                            <?= $alertForm ? (array_key_exists('name', $alertForm) ? $alertForm['name'] : "") : '' ?>
                             </div> 
                         </div>
                         <div class="mb-3 form-floating">

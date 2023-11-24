@@ -15,7 +15,7 @@
         } else {
             if (empty($datosPOST['name'])) {
                 (new Validate)->inserForm($datosPOST);
-                (new Alert())->insertAlerta('danger', "Este campo es obligatorio");
+                (new Alert())->insertFormAlert($datosPOST, 'danger', 'Debe llenar este camopo');
                 header('Location: ../index.php?view=abm-categoria');
             } elseif ($id) {
                 $categoria->editCategoria($datosPOST['name'], $datosPOST['descript']);  
