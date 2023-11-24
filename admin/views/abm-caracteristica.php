@@ -1,16 +1,11 @@
 <?php
     $id = $_GET['id'] ?? false;
     $del = $_GET['del'] ?? false;
+    $datosForm = (new Validate)->getForm();
+    $id = $datosForm ? ( $datosForm['id'] ?? $id ) : $id;
+    $alertForm = $_SESSION['alertForm'] ? (new Alert)->getFormAlert() : false;
     $caracteristica = $id ? (new Caracteristica)->CaracteristicaID($id) : false;
-    // $dispo = $caraval->getDisponibilidadId();
-    // $disponibilidad = $caraval->getAllDisponibilidad();
-    // $categorias = (new Categoria)->getAllCategorias();
-    echo '<pre>';
-    print_r($caracteristica);
-    echo '</pre>';
-    // echo '<pre>';
-    // print_r($caraval->getDisponibilidadId());
-    // echo '</pre>';
+
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
@@ -32,11 +27,14 @@
                         <div class="mb-3 col-12 col-sm-6 form-floating">
                             <?php 
                                 if ($caracteristica){?>
-                                    <input type="text" class="form-control" required id="name" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $caracteristica->getName() ?>"  name="name" >
+                                    <input type="text" class="form-control"  id="name" <?php echo $del ? "Disabled" : ""; ?>   value="<?= $caracteristica->getName() ?>"  name="name" >
                             <?php  } else {?>
-                                <input type="text" class="form-control" required id="name" placeholder="a" name="name" >
+                                <input type="text" class="form-control"  id="name" placeholder="a" name="name" >
                             <?php  }?>
                             <label for="name" class="col-form-label ms-2">Nombre de la Caracteristica</label>
+                            <div>
+                                <?= $alertForm ? (array_key_exists('name', $alertForm) ? $alertForm['name'] : "") : '' ?>
+                            </div> 
                         </div>
                         <div class="mb-3 col-12 col-sm-6">
                             <?php
