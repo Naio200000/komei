@@ -4,13 +4,7 @@
     $del = $_GET['del'] ?? FALSE;
     $Caracteristica = $id ? (new Caracteristica)->CaracteristicaID($id) : (new Caracteristica);
     $datosPOST = $_POST;
-    // echo '<pre>';
-    // print_r($caraval);
-    // echo '<pre>';
-    // echo '<pre>';
-    // print_r($datosPOST);
-    // echo '<pre>';
-    
+
     try {
         if (!$id) {
             $Caracteristica->insertCaracteristica($datosPOST['name']);

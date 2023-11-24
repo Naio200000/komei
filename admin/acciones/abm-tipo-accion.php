@@ -6,13 +6,17 @@
     $datosPOST = $_POST;
     if ($id) $datosPOST['id'] = $id;
         
+
+    /**
+     * Verifica los datos del formulario y actua acorde si tiene que agregar borrar o modificar
+     * y si hay algun problema devuelve los mensajes
+     */
     try {
         if ($del) {
             $tipo->deleteTipo();
             (new Alert())->insertAlerta('danger', "Se borro la el tipo {$tipo->getName()}");        
             header('Location: ../index.php?view=tipo');
         } else {
-            //ESTO ES UNA MIERDA, PERO NO SE ME OCURRE COMO HACERLO MEJOR
             if ($tipo->validaForm($datosPOST)) {
 
                 if (!array_key_exists('radio', $datosPOST)) {

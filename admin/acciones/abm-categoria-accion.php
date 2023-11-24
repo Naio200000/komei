@@ -7,6 +7,11 @@
     if ($id) $datosPOST['id'] = $id;
 
 
+
+    /**
+     * Verifica los datos del formulario y actua acorde si tiene que agregar borrar o modificar
+     * y si hay algun problema devuelve los mensajes
+     */
     try {
         if ($del) {
             $categoria->deleteCategoria();
