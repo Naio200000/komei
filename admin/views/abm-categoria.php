@@ -14,30 +14,14 @@
         <article>
             <div class="row g-4 my-2 container mx-auto">
                 <!-- form -->
-                <?php 
-                    if ($id){
-                        if ($del) { ?>
-                            <form action="acciones/abm-categoria-accion.php?id=<?= $id ?>&del=<?= $del ?>" method="POST">
-                        <?php } ?>
-                        <form action="acciones/abm-categoria-accion.php?id=<?= $id ?>" method="POST">
-                <?php  } else {?>
-                    <form action="acciones/abm-categoria-accion.php" method="POST">
-                <?php  }?>
+                <form action="acciones/abm-categoria-accion.php<?= $id ? ($del ? "?id=$id&del=1" : "?id=$id" ) : "" ?>" method="POST">
                     <div class="row align-items-start">
                         <div class="mb-3 col-12 col-sm-6">
                             <!-- titulo -->
-                           <?php 
-                            if (!$id) { ?>
-                                <h3 class='text-center fw-bold agregar'>Agregar Categoria</h3>
-                            <?php } else {
-                                if (!$del) { ?>
-                                    <h3 class='text-center fw-bold editar'> Editar Categoria</h3>
-                                <?php } else  { ?>        
-                                    <h3 class='text-center fw-bold borrar'> Borrar Categoria</h3>
-                                <?php } 
-                            } ?>
+                            <h3 class='text-center fw-bold <?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?> '>Agregar Categoria </h3>
                             <p class="text-center">Los campos marcados con <span class="obligatorio fs-4"> *</span> son obligatorios</p>
                         </div>
+                        <!-- categoria -->
                         <div class="mb-3 col-12 col-sm-6 form-floating">
                             <?php 
                                 if ($id){?>
@@ -50,6 +34,7 @@
                             <?= $alertForm ? (array_key_exists('name', $alertForm) ? $alertForm['name'] : "") : '' ?>
                             </div> 
                         </div>
+                        <!-- descript -->
                         <div class="mb-3 form-floating">
                         <?php 
                                 if ($id){?>
@@ -61,17 +46,7 @@
                         </div>
                         <div class="bg-light col-12 p-2 d-flex">
                             <div class="ms-auto">
-                                <?php
-                                    echo "<a class='px-3 me-1' href='index.php?view=abm-categoria-accion'><button class='fw-bold btn btn-";  
-                                    if (!$id) {
-                                        echo "agregar'";
-                                    } elseif (!$del) {
-                                        echo "editar'";    
-                                    } else {
-                                        echo "borrar'";    
-                                    }
-                                    echo ">Confirmar</button></a>";
-                                ?>
+                                <a class="mx-3 me-1" href=""><button class="fw-bold btn btn-<?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?>">Confirmar</button></a>
                             </div>
                         </div>
                     </div>

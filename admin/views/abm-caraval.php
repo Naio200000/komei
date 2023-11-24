@@ -56,7 +56,7 @@
                         </div>
                         <div class="bg-light col-12 p-2 d-flex">
                             <div class="ms-auto">
-                                <a class="mx-3 me-1" href="index.php?view=abm-caraval-accion"><button class="fw-bold btn btn-<?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?>">Confirmar</button></a>
+                                <a class="mx-3 me-1" href=""><button class="fw-bold btn btn-<?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?>">Confirmar</button></a>
                             </div>
                         </div>
                     </div>
