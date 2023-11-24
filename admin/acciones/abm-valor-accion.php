@@ -4,6 +4,7 @@
     $del = $_GET['del'] ?? FALSE;
     $valor = $id ? (new Valor)->valorID($id) : (new Valor);
     $datosPOST = $_POST;
+    if ($id) $datosPOST['id'] = $id;
 
 
     /**
@@ -16,7 +17,7 @@
             (new Alert())->insertAlerta('danger', "Se borro le Valor {$valor->getValor()}");     
             header('Location: ../index.php?view=caraval');
         } else {
-            if (empty($datosPOST['name'])) {
+            if (empty($datosPOST['valor'])) {
                 (new Validate)->inserForm($datosPOST);
                 (new Alert())->insertFormAlert($datosPOST, 'danger', 'Debe llenar este camopo');
                 header('Location: ../index.php?view=abm-valor');

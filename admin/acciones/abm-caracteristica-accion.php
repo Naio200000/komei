@@ -4,6 +4,7 @@
     $del = $_GET['del'] ?? FALSE;
     $Caracteristica = $id ? (new Caracteristica)->CaracteristicaID($id) : (new Caracteristica);
     $datosPOST = $_POST;
+    if ($id) $datosPOST['id'] = $id;
 
 
 
