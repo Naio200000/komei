@@ -5,7 +5,9 @@
     $id = $datosForm ? ( $datosForm['id'] ?? $id ) : $id;
     $alertForm = $_SESSION['alertForm'] ? (new Alert)->getFormAlert() : false;
     $imagen = $id ? (new Images)->imagenID($id) : new Images;
-
+    echo "<pre>";
+    print_r($datosForm);
+    echo "</pre>";
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
@@ -28,32 +30,35 @@
                     </div>
                     <div class="col-12 col-sm-6 my-auto">
                         <?php 
+                        // PODRIA SER MEJOR 
                             if ($id){?>
                                 <div class="mb-3 ">
-                                    <label for="imagen" class="form-label ms-2">Cargue una Imagen a Reemplazar</label>
-                                    <input class="form-control" type="file" id="imagen" name="imagen" <?php echo $del ? "Disabled" : ""; ?>>
+                                    <label for="imagen" class="form-label ms-2">Cargue una Imagen a Reemplazar.<span class="obligatorio d-block">La imagen DEBE ser formato webp</span> </label>
+                                    <input class="form-control" type="file" id="imagen" name="imagen" <?php echo $del ? "Disabled" : ""; ?> value="<?= $datosForm['descript'] ?? $imagen->getDescript() ?>">
                                 </div>
                                 <div>
                                     <?= $alertForm ? (array_key_exists('tmp_name', $alertForm) ? $alertForm['tmp_name'] : "") : "" ?>
                                 </div> 
+                                <!-- descript -->
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="descript" placeholder="a" name="descript" value="<?= $imagen->getDescript() ?>" <?php echo $del ? "Disabled" : ""; ?>>
-                                    <label for="descript" class="col-form-label ms-2">Escriba la descripcion de la Imagen</label>
+                                    <label for="descript" class="col-form-label ms-2">Escriba la descripcion de la Imagen<span class="obligatorio fs-4"> *</span></label>
                                 </div>
                                 <div>
                                     <?= $alertForm ? (array_key_exists('descript', $alertForm) ? $alertForm['descript'] : "") : "" ?>
                                 </div> 
                         <?php  } else {?>
                                 <div class="mb-3">
-                                    <label for="imagen" class="col-form-label ms-2">Cargue una Imagen</label>
+                                    <label for="imagen" class="col-form-label ms-2">Cargue una Imagen</label><span class="obligatorio d-block">La imagen DEBE ser formato webp</span>
                                     <input class="form-control" type="file" id="imagen" name="imagen">
                                 </div>
                                 <div>
                                     <?= $alertForm ? (array_key_exists('tmp_name', $alertForm) ? $alertForm['tmp_name'] : "") : "" ?>
                                 </div> 
+                                 <!-- descript -->
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="descript" placeholder="a" name="descript" >
-                                    <label for="descript" class="col-form-label ms-2">Escriba la descripcion de la Imagen</label>
+                                    <input type="text" class="form-control" id="descript" placeholder="a" name="descript"  value="<?= $datosForm['descript'] ?? $imagen->getDescript() ?>">
+                                    <label for="descript" class="col-form-label ms-2">Escriba la descripcion de la Imagen<span class="obligatorio fs-4"> *</span></label>
                                 </div>
                                 <div>
                                     <?= $alertForm ? (array_key_exists('descript', $alertForm) ? $alertForm['descript'] : "") : "" ?>
