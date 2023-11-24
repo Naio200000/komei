@@ -25,6 +25,10 @@ class Links {
         return $datos;
     }
 
+    /**
+     * Devuelve los links de forma que se puedan usar
+     * 
+     */
     public function formateaLinks () {
 
         $arrayOBJLinks = $this->getAllLinks();

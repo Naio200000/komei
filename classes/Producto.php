@@ -141,6 +141,7 @@ class Producto {
     public function catalogoCompleto() :array {
         
         $conexion = Conexion::getConexion();
+        // Hay que re hacer este query porque trae porqueria y solo funciona por el formateador
         $query = "SELECT p.id, p.name, p.descript, txc.id_categoria as categoria, p.precio, p.id_tipo AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN tipo_x_categorias AS txc ON t.id = txc.id_tipo LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto Group by p.id;";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -165,6 +166,7 @@ class Producto {
     private function catalogoCategoria(string $categoria): array {
 
         $conexion = Conexion::getConexion();
+        // Hay que re hacer este query porque trae porqueria y solo funciona por el formateador
         $query = "SELECT p.id, p.name, p.descript, txc.id_categoria as categoria, p.precio, p.id_tipo AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN tipo_x_categorias AS txc ON t.id = txc.id_tipo JOIN categorias AS c ON txc.id_categoria = c.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto WHERE c.name = ? Group by p.id;";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
@@ -208,9 +210,8 @@ class Producto {
 
     /**
      * Devuelve array de objetos Producto dependiendo del tipo de material
-     * @param ?mixed $cate categoria por la cual filtrar todo los productos
-     * @param ?mixed $etc el key dentro de los datos de  etc
-     * @param ?mixed $filtrar el tipo de material que queremos filtrar
+     * @param ?string $cate categoria por la cual filtrar todo los productos
+     * @param ?string tipo a filtrar
      * @return array $catalogoMaterial catalogo filtrado por material
      */
     public function filtrarCatalogo(mixed $cate = null, mixed $type = null): array {
@@ -241,6 +242,7 @@ class Producto {
     public function productoID (int $id):?Producto {
 
         $conexion = Conexion::getConexion();
+        // Hay que re hacer este query porque trae porqueria y solo funciona por el formateador
         $query = "SELECT p.id, p.name, p.descript, txc.id_categoria as categoria, p.precio, p.id_tipo AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN tipo_x_categorias AS txc ON t.id = txc.id_tipo LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto WHERE p.id = ? Group by p.id;";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);

@@ -103,6 +103,7 @@ class Tipo {
         
         return $conexion->lastInsertId();
     }
+
     /**
      * Inserta una nueva relación entre un tipo y una categoria
      * @param int #id_tipo Id del tipo
@@ -208,6 +209,9 @@ class Tipo {
         $PDOStatement->execute([$this->id,]);
     }
 
+    /**
+     * Borra una relación de la tabla Tipo_x_Categoria
+     */
     public function deleteTipoxCategoria () {
 
         $conexion = Conexion::getConexion();
@@ -215,6 +219,8 @@ class Tipo {
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->execute([$this->id,]);
     }
+
+
     /**
      * Devuelve un objeto Tipo
      * @param int ID del tipo a buscar
@@ -232,6 +238,11 @@ class Tipo {
         return $datos;
     }
 
+
+    /**
+     * Trae todos los tipos que estan dentro de la BD
+     * @return array array de objetos Tipo
+     */
     public function getAllTipos () :array {
         $conexion = Conexion::getConexion();
         $query = "SELECT t.*, txc.id_categoria AS categoria FROM tipos AS t LEFT JOIN tipo_x_categorias AS txc ON t.id = txc.id_tipo";
@@ -246,6 +257,10 @@ class Tipo {
         return $datos;
     }
 
+
+    /**
+     * Devuelve un diponibilidad y su ID
+     */
     public function getDisponibilidadId() :mixed {
         $conexion = Conexion::getConexion();
         $query = "SELECT d.id, CONCAT_WS(' ', d.seminario, d.resto) as tiempo  FROM `disponibilidad` AS d WHERE d.id = ?";
@@ -256,6 +271,10 @@ class Tipo {
 
         return $datos;
     }
+
+    /**
+     * Devuelve un array con todas las diponibilidades y sus IDs
+     */
     public function getAllDisponibilidad() :array {
         $conexion = Conexion::getConexion();
         $query = "SELECT d.id, CONCAT_WS(' ', d.seminario, d.resto) as tiempo  FROM `disponibilidad` AS d";
@@ -267,6 +286,10 @@ class Tipo {
         return $datos;
     }
 
+
+    /**
+     * Da formato a las diponibilidades para ser mostrados
+     */
     public function formateaDisponibilidad() :mixed {
         
         $conexion = Conexion::getConexion();
@@ -287,6 +310,12 @@ class Tipo {
         }
     }
 
+
+    /**
+     * Valida si alguno de los datos del formulario de alta de Tipo viene vacio o no existe
+     * @param array $datosForm con todos los datos del formulario
+     * @return bool Devuelve true si algún dato esta vacio o no existe o False si está todo cargado
+     */
     public function validaForm(array $datosForm) :bool {
         
         if ( 

@@ -163,10 +163,4 @@ class Caraval {
 
         return $caraval;
     }
-
-
-    /**
-     * Trae los datos de las caracteristicas por el id
-     * @param int 
-     */
 }
