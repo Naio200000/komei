@@ -68,7 +68,7 @@
                             <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=nosotros">Nosotros</a>
                         </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="index.php?view=tienda" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
+                            <a class="nav-link active text-center text-sm-end dropdown-toggle" href="index.php?view=tienda" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="index.php?view=tienda">Catalogo Completo</a></li>
                                 <?php
@@ -79,17 +79,17 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active text-center text-sm-end" aria-current="page" href="index.php?view=dojos">Contactos</a>
+                            <a class="nav-link active text-center text-sm-end " aria-current="page" href="index.php?view=dojos">Contactos</a>
                         </li>
                     </ul>
                     <?php
                     if ($validar) { ?>
-                        <div>
+                        <div class=" text-center text-sm-end">
                             <a href="./admin/acciones/auth_logout-accion.php"><p class="btn btn-komei fw-bold">Log out</p></a>
                         </div>
                         <?php  } else { ?> 
-                            <div>
-                                <a href="index.php?view=login"><p class="btn btn-komei fw-bold">Log In</p></a>
+                            <div class=" text-center text-sm-end">
+                                <a href="index.php?view=login"><p class="btn btn-komei text-center text-sm-end  fw-bold">Log In</p></a>
                             </div>
                     <?php } ?>
                 </div>
