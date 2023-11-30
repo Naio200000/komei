@@ -1,29 +1,20 @@
 Cosas para agregar
 
-agregar verificaciones a los form
 
 Si hay tiempo Programar para  que los datos de dojos de sql 
 
 Agregar orden a las imagenes
 
-Modificar los botones en todos los formularios de abm
+Reemplazar con un metodo en la clase Rol la consulta de roles en los index
+
+Limpiar abm
+
+Carrito
 
 
 
-Editar titulos de los abm
 
-                    <div class="mb-3 col-12 col-sm-6">
-                        <?php 
-                            if (!$id) { ?>
-                                <h3 class='text-center fw-bold agregar'>Agregar Imagen</h3>
-                            <?php } else {
-                                if (!$del) { ?>
-                                    <h3 class='text-center fw-bold editar'> Editar Imagen</h3>
-                                <?php } else  { ?>        
-                                    <h3 class='text-center fw-bold borrar'> Borrar Imagen</h3>
-                                <?php } 
-                            } ?>
-                    </div>
+----------------------------------------------------------------------------------------------
 
 
 Formulario de filtros con vue
