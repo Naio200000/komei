@@ -20,7 +20,7 @@
                         <div class="col-12 col-sm-6">
                             <!-- titlo -->
                             <div class="mt-5 mb-3">
-                                <h3 class='text-center fw-bold <?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?> '>Agregar Relación <span class="d-block">Caracteristica / Valor</span> </h3>
+                                <h3 class='text-center fw-bold text-capitalize <?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?> '><?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?>  Relación <span class="d-block">Caracteristica / Valor</span> </h3>
                                 <p class="text-center">Los campos marcados con <span class="obligatorio fs-4"> *</span> son obligatorios</p>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                         </div>
                         <div class="bg-light col-12 p-2 d-flex">
                             <div class="ms-auto">
-                                <a class="mx-3 me-1" href="index.php?view=abm-caraval-accion"><button class="fw-bold btn btn-<?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?>">Confirmar</button></a>
+                                <a class="mx-3 me-1" href=""><button class="fw-bold btn btn-<?= $id ? ($del ? 'borrar' : 'editar' ) : 'agregar' ?>">Confirmar</button></a>
                             </div>
                         </div>
                     </div>

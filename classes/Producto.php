@@ -133,6 +133,42 @@ class Producto {
         $PDOStatement->execute([$this->id,]);
     }
 
+
+    public function validaProducto(array $dataPost) :?array {
+        if (
+            !array_key_exists('caraval', $dataPost)
+            || !array_key_exists('caraval', $dataPost)
+            || !array_key_exists('imagenes', $dataPost)
+            || !array_key_exists('id_tipo', $dataPost)
+            || empty($dataPost['precio'])
+            || ($dataPost['descript'] == ' ; ')
+            || empty($dataPost['name'])
+            || empty($dataPost['id_tipo'])
+            || empty($dataPost['precio'])
+            || empty($dataPost['descriptcorta']) ) {
+                if (!array_key_exists('caraval', $dataPost)) {
+                    $dataPost['caraval'] = '';   
+                }
+                if (!array_key_exists('imagenes', $dataPost)) {
+                    $dataPost['imagenes'] = '';
+                }
+                if (!array_key_exists('id_tipo', $dataPost)) {
+                    $dataPost['id_tipo'] = '';
+                }
+                if (empty($dataPost['precio']) !== '0') {
+                    if (intval(($dataPost['precio']) == 0)) {
+                        (new Alert())->insertFormAlert($dataPost, 'danger', 'El precio debe ser un Numero');
+                    }
+                }
+                if ($dataPost['descript'] == ' ; ') {
+                    $dataPost['descript'] = '';
+                }
+            
+                return $dataPost;
+            }
+        return null;
+    }
+
     /**
     * Devuelve nuestro catalogo dependiendo de la categoria seleccionada.
     * @param string $categoria : Es un string de la categoría que estamos buescando.

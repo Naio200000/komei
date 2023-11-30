@@ -193,4 +193,37 @@ class Images {
         $datos = $PDOStatement->fetchAll();
         return $datos;
     }
+
+    /**
+     * Valida y devuelve los datos para las alertas acorde a si los campos ingresados estan en blanco
+     * @param int $id id de la imagen a evaluar, puede ser False
+     * @param array array de datos del formulario
+     * @param array array de datos de la imagene
+     * @return ?array devuelve el array con los datos que estan en blanco o null si estan todos con datos.
+     */
+    public function validaImagen(int $id, array $dataPost, array $imagenPost) :?array {
+
+        if (empty($imagenPost['tmp_name']) && empty($dataPost['imagen_og']) && empty($dataPost['descript'])) { 
+            $dataPost['tmp_name'] = '';
+            return $dataPost;
+        }
+        if ($id) {
+            if (empty($dataPost['descript'])) {
+                return $dataPost;
+            }
+        } else {
+            if (empty($imagenPost['tmp_name']))  {
+                $dataPost['tmp_name'] = '';
+                return $dataPost;
+            } elseif (empty($dataPost['descript'])) {
+                $imgName= (explode(".", $imagenPost['name']));
+                if (end($imgName) != 'webp') {
+                    $i['tmp_name'] = '';
+                    (new Alert())->insertFormAlert($i, 'danger', 'Las Imagenes Deben ser in formato .WEBP');
+                }
+                return $dataPost;
+            }
+        }
+        return null;
+    }
 }
