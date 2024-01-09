@@ -171,7 +171,7 @@ class Images {
     public function getAllImages () : array {
 
         $conexion = Conexion::getConexion();
-        $query = "SELECT * FROM images";
+        $query = "SELECT * FROM images ORDER BY id DESC";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStatement->execute();
