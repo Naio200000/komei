@@ -10,6 +10,11 @@
                 <div>
                     <?= (new Alert())->getAlert(); ?>
                 </div> 
+                <div class="tabla col-12 p-2 d-flex">
+                    <div class="ms-auto">
+                        <a class="px-3 me-1" href="index.php?view=abm-producto"><button class="fw-bold btn btn-agregar">Agregar Producto</button></a>  
+                    </div>
+                </div>
                 <table class="tabla table table-striped">
                     <thead>
                         <tr>
@@ -52,11 +57,6 @@
                         <?php } ?>
                     </tbody>
                 </table>
-                <div class="tabla col-12 p-2 d-flex">
-                    <div class="ms-auto">
-                    <a class=" px-3 me-1" href="index.php?view=abm-producto"><button class="fw-bold btn btn-agregar">Agregar Producto</button></a>  
-                    </div>
-                </div>
             </div>
         </article>
     </div>

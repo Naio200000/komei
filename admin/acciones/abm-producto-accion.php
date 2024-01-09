@@ -4,7 +4,7 @@
     $del = $_GET['del'] ?? FALSE;
     $producto = $id ? (new Producto)->productoID($id) : (new Producto);
     $datosPOST = $_POST;
-    $datosPOST['descript'] = $datosPOST['descriptcorta'] . ' ; ' . $datosPOST['descript'];
+    $datosPOST['descript'] = $datosPOST['descriptcorta'] . ' ; ' . $datosPOST['descriptlarga'];
     $caraval = $_POST['caraval'] ?? false;
     $imagenes = $_POST['imagenes'] ?? false;
     if ($id) $datosPOST['id'] = $id;
