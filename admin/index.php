@@ -54,11 +54,11 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="index.php?view=tienda" role="button" data-bs-toggle="dropdown" aria-expanded="false">Administrar</a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="index.php?view=categoria">Categorias</a></li>
-                                <li><a class="dropdown-item" href="index.php?view=tipo">Tipos</a></li>
-                                <li><a class="dropdown-item" href="index.php?view=caraval">Caracteristicas</a></li>
-                                <li><a class="dropdown-item" href="index.php?view=imagenes">Imagenes</a></li>
                                 <li><a class="dropdown-item" href="index.php?view=producto">Productos</a></li>
+                                <li><a class="dropdown-item" href="index.php?view=tipo">Tipos</a></li>
+                                <li><a class="dropdown-item" href="index.php?view=imagenes">Imagenes</a></li>
+                                <li><a class="dropdown-item" href="index.php?view=categoria">Categorias</a></li>
+                                <li><a class="dropdown-item" href="index.php?view=caraval">Caracteristicas</a></li>
                             </ul>
                         </li>
                     </ul>

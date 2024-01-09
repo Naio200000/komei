@@ -120,25 +120,26 @@
                                             <div class="accordion-body">
                                                 <div class="row g-4 my-2 container mx-auto">
                                                     <?php
-                                                            foreach ($caraval as $cv) { ?>
-                                                                <div class="col-6 col-md-4 col-lg-3 form-check">
-                                                                    <div class="form-check form-switch pt-1">
-                                                                        <?php
-                                                                            $checked = '';
-                                                                            if ($id) {
-                                                                                foreach ($producto->getCaracteristicas() as $pcv) {
-                                                                                    if ($pcv->getId() == $cv->getId()){
-                                                                                    }
+                                                        foreach ($caraval as $cv) { ?>
+                                                            <div class="col-6 col-md-4 col-lg-3 form-check">
+                                                                <div class="form-check form-switch pt-1">
+                                                                    <?php
+                                                                        $checked = '';
+                                                                        if ($id) {
+                                                                            foreach ($producto->getCaracteristicas() as $pcv) {
+                                                                                if ($pcv->getId() == $cv->getId()){
+                                                                                    $checked = 'checked';
                                                                                 }
                                                                             }
-                                                                        ?>
-                                                                        <input class="form-check-input" <?= $checked ?> type="checkbox" role="switch" id="caraval<?= $cv->getId()?>" name="caraval[]" value="<?= $cv->getId()?>" <?php echo $del ? "Disabled" : ""; ?>>
-                                                                        <label class="form-check-label" for="caraval<?= $cv->getId()?>">
-                                                                            <p class=''><span class='fw-bold text-capitalize'> <?= $cv->getName()->getName()?> : </span><?= $cv->getValor()->getValor()?> </p> 
-                                                                        </label>
-                                                                    </div>
+                                                                        }
+                                                                    ?>
+                                                                    <input class="form-check-input" <?= $checked ?> type="checkbox" role="switch" id="caraval<?= $cv->getId()?>" name="caraval[]" value="<?= $cv->getId()?>" <?php echo $del ? "Disabled" : ""; ?>>
+                                                                    <label class="form-check-label" for="caraval<?= $cv->getId()?>">
+                                                                        <p class=''><span class='fw-bold text-capitalize'> <?= $cv->getName()->getName()?> : </span><?= $cv->getValor()->getValor()?> </p> 
+                                                                    </label>
                                                                 </div>
-                                                        <?php } ?>
+                                                            </div>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </div>
