@@ -3,11 +3,15 @@
     $del = $_GET['del'] ?? false;
     $datosForm = (new Validate)->getForm();
     $id = $datosForm ? ( $datosForm['id'] ?? $id ) : $id;
-    $alertForm = $_SESSION['alertForm'] ? (new Alert)->getFormAlert() : false;
+    $alertForm = isset($_SESSION['alertForm']) ? (new Alert)->getFormAlert() : false;
     $producto = $id ? (new Producto)->productoID($id) : (new Producto);
     $imagenes = (new Images)->getAllImages();
     $tipos = (new Tipo)->getAllTipos();
     $caraval = (new Caraval)->getAllCaraval();
+    echo '<pre>';
+    // print_r($producto->getCaracteristicas());
+    // print_r($caraval);
+    echo '</pre>';
 
 ?>
 
@@ -117,30 +121,36 @@
                                                 <span class="text-dark fw-bold fs-4">Seleccionar Caracteristica<span class="obligatorio fs-4"> *</span></span>
                                             </button>
                                         </h3>
-                                        <div id="collapseOne" class="accordion-collapse collapse <?= $datosForm['caraval'] ? 'show' : '' ?>" aria-labelledby="headingOne" data-bs-parent="#accordionSelect">
+                                        <div id="collapseOne" class="accordion-collapse collapse <?= $datosForm['imagenes'] ? 'show' : '' ?>" aria-labelledby="headingOne" data-bs-parent="#accordionSelect">
                                             <div class="accordion-body">
                                                 <div class="row g-4 my-2 container mx-auto">
                                                     <?php
-                                                        foreach ($caraval as $cv) { ?>
-                                                            <div class="col-6 col-md-4 col-lg-3 form-check">
-                                                                <div class="form-check form-switch pt-1">
-                                                                    <?php
-                                                                        $checked = '';
-                                                                        if ($id) {
-                                                                            foreach ($producto->getCaracteristicas() as $pcv) {
-                                                                                if ($pcv->getId() == $cv->getId()){
-                                                                                    $checked = 'checked';
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    ?>
-                                                                    <input class="form-check-input" <?= $checked ?> type="checkbox" role="switch" id="caraval<?= $cv->getId()?>" name="caraval[]" value="<?= $cv->getId()?>" <?php echo $del ? "Disabled" : ""; ?>>
-                                                                    <label class="form-check-label" for="caraval<?= $cv->getId()?>">
-                                                                        <p class=''><span class='fw-bold text-capitalize'> <?= $cv->getName()->getName()?> : </span><?= $cv->getValor()->getValor()?> </p> 
-                                                                    </label>
+                                                        $cara = '';
+                                                        foreach ($caraval as $cv) {
+                                                            // echo '<pre>';
+                                                            // print_r($cv);
+                                                            // echo '</pre>';
+                                                            if ($cara == '') {
+                                                                $cara = $cv->getName()->getName(); ?>
+                                                                <div class="col-3">
+                                                                    <label for="<?= $cv->getName()->getName() ?>"><?= $cv->getName()->getName() ?></label>
+                                                                    <select class="form-select" multiple aria-label="Multiple select example" id="<?= $cv->getName()->getName() ?>" name="caraval[]">
+                                                                    <option value="<?= $cv->getValor()->getValor()?>"><?= $cv->getValor()->getValor()?></option>
+                                                            <?php } elseif ($cara == $cv->getName()->getName()) {  ?>
+                                                                    <option value="<?= $cv->getValor()->getValor()?>"><?= $cv->getValor()->getValor()?></option>
+                                                            <?php } else { ?>
+                                                                    </select>
                                                                 </div>
-                                                            </div>
-                                                    <?php } ?>
+                                                                <div class="col-3">
+                                                                    <label for="<?= $cv->getName()->getName() ?>"><?= $cv->getName()->getName() ?></label>
+                                                                    <select class="form-select" multiple aria-label="Multiple select example" id="<?= $cv->getName()->getName() ?>" name="caraval[]">
+                                                                    <option value="<?= $cv->getValor()->getValor()?>"><?= $cv->getValor()->getValor()?></option>
+                                                                <?php 
+                                                                $cara = $cv->getName()->getName(); 
+                                                            }
+                                                    }?>
+                                                        </select>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -184,11 +194,17 @@
                                                             <div class="col-12 col-sm-6 col-md-4 col-lg-2 form-check">
                                                                 <?php
                                                                     $checked = '';
-                                                                    if ($id) {
+                                                                    if (!$datosForm) {
                                                                         foreach ($producto->getImagen() as $pi) {
                                                                             if ($pi->getId() == $i->getId()){
                                                                                 $checked = 'checked';
                                                                             }
+                                                                        }
+                                                                    } else {
+                                                                        foreach($datosForm['imagenes'] as $pi) {
+                                                                            if ($pi == $i->getId()){
+                                                                                $checked = 'checked';
+                                                                            }  
                                                                         }
                                                                     }
                                                                 ?>

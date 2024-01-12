@@ -138,7 +138,7 @@ class Caraval {
     public function getAllCaraval() :array {
 
         $conexion = Conexion::getConexion();
-        $query = "SELECT * FROM valor_x_caracteristica";
+        $query = "SELECT * FROM valor_x_caracteristica ORDER BY id_caracteristica";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute();
@@ -162,5 +162,22 @@ class Caraval {
         $caraval->valor = (new Valor)->ValorID($datos['id_valor']);
 
         return $caraval;
+    }
+
+    public function caravalArray () {
+
+        $conexion = Conexion::getConexion();
+        $query = "SELECT c.name, GROUP_CONCAT(v.valor) AS valores FROM valor_x_caracteristica AS vxc JOIN caracteristicas AS c ON vxc.id_caracteristica = c.id JOIN valores AS V ON vxc.id_valor = v.id GROUP BY id_caracteristica;";
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement->execute();
+        $datos = $PDOStatement->fetchAll();
+        $resultado = [];
+        foreach ($datos as $v) {
+            $valores = explode(',', $v['valores']);
+            $resultado[$v['name']] = $valores;
+        }
+
+        return $resultado;
     }
 }
