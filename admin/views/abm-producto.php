@@ -8,11 +8,6 @@
     $imagenes = (new Images)->getAllImages();
     $tipos = (new Tipo)->getAllTipos();
     $caraval = (new Caraval)->getAllCaraval();
-    echo '<pre>';
-    // print_r($producto->getCaracteristicas());
-    // print_r($caraval);
-    echo '</pre>';
-
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
@@ -128,16 +123,30 @@
                                                         $cara = '';
                                                         foreach ($caraval as $cv) {
                                                             // echo '<pre>';
-                                                            // print_r($cv);
+                                                            // print_r($producto->getCaracteristicas());
                                                             // echo '</pre>';
+                                                            $selected = '';
+                                                            if (!$datosForm) {
+                                                                foreach ($producto->getCaracteristicas() as $pcv) {
+                                                                    if ($pcv->getId() == $cv->getId()){
+                                                                        $selected = 'selected';
+                                                                    }
+                                                                }
+                                                            } else {
+                                                                foreach($datosForm['caraval'] as $pcv) {
+                                                                    if ($pcv == $cv->getId()){
+                                                                        $selected = 'selected';
+                                                                    }
+                                                                }
+                                                            }
                                                             if ($cara == '') {
                                                                 $cara = $cv->getName()->getName(); ?>
                                                                 <div class="col-3">
                                                                     <label for="<?= $cv->getName()->getName() ?>"><?= $cv->getName()->getName() ?></label>
                                                                     <select class="form-select" multiple aria-label="Multiple select example" id="<?= $cv->getName()->getName() ?>" name="caraval[]">
-                                                                    <option value="<?= $cv->getValor()->getValor()?>"><?= $cv->getValor()->getValor()?></option>
+                                                                    <option <?= $selected ?> value="<?= $cv->getId()?>"><?= $cv->getValor()->getValor()?></option>
                                                             <?php } elseif ($cara == $cv->getName()->getName()) {  ?>
-                                                                    <option value="<?= $cv->getValor()->getValor()?>"><?= $cv->getValor()->getValor()?></option>
+                                                                    <option <?= $selected ?> value="<?= $cv->getId()?>"><?= $cv->getValor()->getValor()?></option>
                                                             <?php } else { ?>
                                                                     </select>
                                                                 </div>
