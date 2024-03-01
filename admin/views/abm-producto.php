@@ -122,9 +122,6 @@
                                                     <?php
                                                         $cara = '';
                                                         foreach ($caraval as $cv) {
-                                                            // echo '<pre>';
-                                                            // print_r($producto->getCaracteristicas());
-                                                            // echo '</pre>';
                                                             $selected = '';
                                                             if (!$datosForm) {
                                                                 foreach ($producto->getCaracteristicas() as $pcv) {

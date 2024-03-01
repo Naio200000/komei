@@ -1,4 +1,6 @@
 <?php
+    $categoriaGET = isset($_GET['category']) ? (new Categoria)->categoriaName($_GET['category']) : false ;
+    $filtrar = (new Categoria)->formateaCategoriasa();
     $producto = (New Producto)->filtrarCatalogo();
 ?>
 <section class="abm container-fluid container-md pb-3" id="abm">
@@ -10,10 +12,32 @@
                 <div>
                     <?= (new Alert())->getAlert(); ?>
                 </div> 
-                <div class="tabla col-12 p-2 d-flex">
+                <div class="tabla col-12 p-2 d-flex flex-column">
                     <div class="ms-auto">
                         <a class="px-3 me-1" href="index.php?view=abm-producto"><button class="fw-bold btn btn-agregar">Agregar Producto</button></a>  
                     </div>
+                    <?php if($filtrar) {  ?>
+                        <article class="accordion accordion-flush px-4" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <p class="accordion-header" id="flush-headingOne">
+                                    <span class="accordion-button collapsed fs-3 titulocard" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">Filtros</span>
+                                </p>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        <p class="fs-5 w-75 mx-auto">Filtra lista de  productos por categoria</p>
+                                        <?php  ?>
+                                        <div class="d-flex justify-content-around">
+                                            <?php foreach ($filtrar as $key => $value) { ?>
+                                                <div>
+                                                    <a class='px-3 text-uppercase' href='index.php?view=producto<?= $categoriaGET ? ($categoriaGET->getName() ? "&category={$categoriaGET->getName()}&type=$key" : "&category=$value") : "&category=$value" ?>'><button class='fw-bold btn btn-komei'><?= $value ?></button></a>
+                                                </div>
+                                            <?php } ?>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    <?php } ?>
                 </div>
                 <table class="tabla table table-striped">
                     <thead>
