@@ -8,6 +8,10 @@
     $imagenes = (new Images)->getAllImages();
     $tipos = (new Tipo)->getAllTipos();
     $caraval = (new Caraval)->getAllCaraval();
+
+    echo '<pre>';
+    print_r( $datosForm );
+    echo '</pre>';
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
@@ -123,19 +127,30 @@
                                                         $cara = '';
                                                         foreach ($caraval as $cv) {
                                                             $selected = '';
-                                                            if (!$datosForm) {
-                                                                foreach ($producto->getCaracteristicas() as $pcv) {
-                                                                    if ($pcv->getId() == $cv->getId()){
-                                                                        $selected = 'selected';
+                                                            if ($id) {
+                                                                if (!$datosForm) {
+                                                                    foreach ($producto->getCaracteristicas() as $pcv) {
+                                                                        if ($pcv->getId() == $cv->getId()){
+                                                                            $selected = 'selected';
+                                                                        }
+                                                                    }
+                                                                } else {
+                                                                    foreach($datosForm['caraval'] as $pcv) {
+                                                                        if ($pcv == $cv->getId()){
+                                                                            $selected = 'selected';
+                                                                        }
                                                                     }
                                                                 }
                                                             } else {
-                                                                foreach($datosForm['caraval'] as $pcv) {
-                                                                    if ($pcv == $cv->getId()){
-                                                                        $selected = 'selected';
+                                                                if (!empty($datosForm['caraval'])) {
+                                                                    foreach($datosForm['caraval'] as $pcv) {
+                                                                        if ($pcv == $cv->getId()){
+                                                                            $selected = 'selected';
+                                                                        }
                                                                     }
                                                                 }
                                                             }
+
                                                             if ($cara == '') {
                                                                 $cara = $cv->getName()->getName(); ?>
                                                                 <div class="col-3">
@@ -200,19 +215,30 @@
                                                             <div class="col-12 col-sm-6 col-md-4 col-lg-2 form-check">
                                                                 <?php
                                                                     $checked = '';
-                                                                    if (!$datosForm) {
-                                                                        foreach ($producto->getImagen() as $pi) {
-                                                                            if ($pi->getId() == $i->getId()){
-                                                                                $checked = 'checked';
+                                                                    if ($id) {
+                                                                        if (!$datosForm) {
+                                                                            foreach ($producto->getImagen() as $pi) {
+                                                                                if ($pi->getId() == $i->getId()){
+                                                                                    $checked = 'checked';
+                                                                                }
+                                                                            }
+                                                                        } else {
+                                                                            foreach($datosForm['imagenes'] as $pi) {
+                                                                                if ($pi == $i->getId()){
+                                                                                    $checked = 'checked';
+                                                                                }  
                                                                             }
                                                                         }
                                                                     } else {
-                                                                        foreach($datosForm['imagenes'] as $pi) {
-                                                                            if ($pi == $i->getId()){
-                                                                                $checked = 'checked';
-                                                                            }  
+                                                                        if (!empty($datosForm['imagenes'])) {
+                                                                            foreach($datosForm['imagenes'] as $pi) {
+                                                                                if ($pi == $i->getId()){
+                                                                                    $checked = 'checked';
+                                                                                }  
+                                                                            }
                                                                         }
                                                                     }
+                       
                                                                 ?>
                                                                     <div>
                                                                     <label for="imagen<?= $i->getId()?>">
