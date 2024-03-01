@@ -1,7 +1,10 @@
 <?php
     $categoriaGET = isset($_GET['category']) ? (new Categoria)->categoriaName($_GET['category']) : false ;
     $filtrar = (new Categoria)->formateaCategoriasa();
-    $producto = (New Producto)->filtrarCatalogo();
+    $producto = (New Producto)->filtrarCatalogo($categoriaGET->getName());
+    // echo '<pre>';
+    // print_r($filtrar);
+    // echo '</pre>';
 ?>
 <section class="abm container-fluid container-md pb-3" id="abm">
     <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center my-2 mx-auto px-2">Categorias</h2>
@@ -27,9 +30,9 @@
                                         <p class="fs-5 w-75 mx-auto">Filtra lista de  productos por categoria</p>
                                         <?php  ?>
                                         <div class="d-flex justify-content-around">
-                                            <?php foreach ($filtrar as $key => $value) { ?>
+                                            <?php foreach ($filtrar as $value) { ?>
                                                 <div>
-                                                    <a class='px-3 text-uppercase' href='index.php?view=producto<?= $categoriaGET ? ($categoriaGET->getName() ? "&category={$categoriaGET->getName()}&type=$key" : "&category=$value") : "&category=$value" ?>'><button class='fw-bold btn btn-komei'><?= $value ?></button></a>
+                                                    <a class='px-3 text-uppercase' href='index.php?view=producto<?= "&category=$value" ?>'><button class='fw-bold btn btn-komei'><?= $value ?></button></a>
                                                 </div>
                                             <?php } ?>
                                         </div>
