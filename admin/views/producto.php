@@ -1,7 +1,7 @@
 <?php
-    $categoriaGET = isset($_GET['category']) ? (new Categoria)->categoriaName($_GET['category']) : false ;
+    $categoriaGET = $_GET['category'] ?? false ;
     $filtrar = (new Categoria)->formateaCategoriasa();
-    $producto = (New Producto)->filtrarCatalogo($categoriaGET->getName());
+    $producto = (New Producto)->filtrarCatalogo(false, $categoriaGET);
     // echo '<pre>';
     // print_r($filtrar);
     // echo '</pre>';

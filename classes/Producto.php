@@ -171,14 +171,14 @@ class Producto {
 
     /**
     * Devuelve nuestro catalogo dependiendo de la categoria seleccionada.
-    * @param string $categoria : Es un string de la categoría que estamos buescando.
+    * @param bool $bool parametro para ordenar o no la lista
     * @return array Un array de todos nuestros productos de la categoria seleccionada.
     */
-    public function catalogoCompleto() :array {
+    public function catalogoCompleto(bool $orden = true) :array {
         
         $conexion = Conexion::getConexion();
         // Hay que re hacer este query porque trae porqueria y solo funciona por el formateador
-        $query = "SELECT p.id, p.name, p.descript, txc.id_categoria as categoria, p.precio, p.id_tipo AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN tipo_x_categorias AS txc ON t.id = txc.id_tipo LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto Group by p.id;";
+        $query = "SELECT p.id, p.name, p.descript, txc.id_categoria as categoria, p.precio, p.id_tipo AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN tipo_x_categorias AS txc ON t.id = txc.id_tipo LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto Group by p.id ORDER BY p.id DESC;";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute();
@@ -187,23 +187,25 @@ class Producto {
         };
 
 
-        
-        $ordenado = $this->ordenarOBJ($catalogo);
+        if ($orden) {
+            $ordenado = $this->ordenarOBJ($catalogo);
+            return $ordenado;
+        }
 
-
-        return $ordenado;
+        return $catalogo;
     }
 
     /**
     * Devuelve nuestro catalogo dependiendo de la categoria seleccionada.
     * @param string $categoria : Es un string de la categoría que estamos buescando.
+    * @param bool $bool parametro para ordenar o no la lista
     * @return array Un array de todos nuestros productos de la categoria seleccionada.
     */
-    private function catalogoCategoria(string $categoria): array {
+    private function catalogoCategoria(string $categoria, bool $orden = true): array {
 
         $conexion = Conexion::getConexion();
         // Hay que re hacer este query porque trae porqueria y solo funciona por el formateador
-        $query = "SELECT p.id, p.name, p.descript, txc.id_categoria as categoria, p.precio, p.id_tipo AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN tipo_x_categorias AS txc ON t.id = txc.id_tipo JOIN categorias AS c ON txc.id_categoria = c.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto WHERE c.name = ? Group by p.id;";
+        $query = "SELECT p.id, p.name, p.descript, txc.id_categoria as categoria, p.precio, p.id_tipo AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN tipo_x_categorias AS txc ON t.id = txc.id_tipo JOIN categorias AS c ON txc.id_categoria = c.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto WHERE c.name = ? Group by p.id ORDER BY p.id DESC;";
         $PDOStatement = $conexion->prepare($query);
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute([$categoria]);
@@ -211,13 +213,16 @@ class Producto {
             $catalogo[] = $this->formateaProducto($datos);
         };
 
-        $ordenado = [];
-        if (!empty($catalogo)){
-            $ordenado = $this->ordenarOBJ($catalogo);
+        if ($orden) {
+            $ordenado = [];
+            if (!empty($catalogo)){
+                $ordenado = $this->ordenarOBJ($catalogo);
+            }
+    
+            return $ordenado;
         }
 
-
-        return $ordenado;
+        return $catalogo;
 
     }
     /**
@@ -246,22 +251,23 @@ class Producto {
 
     /**
      * Devuelve array de objetos Producto dependiendo del tipo de material
+     * @param bool $orden booleano para saber si se ordena o no la lista
      * @param ?string $cate categoria por la cual filtrar todo los productos
      * @param ?string tipo a filtrar
      * @return array $catalogoMaterial catalogo filtrado por material
      */
-    public function filtrarCatalogo(mixed $cate = null, mixed $type = null): array {
+    public function filtrarCatalogo(bool $orden = true, mixed $cate = null, mixed $type = null): array {
 
             $catalogofiltrar = [];
             if ($cate) {
-                $completo = $this->catalogoCategoria($cate);
+                $completo = $this->catalogoCategoria($cate, $orden);
                 foreach($completo as $m) {
                     if ($m->getTipo()->getId() == $type) {
                         $catalogofiltrar[] = $m;
                     }
                 }
             } else {
-                return $this->catalogoCompleto();
+                return $this->catalogoCompleto($orden);
             }
             if (!$type) {
                 return $completo;
