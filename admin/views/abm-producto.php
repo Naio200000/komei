@@ -9,9 +9,6 @@
     $tipos = (new Tipo)->getAllTipos();
     $caraval = (new Caraval)->getAllCaraval();
 
-    echo '<pre>';
-    print_r( $datosForm );
-    echo '</pre>';
 ?>
 
 <section class="abm container-fluid container-md pb-3" id="abm">
