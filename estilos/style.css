@@ -165,7 +165,7 @@ main {
     padding: 10px;
     gap: 10px;
     grid-template-areas:    "imagen nada  cerrar"
-                            " texto texto precio";
+                            " texto cantidad precio";
 }
 
 .productoCarritoImagen {
@@ -223,7 +223,7 @@ main {
 @media (min-width: 576px) {
     .contenedor {
         grid-template-areas:    "imagen texto   texto   texto   cerrar"
-                                "imagen texto   texto   texto   precio";
+                                "imagen texto   texto   cantidad   precio";
     }
  }
 
