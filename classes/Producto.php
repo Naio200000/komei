@@ -203,6 +203,9 @@ class Producto {
     */
     private function catalogoCategoria(string $categoria, bool $orden = true): array {
 
+        
+
+
         $conexion = Conexion::getConexion();
         // Hay que re hacer este query porque trae porqueria y solo funciona por el formateador
         $query = "SELECT p.id, p.name, p.descript, txc.id_categoria as categoria, p.precio, p.id_tipo AS tipo, GROUP_CONCAT(DISTINCT cxp.id_cate_valor SEPARATOR '|') AS caracteristicas, CONCAT_WS(' ', d.seminario, d.resto) as tiempo, GROUP_CONCAT(DISTINCT ixp.id_imagen SEPARATOR '|') AS imagen FROM productos AS p JOIN tipos AS t ON p.id_tipo = t.id JOIN disponibilidad AS d ON t.id_disponible = d.id LEFT JOIN tipo_x_categorias AS txc ON t.id = txc.id_tipo JOIN categorias AS c ON txc.id_categoria = c.id LEFT JOIN caraval_x_producto AS cxp ON p.id = cxp.id_producto LEFT JOIN imagenes_x_productos AS ixp ON p.id = ixp.id_producto WHERE c.name = ? Group by p.id ORDER BY p.id DESC;";
@@ -261,12 +264,14 @@ class Producto {
             $catalogofiltrar = [];
             if ($cate) {
                 $completo = $this->catalogoCategoria($cate, $orden);
+
                 foreach($completo as $m) {
                     if ($m->getTipo()->getId() == $type) {
                         $catalogofiltrar[] = $m;
                     }
                 }
             } else {
+
                 return $this->catalogoCompleto($orden);
             }
             if (!$type) {

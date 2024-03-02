@@ -1,4 +1,5 @@
 <?php
+
     $categoriaGET = isset($_GET['category']) ? (new Categoria)->categoriaName($_GET['category']) : false ;
 
     $tiposGET = $_GET['type'] ?? false;
@@ -6,9 +7,9 @@
     if (empty($datosPOST)){
         if ($categoriaGET) {
             $filtrar = $categoriaGET->formateaCategoriasa();
-            if (in_array($categoriaGET->getName(), $categorias)) {
+            if (in_array($categoriaGET->getName(), $filtrar)) {
                 $filtrar = $categoriaGET->formateaTipos($categoriaGET->getName()); 
-                $category = $OBJProducto->filtrarCatalogo($categoriaGET->getName(), $tiposGET);
+                $category = $OBJProducto->filtrarCatalogo(true, $categoriaGET->getName(), $tiposGET);
                 $CategorySelected = $categoriaGET->getName();
             } else {
                 $filtrar = false;
@@ -24,7 +25,7 @@
         $cateTienda = $datosPOST['category'] ?? null;
         $etcTienda = $datosPOST['etc'] ?? null;
         $datoTienda = $datosPOST['dato'] ?? null;
-        $category = $OBJProducto->filtrarCatalogo($cateTienda, $etcTienda, $datoTienda);
+        $category = $OBJProducto->filtrarCatalogo(true, $cateTienda, $etcTienda, $datoTienda);
         $CategorySelected = $datosPOST['category'] ?? "";
     }
 ?>
