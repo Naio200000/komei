@@ -1,11 +1,3 @@
-<?php 
-    $ID = $_GET['itemID'] ?? False;
-    $item = $OBJProducto->productoID($ID);
-    // echo '<pre>';
-    // print_r($item);
-    // echo '<pre>';
-?>
-
 <section class="item container-fluid container-md pb-3">
     <?PHP
     if (!empty($item)) {?>
