@@ -300,7 +300,7 @@ class Producto {
 
     /**
      * Devuelve un string recortado la descripcion
-     * @param boolean $a : Se es FALSE devuelve la primera parte de la descipcion (corta) si es TRUE devuelve la descripcion larga
+     * @param boolean $a : Si es FALSE devuelve la primera parte de la descipcion (corta) si es TRUE devuelve la descripcion larga
      * @return string descripcion formateada
      */
     public function formatearDescript($a = FALSE) :string{

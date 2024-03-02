@@ -1,9 +1,6 @@
 <?php 
     $ID = $_GET['itemID'] ?? False;
     $item = $OBJProducto->productoID($ID);
-    // echo '<pre>';
-    // print_r($item);
-    // echo '<pre>';
 ?>
 
 <section class="item container-fluid container-md pb-3">
@@ -54,7 +51,20 @@
                     </ul>
                     <div class="card-body flex-grow-0 mt-auto" id="botonProducto">
                         <p class="fs-3 mb-3 fw-bold text-center preciocard"><?= $item->formatearPrecio()?></p>
-                        <button id="" class="btn btn-komei w-100 fs-3 text-uppercase fw-bold">Comprar</button>
+                        <form action="admin/acciones/item-acc.php" class="row">
+                            <div class="col-6 d-flex align-items-center">
+                                <label class="px-1" for="cantidad">Cantidad: </label>
+                                <input type="number" class="form-control fw-bold" value="1" name="cantidad" id="cantidad">
+                            </div>
+                            <div class="col-6">
+                                <input type="hidden" value="<?= $item->getId() ?>" name="id" id="id">
+                                <button type="submit" class="btn btn-komei w-100 fs-3 text-uppercase">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                        <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                                    </svg> Comprar
+                                </button>
+                            </div>
+                        </form>
                 </div>
             </div>
         </div>
