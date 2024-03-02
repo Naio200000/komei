@@ -156,7 +156,11 @@ main {
     background-color: rgb(151, 169, 178);
     color: #fff;
 }
+.contenedorProductosCarrito {
+    background-color: #fff;
+}
 .contenedor {
+    background-color: #fff;
     display: grid;
     padding: 10px;
     gap: 10px;
