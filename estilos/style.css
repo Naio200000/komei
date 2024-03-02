@@ -184,8 +184,12 @@ main {
     grid-area: cerrar;
 }
 
+.productoCarritoCantidad {
+    grid-area: cantidad;
+}
 .productoCarritoPrecio {
     grid-area: precio;
+    max-width: 100px;
 }
 .modalCustom div {
     border: none;
@@ -222,8 +226,7 @@ main {
 }
 @media (min-width: 576px) {
     .contenedor {
-        grid-template-areas:    "imagen texto   texto   texto   cerrar"
-                                "imagen texto   texto   cantidad   precio";
+        grid-template-areas:    "imagen texto texto texto cantidad precio cerrar";
     }
  }
 
