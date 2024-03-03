@@ -16,7 +16,7 @@ class Carrito {
                 $_SESSION['carrito'][$idProducto] = [
                     'nombre' => $datosProducto->getNombre(),
                     'imagen' => $datosProducto->getImagen()[0],
-                    'precio' => $datosProducto->formatearPrecio(),
+                    'precio' => $datosProducto->getPrecio(),
                     'cantidad' => $cantidad
                 ];
             }

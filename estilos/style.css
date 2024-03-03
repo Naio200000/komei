@@ -156,48 +156,6 @@ main {
     background-color: rgb(151, 169, 178);
     color: #fff;
 }
-.contenedorProductosCarrito {
-    background-color: #fff;
-}
-.contenedor {
-    background-color: #fff;
-    display: grid;
-    padding: 10px;
-    gap: 10px;
-    grid-template-areas:    "imagen nada  cerrar"
-                            " texto cantidad precio";
-}
-
-.productoCarritoImagen {
-    grid-area: imagen;
-
-}
-.productoCarritoImagen img {
-    max-width: 100px;
-}
-
-.productoCarritoTexto {
-    grid-area: texto;
-}
-
-.productoCarritoCerrar {
-    grid-area: cerrar;
-}
-
-.productoCarritoCantidad {
-    grid-area: cantidad;
-}
-.productoCarritoPrecio {
-    grid-area: precio;
-    max-width: 100px;
-}
-.modalCustom div {
-    border: none;
-}
-.modalCustom:first-child {
-    background-color: #eee ;
-    border-radius: 5px;
-}
 .modalCustom > div {
     justify-content: center;
 }
@@ -225,9 +183,7 @@ main {
     color: rgb(180, 16, 16);
 }
 @media (min-width: 576px) {
-    .contenedor {
-        grid-template-areas:    "imagen texto texto texto cantidad precio cerrar";
-    }
+    
  }
 
 @media (min-width: 768px) {
@@ -235,9 +191,6 @@ main {
  }
 
 @media (min-width: 992px) { 
-    .contenedorProductosCarrito {
-        min-width: 500px;
-    }
     .footer {
         padding-bottom: 0;
     }
