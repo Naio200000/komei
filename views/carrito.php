@@ -7,7 +7,10 @@
 
 <section class="item container-fluid container-md pb-3">
     <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center fw-bold my-2 mx-auto px-2">Tu Carrito</h2>
-    <table class="tabla table table-striped">
+    <?php
+        if(!empty($carrito)) { ?>
+            <form action="" method="POST">
+                <table class="tabla table">
                     <thead>
                         <tr>
                             <th class="px-1 text-center" scope="col" width="10%">Producto</th>
@@ -21,8 +24,7 @@
                     </thead>
                     <tbody>
                         <?php            
-                            if(!empty($carrito)) { 
-                                foreach($carrito as $k => $p) { ?>
+                            foreach($carrito as $k => $p) { ?>
                             <tr>
                                 <td class="text-center align-middle" scope="row">
                                     <div>
@@ -32,7 +34,7 @@
                                 <td class="text-capitalize text-center">
                                     <p class="h4"><?= $p['nombre']?></p>
                                 </td>
-                                <td class=" ms-0 d-flex justify-content-center">                    
+                                <td class=" ms-0 d-flex justify-content-center align-items-stretch">                    
                                     <div class=" ms-0 d-flex align-items-center justify-content-center">
                                         <label for="<?= $key ?>">Cantidad: </label>
                                         <input type="number" class="form-control" value="<?= $p['cantidad'] ?>" id="<?= $key ?>" name="<?= $key ?>" size="3">
@@ -48,7 +50,6 @@
                                         </div>
                                     </div>
                                 </td>
-
                                 <td>
                                     <div class="d-flex justify-content-center">
                                         <div>
@@ -70,12 +71,19 @@
                                     </div>
                                 </td>
                             </tr>
-                        <?php } } ?>
+                        <?php } ?>
                     </tbody>
                 </table>
-    <div class="contenedorProductosCarrito">
-        <div class="p-3 fs-4">
-            <p class="my-3 text-end">Total <span class="fw-bold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16"><path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/></svg><span>2000.00</span></p>
+            </form>
+            <div class="contenedorProductosCarrito">
+                <div class="p-3 fs-4">
+                    <p class="my-3 text-end">Total <span class="fw-bold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16"><path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/></svg><span>2000.00</span></p>
+                </div>
+            </div>
+    <?php } else { ?>
+        <div>
+            <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center fw-bold my-2 mx-auto px-2">Tu carrito esta vacio</h2>
+            <p class="fs-5 w-75 mx-auto fw-bold text-center fs-5">Para volver a la tienda hás click <a class="fs-3" href="index.php?view=tienda">aquí.</a></p>
         </div>
-    </div>
+    <?php } ?>
 </section>
