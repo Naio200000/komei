@@ -143,7 +143,45 @@ main {
 .footer-perfil {
     padding: 1rem;
 }
-
+.btn-borrar {
+    background-color: rgb(203, 43, 43);
+    
+}
+.btn-borrar a {
+    color: var(--main-font-color);
+    text-decoration: none;
+}
+.btn-borrar:hover,
+.btn-borrar a:hover {
+    background-color: rgb(117, 21, 21);
+    color: #fff;
+}
+.btn-editar {
+    background-color: rgb(232, 168, 49);
+    
+}
+.btn-editar a {
+    color: var(--main-font-color);
+    text-decoration: none;
+}
+.btn-editar:hover,
+.btn-editar a:hover {
+    background-color: rgb(123, 89, 26);
+    color: #fff;
+}
+.btn-agregar {
+    background-color: rgb(49, 232, 101);;
+    
+}
+.btn-agregar a {
+    color: var(--main-font-color);
+    text-decoration: none;
+}
+.btn-agregar:hover,
+.btn-agregar a:hover {
+    background-color: rgb(26, 123, 50);
+    color: #fff;
+}
 .btn-komei {
     background-color: var(--main-bg-color);
     
