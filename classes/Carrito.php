@@ -34,6 +34,11 @@ class Carrito {
 
     }
 
+    public function vaciarCarrito() {
+
+        $_SESSION['carrito'] = [];
+    }
+
     /**
      * Devuelve el contenido del carrito que se encuentre guardado en la SESSION
      * #@return array El contenido del carrito en la SESSIOn o un array vacio.
