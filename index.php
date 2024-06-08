@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="estilos/style.css">
 </head>
 <body>
-    <!-- <header class="header">
+    <header class="header">
         <nav class="navbar navbar-expand-md fixed-top container-fluid x-auto ">
             <div class="nav container align-items-center">
                 <a class="navbar-brand " href="index.php?view=home"><img src="./img/logo/komei_Juku.webp" alt="Logo de la escuela"></a>
@@ -82,16 +82,14 @@
                             <a class="nav-link active text-center text-sm-end " aria-current="page" href="index.php?view=dojos">Contactos</a>
                         </li>
                     </ul>
-                    <?php
-                    if ($validar) { ?>
-                        <div class=" text-center text-sm-end">
-                            <a href="./admin/acciones/auth_logout-accion.php"><p class="btn btn-komei fw-bold">Log out</p></a>
-                        </div>
+                    <div class=" text-center text-sm-end">
+                        <?php
+                            if ($validar) { ?>
+                                <a href="./admin/acciones/auth_logout-accion.php"><p class="btn btn-komei fw-bold">Log out</p></a>
                         <?php  } else { ?> 
-                            <div class=" text-center text-sm-end">
                                 <a href="index.php?view=login"><p class="btn btn-komei text-center text-sm-end  fw-bold">Log In</p></a>
-                            </div>
-                    <?php } ?>
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -117,7 +115,7 @@
                 </div>
             </div>
         </nav>
-    </header> -->
+    </header>
     <main>
         <?PHP require_once "views/$views.php"; ?>
     </main>
