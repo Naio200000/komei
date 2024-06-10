@@ -8,7 +8,6 @@
         $views = "404";
         $title = "Error 404 - Pagina no encontrada.";
     } else {
-        //esto es un asco, pero bueh
         if ($viewSelected != 'login') {
             if ((new Login)->verificar()) {
                 $user =  $_SESSION['user'];

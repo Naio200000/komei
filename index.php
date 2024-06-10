@@ -11,7 +11,6 @@
         $title = "Error 404 - Pagina no encontrada.";
     } else {
         if ($user) {
-            $hola = $user->getRol()->getRoles();
             if ($user->getRol()->getRoles() != 'admin') { 
                 $validar = true;
             } else {
