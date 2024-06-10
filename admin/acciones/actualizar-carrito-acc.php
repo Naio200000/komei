@@ -2,6 +2,8 @@
     require_once "../../libraries/autoloader.php";
     $datosPOST = $_POST;
 
-    echo '<pre>';
-    print_r($datosPOST);
-    echo '<pre>';
+    if (!empty($datosPOST)) {
+
+        (new Carrito)->actualizaCantidad($datosPOST);
+        header('Location: ../../index.php?view=carrito');
+    }

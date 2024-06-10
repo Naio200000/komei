@@ -22,6 +22,15 @@ class Carrito {
             }
     }
 
+    public function actualizaCantidad(array $cantidades){
+
+        foreach($cantidades as $k => $c) {
+            if(isset($_SESSION['carrito'][$k])) {
+                $_SESSION['carrito'][$k]['cantidad'] = $c;
+            }
+        }
+    }
+
     /**
      * Elimina un item de la lista de compras
      * @param int $idProducto el ID del producto a eliminar

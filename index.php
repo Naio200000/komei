@@ -4,7 +4,7 @@
     $linksValidos = (new Links)->formateaLinks();
     $viewSelected = $_GET['view'] ?? 'home';
     $user = $_SESSION['user'] ?? false;
-    $carritoCantidad = count($_SESSION['carrito']) ?? false;
+    $carritoCantidad = isset($_SESSION['carrito']) ? count($_SESSION['carrito']) : 0;
     $validar = false;
     if (!array_key_exists($viewSelected, $linksValidos)) {
         $views = "404";

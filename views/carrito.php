@@ -1,8 +1,5 @@
 <?php
     $carrito = (new Carrito)->get_carrito();
-    echo "<pre>";
-    print_r($carrito);
-    echo "</pre>";
 ?>
 
 <section class="item container-fluid container-md pb-3">
@@ -15,7 +12,7 @@
                         <tr>
                             <th class="px-1 text-center" scope="col" width="10%">Producto</th>
                             <th class="px-1 text-center" scope="col" width="20%" >Nombre</th>
-                            <th class="px-1 text-center" scope="col" width="15%">Cantidad</th>
+                            <th class="px-1 text-center" scope="col" width="10%">Cantidad</th>
                             <th class="px-1 text-center" scope="col" width="20%">Precio</th>
                             <th class="px-1 text-center" scope="col" width="20%">Subtotal</th>
                             <th class="px-1 text-center" scope="col" width="5%">Eliminar</th>
@@ -36,7 +33,7 @@
                                 </td>
                                 <td class=" ms-0 d-flex justify-content-center align-items-stretch">                    
                                     <div class=" ms-0 d-flex align-items-center justify-content-center">
-                                        <label for="<?= $k ?>">Cantidad: </label>
+                                        <label class="visually-hidden" for="<?= $k ?>">Cantidad: </label>
                                         <input type="number" class="form-control" value="<?= $p['cantidad'] ?>" id="<?= $k ?>" name="<?= $k ?>" size="3">
                                     </div>
                                 </td>
