@@ -9,7 +9,7 @@
     <h2 class="titulo-seccion w-75 w-lg-100 text-uppercase text-center fw-bold my-2 mx-auto px-2">Tu Carrito</h2>
     <?php
         if(!empty($carrito)) { ?>
-            <form action="" method="POST">
+            <form action="admin/acciones/actualizar-carrito-acc.php" method="POST">
                 <table class="tabla table">
                     <thead>
                         <tr>
@@ -36,8 +36,8 @@
                                 </td>
                                 <td class=" ms-0 d-flex justify-content-center align-items-stretch">                    
                                     <div class=" ms-0 d-flex align-items-center justify-content-center">
-                                        <label for="<?= $key ?>">Cantidad: </label>
-                                        <input type="number" class="form-control" value="<?= $p['cantidad'] ?>" id="<?= $key ?>" name="<?= $key ?>" size="3">
+                                        <label for="<?= $k ?>">Cantidad: </label>
+                                        <input type="number" class="form-control" value="<?= $p['cantidad'] ?>" id="<?= $k ?>" name="<?= $k ?>" size="3">
                                     </div>
                                 </td>
                                 <td>
@@ -85,6 +85,9 @@
                     </div>
                     <div>
                         <a href="index.php?view=tienda" class="btn btn-editar fw-bold text-light">Seguir Comprando</a>
+                    </div>
+                    <div>
+                        <input type="submit" class="btn btn-editar fw-bold text-light" value="Actualizar Valores">
                     </div>
                     <div>
                         <a href="#" class="btn btn-agregar fw-bold text-light">Finalizar Compra</a>
