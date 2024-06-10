@@ -7,7 +7,7 @@
     <?php
         if(!empty($carrito)) { ?>
             <form action="admin/acciones/actualizar-carrito-acc.php" method="POST">
-                <table class="tabla table">
+                <table class="tabla table bg-light rounded">
                     <thead>
                         <tr>
                             <th class="px-1 text-center" scope="col" width="10%">Producto</th>
