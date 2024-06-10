@@ -22,11 +22,19 @@ class Carrito {
             }
     }
 
+    /**
+     * Actualiza las cantidades de los productos del carrito, si la cantidad es 0 ejecuta el metodo eliminarProductoId
+     * @param array array de productos y sus cantidades.
+     */
     public function actualizaCantidad(array $cantidades){
 
         foreach($cantidades as $k => $c) {
             if(isset($_SESSION['carrito'][$k])) {
-                $_SESSION['carrito'][$k]['cantidad'] = $c;
+                if ($c == 0) {
+                    $this->eliminarProductoId($k);
+                } else {
+                    $_SESSION['carrito'][$k]['cantidad'] = $c;
+                }
             }
         }
     }
@@ -58,6 +66,24 @@ class Carrito {
             return $_SESSION['carrito'];
         }
         return [];
+    }
+
+
+    /**
+     * Calcula el total del precio del carrito actual
+     */
+    public function calculaTotal() :float {
+
+        $total = 0;
+        if(!empty($_SESSION['carrito'])) {
+
+            foreach($_SESSION['carrito'] as $c) {
+                $total += $c['precio'] * $c['cantidad'];
+            }
+        }        
+
+        return $total;
+
     }
 
 
