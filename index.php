@@ -11,13 +11,14 @@
         $title = "Error 404 - Pagina no encontrada.";
     } else {
         if ($user) {
-            if ($user->getRol()->getRoles() != 'admin') { 
+            if ($user->getRol()->getRoles() != 'admin') {
                 $validar = true;
             } else {
                 header('location: admin/index.php?view=dash');
             }
+        } elseif ($viewSelected == 'finalizarCompra') {
+            header('location: index.php?view=login');
         }
-
         $views = $viewSelected;
         $title = $linksValidos[$viewSelected]['title'];
     }

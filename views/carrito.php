@@ -87,7 +87,7 @@
                         <input type="submit" class="btn btn-editar fw-bold text-light" value="Actualizar Valores">
                     </div>
                     <div>
-                        <a href="#" class="btn btn-agregar fw-bold text-light">Finalizar Compra</a>
+                        <a href="index.php?view=finalizarCompra" class="btn btn-agregar fw-bold text-light">Finalizar Compra</a>
                     </div>
                 </div>
             </form>
