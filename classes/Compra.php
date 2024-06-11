@@ -36,4 +36,25 @@ class Compra {
             );
         }
     }
+
+    /**
+     * Retorna todas las compras realizadas por un usuario segun su ID
+     * @param int $userId id del usuario
+     * @return array array de compras o null si no encuentra nada.
+     */
+    public function comprasUserId(int $userId) :array {
+
+        $conexion = Conexion::getConexion();
+        $query = "SELECT c.id, c.fecha, c.importe, GROUP_CONCAT(pxc.cantidad) AS Cantidad, GROUP_CONCAT(p.name) AS Detalle FROM compras AS c  JOIN producto_x_compra AS pxc ON c.id = pxc.id_compra JOIN productos AS p ON pxc.id_producto = p.id WHERE c.id_usuario = ? GROUP BY c.id;";
+
+        $PDOStatement = $conexion->prepare($query);
+        $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
+        $PDOStatement->execute([$userId]);
+
+        $datos = $PDOStatement->fetchAll();
+
+        return $datos ?? null;
+    }
 }
+    
+    
