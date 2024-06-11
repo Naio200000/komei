@@ -36,7 +36,6 @@ class Rol {
         $PDOStatement->setFetchMode(PDO::FETCH_CLASS, self::class);
         $PDOStatement->execute([$id]);
         $datos = $PDOStatement->fetch();
-        
 
         return $datos ?? null;
     }

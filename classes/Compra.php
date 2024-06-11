@@ -51,9 +51,23 @@ class Compra {
         $PDOStatement->setFetchMode(PDO::FETCH_ASSOC);
         $PDOStatement->execute([$userId]);
 
-        $datos = $PDOStatement->fetchAll();
+        while($datos = $PDOStatement->fetch()) {
+            $compras[] = $this->formateCompra($datos);
+        }
+        
 
-        return $datos ?? null;
+        return $compras ?? null;
+    }
+
+    private function formateCompra(array $datos)  {
+
+        $cantidad = explode(',', $datos['Cantidad']); 
+        $detalle = explode(',', $datos['Detalle']);
+        $c = count($cantidad);
+        for ($i=0; $i < $c ; $i++) { 
+            $datos['detcan'][$detalle[$i]] = $cantidad[$i];
+        }
+        return $datos;
     }
 }
     
