@@ -83,6 +83,12 @@
                         <li class="nav-item">
                             <a class="nav-link active text-center text-sm-end " aria-current="page" href="index.php?view=dojos">Contactos</a>
                         </li>
+                        <?php
+                            if ($validar) { ?>
+                            <li class="nav-item">
+                                <a class="nav-link active text-center text-sm-end " aria-current="page" href="index.php?view=perfilUsuario">Perfil de Usuario</a>
+                            </li>
+                        <?php  } ?> 
                     </ul>
                     <div class=" text-center text-sm-end">
                         <?php

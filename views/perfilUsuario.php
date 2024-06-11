@@ -1,5 +1,4 @@
 <?php
-    $carrito = (new Carrito)->get_carrito();
 
 ?>
 
